@@ -1,0 +1,320 @@
+/* ═══════════════════════════════════════════════
+   HOMEPAGE — LANDING
+   ═══════════════════════════════════════════════ */
+
+.nb-landing {
+  height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.nb-bg {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  transition: background 0.3s;
+}
+
+.nb-bg-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('/ieee-background.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.08;
+  mix-blend-mode: screen;
+}
+
+:root.light .nb-bg-image {
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+}
+
+/* ─── Floating shapes ─── */
+.nb-floating-shapes {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.nb-shape {
+  position: absolute;
+  border: var(--border);
+  border-radius: var(--radius);
+}
+
+.nb-shape-1 {
+  width: 80px; height: 80px;
+  top: 10%; right: 15%;
+  background: var(--accent);
+  opacity: 0.15;
+  box-shadow: var(--shadow);
+  animation: float 5s ease-in-out infinite;
+}
+
+.nb-shape-2 {
+  width: 120px; height: 120px;
+  top: 32%; right: 8%;
+  background: var(--blue);
+  opacity: 0.12;
+  box-shadow: var(--shadow-lg);
+  animation: float 7s ease-in-out infinite 0.5s;
+  border-radius: 50%;
+}
+
+.nb-shape-3 {
+  width: 50px; height: 50px;
+  bottom: 28%; right: 22%;
+  background: var(--teal);
+  opacity: 0.12;
+  box-shadow: var(--shadow-sm);
+  animation: float 4s ease-in-out infinite 1s;
+  transform: rotate(45deg);
+}
+
+.nb-shape-4 {
+  width: 60px; height: 60px;
+  top: 18%; right: 35%;
+  border-color: var(--cyan);
+  border-width: 3px;
+  opacity: 0.15;
+  animation: float 6s ease-in-out infinite 0.3s;
+}
+
+.nb-shape-5 {
+  width: 30px; height: 30px;
+  bottom: 22%; right: 38%;
+  background: var(--accent);
+  opacity: 0.12;
+  box-shadow: var(--shadow-sm);
+  animation: float 3.5s ease-in-out infinite 0.8s;
+}
+
+/* ─── Hero ─── */
+.nb-hero-wrapper {
+  flex: 1;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.nb-hero-content {
+  max-width: 650px;
+}
+
+.nb-hero-label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--bg-card);
+  padding: 6px 16px;
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+}
+
+.nb-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  line-height: 0.95;
+  color: var(--primary-strong);
+  letter-spacing: -2px;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.nb-hero-title .accent-cyan {
+  color: var(--accent);
+}
+
+.nb-hero-divider {
+  width: 120px;
+  height: 4px;
+  background: var(--border-color);
+  margin: 16px 0;
+  position: relative;
+}
+
+.nb-hero-divider::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 4px;
+  background: var(--accent);
+}
+
+.nb-hero-subtitle {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0 0 4px;
+}
+
+.nb-hero-tagline {
+  font-size: 14px;
+  color: var(--teal);
+  font-weight: 500;
+  margin: 0;
+}
+
+.nb-hero-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+/* ─── CTA bar (centered) ─── */
+.nb-cta-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  padding: 20px 32px;
+  border: var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+  position: relative;
+  z-index: 2;
+  margin: 0 auto 16px;
+  max-width: 600px;
+  width: calc(100% - 96px);
+  transition: background 0.3s;
+}
+
+.nb-cta-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--blue), var(--teal));
+}
+
+.nb-cta-bar h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  color: var(--primary-strong);
+}
+
+/* ─── Marquee ─── */
+.nb-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  border-top: var(--border);
+  background: var(--bg-surface);
+  padding: 8px 0;
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+
+.nb-marquee-track {
+  display: flex;
+  gap: 40px;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.nb-marquee-word {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.nb-marquee-dot {
+  color: var(--blue-light);
+  font-size: 10px;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+  .nb-hero-wrapper { padding: 0 16px; }
+  .nb-hero-content { max-width: 100%; }
+  .nb-hero-title { font-size: 2.2rem; letter-spacing: -1px; }
+  .nb-hero-subtitle { font-size: 14px; }
+  .nb-hero-tagline { font-size: 12px; }
+  .nb-hero-buttons .nb-btn { font-size: 10px; padding: 8px 14px; }
+  .nb-cta-bar { width: calc(100% - 32px); padding: 16px; }
+  .nb-cta-bar h3 { font-size: 13px; }
+  .nb-floating-shapes { display: none; }
+  .nb-marquee-word { font-size: 10px; }
+  .nb-landing { height: calc(100vh - 60px); }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .nb-hero-wrapper { padding: 0 28px; }
+  .nb-hero-content { max-width: 520px; }
+  .nb-hero-title { font-size: 3rem; }
+  .nb-cta-bar { width: calc(100% - 56px); }
+  .nb-shape-1 { width: 60px; height: 60px; }
+  .nb-shape-2 { width: 90px; height: 90px; }
+}
+
+/* ═══════════════════════════════════════════════
+   PINNED PANELS (GSAP)
+   ═══════════════════════════════════════════════ */
+
+.nb-panels-container {
+  position: relative;
+  width: 100%;
+}
+
+.nb-section {
+  width: 100%;
+  height: calc(100vh - 72px);
+  position: relative;
+  overflow: hidden; /* Important for scaling effect */
+}
+
+/* Make section inner strictly fit fullscreen below navbar */
+.nb-section-inner {
+  width: 100%;
+  height: calc(100vh - 72px);
+  position: relative;
+}
+
+.nb-section-landing {
+  z-index: 10;
+  background: var(--bg);
+}
+
+.nb-events-wrapper {
+  position: relative;
+  z-index: 20; /* Ensure it scrolls ON TOP of the pinned landing page */
+  background: var(--bg-surface);
+}
+
