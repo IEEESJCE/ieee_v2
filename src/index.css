@@ -36,26 +36,26 @@
 
 /* ─── LIGHT MODE ─── */
 :root.light {
-  --bg: #F0F4FA;
+  --bg: #DDF4FF;
   --bg-surface: #FFFFFF;
-  --bg-card: #F8FAFC;
+  --bg-card: #EDF2F8;
   --bg-elevated: #FFFFFF;
-  --primary: #0F172A;
-  --primary-strong: #020617;
-  --text-muted: #64748B;
-  --accent: #0891B2;
-  --accent-dim: #06B6D4;
-  --teal: #0D9488;
+  --primary: #0C1425;
+  --primary-strong: #020B1A;
+  --text-muted: #5B6B82;
+  --accent: #0097B2;
+  --accent-dim: #00B5D4;
+  --teal: #00A896;
   --blue: #2563EB;
   --blue-light: #3B82F6;
   --blue-dark: #1E3A8A;
-  --cyan: #06B6D4;
-  --border-color: #1E293B;
-  --border: 2px solid #1E293B;
-  --border-accent: 2px solid #0891B2;
-  --shadow: 4px 4px 0px 0px #1E293B;
-  --shadow-sm: 2px 2px 0px 0px #1E293B;
-  --shadow-lg: 6px 6px 0px 0px #1E293B;
+  --cyan: #00B5D4;
+  --border-color: #1A2540;
+  --border: 2px solid #1A2540;
+  --border-accent: 2px solid #0097B2;
+  --shadow: 4px 4px 0px 0px #1A2540;
+  --shadow-sm: 2px 2px 0px 0px #1A2540;
+  --shadow-lg: 6px 6px 0px 0px #1A2540;
   --shadow-blue: 4px 4px 0px 0px #2563EB;
   --mode: light;
 }
@@ -151,4 +151,26 @@ body::after {
 
 .glitch-hover:hover {
   animation: glitch 0.3s ease-in-out 3;
+}
+
+/* ═══════════════════════════════════════════════
+   LIGHT MODE OVERRIDES — Global
+   ═══════════════════════════════════════════════ */
+
+/* Noise overlay — slightly more on light */
+:root.light body::after {
+  opacity: 0.018;
+}
+
+/* Scrollbar — light track */
+:root.light ::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+:root.light ::-webkit-scrollbar-thumb {
+  background: #C0CBDA;
+}
+
+:root.light ::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }

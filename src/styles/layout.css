@@ -316,3 +316,57 @@
   .nb-nav-links { gap: 4px; }
   .nb-nav-links a { font-size: 11px; padding: 6px 10px; }
 }
+
+/* ═══════════════════════════════════════════════
+   LIGHT MODE OVERRIDES — Layout
+   ═══════════════════════════════════════════════ */
+
+/* Navbar — white surface with crisp border */
+:root.light .nb-nav {
+  background: #9EC5FE;
+}
+
+/* Logo image — white bg on light mode */
+:root.light .nb-logo-img {
+  background: #FFFFFF;
+}
+
+/* Theme toggle — clean light card */
+:root.light .nb-theme-toggle {
+  background: #FFFFFF;
+}
+
+/* Accent button — bright with dark text */
+:root.light .nb-btn-accent {
+  color: #FFFFFF;
+}
+
+:root.light .nb-btn-accent:hover {
+  box-shadow: var(--shadow-lg), 0 0 16px rgba(0, 151, 178, 0.25);
+}
+
+/* Blue button — bright with white text */
+:root.light .nb-btn-blue:hover {
+  box-shadow: var(--shadow-lg), 0 0 16px rgba(37, 99, 235, 0.25);
+}
+
+/* Outline button — clean highlight */
+:root.light .nb-btn-outline:hover {
+  background: #FFFFFF;
+  box-shadow: var(--shadow-lg), 0 0 16px rgba(0, 151, 178, 0.15);
+}
+
+/* Shine sweep — darker sweep on light bg */
+:root.light .nb-btn::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.06),
+    transparent
+  );
+}
+
+/* Mobile menu — light bg */
+:root.light .nb-mobile-menu {
+  background: #FFFFFF;
+}

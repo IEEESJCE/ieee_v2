@@ -540,3 +540,62 @@
     width: 220px;
   }
 }
+
+/* ═══════════════════════════════════════════════
+   LIGHT MODE OVERRIDES — Events
+   ═══════════════════════════════════════════════ */
+
+/* Circuit board — subtler on light */
+:root.light .evt-circuit-group {
+  animation-name: circuit-pulse-light;
+}
+
+@keyframes circuit-pulse-light {
+  0% { opacity: 0.06; }
+  50% { opacity: 0.10; }
+  100% { opacity: 0.06; }
+}
+
+/* Nav arrows — clean highlight */
+:root.light .evt-nav:hover {
+  box-shadow: var(--shadow), 0 0 12px rgba(0, 151, 178, 0.2);
+}
+
+/* Timeline line glow — subtle bright blue */
+:root.light .evt-timeline-line-fill {
+  box-shadow: 0 0 8px var(--accent), 0 0 20px rgba(0, 151, 178, 0.12);
+}
+
+/* Active card — softer glow */
+:root.light .evt-card-active .evt-card {
+  box-shadow: var(--shadow), 0 0 20px rgba(0, 151, 178, 0.08);
+}
+
+/* Featured card — clean accent border */
+:root.light .evt-card-featured {
+  box-shadow: var(--shadow), 0 0 24px rgba(0, 151, 178, 0.10) !important;
+}
+
+/* Card image — light gradient overlay */
+:root.light .evt-card-image-overlay {
+  background: linear-gradient(180deg, transparent 40%, rgba(244, 247, 251, 0.5) 100%);
+}
+
+/* Card images — brighter in light mode */
+:root.light .evt-card-image img {
+  filter: brightness(1) contrast(1.05);
+}
+
+/* Node glow — toned down */
+:root.light .evt-card-active .evt-node-dot {
+  box-shadow: 0 0 0 3px var(--node-color, var(--accent)), 0 0 12px var(--node-color, var(--accent));
+}
+
+/* Footer card — white surface */
+:root.light .evt-footer {
+  background: #FFFFFF;
+}
+
+:root.light .evt-footer-icon {
+  background: var(--bg-card);
+}

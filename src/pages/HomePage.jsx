@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import EventsSection from '../components/EventsSection'
+import ColourfulText from '../components/ui/colourful-text'
 import '../styles/homepage.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -118,21 +119,31 @@ export default function HomePage() {
               <div className="nb-bg-image" />
 
               <div ref={floatingRef} className="nb-floating-shapes">
+                {/* Right side */}
                 <div className="nb-shape nb-shape-1" />
                 <div className="nb-shape nb-shape-2" />
                 <div className="nb-shape nb-shape-3" />
-                <div className="nb-shape nb-shape-4" />
                 <div className="nb-shape nb-shape-5" />
+                {/* Left side */}
+                {/* <div className="nb-shape nb-shape-4" /> */}
+                <div className="nb-shape nb-shape-6" />
+                <div className="nb-shape nb-shape-7" />
+                <div className="nb-shape nb-shape-8" />
+                <div className="nb-shape nb-shape-9" />
+                {/* <div className="nb-shape nb-shape-10" /> */}
               </div>
 
               <div className="nb-hero-wrapper">
-                <div ref={heroRef} className="nb-hero-content">
+                <div ref={heroRef} className="nb-hero-content nb-hero-centered">
                   <span className="gsap-hero nb-hero-label">⚡ IEEE Student Branch — SJCE Mysuru</span>
-                  <h1 className="gsap-hero nb-hero-title">
-                    INNOVATE<br />
-                    INSPIRE<br />
-                    <span className="accent-cyan">ENGINEER</span>
-                  </h1>
+                  <h1 className="gsap-hero nb-hero-title">IEEE SJCE</h1>
+                  <h2 className="gsap-hero nb-hero-tagline-big">
+                    <ColourfulText text="INNOVATE" color="var(--accent)" />
+                    <span className="tagline-dot"> · </span>
+                    <ColourfulText text="INSPIRE" color="var(--teal)" />
+                    <span className="tagline-dot"> · </span>
+                    <ColourfulText text="ENGINEER" color="var(--blue-light)" />
+                  </h2>
                   <div className="gsap-hero nb-hero-divider" />
                   <p className="gsap-hero nb-hero-subtitle">Advancing Technology for Humanity</p>
                   <p className="gsap-hero nb-hero-tagline">Building tomorrow's engineers, today.</p>
