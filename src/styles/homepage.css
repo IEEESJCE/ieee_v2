@@ -26,7 +26,7 @@
   background-image: url('/ieee-bg.png');
   background-size: cover;
   background-position: center;
-  opacity: 0.26;
+  opacity: 0.33;
   mix-blend-mode: screen;
 }
 
@@ -208,6 +208,15 @@
   transition: opacity 0.3s;
 }
 
+.tagline-row {
+  display: inline;
+}
+
+.tagline-dot-mobile {
+  /* Visible on desktop (inline with the rest), hidden on mobile */
+  display: inline;
+}
+
 .tagline-cyan  { color: var(--accent); }
 .tagline-teal  { color: var(--teal); }
 .tagline-blue  { color: var(--blue-light); }
@@ -352,6 +361,8 @@
   .nb-hero-label { font-size: 10px; letter-spacing: 1.5px; padding: 5px 12px; margin-bottom: 8px; }
   .nb-hero-title { font-size: 3rem; letter-spacing: -1px; margin-bottom: 6px; }
   .nb-hero-tagline-big { font-size: 0.9rem; letter-spacing: 1px; white-space: normal; margin-bottom: 4px; }
+  .tagline-row { display: block; text-align: center; white-space: nowrap; }
+  .tagline-dot-mobile { display: none; }
   .nb-hero-divider { margin: 10px auto; }
   .nb-hero-subtitle { font-size: 15px; margin-bottom: 4px; }
   .nb-hero-tagline { font-size: 15px; margin-bottom: 6px; }

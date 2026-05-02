@@ -7,9 +7,9 @@ import Layout from './components/Layout.jsx'
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<EntryPage />} />
+      {/* <Route path="/entry" element={<EntryPage />} /> */}
       <Route element={<Layout />}>
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/societies" element={<SocietiesPage />} />
       </Route>
     </Routes>

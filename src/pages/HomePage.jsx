@@ -138,11 +138,15 @@ export default function HomePage() {
                   <span className="gsap-hero nb-hero-label">⚡ IEEE Student Branch — SJCE Mysuru</span>
                   <h1 className="gsap-hero nb-hero-title">IEEE SJCE</h1>
                   <h2 className="gsap-hero nb-hero-tagline-big">
-                    <ColourfulText text="INNOVATE" color="var(--accent)" />
-                    <span className="tagline-dot"> · </span>
-                    <ColourfulText text="INSPIRE" color="var(--teal)" />
-                    <span className="tagline-dot"> · </span>
-                    <ColourfulText text="ENGINEER" color="var(--blue-light)" />
+                    <span className="tagline-row">
+                      <ColourfulText text="INNOVATE" color="var(--accent)" />
+                      <span className="tagline-dot"> · </span>
+                      <ColourfulText text="INSPIRE" color="var(--teal)" />
+                    </span>
+                    <span className="tagline-row">
+                      <span className="tagline-dot tagline-dot-mobile"> · </span>
+                      <ColourfulText text="ENGINEER" color="var(--blue-light)" />
+                    </span>
                   </h2>
                   <div className="gsap-hero nb-hero-divider" />
                   <p className="gsap-hero nb-hero-subtitle">Advancing Technology for Humanity</p>

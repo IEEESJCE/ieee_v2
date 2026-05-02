@@ -47,8 +47,8 @@ function Navbar({ isDark, toggleTheme }) {
   }, [])
 
   const NAV_LINKS = [
-    { label: 'Home', route: '/home' },
-    { label: 'Events', route: '/home', hash: '#events-section' },
+    { label: 'Home', route: '/' },
+    { label: 'Events', route: '/', hash: '#events-section' },
     { label: 'Societies', route: '/societies' },
     { label: 'About', route: '#' },
     { label: 'Team', route: '#' },
@@ -56,7 +56,7 @@ function Navbar({ isDark, toggleTheme }) {
   ]
 
   const isActive = (link) => {
-    if (link.route === '/home' && !link.hash) return location.pathname === '/home'
+    if (link.route === '/' && !link.hash) return location.pathname === '/'
     if (link.route === '/societies') return location.pathname === '/societies'
     return false
   }
@@ -64,10 +64,10 @@ function Navbar({ isDark, toggleTheme }) {
   const handleNavClick = (e, link) => {
     e.preventDefault()
     setMobileOpen(false)
-    if (link.hash && location.pathname === '/home') {
+    if (link.hash && location.pathname === '/') {
       document.querySelector(link.hash)?.scrollIntoView({ behavior: 'smooth' })
     } else if (link.hash) {
-      navigate('/home')
+      navigate('/')
       setTimeout(() => document.querySelector(link.hash)?.scrollIntoView({ behavior: 'smooth' }), 300)
     } else if (link.route !== '#') {
       navigate(link.route)
@@ -79,7 +79,7 @@ function Navbar({ isDark, toggleTheme }) {
       <nav className="nb-nav">
         <div className="nb-nav-inner">
           <div ref={logoRef} className="nb-nav-logo"
-            onClick={() => navigate('/home')} role="button" tabIndex={0}>
+            onClick={() => navigate('/')} role="button" tabIndex={0}>
             <img src="/logo.png" alt="IEEE SJCE" className="nb-logo-img" />
             <span className="nb-logo-text glitch-hover">IEEE SJCE</span>
           </div>
