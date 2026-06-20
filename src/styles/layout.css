@@ -103,41 +103,9 @@
 }
 
 .nb-nav-links a.active {
-  background: var(--blue);
-  color: #fff;
+  background: color-mix(in srgb, var(--blue) 18%, transparent);
+  color: var(--primary-strong);
   border-color: var(--border-color);
-  box-shadow: var(--shadow-sm);
-}
-
-.nb-nav-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* ─── Theme toggle ─── */
-.nb-theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border: var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-card);
-  color: var(--accent);
-  cursor: pointer;
-  transition: all 0.15s;
-  box-shadow: var(--shadow-sm);
-}
-
-.nb-theme-toggle:hover {
-  background: var(--accent);
-  color: var(--bg);
-}
-
-.nb-theme-toggle:active {
-  transform: translate(2px, 2px);
   box-shadow: none;
 }
 
@@ -146,40 +114,24 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--font-display);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 10px 22px;
-  border: var(--border);
-  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: none;
+  padding: 10px 20px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: var(--shadow);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  box-shadow: none;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
 }
 
-/* Shine sweep overlay */
 .nb-btn::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.15),
-    transparent
-  );
-  transition: left 0.5s ease;
-  pointer-events: none;
-}
-
-.nb-btn:hover::after {
-  left: 120%;
+  display: none;
 }
 
 /* Arrow icon slide on hover */
@@ -192,20 +144,19 @@
 }
 
 .nb-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: none;
+  transform: translateY(0);
 }
 
-/* ─ Accent button ─ */
 .nb-btn-accent {
   background: var(--accent);
   color: var(--bg);
+  border-color: transparent;
 }
 
 .nb-btn-accent:hover {
-  background: var(--cyan);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg), 0 0 20px rgba(0, 229, 255, 0.3), 0 0 40px rgba(0, 229, 255, 0.1);
+  background: var(--accent-dim);
+  transform: translateY(-1px);
+  box-shadow: none;
 }
 
 /* ─ Blue button ─ */
@@ -216,8 +167,8 @@
 
 .nb-btn-blue:hover {
   background: var(--blue-light);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg), 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+  box-shadow: none;
 }
 
 /* ─ Outline button ─ */
@@ -228,10 +179,10 @@
 
 .nb-btn-outline:hover {
   background: var(--bg-card);
-  transform: translateY(-3px);
+  transform: translateY(-1px);
   border-color: var(--accent);
   color: var(--accent);
-  box-shadow: var(--shadow-lg), 0 0 20px rgba(0, 229, 255, 0.15);
+  box-shadow: none;
 }
 
 /* ─── Hamburger ─── */
@@ -306,7 +257,6 @@
   .nb-logo-text { font-size: 16px; letter-spacing: 1px; }
   .nb-logo-img { width: 34px; height: 34px; }
   .nb-nav-links { display: none; }
-  .nb-nav-right { display: none; }
   .nb-hamburger { display: block; }
   .nb-mobile-menu .nb-btn { display: inline-flex; opacity: 1; }
 }
@@ -315,58 +265,4 @@
   .nb-nav-inner { padding: 14px 28px; }
   .nb-nav-links { gap: 4px; }
   .nb-nav-links a { font-size: 11px; padding: 6px 10px; }
-}
-
-/* ═══════════════════════════════════════════════
-   LIGHT MODE OVERRIDES — Layout
-   ═══════════════════════════════════════════════ */
-
-/* Navbar — white surface with crisp border */
-:root.light .nb-nav {
-  background: #9EC5FE;
-}
-
-/* Logo image — white bg on light mode */
-:root.light .nb-logo-img {
-  background: #FFFFFF;
-}
-
-/* Theme toggle — clean light card */
-:root.light .nb-theme-toggle {
-  background: #FFFFFF;
-}
-
-/* Accent button — bright with dark text */
-:root.light .nb-btn-accent {
-  color: #FFFFFF;
-}
-
-:root.light .nb-btn-accent:hover {
-  box-shadow: var(--shadow-lg), 0 0 16px rgba(0, 151, 178, 0.25);
-}
-
-/* Blue button — bright with white text */
-:root.light .nb-btn-blue:hover {
-  box-shadow: var(--shadow-lg), 0 0 16px rgba(37, 99, 235, 0.25);
-}
-
-/* Outline button — clean highlight */
-:root.light .nb-btn-outline:hover {
-  background: #FFFFFF;
-  box-shadow: var(--shadow-lg), 0 0 16px rgba(0, 151, 178, 0.15);
-}
-
-/* Shine sweep — darker sweep on light bg */
-:root.light .nb-btn::after {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 0, 0, 0.06),
-    transparent
-  );
-}
-
-/* Mobile menu — light bg */
-:root.light .nb-mobile-menu {
-  background: #FFFFFF;
 }

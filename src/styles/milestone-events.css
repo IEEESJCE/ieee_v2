@@ -1,0 +1,406 @@
+/* ═══════════════════════════════════════════════
+   MILESTONE EVENTS — EDITORIAL FILMSTRIP
+   ═══════════════════════════════════════════════ */
+
+.ms-section {
+  position: relative;
+  width: 100%;
+  background: var(--bg);
+  border-top: var(--border);
+  padding: 80px 0 72px;
+  overflow: visible;
+}
+
+.ms-diagonal-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--accent) 10%, transparent) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ms-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Intro (top) ─── */
+.ms-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.ms-intro {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px 48px;
+  align-items: end;
+  max-width: 100%;
+}
+
+.ms-intro-badge {
+  grid-column: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--teal);
+  padding: 6px 14px;
+  border: 2px dashed var(--border-color);
+  border-radius: 100px;
+}
+
+.ms-intro-title {
+  grid-column: 1;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  color: var(--primary-strong);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.ms-intro-title em {
+  display: inline;
+  font-style: normal;
+  color: var(--accent);
+  margin-left: 10px;
+}
+
+.ms-intro-text {
+  grid-column: 1;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 620px;
+}
+
+.ms-intro-stat {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 20px 28px;
+  background: var(--bg-card);
+  border: var(--border);
+  box-shadow: var(--shadow-sm);
+  min-width: 120px;
+}
+
+.ms-stat-num {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.ms-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ─── Filmstrip (full bleed) ─── */
+.ms-filmstrip-wrap {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 0 max(20px, calc((100vw - 1440px) / 2 + 48px));
+  box-sizing: border-box;
+}
+
+.ms-filmstrip-track {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 16px 0 28px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--border-color);
+}
+
+.ms-filmstrip-track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.ms-filmstrip-track::-webkit-scrollbar-track {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.ms-filmstrip-track::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+.ms-filmstrip {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 24px;
+  width: max-content;
+  padding: 8px 4px 4px;
+}
+
+/* ─── Poster cards ─── */
+.ms-poster {
+  position: relative;
+  flex: 0 0 280px;
+  width: 280px;
+}
+
+.ms-poster-frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: none;
+  overflow: hidden;
+  background: var(--bg-card);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.ms-poster:hover .ms-poster-frame {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--poster-accent) 40%, var(--border-color));
+  box-shadow: var(--shadow-sm);
+}
+
+.ms-poster-media {
+  position: relative;
+  flex: 1;
+  min-height: 200px;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--poster-accent) 35%, var(--bg-elevated)),
+    var(--bg-elevated)
+  );
+}
+
+.ms-poster-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.ms-poster:hover .ms-poster-media img {
+  transform: scale(1.05);
+}
+
+.ms-poster-fallback {
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--poster-accent) 40%, var(--bg-elevated)),
+    var(--bg-elevated)
+  );
+}
+
+.ms-poster-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.75) 100%);
+  pointer-events: none;
+}
+
+.ms-poster-meta {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.ms-poster-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border: 2px solid;
+  border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.ms-poster-num {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.25);
+  line-height: 1;
+}
+
+.ms-poster-content {
+  position: relative;
+  z-index: 2;
+  padding: 18px 20px 22px;
+  background: var(--bg-card);
+  border-top: var(--border);
+  margin-top: auto;
+}
+
+.ms-poster-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 10px;
+  border: 2px solid color-mix(in srgb, var(--poster-accent) 50%, var(--border-color));
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--poster-accent) 12%, var(--bg-elevated));
+  color: var(--poster-accent);
+}
+
+.ms-poster-content h3 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: var(--primary-strong);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin: 0 0 8px;
+  line-height: 1.25;
+}
+
+.ms-poster-content p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ms-poster-perforation {
+  display: none;
+}
+
+/* Progress rail */
+.ms-filmstrip-rail {
+  height: 4px;
+  background: var(--border-color);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.ms-filmstrip-progress {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--blue), var(--teal));
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.ms-scroll-hint {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 12px 0 0;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .ms-intro {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .ms-intro-stat {
+    grid-column: 1;
+    grid-row: auto;
+    flex-direction: row;
+    width: fit-content;
+    gap: 14px;
+    padding: 14px 20px;
+  }
+
+  .ms-stat-label {
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .ms-section {
+    padding: 56px 0 48px;
+  }
+
+  .ms-inner {
+    padding: 0 20px;
+  }
+
+  .ms-filmstrip-wrap {
+    padding: 0 20px;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .ms-poster {
+    flex: 0 0 240px;
+    width: 240px;
+  }
+
+  .ms-poster-frame {
+    height: 360px;
+  }
+
+  .ms-filmstrip {
+    gap: 16px;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   LIGHT MODE
+   ═══════════════════════════════════════════════ */
+
+:root.light .ms-section {
+  background: var(--bg-surface);
+}
+
+:root.light .ms-intro-stat {
+  background: #FFFFFF;
+}
+
+:root.light .ms-poster-frame {
+  background: #FFFFFF;
+}
+
+:root.light .ms-poster-content {
+  background: #FFFFFF;
+}

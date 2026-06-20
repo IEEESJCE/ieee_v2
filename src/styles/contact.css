@@ -1,0 +1,150 @@
+/* CONTACT — BENTO GRID */
+.cnt-page {
+  background: var(--bg-surface);
+  min-height: 70vh;
+  padding-bottom: 48px;
+}
+
+.cnt-hero {
+  text-align: center;
+  padding: 56px 24px 36px;
+}
+
+.cnt-hero-icon { color: var(--accent); margin-bottom: 12px; }
+
+.cnt-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  color: var(--primary-strong);
+  margin: 0 0 10px;
+}
+
+.cnt-hero p {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.cnt-bento {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+
+.cnt-form-card {
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  background: var(--bg-card);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.cnt-form-card h2 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 8px;
+}
+
+.cnt-form-card input,
+.cnt-form-card textarea {
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 14px 16px;
+  background: var(--bg-elevated);
+  border: var(--border);
+  border-radius: var(--radius);
+  color: var(--primary);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.cnt-form-card input:focus,
+.cnt-form-card textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.cnt-form-card textarea { resize: vertical; min-height: 100px; }
+
+.cnt-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cnt-chip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  text-decoration: none;
+  background: var(--bg-card);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s, box-shadow 0.25s;
+  border-left: 4px solid var(--chip-accent);
+}
+
+.cnt-chip:hover {
+  transform: translateX(6px);
+  box-shadow: var(--shadow);
+}
+
+.cnt-chip svg { color: var(--chip-accent); flex-shrink: 0; }
+
+.cnt-chip div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cnt-chip span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.cnt-chip strong {
+  font-size: 14px;
+  color: var(--primary-strong);
+}
+
+.cnt-map-card {
+  grid-column: 1 / -1;
+  height: 280px;
+  border: var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.cnt-map-card iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .cnt-bento {
+    grid-template-columns: 1fr;
+  }
+  .cnt-form-card { grid-row: auto; }
+}
+
+:root.light .cnt-form-card, :root.light .cnt-chip { background: #fff; }
