@@ -356,8 +356,9 @@
    ═══════════════════════════════════════════════ */
 
 @media (max-width: 767px) {
-  .nb-landing { height: calc(100vh - 72px); }
-  .nb-hero-wrapper { padding: 0 20px; display: flex; align-items: center; justify-content: center; }
+  .nb-section, .nb-section-inner { height: auto; min-height: calc(100vh - 72px); overflow: visible; }
+  .nb-landing { height: auto; min-height: calc(100vh - 72px); }
+  .nb-hero-wrapper { padding: 0 20px; display: flex; align-items: center; justify-content: center; padding-top: 40px; padding-bottom: 40px; }
   .nb-hero-content { max-width: 100%; }
   .nb-hero-centered { gap: 20px; }
   .nb-hero-label { font-size: 10px; letter-spacing: 1.5px; padding: 5px 12px; margin-bottom: 8px; }

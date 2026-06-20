@@ -84,84 +84,88 @@ export default function HomePage() {
     }
 
     // 2. PINNED PANEL SYSTEM — same pin + scale-shrink for EVERY section
-    // The landing hero uses .nb-section-inner; all others are direct wrappers.
-    const allPanels = [
-      document.querySelector('.nb-section-landing'),
-      document.querySelector('.nb-events-wrapper'),
-      document.querySelector('.nb-milestones-wrapper'),
-      document.querySelector('.nb-achievements-wrapper'),
-      document.querySelector('.nb-bangalore-wrapper'),
-      document.querySelector('.nb-flagship-wrapper'),
-      document.querySelector('.nb-prayas-wrapper'),
-      document.querySelector('.nb-mentors-wrapper'),
-    ].filter(Boolean)
+    let mm = gsap.matchMedia()
 
-    allPanels.forEach((panel, i) => {
-      const isLanding = panel.classList.contains('nb-section-landing')
-      const innerPanel = isLanding ? panel.querySelector('.nb-section-inner') : null
+    mm.add("(min-width: 900px)", () => {
+      const allPanels = [
+        document.querySelector('.nb-section-landing'),
+        document.querySelector('.nb-events-wrapper'),
+        document.querySelector('.nb-milestones-wrapper'),
+        document.querySelector('.nb-achievements-wrapper'),
+        document.querySelector('.nb-bangalore-wrapper'),
+        document.querySelector('.nb-flagship-wrapper'),
+        document.querySelector('.nb-prayas-wrapper'),
+        document.querySelector('.nb-mentors-wrapper'),
+      ].filter(Boolean)
 
-      // For the landing hero: handle the internal overscroll first
-      if (isLanding && innerPanel) {
-        const panelHeight = innerPanel.offsetHeight
-        const windowHeight = window.innerHeight
-        const difference = panelHeight - windowHeight
-        const fakeScrollRatio = difference > 0 ? (difference / (difference + windowHeight)) : 0
+      allPanels.forEach((panel, i) => {
+        const isLanding = panel.classList.contains('nb-section-landing')
+        const innerPanel = isLanding ? panel.querySelector('.nb-section-inner') : null
 
-        if (fakeScrollRatio) {
-          panel.style.marginBottom = panelHeight * fakeScrollRatio + 'px'
+        // For the landing hero: handle the internal overscroll first
+        if (isLanding && innerPanel) {
+          const panelHeight = innerPanel.offsetHeight
+          const windowHeight = window.innerHeight
+          const difference = panelHeight - windowHeight
+          const fakeScrollRatio = difference > 0 ? (difference / (difference + windowHeight)) : 0
+
+          if (fakeScrollRatio) {
+            panel.style.marginBottom = panelHeight * fakeScrollRatio + 'px'
+          }
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: panel,
+              start: 'bottom bottom',
+              end: () => fakeScrollRatio ? `+=${innerPanel.offsetHeight}` : '+=400',
+              pinSpacing: false,
+              pin: true,
+              scrub: true,
+            }
+          })
+
+          if (fakeScrollRatio) {
+            tl.to(innerPanel, {
+              yPercent: -100,
+              y: window.innerHeight,
+              duration: 1 / (1 - fakeScrollRatio) - 1,
+              ease: 'none',
+            })
+          }
+
+          tl.fromTo(panel,
+            { scale: 1, opacity: 1 },
+            { scale: 0.82, opacity: 0, duration: 1, ease: 'power2.in' }
+          )
+          return
         }
+
+        // For all other sections: fill viewport → pin at top → scale-shrink exit
+        // Skip the last section (mentors — scrolls normally into footer)
+        if (i === allPanels.length - 1) return
 
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: panel,
-            start: 'bottom bottom',
-            end: () => fakeScrollRatio ? `+=${innerPanel.offsetHeight}` : '+=400',
+            start: 'top top',       // pin once the section reaches the very top of the viewport
+            end: '+=600',           // exit plays over 600px of extra scroll
             pinSpacing: false,
             pin: true,
             scrub: true,
           }
         })
 
-        if (fakeScrollRatio) {
-          tl.to(innerPanel, {
-            yPercent: -100,
-            y: window.innerHeight,
-            duration: 1 / (1 - fakeScrollRatio) - 1,
-            ease: 'none',
-          })
-        }
-
         tl.fromTo(panel,
-          { scale: 1, opacity: 1 },
-          { scale: 0.82, opacity: 0, duration: 1, ease: 'power2.in' }
+          { scale: 1, opacity: 1, y: 0 },
+          { scale: 0.82, opacity: 0, y: -40, duration: 1, ease: 'power2.in' }
         )
-        return
-      }
-
-      // For all other sections: fill viewport → pin at top → scale-shrink exit
-      // Skip the last section (mentors — scrolls normally into footer)
-      if (i === allPanels.length - 1) return
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: panel,
-          start: 'top top',       // pin once the section reaches the very top of the viewport
-          end: '+=600',           // exit plays over 600px of extra scroll
-          pinSpacing: false,
-          pin: true,
-          scrub: true,
-        }
       })
 
-      tl.fromTo(panel,
-        { scale: 1, opacity: 1, y: 0 },
-        { scale: 0.82, opacity: 0, y: -40, duration: 1, ease: 'power2.in' }
-      )
+      ScrollTrigger.refresh()
     })
 
-    ScrollTrigger.refresh()
-
     return () => {
+      mm.revert()
       ScrollTrigger.getAll().forEach(t => t.kill())
     }
   }, [])

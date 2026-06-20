@@ -546,7 +546,14 @@
   .team-grid {
     grid-template-columns: 1fr;
     gap: 28px;
+    max-width: 320px;
+    margin: 0 auto;
   }
+
+  .tmc-body { flex-direction: column; }
+  .tmc-photo-frame { width: 100%; height: 180px; border-right: none; border-bottom: 2.5px solid #0F172A; }
+  .tmc-photo-frame::after { top: auto; right: 0; bottom: 0; left: 0; width: 100%; height: 7px; background: linear-gradient(to right, #00C2FF, #2563EB); }
+  .tmc-info { padding: 16px 20px; }
 }
 
 @media (min-width: 641px) and (max-width: 1023px) {

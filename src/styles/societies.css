@@ -325,6 +325,9 @@
   .soc-stage-top { padding: 20px; }
   .soc-events-block { padding: 0 20px 24px; padding-top: 20px; }
   .soc-event-tile { flex: 0 0 220px; }
+  .soc-rail-btn { padding: 10px 14px; font-size: 11px; }
+  .soc-stage-copy h2 { font-size: 1.4rem; }
+  .soc-stage-visual { max-width: 100%; height: auto; }
 }
 
 /* ─── Light mode overrides ─── */
