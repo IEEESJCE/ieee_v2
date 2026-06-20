@@ -1,0 +1,352 @@
+/* ═══════════════════════════════════════════════
+   ACHIEVEMENTS — HALL OF FAME PODIUM
+   ═══════════════════════════════════════════════ */
+
+.ach-section {
+  position: relative;
+  width: 100%;
+  background: var(--bg-surface);
+  border-top: var(--border);
+  padding: 80px 0 96px;
+  overflow: hidden;
+}
+
+.ach-rays {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: min(900px, 120vw);
+  height: min(900px, 120vw);
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    color-mix(in srgb, var(--accent) 5%, transparent) 30deg,
+    transparent 60deg,
+    color-mix(in srgb, var(--blue) 4%, transparent) 90deg,
+    transparent 120deg
+  );
+  animation: ach-rays-spin 80s linear infinite;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+@keyframes ach-rays-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.ach-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Hero header ─── */
+.ach-hero-block {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+  margin-bottom: 56px;
+  padding-bottom: 28px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.ach-hero-left {
+  min-width: 0;
+}
+
+.ach-hero-icon {
+  display: block;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.ach-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  color: var(--primary-strong);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin: 0 0 12px;
+}
+
+.ach-hero-desc {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 520px;
+}
+
+.ach-hero-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.ach-hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 28px;
+  background: var(--bg-card);
+  border: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.ach-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.ach-stat-value {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.ach-stat-key {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.ach-stat-divider {
+  width: 2px;
+  height: 40px;
+  background: var(--border-color);
+}
+
+.ach-orb {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.ach-orb-lottie {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  pointer-events: none;
+}
+
+/* ─── Plaque grid ─── */
+.ach-podium {
+  position: relative;
+}
+
+.ach-plaque-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.ach-plaque {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 280px;
+  padding: 36px 24px 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: none;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+  overflow: hidden;
+}
+
+.ach-plaque:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--plaque-accent) 45%, var(--border-color));
+  box-shadow: var(--shadow-sm);
+}
+
+.ach-plaque-year-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 6.5rem);
+  color: color-mix(in srgb, var(--plaque-accent) 7%, transparent);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -3px;
+}
+
+.ach-plaque-ribbon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 22px;
+  z-index: 2;
+  background: var(--plaque-accent);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+}
+
+.ach-plaque-medal {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--plaque-accent) 15%, var(--bg-elevated));
+  border: 2px solid var(--plaque-accent);
+  color: var(--plaque-accent);
+  margin: 16px 0 14px;
+  box-shadow: none;
+}
+
+.ach-plaque-rank {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-family: var(--font-display);
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  z-index: 3;
+}
+
+.ach-plaque-year {
+  position: relative;
+  z-index: 3;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--plaque-accent);
+  margin-bottom: 10px;
+}
+
+.ach-plaque-award {
+  position: relative;
+  z-index: 3;
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.8vw, 16px);
+  font-weight: 700;
+  color: var(--primary-strong);
+  margin: 0 0 8px;
+  line-height: 1.45;
+  max-width: 28ch;
+}
+
+.ach-plaque-section {
+  position: relative;
+  z-index: 3;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+  font-weight: 500;
+}
+
+.ach-plaque-base {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--plaque-accent);
+  opacity: 0.7;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════ */
+
+@media (min-width: 1100px) {
+  .ach-plaque-row {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .ach-plaque {
+    min-height: 300px;
+    padding: 32px 16px 28px;
+  }
+
+  .ach-plaque-award {
+    font-size: 13px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .ach-section {
+    padding: 56px 0 72px;
+  }
+
+  .ach-inner {
+    padding: 0 20px;
+  }
+
+  .ach-hero-block {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .ach-hero-right {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .ach-hero-stats {
+    justify-content: center;
+  }
+
+  .ach-orb {
+    width: 80px;
+    height: 80px;
+    align-self: center;
+  }
+
+  .ach-plaque-row {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .ach-plaque {
+    min-height: auto;
+    padding: 32px 20px 28px;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   LIGHT MODE
+   ═══════════════════════════════════════════════ */
+
+:root.light .ach-section {
+  background: var(--bg);
+}
+
+:root.light .ach-hero-stats,
+:root.light .ach-plaque,
+:root.light .ach-orb {
+  background: #FFFFFF;
+}

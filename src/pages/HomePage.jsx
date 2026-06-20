@@ -1,13 +1,16 @@
 import { useEffect, useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import EventsSection from '../components/EventsSection'
-import ColourfulText from '../components/ui/colourful-text'
+import MilestoneEventsSection from '../components/MilestoneEventsSection'
+import AchievementsSection from '../components/AchievementsSection'
+import BangaloreSection from '../components/BangaloreSection'
+import FlagshipSection from '../components/FlagshipSection'
+import PrayasSection from '../components/PrayasSection'
+import MentorsSection from '../components/MentorsSection'
+import Footer from '../components/Footer'
 import '../styles/homepage.css'
-
-gsap.registerPlugin(ScrollTrigger)
 
 /* ─────────────────────────────────────────────
    Marquee Strip (truly infinite — 4x repeat)
@@ -30,153 +33,70 @@ function MarqueeStrip() {
    Home Page
    ───────────────────────────────────────────── */
 export default function HomePage() {
-  const navigate = useNavigate()
+  const location = useLocation()
   const heroRef = useRef(null)
-  const ctaRef = useRef(null)
-  const floatingRef = useRef(null)
   const containerRef = useRef(null)
 
   useEffect(() => {
-    // 1. Initial Animations
-    const heroEls = heroRef.current.querySelectorAll('.gsap-hero')
-    gsap.fromTo(heroEls,
-      { y: 60, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.9, stagger: 0.15, ease: 'power3.out', delay: 0.5 }
-    )
+    if (location.hash) {
+      const timer = setTimeout(() => {
+        const el = document.querySelector(location.hash)
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 300)
+      return () => clearTimeout(timer)
+    }
+  }, [location.hash])
 
-    const ctaEls = ctaRef.current.querySelectorAll('.gsap-cta')
-    gsap.fromTo(ctaEls,
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power2.out', delay: 1.8 }
-    )
-
-    if (floatingRef.current) {
-      gsap.fromTo(floatingRef.current.children,
-        { scale: 0, opacity: 0, rotation: -20 },
-        { scale: 1, opacity: 1, rotation: 0, duration: 0.6, stagger: 0.1, ease: 'back.out(1.7)', delay: 1.2 }
+  useEffect(() => {
+    const heroEls = heroRef.current?.querySelectorAll('.gsap-hero')
+    if (heroEls?.length) {
+      gsap.fromTo(
+        heroEls,
+        { y: 24, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power2.out', delay: 0.2 }
       )
     }
 
-    // 2. Pinned Panels with Overscroll
-    // ONLY target the landing section. We do NOT want Events to scale/fade out.
-    const panels = gsap.utils.toArray('.nb-section-landing')
-
-    panels.forEach((panel) => {
-      const innerpanel = panel.querySelector('.nb-section-inner')
-      if (!innerpanel) return
-
-      const panelHeight = innerpanel.offsetHeight
-      const windowHeight = window.innerHeight
-      const difference = panelHeight - windowHeight
-
-      const fakeScrollRatio = difference > 0 ? (difference / (difference + windowHeight)) : 0
-
-      if (fakeScrollRatio) {
-        panel.style.marginBottom = panelHeight * fakeScrollRatio + 'px'
-      }
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: panel,
-          start: 'bottom bottom',
-          end: () => fakeScrollRatio ? `+=${innerpanel.offsetHeight}` : 'bottom top',
-          pinSpacing: false,
-          pin: true,
-          scrub: true,
-        }
-      })
-
-      if (fakeScrollRatio) {
-        tl.to(innerpanel, {
-          yPercent: -100,
-          y: window.innerHeight,
-          duration: 1 / (1 - fakeScrollRatio) - 1,
-          ease: 'none',
-        })
-      }
-
-      tl.fromTo(panel,
-        { scale: 1, opacity: 1 },
-        { scale: 0.75, opacity: 0.4, duration: 0.9 }
-      ).to(panel, { opacity: 0, duration: 0.1 })
-    })
-
-    ScrollTrigger.refresh()
-
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill())
-    }
+    return () => {}
   }, [])
 
   return (
     <div ref={containerRef} className="nb-panels-container">
-      {/* ════════ PANEL 1: Landing ════════ */}
-      <section className="nb-section nb-section-landing">
-        <div className="nb-section-inner">
-          {/* Landing — fits in one viewport */}
-          <div className="nb-landing">
-            <div className="nb-bg">
-              <div className="nb-bg-image" />
-
-              <div ref={floatingRef} className="nb-floating-shapes">
-                {/* Right side */}
-                <div className="nb-shape nb-shape-1" />
-                <div className="nb-shape nb-shape-2" />
-                <div className="nb-shape nb-shape-3" />
-                <div className="nb-shape nb-shape-5" />
-                {/* Left side */}
-                {/* <div className="nb-shape nb-shape-4" /> */}
-                <div className="nb-shape nb-shape-6" />
-                <div className="nb-shape nb-shape-7" />
-                <div className="nb-shape nb-shape-8" />
-                <div className="nb-shape nb-shape-9" />
-                {/* <div className="nb-shape nb-shape-10" /> */}
-              </div>
-
-              <div className="nb-hero-wrapper">
-                <div ref={heroRef} className="nb-hero-content nb-hero-centered">
-                  <span className="gsap-hero nb-hero-label">⚡ IEEE Student Branch — SJCE Mysuru</span>
-                  <h1 className="gsap-hero nb-hero-title">IEEE SJCE</h1>
-                  <h2 className="gsap-hero nb-hero-tagline-big">
-                    <span className="tagline-row">
-                      <ColourfulText text="INNOVATE" color="var(--accent)" />
-                      <span className="tagline-dot"> · </span>
-                      <ColourfulText text="INSPIRE" color="var(--teal)" />
-                    </span>
-                    <span className="tagline-row">
-                      <span className="tagline-dot tagline-dot-mobile"> · </span>
-                      <ColourfulText text="ENGINEER" color="var(--blue-light)" />
-                    </span>
-                  </h2>
-                  <div className="gsap-hero nb-hero-divider" />
-                  <p className="gsap-hero nb-hero-subtitle">Advancing Technology for Humanity</p>
-                  <p className="gsap-hero nb-hero-tagline">Building tomorrow's engineers, today.</p>
-                  <div className="gsap-hero nb-hero-buttons">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScyUvp_2L7Mw3ENLSANaXTQiZmqJJFhxETfKFOXWl9o8wn3Uw/viewform" target='_blank'>
-                      <button className="nb-btn nb-btn-accent">
-                      GET STARTED <ArrowRight size={14} />
-                    </button>
-                    </a>
-                    <button className="nb-btn nb-btn-blue"
-                      onClick={() => document.getElementById('events-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                      EXPLORE EVENTS
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* CTA bar — centered */}
-              <div ref={ctaRef} className="nb-cta-bar">
-                <h3 className="gsap-cta">EXPLORE THE FUTURE OF TECHNOLOGY</h3>
-                <button className="gsap-cta nb-btn nb-btn-outline" onClick={() => navigate('/societies')}>
-                  LEARN MORE <ArrowRight size={14} />
-                </button>
-              </div>
-
-              <MarqueeStrip />
+      {/* ════════ Landing Hero ════════ */}
+      <section className="nb-hero-section">
+        <div className="nb-hero-glow" aria-hidden="true" />
+        <div className="nb-hero-inner">
+          <div ref={heroRef} className="nb-hero-content">
+            <span className="gsap-hero nb-hero-eyebrow">IEEE Student Branch · SJCE Mysuru</span>
+            <h1 className="gsap-hero nb-hero-title">IEEE SJCE</h1>
+            <p className="gsap-hero nb-hero-tagline">
+              <span className="nb-tag-accent">Innovate</span>
+              <span className="nb-tag-sep">·</span>
+              <span>Inspire</span>
+              <span className="nb-tag-sep">·</span>
+              <span>Engineer</span>
+            </p>
+            <p className="gsap-hero nb-hero-desc">Advancing technology for humanity — building tomorrow&apos;s engineers, today.</p>
+            <div className="gsap-hero nb-hero-actions">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLScyUvp_2L7Mw3ENLSANaXTQiZmqJJFhxETfKFOXWl9o8wn3Uw/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nb-btn nb-btn-accent"
+              >
+                Get Started <ArrowRight size={14} />
+              </a>
+              <button
+                type="button"
+                className="nb-btn nb-btn-ghost"
+                onClick={() => document.getElementById('events-section')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Explore Events
+              </button>
             </div>
           </div>
         </div>
+        <MarqueeStrip />
       </section>
 
       {/* ════════ PANEL 2: Events ════════ */}
@@ -184,16 +104,38 @@ export default function HomePage() {
         <EventsSection />
       </div>
 
-      {/* ════════ PANEL 3: Footer ════════ */}
-      <footer style={{
-        background: 'var(--bg-surface)', padding: '60px 48px',
-        textAlign: 'center', borderTop: 'var(--border)', position: 'relative', zIndex: 10
-      }}>
-        <h2 style={{ fontFamily: 'var(--font-display)', margin: '0 0 16px', color: 'var(--primary-strong)' }}>
-          IEEE SJCE
-        </h2>
-        <p style={{ color: 'var(--text-muted)' }}>© 2026 IEEE SJCE. All rights reserved.</p>
-      </footer>
+      {/* ════════ PANEL 3: Milestone Events ════════ */}
+      <div className="nb-milestones-wrapper">
+        <MilestoneEventsSection />
+      </div>
+
+      {/* ════════ PANEL 4: Achievements ════════ */}
+      <div className="nb-achievements-wrapper">
+        <AchievementsSection />
+      </div>
+
+      {/* ════════ PANEL 5: Bangalore Section ════════ */}
+      <div className="nb-bangalore-wrapper">
+        <BangaloreSection />
+      </div>
+
+      {/* ════════ PANEL 6: Flagship Programs ════════ */}
+      <div className="nb-flagship-wrapper">
+        <FlagshipSection />
+      </div>
+
+      {/* ════════ PANEL 7: Prayas ════════ */}
+      <div className="nb-prayas-wrapper">
+        <PrayasSection />
+      </div>
+
+      {/* ════════ PANEL 8: Mentors ════════ */}
+      <div className="nb-mentors-wrapper">
+        <MentorsSection />
+      </div>
+
+      {/* ════════ PANEL 9: Footer ════════ */}
+      <Footer />
     </div>
   )
 }
