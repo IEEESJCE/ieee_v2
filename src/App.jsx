@@ -2,9 +2,13 @@ import { Routes, Route } from 'react-router-dom'
 import EntryPage from './pages/EntryPage.jsx'
 import HomePage from './pages/HomePage.jsx'
 import SocietiesPage from './pages/SocietiesPage.jsx'
+<<<<<<< HEAD
 import BoardsPage from './pages/BoardsPage.jsx'
 import ContactPage from './pages/ContactPage.jsx'
 import GalleryPage from './pages/GalleryPage.jsx'
+=======
+import TeamPage from './pages/TeamPage.jsx'
+>>>>>>> 8759844 (teams page added)
 import Layout from './components/Layout.jsx'
 
 function App() {
@@ -14,9 +18,13 @@ function App() {
       <Route element={<Layout />}>
         <Route path="/home" element={<HomePage />} />
         <Route path="/societies" element={<SocietiesPage />} />
+<<<<<<< HEAD
         <Route path="/boards" element={<BoardsPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/contact" element={<ContactPage />} />
+=======
+        <Route path="/team" element={<TeamPage />} />
+>>>>>>> 8759844 (teams page added)
       </Route>
     </Routes>
   )

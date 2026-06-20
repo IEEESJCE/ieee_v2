@@ -1,0 +1,572 @@
+/* ═══════════════════════════════════════════════
+   TEAM PAGE — IEEE SJCE Engineering Identity Card
+   ═══════════════════════════════════════════════ */
+
+/* ── Category accent palette ── */
+.team-page {
+  --cat-exec: #2563EB;
+  /* Royal Blue */
+  --cat-sps: #0369A1;
+  /* Ocean Blue */
+  --cat-ras: #1D4ED8;
+  /* Deep Blue */
+  --cat-eds: #0284C7;
+  /* Sky Blue */
+  --cat-wie: #4F46E5;
+  /* Indigo Blue */
+  --cat-edit: #1E3A8A;
+  /* Dark Blue */
+  --cat-mdc: #0EA5E9;
+  /* Cerulean */
+  --cat-web: #00C2FF;
+  /* Electric Cyan */
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+/* ══════════════════════════════════════
+   HERO
+   ══════════════════════════════════════ */
+.team-hero {
+  position: relative;
+  text-align: center;
+  padding: 72px 48px 52px;
+  overflow: hidden;
+}
+
+.team-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+.team-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--accent);
+  padding: 6px 20px;
+  border-radius: 2px;
+  box-shadow: 4px 4px 0 var(--accent-dim);
+  margin-bottom: 20px;
+}
+
+.team-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  line-height: 0.95;
+  margin: 0 0 16px;
+  color: var(--primary-strong);
+}
+
+.team-hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.team-hero p {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.team-hero-count {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+/* ══════════════════════════════════════
+   STICKY FILTER TABS
+   ══════════════════════════════════════ */
+.team-tabs-wrap {
+  position: sticky;
+  top: 72px;
+  z-index: 40;
+  background: var(--bg);
+  border-bottom: var(--border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.team-tabs {
+  display: flex;
+  overflow-x: auto;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+  scrollbar-width: none;
+}
+
+.team-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.team-tab-btn {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 22px;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.team-tab-btn:hover {
+  color: var(--primary-strong);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.team-tab-btn.active {
+  color: var(--primary-strong);
+  border-bottom-color: var(--tab-color, var(--accent));
+}
+
+/* ══════════════════════════════════════
+   CONTENT + SECTIONS
+   ══════════════════════════════════════ */
+.team-content {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 64px 40px 120px;
+}
+
+.team-section {
+  margin-bottom: 96px;
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.team-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.team-section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 44px;
+}
+
+.team-section-accent {
+  width: 5px;
+  height: 32px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  background: var(--section-color, var(--accent));
+  box-shadow: 0 0 10px var(--section-color, var(--accent));
+}
+
+.team-section-label {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary-strong);
+}
+
+.team-section-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--section-color, var(--accent)) 0%, transparent 100%);
+  opacity: 0.25;
+}
+
+.team-section-count {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  border: var(--border);
+  border-radius: 20px;
+  padding: 4px 14px;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════
+   GRID — 3 columns desktop
+   ══════════════════════════════════════ */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* ══════════════════════════════════════
+   TEAM MEMBER CARD — IEEE Identity Card
+   Light card on dark page, landscape layout
+   ══════════════════════════════════════ */
+
+/* Wrapper: positions neo-brutalist shadow block */
+.tmc-wrap {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Offset shadow block */
+.tmc-shadow {
+  position: absolute;
+  inset: 0;
+  background: var(--card-accent, #1e3a5f);
+  border: 2px solid #0A0E1A;
+  transform: translate(6px, 7px);
+  z-index: 0;
+  transition: transform 0.28s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.tmc-wrap:hover .tmc-shadow {
+  transform: translate(9px, 11px);
+}
+
+/* The actual card */
+.tmc {
+  position: relative;
+  z-index: 1;
+  background-color: #2563EB;
+  background-image: radial-gradient(circle at center, #a3bee0 0%, #8eb8da 120%);
+  border: 2.5px solid #0F172A;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.28s cubic-bezier(0.34, 1.4, 0.64, 1);
+  overflow: hidden;
+  /* clips footer slide-up */
+}
+
+.tmc-wrap:hover .tmc {
+  transform: translate(-3px, -4px);
+}
+
+/* ── CARD BODY: photo left, info right ── */
+.tmc-body {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+/* ── PHOTO FRAME ── */
+.tmc-photo-frame {
+  position: relative;
+  flex-shrink: 0;
+  width: 44%;
+  aspect-ratio: 3/4;
+  background: #d0e4f8;
+  border-right: 2.5px solid #0F172A;
+  overflow: hidden;
+}
+
+/* Cyan bar on right edge of photo */
+.tmc-photo-frame::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 7px;
+  background: linear-gradient(to bottom, #00C2FF, #2563EB);
+  z-index: 3;
+}
+
+/* Dot matrix grid — bottom-right corner */
+.tmc-dots {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  z-index: 4;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(0, 194, 255, 0.55) 1.5px, transparent 1.5px);
+  background-size: 8px 8px;
+}
+
+/* Photo image */
+.tmc-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.4s ease, filter 0.3s ease;
+  filter: contrast(1.02);
+}
+
+.tmc-photo-img.loading {
+  filter: grayscale(80%) blur(8px);
+  transform: scale(1.06);
+}
+
+.tmc-photo-img.loaded {
+  filter: contrast(1.02);
+  transform: scale(1);
+}
+
+.tmc-wrap:hover .tmc-photo-img.loaded {
+  transform: scale(1.05);
+}
+
+/* Placeholder */
+.tmc-photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #c8dcf5, #dceeff);
+}
+
+.tmc-photo-placeholder-letter {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 900;
+  color: var(--card-accent, #2563EB);
+  opacity: 0.25;
+  line-height: 1;
+}
+
+/* IEEE logo badge — bottom-left of photo */
+.tmc-ieee-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 48px;
+  height: 48px;
+  background: var(--card-accent, #2563EB);
+  border-top: 2.5px solid #0F172A;
+  border-right: 2.5px solid #0F172A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tmc-ieee-badge img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: brightness(10);
+  /* make logo white */
+}
+
+/* ── INFO SECTION ── */
+.tmc-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 18px 20px 20px;
+  position: relative;
+  background: transparent;
+}
+
+/* PCB trace lines — subtle decorative right corner */
+.tmc-info::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-top: 1.5px solid rgba(37, 99, 235, 0.2);
+  border-right: 1.5px solid rgba(37, 99, 235, 0.2);
+  pointer-events: none;
+}
+
+/* Member Name */
+.tmc-name {
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 1.4vw, 1.15rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #0F172A;
+  margin: 0 0 14px;
+  line-height: 1.2;
+  word-wrap: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+/* Role badge — filled blue pill */
+.tmc-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+
+
+.tmc-role-text {
+  background: var(--card-accent, #2563EB);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  font-family: var(--font-body);
+  border: 1.5px solid #0F172A;
+  white-space: normal;
+  line-height: 1.3;
+}
+
+/* ── FOOTER BUTTONS — hidden by default, slides up on hover ── */
+.tmc-footer {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  border-top: 2.5px solid #0F172A;
+  background: #EAF3FF;
+  transform: translateY(102%);
+  /* hide below bottom border */
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tmc-wrap:hover .tmc-footer {
+  transform: translateY(0);
+}
+
+.tmc-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 10px;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: var(--font-body);
+  color: #0F172A;
+  background: transparent;
+  border: none;
+  border-right: 2.5px solid #0F172A;
+  transition: background 0.15s, color 0.15s;
+  cursor: pointer;
+  position: relative;
+}
+
+.tmc-btn:last-child {
+  border-right: none;
+}
+
+.tmc-btn:hover {
+  background: var(--card-accent, #2563EB);
+  color: #fff;
+}
+
+.tmc-btn:hover .tmc-btn-icon {
+  background: #fff;
+  color: var(--card-accent, #2563EB);
+}
+
+/* Icon box */
+.tmc-btn-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--card-accent, #2563EB);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+}
+
+.tmc-btn-icon svg {
+  width: 13px;
+  height: 13px;
+}
+
+
+
+/* Disabled state */
+.tmc-btn.disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media (max-width: 640px) {
+  .team-hero {
+    padding: 48px 20px 36px;
+  }
+
+  .team-content {
+    padding: 36px 16px 80px;
+  }
+
+  .team-tabs {
+    padding: 0 16px;
+  }
+
+  .team-tab-btn {
+    padding: 12px 14px;
+    font-size: 9px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  .team-hero {
+    padding: 56px 32px 44px;
+  }
+
+  .team-content {
+    padding: 48px 28px 90px;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+}

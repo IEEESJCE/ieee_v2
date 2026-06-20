@@ -47,10 +47,20 @@ function Navbar() {
     }
   }, [])
 
+  const NAV_LINKS = [
+    { label: 'Home', route: '/' },
+    { label: 'Events', route: '/', hash: '#events-section' },
+    { label: 'Societies', route: '/societies' },
+    { label: 'About', route: '#' },
+    { label: 'Team', route: '/team' },
+    { label: 'Contact', route: '#' },
+  ]
+
   const isActive = (link) => {
-    if (link.hash) return false
-    if (link.route === '/home') return location.pathname === '/home'
-    return location.pathname === link.route
+    if (link.route === '/' && !link.hash) return location.pathname === '/'
+    if (link.route === '/societies') return location.pathname === '/societies'
+    if (link.route === '/team') return location.pathname === '/team'
+    return false
   }
 
   const handleNavClick = (e, link) => {
