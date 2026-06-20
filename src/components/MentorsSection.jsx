@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
-import { Mail, Linkedin, GraduationCap, ArrowLeft } from 'lucide-react'
+import { useEffect, useRef } from 'react'
+import { Mail, Linkedin, GraduationCap } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '../styles/mentors.css'
@@ -10,7 +10,7 @@ const MENTORS = [
   {
     id: 1,
     type: 'Branch Counsellor',
-    src: '/photos/members/MG Veena.jpg',
+    src: '/photos/advisors/MG Veena.jpg',
     name: 'Dr. M G Veena',
     linkedin: 'https://www.linkedin.com/in/veena-m-g-3b2ab039/',
     gmail: 'veenamaheshn@gmail.com',
@@ -19,7 +19,7 @@ const MENTORS = [
   {
     id: 2,
     type: 'RAS Advisor',
-    src: '/photos/members/Sudarshan PK.jpeg',
+    src: '/photos/advisors/Sudarshan PK.jpeg',
     name: 'Dr. Sudarshan P K',
     linkedin: 'https://www.linkedin.com/in/sudarshan-patilkulkarni-86178447/',
     gmail: 'sudarshan_pk@sjce.ac.in',
@@ -28,7 +28,7 @@ const MENTORS = [
   {
     id: 3,
     type: 'EDS Advisor',
-    src: '/photos/members/SB Rudraswamy.jpg',
+    src: '/photos/advisors/SB Rudraswamy.jpg',
     name: 'Dr. S B Rudraswamy',
     linkedin: '',
     gmail: 'rudra.swamy@gmail.com',
@@ -37,7 +37,7 @@ const MENTORS = [
   {
     id: 4,
     type: 'WIE Advisor',
-    src: '/photos/members/Supreetha M.jpg',
+    src: '/photos/advisors/Supreetha M.jpg',
     name: 'Ms. Supreetha M',
     linkedin: 'https://www.linkedin.com/in/supreetha-manjanna-65308415/',
     gmail: 'supreetha.manjann@sjce.ac.in',
@@ -46,7 +46,7 @@ const MENTORS = [
   {
     id: 5,
     type: 'SPS Advisor',
-    src: '/photos/members/Dr. SHASHIDHAR R.jpg',
+    src: '/photos/advisors/Dr. SHASHIDHAR R.jpg',
     name: 'Dr. Shashidhar R',
     linkedin: 'https://www.linkedin.com/in/shashidhar-r-ph-d-ab6152123/',
     gmail: 'shashidhar.r@sjce.ac.in',
@@ -55,7 +55,7 @@ const MENTORS = [
   {
     id: 6,
     type: 'SBMDC Advisor',
-    src: '/photos/members/anitha_prasad.jpg',
+    src: '/photos/advisors/anitha_prasad.jpg',
     name: 'Dr. Anitha Prasad',
     linkedin: '',
     gmail: 'anith.sp@sjce.ac.in',
@@ -65,7 +65,6 @@ const MENTORS = [
 
 export default function MentorsSection() {
   const sectionRef = useRef(null)
-  const [flippedId, setFlippedId] = useState(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -107,10 +106,6 @@ export default function MentorsSection() {
     return () => ctx.revert()
   }, [])
 
-  const toggleFlip = (id) => {
-    setFlippedId((prev) => (prev === id ? null : id))
-  }
-
   return (
     <section id="mentors" ref={sectionRef} className="mnt-section">
       <div className="mnt-inner">
@@ -118,7 +113,7 @@ export default function MentorsSection() {
           <GraduationCap size={22} className="mnt-header-icon" />
           <h2 className="mnt-title">Our Mentors</h2>
           <p className="mnt-subtitle">
-            Hover a card to flip and connect — tap on mobile to reveal email &amp; LinkedIn.
+            The faculty advisors guiding IEEE SJCE — hover a card to connect.
           </p>
         </div>
 
@@ -126,22 +121,14 @@ export default function MentorsSection() {
           {MENTORS.map((mentor) => (
             <article
               key={mentor.id}
-              className={`mnt-card ${flippedId === mentor.id ? 'mnt-flipped' : ''}`}
-              style={{ '--mnt-accent': mentor.accent }}
-              onClick={() => toggleFlip(mentor.id)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault()
-                  toggleFlip(mentor.id)
-                }
-              }}
-              role="button"
-              tabIndex={0}
-              aria-label={`${mentor.name} — flip to see contact`}
+              className="mnt-card"
+              style={{ '--mnt-accent': '#2563EB' }}
             >
+              {/* Neo-brutalist offset shadow via ::before in CSS */}
               <div className="mnt-flip-inner">
-                {/* Front */}
                 <div className="mnt-face mnt-front">
+
+                  {/* ── Photo column ── */}
                   <div className="mnt-photo-wrap">
                     <img
                       src={mentor.src}
@@ -152,63 +139,49 @@ export default function MentorsSection() {
                         e.currentTarget.parentElement.classList.add('mnt-photo-fallback')
                       }}
                     />
+                    {/* Dot matrix overlay */}
+                    <div className="mnt-photo-dots" aria-hidden="true" />
                   </div>
+
+                  {/* ── Info column ── */}
                   <div className="mnt-info">
                     <span className="mnt-role">{mentor.type}</span>
                     <h3 className="mnt-name">{mentor.name}</h3>
-                    <span className="mnt-hint">Flip to connect</span>
+                    <span className="mnt-hint">↑ hover to connect</span>
                   </div>
-                </div>
 
-                {/* Back */}
-                <div className="mnt-face mnt-back">
-                  <span className="mnt-back-label">Connect</span>
-                  <h3 className="mnt-back-name">{mentor.name}</h3>
-                  <span className="mnt-back-role">{mentor.type}</span>
-
-                  <div className="mnt-social">
+                  {/* ── Slide-up social footer ── */}
+                  <div className="mnt-footer">
                     <a
                       href={`mailto:${mentor.gmail}`}
-                      className="mnt-social-btn mnt-social-email"
+                      className="mnt-footer-btn"
                       aria-label={`Email ${mentor.name}`}
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <Mail size={22} />
-                      <span className="mnt-social-text">
-                        <strong>Email</strong>
-                        <small>{mentor.gmail}</small>
-                      </span>
+                      <span className="mnt-footer-icon"><Mail /></span>
+                      EMAIL
                     </a>
 
                     {mentor.linkedin ? (
                       <a
                         href={mentor.linkedin}
-                        className="mnt-social-btn mnt-social-linkedin"
+                        className="mnt-footer-btn"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`${mentor.name} on LinkedIn`}
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Linkedin size={22} />
-                        <span className="mnt-social-text">
-                          <strong>LinkedIn</strong>
-                          <small>View profile</small>
-                        </span>
+                        <span className="mnt-footer-icon"><Linkedin /></span>
+                        LINKEDIN
                       </a>
                     ) : (
-                      <div className="mnt-social-btn mnt-social-disabled">
-                        <Linkedin size={22} />
-                        <span className="mnt-social-text">
-                          <strong>LinkedIn</strong>
-                          <small>Not available</small>
-                        </span>
-                      </div>
+                      <span className="mnt-footer-btn disabled">
+                        <span className="mnt-footer-icon"><Linkedin /></span>
+                        N/A
+                      </span>
                     )}
                   </div>
 
-                  <span className="mnt-back-tip">
-                    <ArrowLeft size={12} /> Tap card to flip back
-                  </span>
                 </div>
               </div>
             </article>

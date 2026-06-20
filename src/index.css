@@ -34,6 +34,32 @@
   --mode: dark;
 }
 
+/* ─── LIGHT MODE — variable overrides ─── */
+:root.light {
+  --bg: #EAF3FF;
+  --bg-surface: #EEF2FF;
+  --bg-card: #FFFFFF;
+  --bg-elevated: #E0E8FF;
+  --primary: #1A2340;
+  --primary-strong: #0A0E1A;
+  --text-muted: #4A5C7A;
+  --accent: #0097B2;
+  --accent-dim: #007A94;
+  --teal: #00B89A;
+  --blue: #2563EB;
+  --blue-light: #3B82F6;
+  --blue-dark: #1E40AF;
+  --cyan: #0891B2;
+  --border-color: #C8D6F0;
+  --border: 1px solid #C8D6F0;
+  --border-accent: 1px solid #0097B2;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
+  --shadow-blue: 0 4px 16px rgba(37, 99, 235, 0.20);
+  --mode: light;
+}
+
 * {
   margin: 0;
   padding: 0;
