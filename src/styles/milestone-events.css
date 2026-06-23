@@ -358,26 +358,44 @@
 
 @media (max-width: 767px) {
   .ms-section {
-    padding: 56px 0 48px;
+    padding: 40px 0 32px;
   }
 
   .ms-inner {
-    padding: 0 20px;
+    padding: 0 16px;
+  }
+
+  .ms-intro-title {
+    font-size: 1.8rem;
   }
 
   .ms-filmstrip-wrap {
-    padding: 0 20px;
-    width: 100%;
-    margin-left: 0;
+    padding: 0 16px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
   }
 
   .ms-poster {
-    flex: 0 0 240px;
-    width: 240px;
+    flex: 0 0 220px;
+    width: 220px;
   }
 
   .ms-poster-frame {
-    height: 360px;
+    height: 320px;
+  }
+
+  .ms-poster-media {
+    min-height: 150px;
+  }
+
+  .ms-poster-content {
+    padding: 14px 16px 18px;
+  }
+
+  .ms-poster-icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 8px;
   }
 
   .ms-filmstrip {

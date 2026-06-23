@@ -95,8 +95,9 @@
   gap: 24px;
   padding: 18px 28px;
   background: var(--bg-card);
-  border: var(--border);
-  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--border-color);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 0 var(--accent);
 }
 
 .ach-stat {
@@ -133,8 +134,8 @@
   height: 100px;
   border-radius: 50%;
   background: var(--bg-card);
-  border: var(--border);
-  box-shadow: var(--shadow);
+  border: 2px solid var(--border-color);
+  box-shadow: 6px 6px 0 0 var(--blue);
   overflow: hidden;
 }
 
@@ -166,17 +167,16 @@
   min-height: 280px;
   padding: 36px 24px 32px;
   background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  box-shadow: none;
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  border: 2px solid var(--border-color);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 0 var(--plaque-accent);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   overflow: hidden;
 }
 
 .ach-plaque:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--plaque-accent) 45%, var(--border-color));
-  box-shadow: var(--shadow-sm);
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0 0 var(--plaque-accent);
 }
 
 .ach-plaque-year-bg {

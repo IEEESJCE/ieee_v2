@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
@@ -58,7 +58,7 @@ export default function HomePage() {
     }
   }, [location.hash])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // 1. Initial hero animations
     const heroEls = heroRef.current?.querySelectorAll('.gsap-hero')
     if (heroEls?.length) {
@@ -86,7 +86,7 @@ export default function HomePage() {
     // 2. PINNED PANEL SYSTEM — same pin + scale-shrink for EVERY section
     let mm = gsap.matchMedia()
 
-    mm.add("(min-width: 900px)", () => {
+    mm.add("(min-width: 0px)", () => {
       const allPanels = [
         document.querySelector('.nb-section-landing'),
         document.querySelector('.nb-events-wrapper'),

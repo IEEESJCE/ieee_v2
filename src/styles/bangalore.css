@@ -72,9 +72,9 @@
   padding: 20px 28px;
   min-width: 160px;
   background: var(--bg-card);
-  border: var(--border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--border-color);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 0 var(--accent);
   color: var(--accent);
 }
 

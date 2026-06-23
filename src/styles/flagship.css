@@ -58,8 +58,8 @@
   font-weight: 600;
   color: var(--text-muted);
   background: var(--bg-card);
-  border: var(--border);
-  border-radius: 100px;
+  border: 2px solid var(--border-color);
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -74,16 +74,17 @@
   color: var(--primary-strong);
   background: color-mix(in srgb, var(--tab-accent) 14%, var(--bg-card));
   border-color: var(--tab-accent);
-  box-shadow: var(--shadow-sm), 0 0 20px color-mix(in srgb, var(--tab-accent) 20%, transparent);
+  box-shadow: 4px 4px 0 0 var(--tab-accent);
+  transform: translate(-2px, -2px);
 }
 
 .flg-panel {
   position: relative;
   padding: 40px 44px;
   background: var(--bg-card);
-  border: var(--border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
+  border: 2px solid var(--border-color);
+  border-radius: 0;
+  box-shadow: 8px 8px 0 0 var(--panel-accent);
   overflow: hidden;
   animation: flg-in 0.4s ease;
 }
@@ -143,14 +144,17 @@
   color: var(--bg);
   background: var(--panel-accent);
   padding: 14px 28px;
-  border: var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition: transform 0.2s ease;
+  border: 2px solid var(--border-color);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 0 var(--border-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
 }
 
-.flg-register:hover { transform: translateY(-3px); }
+.flg-register:hover { 
+  transform: translate(-2px, -2px); 
+  box-shadow: 6px 6px 0 0 var(--border-color);
+}
 
 .flg-nav-hint {
   display: flex;

@@ -121,6 +121,7 @@
   overflow: visible;
   animation: soc-pop 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
+  min-width: 0;
 }
 
 @keyframes soc-pop {
@@ -327,7 +328,7 @@
   .soc-event-tile { flex: 0 0 220px; }
   .soc-rail-btn { padding: 10px 14px; font-size: 11px; }
   .soc-stage-copy h2 { font-size: 1.4rem; }
-  .soc-stage-visual { max-width: 100%; height: auto; }
+  .soc-stage-visual { max-width: 180px; }
 }
 
 /* ─── Light mode overrides ─── */

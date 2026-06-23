@@ -74,14 +74,8 @@ export default function EntryPage() {
   const pcbBgRef = useRef(null)
 
   useEffect(() => {
-    if (localStorage.getItem('ieee-intro-seen') === 'true') {
-      navigate('/home', { replace: true })
-      return
-    }
-
     const tl = gsap.timeline({
       onComplete: () => {
-        localStorage.setItem('ieee-intro-seen', 'true')
         navigate('/home')
       },
     })

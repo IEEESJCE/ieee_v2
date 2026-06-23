@@ -126,18 +126,18 @@
   width: 42px;
   height: 42px;
   background: var(--bg-card);
-  border: var(--border);
-  border-radius: var(--radius);
+  border: 2px solid var(--border-color);
+  border-radius: 0;
   color: var(--accent);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.25s ease;
+  box-shadow: 4px 4px 0 0 var(--accent);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .ft-social a:hover {
   background: var(--accent);
   color: var(--bg);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--accent);
 }
 
 /* ─── Bottom bar ─── */

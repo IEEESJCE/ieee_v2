@@ -49,8 +49,8 @@
   color: #EC4899;
   padding: 6px 14px;
   background: color-mix(in srgb, #EC4899 10%, var(--bg-card));
-  border: var(--border);
-  border-radius: 100px;
+  border: 2px solid var(--border-color);
+  border-radius: 0;
   margin-bottom: 16px;
 }
 
@@ -87,9 +87,9 @@
   color: var(--teal);
   padding: 8px 14px;
   background: var(--bg-card);
-  border: var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--border-color);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 0 var(--teal);
 }
 
 /* ─── Body: tabs + panel ─── */
@@ -118,25 +118,26 @@
   font-weight: 600;
   color: var(--text-muted);
   background: var(--bg-card);
-  border: var(--border);
-  border-radius: var(--radius-md);
+  border: 2px solid var(--border-color);
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.25s ease;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 4px 4px 0 0 var(--border-color);
 }
 
 .pry-tab:hover {
   color: var(--primary);
   border-color: var(--tab-accent);
-  transform: translateX(4px);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--tab-accent);
 }
 
 .pry-tab-active {
   color: var(--primary-strong);
   background: color-mix(in srgb, var(--tab-accent) 12%, var(--bg-card));
   border-color: var(--tab-accent);
-  box-shadow: var(--shadow), 0 0 20px color-mix(in srgb, var(--tab-accent) 18%, transparent);
-  transform: translateX(6px);
+  box-shadow: 6px 6px 0 0 var(--tab-accent);
+  transform: translate(-2px, -2px);
 }
 
 .pry-tab-icon {
@@ -145,7 +146,7 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: var(--radius);
+  border-radius: 0;
   background: color-mix(in srgb, var(--tab-accent) 15%, var(--bg-elevated));
   color: var(--tab-accent);
   flex-shrink: 0;
@@ -159,10 +160,10 @@
 .pry-panel {
   padding: 32px 36px;
   background: var(--bg-card);
-  border: var(--border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow);
-  border-left: 4px solid var(--panel-accent);
+  border: 2px solid var(--border-color);
+  border-radius: 0;
+  box-shadow: 8px 8px 0 0 var(--panel-accent);
+  border-left: 6px solid var(--panel-accent);
   animation: pry-fade-in 0.35s ease;
 }
 
@@ -186,10 +187,11 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  border-radius: 50%;
+  border-radius: 0;
   background: color-mix(in srgb, var(--panel-accent) 15%, var(--bg-elevated));
   color: var(--panel-accent);
   border: 2px solid color-mix(in srgb, var(--panel-accent) 40%, var(--border-color));
+  box-shadow: 3px 3px 0 0 var(--panel-accent);
 }
 
 .pry-panel-head h3 {
