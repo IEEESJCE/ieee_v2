@@ -86,7 +86,12 @@ export default function HomePage() {
     // 2. PINNED PANEL SYSTEM — same pin + scale-shrink for EVERY section
     let mm = gsap.matchMedia()
 
-    mm.add("(min-width: 768px)", () => {
+    mm.add({
+      isDesktop: "(min-width: 768px)",
+      isMobile: "(max-width: 767px)"
+    }, (context) => {
+      let { isDesktop } = context.conditions;
+
       const allPanels = [
         document.querySelector('.nb-section-landing'),
         document.querySelector('.nb-events-wrapper'),
@@ -99,65 +104,48 @@ export default function HomePage() {
       ].filter(Boolean)
 
       allPanels.forEach((panel, i) => {
-        const isLanding = panel.classList.contains('nb-section-landing')
-        const innerPanel = isLanding ? panel.querySelector('.nb-section-inner') : null
-
-        // For the landing hero: handle the internal overscroll first
-        if (isLanding && innerPanel) {
-          const panelHeight = innerPanel.offsetHeight
-          const windowHeight = window.innerHeight
-          const difference = panelHeight - windowHeight
-          const fakeScrollRatio = difference > 0 ? (difference / (difference + windowHeight)) : 0
-
-          if (fakeScrollRatio) {
-            panel.style.marginBottom = panelHeight * fakeScrollRatio + 'px'
-          }
-
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: panel,
-              start: 'bottom bottom',
-              end: () => fakeScrollRatio ? `+=${innerPanel.offsetHeight}` : '+=400',
-              pinSpacing: false,
-              pin: true,
-              scrub: true,
-            }
-          })
-
-          if (fakeScrollRatio) {
-            tl.to(innerPanel, {
-              yPercent: -100,
-              y: window.innerHeight,
-              duration: 1 / (1 - fakeScrollRatio) - 1,
-              ease: 'none',
-            })
-          }
-
-          tl.fromTo(panel,
-            { scale: 1, opacity: 1 },
-            { scale: 0.82, opacity: 0, duration: 1, ease: 'power2.in' }
-          )
-          return
-        }
-
-        // For all other sections: fill viewport → pin at top → scale-shrink exit
         // Skip the last section (mentors — scrolls normally into footer)
         if (i === allPanels.length - 1) return
 
+        const isLanding = panel.classList.contains('nb-section-landing')
+        const innerPanel = isLanding ? panel.querySelector('.nb-section-inner') : null
+
+        // Calculate if we need a fake scroll for landing page ONLY on desktop
+        let fakeScrollRatio = 0
+        if (isLanding && innerPanel && isDesktop) {
+          const difference = innerPanel.offsetHeight - window.innerHeight
+          fakeScrollRatio = difference > 0 ? (difference / (difference + window.innerHeight)) : 0
+        }
+
+        if (isLanding && innerPanel) {
+          panel.style.marginBottom = fakeScrollRatio ? (innerPanel.offsetHeight * fakeScrollRatio + 'px') : '0px'
+        }
+
+        // On mobile, pin and animate ONLY when the bottom of the section reaches the bottom of the viewport.
+        // This ensures the user can scroll natively through the entire tall section before it scales away.
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: panel,
-            start: 'top top',       // pin once the section reaches the very top of the viewport
-            end: '+=600',           // exit plays over 600px of extra scroll
+            start: isDesktop && !isLanding ? 'top top' : 'bottom bottom',
+            end: () => fakeScrollRatio ? `+=${innerPanel.offsetHeight}` : (isDesktop ? '+=600' : '+=400'),
             pinSpacing: false,
             pin: true,
             scrub: true,
           }
         })
 
+        if (fakeScrollRatio) {
+          tl.to(innerPanel, {
+            yPercent: -100,
+            y: window.innerHeight,
+            duration: 1 / (1 - fakeScrollRatio) - 1,
+            ease: 'none',
+          })
+        }
+
         tl.fromTo(panel,
           { scale: 1, opacity: 1, y: 0 },
-          { scale: 0.82, opacity: 0, y: -40, duration: 1, ease: 'power2.in' }
+          { scale: isLanding ? 1 : 0.82, opacity: 0, y: isLanding ? 0 : (isDesktop ? -40 : -60), duration: 1, ease: 'power2.in' }
         )
       })
 

@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════════ */
 
 .nb-landing {
-  height: calc(100vh - 72px);
+  height: calc(100vh - 71px);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -356,8 +356,8 @@
    ═══════════════════════════════════════════════ */
 
 @media (max-width: 767px) {
-  .nb-section, .nb-section-inner { height: auto; min-height: calc(100vh - 72px); overflow: visible; }
-  .nb-landing { height: auto; min-height: calc(100vh - 72px); }
+  .nb-section, .nb-section-inner { height: auto; min-height: calc(100dvh - 59px); overflow: visible; }
+  .nb-landing { height: auto; min-height: calc(100dvh - 59px); overflow: visible; }
   .nb-hero-wrapper { padding: 0 20px; display: flex; align-items: center; justify-content: center; padding-top: 40px; padding-bottom: 40px; }
   .nb-hero-content { max-width: 100%; }
   .nb-hero-centered { gap: 20px; }
@@ -428,7 +428,7 @@
 
 .nb-section {
   width: 100%;
-  height: calc(100vh - 72px);
+  height: calc(100vh - 71px);
   position: relative;
   overflow: hidden; /* Important for scaling effect */
 }
@@ -436,7 +436,7 @@
 /* Make section inner strictly fit fullscreen below navbar */
 .nb-section-inner {
   width: 100%;
-  height: calc(100vh - 72px);
+  height: calc(100vh - 71px);
   position: relative;
 }
 
