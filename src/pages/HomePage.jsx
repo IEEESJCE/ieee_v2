@@ -86,7 +86,7 @@ export default function HomePage() {
     // 2. PINNED PANEL SYSTEM — same pin + scale-shrink for EVERY section
     let mm = gsap.matchMedia()
 
-    mm.add("(min-width: 0px)", () => {
+    mm.add("(min-width: 768px)", () => {
       const allPanels = [
         document.querySelector('.nb-section-landing'),
         document.querySelector('.nb-events-wrapper'),
