@@ -1,0 +1,260 @@
+/* ═══════════════════════════════════════════════
+   WHAT WE STAND FOR — INTERACTIVE AREAS
+   ═══════════════════════════════════════════════ */
+
+.stf-section {
+  position: relative;
+  width: 100%;
+  background: var(--bg);
+  border-top: var(--border);
+  padding: 80px 0 88px;
+  overflow: hidden;
+}
+
+.stf-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.stf-header {
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+
+.stf-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--teal);
+  padding: 6px 14px;
+  background: color-mix(in srgb, var(--teal) 10%, var(--bg-card));
+  border: 2px dashed var(--border-color);
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.stf-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  color: var(--primary-strong);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 1.05;
+  margin: 0 0 14px;
+}
+
+.stf-subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── Stage ─── */
+.stf-stage {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.stf-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stf-tab {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.stf-tab:hover {
+  color: var(--primary-strong);
+  border-color: var(--tab-accent);
+  transform: translateX(3px);
+}
+
+.stf-tab-active {
+  color: var(--tab-accent);
+  border-color: var(--tab-accent);
+  box-shadow: 4px 4px 0 0 color-mix(in srgb, var(--tab-accent) 40%, transparent);
+}
+
+.stf-tab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tab-accent);
+}
+
+/* ─── Panel ─── */
+.stf-panel {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  min-height: 340px;
+  animation: stf-panel-in 0.35s ease;
+}
+
+@keyframes stf-panel-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stf-media {
+  position: relative;
+  min-height: 280px;
+  background: var(--bg-elevated);
+}
+
+.stf-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stf-copy {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid var(--border-color);
+}
+
+.stf-panel-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 16px;
+  color: var(--panel-accent);
+  background: color-mix(in srgb, var(--panel-accent) 12%, var(--bg-elevated));
+  border: 2px solid color-mix(in srgb, var(--panel-accent) 50%, var(--border-color));
+  border-radius: var(--radius);
+}
+
+.stf-copy h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--primary-strong);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin: 0 0 12px;
+}
+
+.stf-copy p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .stf-inner {
+    padding: 0 28px;
+  }
+
+  .stf-stage {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .stf-tabs {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .stf-tab {
+    width: auto;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .stf-tab:hover {
+    transform: translateY(-2px);
+  }
+
+  .stf-panel {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .stf-media {
+    min-height: 240px;
+  }
+
+  .stf-copy {
+    border-left: none;
+    border-top: 1px solid var(--border-color);
+  }
+}
+
+@media (max-width: 767px) {
+  .stf-section {
+    padding: 56px 0 60px;
+  }
+
+  .stf-inner {
+    padding: 0 16px;
+  }
+
+  .stf-header {
+    margin-bottom: 28px;
+  }
+
+  .stf-title {
+    font-size: 1.9rem;
+  }
+
+  .stf-subtitle {
+    font-size: 13px;
+  }
+
+  .stf-tab {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .stf-media {
+    min-height: 190px;
+  }
+
+  .stf-copy {
+    padding: 22px;
+  }
+
+  .stf-copy h3 {
+    font-size: 18px;
+  }
+
+  .stf-copy p {
+    font-size: 13px;
+  }
+}

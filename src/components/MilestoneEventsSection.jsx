@@ -19,7 +19,7 @@ const EVENTS = [
   {
     id: 2,
     title: 'Bug Bounty',
-    content: 'IEEE-SJCE welcomes you to BUG BOUNTY — an online treasure hunt!',
+    content: 'IEEE-SJCE is delighted to welcome you all to BUG BOUNTY — an online treasure hunt!',
     img: '/photos/events/bug_bounty.jpeg',
     icon: <Bug size={18} />,
     accent: '#8B5CF6',
@@ -28,8 +28,8 @@ const EVENTS = [
   {
     id: 3,
     title: 'Quiz-Bizz',
-    content: 'An event for all branches to test skills and knowledge across various fields.',
-    img: '/photos/events/QUIZBIZZ.jpeg',
+    content: 'QUIZBIZZ is an event for people of all branches to test their skills and knowledge in various fields.',
+    img: '/photos/events/quizbizz.jpeg',
     icon: <Brain size={18} />,
     accent: '#00E5FF',
     tag: 'Quiz',
@@ -37,7 +37,7 @@ const EVENTS = [
   {
     id: 4,
     title: 'Robotics 13',
-    content: 'Robots have changed the course of our lives in unimaginable ways.',
+    content: 'Technology has always made life simple, and robots have changed the course of our lives in unimaginable ways.',
     img: '/photos/events/robotics_13.jpeg',
     icon: <Bot size={18} />,
     accent: '#EC4899',
@@ -46,7 +46,7 @@ const EVENTS = [
   {
     id: 5,
     title: 'IOT Workshop',
-    content: 'Explore the futuristic world of Internet of Things hands-on.',
+    content: 'This cool, futuristic-seeming sorcery is what we formally call IoT — the Internet of Things.',
     img: '/photos/events/iot.png',
     icon: <Wifi size={18} />,
     accent: '#00F5D4',
@@ -55,7 +55,7 @@ const EVENTS = [
   {
     id: 6,
     title: 'PC Assembly',
-    content: "Building a computer is fun, affordable and empowering.",
+    content: "Building a computer is fun, affordable and empowering. It's fun being able to choose all of the parts.",
     img: '/photos/events/pc.jpg',
     icon: <Cpu size={18} />,
     accent: '#60A5FA',
@@ -64,7 +64,7 @@ const EVENTS = [
   {
     id: 7,
     title: 'Soldering Workshop',
-    content: "Build a strong relation-chip with electronics from scratch.",
+    content: "How is your relation-chip with electronics? Not great? Fret not — we're here to build a strong one from scratch.",
     img: '/photos/events/soldering.jpeg',
     icon: <Wrench size={18} />,
     accent: '#F59E0B',
@@ -73,7 +73,7 @@ const EVENTS = [
   {
     id: 8,
     title: 'SQL Bootcamp',
-    content: 'Master database queries — from basics to advanced SQL challenges.',
+    content: 'How do you fetch the second-highest salary in a given database? Or, even simpler — learn SQL from the basics.',
     img: '/photos/events/sql.jpg',
     icon: <Database size={18} />,
     accent: '#22D3EE',

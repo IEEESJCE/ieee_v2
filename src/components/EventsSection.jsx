@@ -1,77 +1,139 @@
 import { useEffect, useRef, useState } from 'react'
-import { Calendar, Code, Lightbulb, Zap, Award, Trophy, Star, Rocket, ChevronLeft, ChevronRight, Users } from 'lucide-react'
+import {
+  Calendar,
+  ChevronLeft,
+  ChevronRight,
+  Wrench,
+  Radio,
+  Wifi,
+  Zap,
+  CircuitBoard,
+  Brain,
+  Code,
+  Trophy,
+} from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '../styles/events.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
+// Chronology follows the legacy site: newest events first.
 const EVENTS = [
   {
-    title: 'Induction Ceremony',
-    date: '18 JAN 2024',
-    description: 'Welcoming new minds to the IEEE SJCE family.',
-    icon: <Users size={22} />,
-    accent: '#3B82F6',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=300&fit=crop',
-  },
-  {
-    title: 'Tech Talk',
-    date: '22 FEB 2024',
-    description: 'Insights from industry experts on emerging technologies.',
-    icon: <Code size={22} />,
-    accent: '#8B5CF6',
-    image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=400&h=300&fit=crop',
-  },
-  {
-    title: 'CodeFest 2.0',
-    date: '15 MAR 2024',
-    description: '48 hours of coding, collaboration and innovation.',
-    icon: <Trophy size={22} />,
+    title: 'Soldering and Etching Workshop',
+    date: '19–21 DEC 2025',
+    description:
+      'A three-day flagship workshop from the Electron Devices Society, giving students hands-on experience of soldering and etching through theoretical and practical sessions.',
+    icon: <Wrench size={22} />,
     accent: '#00E5FF',
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop',
+    image: '/photos/events/soldering.jpeg',
+    imageAlt: 'Soldering and Etching workshop poster, December 2025',
+    imagePosition: 'center 28%',
     featured: true,
   },
   {
-    title: 'Workshop',
-    date: '26 APR 2024',
-    description: 'Hands-on learning experiences with cutting-edge tools.',
-    icon: <Rocket size={22} />,
+    title: 'Wave Lab',
+    date: '6 DEC 2025',
+    description:
+      'The debut event of the SPS Wing. Students used MATLAB to explore the basics of signal processing with an industry-standard tool, and received a MATLAB license for future work.',
+    icon: <Radio size={22} />,
+    accent: '#8B5CF6',
+    image: '/photos/events/wavelab_2025.jpg',
+    imageAlt: 'Wave Lab signal processing workshop poster',
+  },
+  {
+    title: 'IOT 4.0',
+    date: '21–23 NOV 2025',
+    description:
+      'The Robotics and Automation Society conducted the IoT 4.0 workshop, giving participants hands-on exposure to building smart, connected systems with embedded platforms.',
+    icon: <Wifi size={22} />,
+    accent: '#00F5D4',
+    image: '/photos/events/iot_4_0_2025.jpg',
+    imageAlt: 'IoT 4.0 workshop poster, November 2025',
+    imagePosition: 'center 28%',
+  },
+  {
+    title: 'Snap Circuits',
+    date: '6–7 NOV 2025',
+    description:
+      'The Electron Devices Society conducted Snap Circuits, giving freshers a hands-on experience of electronic components while building curiosity about circuits and how they work.',
+    icon: <Zap size={22} />,
     accent: '#EC4899',
-    image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&h=300&fit=crop',
+    image: '/photos/events/snap_circuits_2025.jpg',
+    imageAlt: 'Snap Circuits event poster, November 2025',
+    imagePosition: 'center 28%',
   },
   {
-    title: 'IEEE Day Celebration',
-    date: '30 MAY 2024',
-    description: 'Celebrating innovation and the IEEE spirit.',
-    icon: <Star size={22} />,
-    accent: '#60A5FA',
-    image: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&h=300&fit=crop',
-  },
-  {
-    title: 'Induction Ceremony',
-    date: '18 JAN 2024',
-    description: 'Welcoming new minds to the IEEE SJCE family.',
-    icon: <Users size={22} />,
+    title: 'Circuitrix',
+    date: '25 OCT 2025',
+    description:
+      'A hands-on session designed to help students explore, create and simulate both analog and digital circuits using powerful circuit simulation tools.',
+    icon: <CircuitBoard size={22} />,
     accent: '#3B82F6',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=300&fit=crop',
+    image: '/photos/events/circuitrix_2025.jpg',
+    imageAlt: 'Circuitrix circuit simulation event poster',
   },
   {
-    title: 'Tech Talk',
-    date: '22 FEB 2024',
-    description: 'Insights from industry experts on emerging technologies.',
-    icon: <Code size={22} />,
-    accent: '#8B5CF6',
-    image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=400&h=300&fit=crop',
+    title: 'AI Expert Talk and Ideathon',
+    date: '11 FEB 2025',
+    description:
+      'STRONG – Scientific Research for NextGen GirlGeeks was organised by the MCAA India Chapter, funded by the European Union, and supported by the MCAA-Mednight Project, IEEE Mysore Subsection and IEEE-SJCE. The event aimed to inspire young women to pursue careers in science and research.',
+    icon: <Brain size={22} />,
+    accent: '#F59E0B',
+    image: '/photos/events/ai_expert_talk_ideathon_2025.png',
+    imageAlt: 'AI Expert Talk and Ideathon event poster, February 2025',
   },
   {
-    title: 'CodeFest 2.0',
-    date: '15 MAR 2024',
-    description: '48 hours of coding, collaboration and innovation.',
+    title: 'Soldering and Etching Workshop',
+    date: '10–12 JAN 2025',
+    description:
+      'The Electron Devices Society conducted the Soldering and Etching Workshop, a three-day flagship event giving students practical exposure to soldering and etching.',
+    icon: <Wrench size={22} />,
+    accent: '#22D3EE',
+    image: '/photos/events/soldering_etching_jan_2025.jpeg',
+    imageAlt: 'Soldering and Etching workshop poster, January 2025',
+    imagePosition: 'center 28%',
+  },
+  {
+    title: 'IOT-3.0 Workshop',
+    date: '29 NOV – 1 DEC 2024',
+    description:
+      'A three-day workshop covering IoT protocols and core theory before moving on to hands-on simulations with Raspberry Pi and NodeMCU.',
+    icon: <Wifi size={22} />,
+    accent: '#60A5FA',
+    image: '/photos/events/iot_workshop_2024.jpeg',
+    imageAlt: 'IoT 3.0 workshop session, 2024',
+  },
+  {
+    title: "TUXEDO'23",
+    date: '28 NOV – 4 DEC 2023',
+    description:
+      "IEEE-SJCE's odd-semester technical fest brought a week of workshops, contests and events, including Snap Circuits, Web Dev Bootcamp and Scribble.",
     icon: <Trophy size={22} />,
     accent: '#00E5FF',
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop',
-    featured: true,
+    image: '/photos/events/tuxedo_2023.jpg',
+    imageAlt: "TUXEDO'23 technical fest poster",
+  },
+  {
+    title: 'Web Dev Bootcamp',
+    date: '30 NOV & 2–3 DEC 2023',
+    description:
+      'The WIE and RAS wings presented a hands-on bootcamp on building and designing interactive websites, with online sessions on 30 November and 2 December and an offline session on 3 December.',
+    icon: <Code size={22} />,
+    accent: '#8B5CF6',
+    image: '/photos/events/web_dev_bootcamp_2023.jpg',
+    imageAlt: "Web Dev Bootcamp poster from TUXEDO'23",
+  },
+  {
+    title: 'Snap Circuits',
+    date: '28–29 NOV 2023',
+    description:
+      "The EDS wing's TUXEDO'23 event gave students a hands-on introduction to electronic components and circuit building, with no prior electronics knowledge required.",
+    icon: <Zap size={22} />,
+    accent: '#EC4899',
+    image: '/photos/events/snap_circuits_2023.jpg',
+    imageAlt: "Snap Circuits poster from TUXEDO'23",
   },
 ]
 
@@ -80,7 +142,7 @@ export default function EventsSection() {
   const titleRef = useRef(null)
   const trackRef = useRef(null)
   const cardsRef = useRef([])
-  const [activeIndex, setActiveIndex] = useState(2) // center card (CodeFest)
+  const [activeIndex, setActiveIndex] = useState(0) // newest event
 
   useEffect(() => {
     // Animate header
@@ -268,7 +330,12 @@ export default function EventsSection() {
 
                     {/* Event image */}
                     <div className="evt-card-image">
-                      <img src={evt.image} alt={evt.title} loading="lazy" />
+                      <img
+                        src={evt.image}
+                        alt={evt.imageAlt || evt.title}
+                        loading="lazy"
+                        style={evt.imagePosition ? { objectPosition: evt.imagePosition } : undefined}
+                      />
                       <div className="evt-card-image-overlay" />
                     </div>
                   </div>

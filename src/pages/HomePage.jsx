@@ -9,10 +9,12 @@ import ColourfulText from '../components/ui/colourful-text'
 import EventsSection from '../components/EventsSection'
 import MilestoneEventsSection from '../components/MilestoneEventsSection'
 import AchievementsSection from '../components/AchievementsSection'
+import StandForSection from '../components/StandForSection'
 import BangaloreSection from '../components/BangaloreSection'
 import FlagshipSection from '../components/FlagshipSection'
 import PrayasSection from '../components/PrayasSection'
 import MentorsSection from '../components/MentorsSection'
+import SponsorSection from '../components/SponsorSection'
 import Footer from '../components/Footer'
 
 import '../styles/homepage.css'
@@ -97,15 +99,17 @@ export default function HomePage() {
         document.querySelector('.nb-events-wrapper'),
         document.querySelector('.nb-milestones-wrapper'),
         document.querySelector('.nb-achievements-wrapper'),
+        document.querySelector('.nb-standfor-wrapper'),
         document.querySelector('.nb-bangalore-wrapper'),
         document.querySelector('.nb-flagship-wrapper'),
         document.querySelector('.nb-prayas-wrapper'),
         document.querySelector('.nb-mentors-wrapper'),
+        document.querySelector('.nb-sponsors-wrapper'),
       ].filter(Boolean)
 
       allPanels.forEach((panel, i) => {
-        // Skip the last section (mentors — scrolls normally into footer)
-        if (i === allPanels.length - 1) return
+        // Mentors and sponsors scroll normally into the footer (no pin/shrink).
+        if (i >= allPanels.length - 2) return
 
         const isLanding = panel.classList.contains('nb-section-landing')
         const innerPanel = isLanding ? panel.querySelector('.nb-section-inner') : null
@@ -241,27 +245,37 @@ export default function HomePage() {
         <AchievementsSection />
       </div>
 
-      {/* ════════ PANEL 5: Bangalore Section ════════ */}
+      {/* ════════ PANEL 5: What We Stand For ════════ */}
+      <div className="nb-standfor-wrapper">
+        <StandForSection />
+      </div>
+
+      {/* ════════ PANEL 6: Bangalore Section ════════ */}
       <div className="nb-bangalore-wrapper">
         <BangaloreSection />
       </div>
 
-      {/* ════════ PANEL 6: Flagship Programs ════════ */}
+      {/* ════════ PANEL 7: Flagship Programs ════════ */}
       <div className="nb-flagship-wrapper">
         <FlagshipSection />
       </div>
 
-      {/* ════════ PANEL 7: Prayas ════════ */}
+      {/* ════════ PANEL 8: Prayas ════════ */}
       <div className="nb-prayas-wrapper">
         <PrayasSection />
       </div>
 
-      {/* ════════ PANEL 8: Mentors ════════ */}
+      {/* ════════ PANEL 9: Mentors ════════ */}
       <div className="nb-mentors-wrapper">
         <MentorsSection />
       </div>
 
-      {/* ════════ PANEL 9: Footer ════════ */}
+      {/* ════════ PANEL 10: Sponsors ════════ */}
+      <div className="nb-sponsors-wrapper">
+        <SponsorSection />
+      </div>
+
+      {/* ════════ PANEL 11: Footer ════════ */}
       <Footer />
     </div>
   )
