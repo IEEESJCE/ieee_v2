@@ -1,112 +1,698 @@
-import { useState, useEffect, useRef } from 'react'
-import { current_team_photo } from '../components/team_photo'
-import '../styles/team.css'
+import { useState, useEffect, useRef } from "react";
+import { current_team_photo } from "../components/team_photo";
+import "../styles/team.css";
 
 /* ─── Category config ─── */
 const CATEGORIES = [
-  { key: 'all',                              label: 'All',                  color: '#2563EB' },
-  { key: 'executive_committee',              label: 'Executive Committee',  color: '#2563EB' },
-  { key: 'signal_processing_society',        label: 'Signal Processing',    color: '#0369A1' },
-  { key: 'robotics_and_automation_society',  label: 'Robotics & Automation',color: '#1D4ED8' },
-  { key: 'electron_devices_society',         label: 'Electron Devices',     color: '#0284C7' },
-  { key: 'women_in_engineering',             label: 'WIE',                  color: '#4F46E5' },
-  { key: 'editorial_board',                  label: 'Editorial Board',      color: '#1E3A8A' },
-  { key: 'membership_development_committee', label: 'MDC',                  color: '#0EA5E9' },
-  { key: 'web_development_board',            label: 'Web Dev Board',        color: '#00C2FF' },
-]
-const CAT_MAP   = Object.fromEntries(CATEGORIES.map(c => [c.key, c]))
+  { key: "all", label: "All", color: "#2563EB" },
+  {
+    key: "executive_committee",
+    label: "Executive Committee",
+    color: "#2563EB",
+  },
+  { key: "membership_development_committee", label: "MDC", color: "#0EA5E9" },
+  {
+    key: "signal_processing_society",
+    label: "Signal Processing",
+    color: "#0369A1",
+  },
+  {
+    key: "robotics_and_automation_society",
+    label: "Robotics & Automation",
+    color: "#1D4ED8",
+  },
+  {
+    key: "electron_devices_society",
+    label: "Electron Devices",
+    color: "#0284C7",
+  },
+  {
+    key: "aerospace_and_electronic_systems_society",
+    label: "AESS",
+    color: "#6366F1",
+  },
+  { key: "women_in_engineering", label: "WIE", color: "#4F46E5" },
+  { key: "editorial_board", label: "Editorial Board", color: "#1E3A8A" },
+  { key: "web_development_board", label: "Web Dev Board", color: "#00C2FF" },
+];
+const CAT_MAP = Object.fromEntries(CATEGORIES.map((c) => [c.key, c]));
 const CAT_DISPLAY = {
-  executive_committee:              'Executive Committee',
-  signal_processing_society:        'Signal Processing Society',
-  robotics_and_automation_society:  'Robotics & Automation Society',
-  electron_devices_society:         'Electron Devices Society',
-  women_in_engineering:             'Women in Engineering',
-  editorial_board:                  'Editorial Board',
-  membership_development_committee: 'Membership Development Committee',
-  web_development_board:            'Web Development Board',
-}
+  executive_committee: "Executive Committee",
+  membership_development_committee: "Membership Development Committee",
+  signal_processing_society: "Signal Processing Society",
+  robotics_and_automation_society: "Robotics & Automation Society",
+  electron_devices_society: "Electron Devices Society",
+  aerospace_and_electronic_systems_society: "Aerospace & Electronic Systems Society",
+  women_in_engineering: "Women in Engineering",
+  editorial_board: "Editorial Board",
+  web_development_board: "Web Development Board",
+};
+
+/* ─── Current Executive Committee (Updated Roster) ─── */
+const CURRENT_EXECUTIVE_COMMITTEE = [
+  {
+    name: "Rachit Jain",
+    post: "CHAIRPERSON",
+    src: "/photos/members25-26/Rachit Jain.jpg",
+    linkedin: "https://in.linkedin.com/in/rachit-jain-b91a90364",
+    gmail: "nprachit84@gmail.com",
+  },
+  {
+    name: "Ankith Kaushik",
+    post: "VICE CHAIRPERSON",
+    src: "/photos/members25-26/Ankith Kaushik.jpeg",
+    linkedin: "https://www.linkedin.com/in/ankith-kaushik-222339328",
+    gmail: "ankithkaushik2005@gmail.com",
+  },
+  {
+    name: "Keerthana R Nair",
+    post: "GENERAL SECRETARY",
+    src: "/photos/members25-26/WhatsApp Image 2026-02-26 at 13.49.22.jpeg",
+    linkedin: "https://www.linkedin.com/in/keerthana-r-nair-304b8a2aa",
+    gmail: "Keerthanarn05@gmail.com",
+  },
+  {
+    name: "Dhanalakshmi R Pagade",
+    post: "PUBLICITY LEAD",
+    src: "/photos/members25-26/DhanalakshmiRP.jpg",
+    linkedin: "https://www.linkedin.com/in/dhanalakshmi-rl-pagade-129488292",
+    gmail: "dhanalakshmirpagade@gmail.com",
+  },
+  {
+    name: "Apoorva H N",
+    post: "PUBLICITY CO-LEAD",
+    src: "/photos/members25-26/Apoorva H N.jpg",
+    linkedin: "https://www.linkedin.com/in/apoorva-h-n-9b7b542b1",
+    gmail: "hmapoorvahn@gmail.com",
+  },
+  {
+    name: "Arjun A Bharadwaj",
+    post: "STUDENT ACTIVITY COORDINATOR",
+    src: "/photos/members25-26/arjun.jpeg",
+    linkedin: "https://www.linkedin.com/in/arjun-a-bharadwaj-8a9487292",
+    gmail: "arjun.bharadwaj2005@gmail.com",
+  },
+  {
+    name: "Pallavi S",
+    post: "STUDENT ACTIVITY COORDINATOR",
+    src: "/photos/members25-26/Pallavi S.jpg",
+    linkedin: "https://www.linkedin.com/in/pallavis21",
+    gmail: "pallavis2125@gmail.com",
+  },
+  {
+    name: "Alvisha Florine Veigas",
+    post: "REPORTING LEAD",
+    src: "/photos/members25-26/Alvisha.jpg",
+    linkedin: "https://linkedin.com/in/alvishaflorineveigas2805",
+    gmail: "alvishaveigas@gmail.com",
+  },
+  {
+    name: "Vruddhi Dinesh",
+    post: "EVENT MANAGER",
+    src: "/photos/members25-26/vruddhi.jpg",
+    linkedin: "https://www.linkedin.com/in/vruddhi-dinesh-085867282",
+    gmail: "vruddhidinesh@gmail.com",
+  },
+  {
+    name: "Suthej S",
+    post: "Chair-elect",
+    src: "/photos/members26-27/suthej.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Tilak K S",
+    post: "Treasurer",
+    src: "/photos/members26-27/Tilak.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Lalitha M N",
+    post: "Chief Student Coordinator",
+    src: "/photos/members26-27/lalitha.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Pruthvi Shree",
+    post: "Publicity Coordinator",
+    src: "/photos/members26-27/pruthvishree.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Mayuri Kulkarni",
+    post: "Publicity Coordinator",
+    src: "/photos/members26-27/Mayuri.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Holika P",
+    post: "Student Coordinator",
+    src: "/photos/members26-27/Holika.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Aprameya P",
+    post: "Student Coordinator",
+    src: "/photos/members26-27/aprameya.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Meghana I S",
+    post: "Reporter",
+    src: "/photos/members26-27/Meghana.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Ruchitha S",
+    post: "Reporter",
+    src: "",
+    linkedin: "",
+    gmail: "",
+  },
+];
+
+/* ─── Membership Development Committee (Updated Roster) ─── */
+const MEMBERSHIP_DEVELOPMENT_COMMITTEE = [
+  {
+    name: "Varsha Lakshmi K",
+    post: "SBMDC CHAIRPERSON",
+    type: "membership_development_committee",
+    src: "/photos/members25-26/Varsha Lakshmi K.jpg",
+    linkedin: "https://www.linkedin.com/in/varsha-lakshmi-k-7159b22ab",
+    gmail: "varshalakshmik@gmail.com",
+  },
+  {
+    name: "Sukruthi Rao",
+    post: "SBMDC VICE CHAIRPERSON",
+    type: "membership_development_committee",
+    src: "/photos/members25-26/Sukruthi Rao.jpg",
+    linkedin: "https://www.linkedin.com/in/sukruthi-rao-923627313",
+    gmail: "sukruthirao03@gmail.com",
+  },
+  {
+    name: "Vishwas A Gowda",
+    post: "SBMDC Secretary",
+    type: "membership_development_committee",
+    src: "/photos/members26-27/vishwas.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Adithi BS",
+    post: "SBMDC Ambassador",
+    type: "membership_development_committee",
+    src: "/photos/members26-27/adithi.png",
+    linkedin: "",
+    gmail: "",
+  },
+];
+
+/* ─── Signal Processing Society (Updated Roster) ─── */
+const SIGNAL_PROCESSING_SOCIETY = [
+  {
+    name: "Rahul Murali",
+    post: "SPS CHAIRPERSON",
+    type: "signal_processing_society",
+    src: "/photos/members25-26/Rahul Murali.jpg",
+    linkedin: "https://www.linkedin.com/in/rahul-murali-405677335",
+    gmail: "muralirahul6210@gmail.com",
+  },
+  {
+    name: "Shravan Krishna",
+    post: "SPS VICE CHAIRPERSON",
+    type: "signal_processing_society",
+    src: "/photos/members25-26/Shravan Krishna.jpg",
+    linkedin: "https://www.linkedin.com/in/shravan-krishna-0a4486292",
+    gmail: "shravankrishna2018@gmail.com",
+  },
+  {
+    name: "Muskan",
+    post: "SPS SENIOR TECHNICAL COORDINATOR",
+    type: "signal_processing_society",
+    src: "/photos/members25-26/Muskan fayaz.jpg",
+    linkedin: "https://www.linkedin.com/in/muskan-fayaz-52757b306",
+    gmail: "muskanfayaz48@outlook.com",
+  },
+  {
+    name: "Rajath R Prasad",
+    post: "WEB DEVELOPMENT BOARD CHIEF",
+    type: "signal_processing_society",
+    src: "/photos/members25-26/RajathRP.jpg",
+    linkedin: "https://www.linkedin.com/in/rajath-r-prasad",
+    gmail: "rajath2010rrp@gmail.com",
+  },
+  {
+    name: "Jeevashree G",
+    post: "SECRETARY",
+    type: "signal_processing_society",
+    src: "",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Veeresh Katnur",
+    post: "JOINT SECRETARY",
+    type: "signal_processing_society",
+    src: "/photos/members26-27/Veeresh.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Priya N M",
+    post: "SPS TREASURER",
+    type: "signal_processing_society",
+    src: "",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Manogna S",
+    post: "SPS TECHNICAL COORDINATOR",
+    type: "signal_processing_society",
+    src: "/photos/members26-27/manogna.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Deekshith S Kumar",
+    post: "SPS WEBMASTER",
+    type: "signal_processing_society",
+    src: "/photos/members26-27/deekshith.png",
+    linkedin: "",
+    gmail: "",
+  },
+];
+
+/* ─── Robotics and Automation Society (Updated Roster) ─── */
+const ROBOTICS_AND_AUTOMATION_SOCIETY = [
+  {
+    name: "Prithveesh Rao",
+    post: "RAS CHAIRPERSON",
+    type: "robotics_and_automation_society",
+    src: "/photos/members25-26/Prithveesh Rao.jpeg",
+    linkedin: "https://www.linkedin.com/in/prithveesh-rao-4345521a1",
+    gmail: "raoprithveesh@gmail.com",
+  },
+  {
+    name: "Chinmay G C",
+    post: "RAS VICE CHAIRPERSON",
+    type: "robotics_and_automation_society",
+    src: "/photos/members25-26/Chinmay GC.jpg",
+    linkedin: "https://www.linkedin.com/in/chinmay-gc",
+    gmail: "chinmaygchandramouli@gmail.com",
+  },
+  {
+    name: "Rohan A S Gowda",
+    post: "RAS SENIOR TECHNICAL COORDINATOR",
+    type: "robotics_and_automation_society",
+    src: "/photos/members25-26/Rohan A S Gowda.jpg",
+    linkedin: "https://www.linkedin.com/in/rohan-a-s-gowda-b27580292",
+    gmail: "rohanasgowda7411@gmail.com",
+  },
+  {
+    name: "Adhya Bhat M",
+    post: "RAS SECRETARY",
+    type: "robotics_and_automation_society",
+    src: "/photos/members26-27/aadhya.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Diya Y Bhandarkar",
+    post: "RAS JOINT SECRETARY",
+    type: "robotics_and_automation_society",
+    src: "/photos/members26-27/diya.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Sagar M L",
+    post: "RAS TECHNICAL COORDINATOR",
+    type: "robotics_and_automation_society",
+    src: "/photos/members26-27/sagar.png",
+    linkedin: "",
+    gmail: "",
+  },
+];
+
+/* ─── Electron Devices Society (Updated Roster) ─── */
+const ELECTRON_DEVICES_SOCIETY = [
+  {
+    name: "Pramathi H B",
+    post: "EDS CHAIRPERSON",
+    type: "electron_devices_society",
+    src: "/photos/members25-26/Pramathi H.B.jpg",
+    linkedin: "https://www.linkedin.com/in/pramathi-h-b-808487292",
+    gmail: "pramathi1805@gmail.com",
+  },
+  {
+    name: "Harshith A R",
+    post: "EDS VICE CHAIRPERSON",
+    type: "electron_devices_society",
+    src: "/photos/members25-26/harshith ar.JPG",
+    linkedin: "https://www.linkedin.com/in/harshi76",
+    gmail: "arharshi9535@gmail.com",
+  },
+  {
+    name: "Sachin KS",
+    post: "EDS SENIOR TECHNICAL COORDINATOR",
+    type: "electron_devices_society",
+    src: "/photos/members25-26/Sachin K.S.jpg",
+    linkedin: "https://www.linkedin.com/in/sachinks21",
+    gmail: "kssachin42@gmail.com",
+  },
+  {
+    name: "Nimai Udupi",
+    post: "EDS SECRETARY",
+    type: "electron_devices_society",
+    src: "/photos/members26-27/nimai.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Aadhira M",
+    post: "EDS JOINT SECRETARY",
+    type: "electron_devices_society",
+    src: "/photos/members26-27/aadhira.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Hemanth B Kumar",
+    post: "EDS TECHNICAL COORDINATOR",
+    type: "electron_devices_society",
+    src: "",
+    linkedin: "",
+    gmail: "",
+  },
+];
+
+/* ─── Women in Engineering (Updated Roster) ─── */
+const WOMEN_IN_ENGINEERING = [
+  {
+    name: "Anagha V. Bhat",
+    post: "WIE CHAIRPERSON",
+    type: "women_in_engineering",
+    src: "/photos/members25-26/Anagha V Bhat.jpeg",
+    linkedin: "http://linkedin.com/in/anagha-v-bhat-012195361",
+    gmail: "anaghavbhat13@gmail.com",
+  },
+  {
+    name: "Pratham M S",
+    post: "WIE VICE CHAIRPERSON",
+    type: "women_in_engineering",
+    src: "/photos/members25-26/Pratham MS.jpeg",
+    linkedin: "http://www.linkedin.com/in/pratham-ms-1312i",
+    gmail: "prathamms01@gmail.com",
+  },
+  {
+    name: "Dhanya B",
+    post: "WIE SENIOR TECHNICAL COORDINATOR",
+    type: "women_in_engineering",
+    src: "/photos/members25-26/DhanyaBGowda.jpg",
+    linkedin: "https://www.linkedin.com/in/dhanya-b-146755360",
+    gmail: "iamdhanyab2525@gmail.com",
+  },
+  {
+    name: "Apoorva R Bhat",
+    post: "WIE SECRETARY",
+    type: "women_in_engineering",
+    src: "/photos/members26-27/apoorva.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "S K Gouthami",
+    post: "WIE JOINT SECRETARY",
+    type: "women_in_engineering",
+    src: "/photos/members26-27/gouthami.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Arpitha N",
+    post: "WIE TECHNICAL COORDINATOR",
+    type: "women_in_engineering",
+    src: "/photos/members26-27/arpitha.png",
+    linkedin: "",
+    gmail: "",
+  },
+];
+
+/* ─── Editorial Board (Updated Roster) ─── */
+const EDITORIAL_BOARD = [
+  {
+    name: "Mythri G",
+    post: "EDITORIAL BOARD CHAIRPERSON",
+    type: "editorial_board",
+    src: "/photos/members25-26/Mythri G.jpg",
+    linkedin: "https://www.linkedin.com/in/mythri-g-285546330",
+    gmail: "mythrig2005@gmail.com",
+  },
+  {
+    name: "Shalini H R",
+    post: "EDITORIAL BOARD VICE CHAIRPERSON",
+    type: "editorial_board",
+    src: "/photos/members25-26/Shalini.jpeg",
+    linkedin: "https://www.linkedin.com/in/shalini-h-r-15092005shr",
+    gmail: "shalinihr2005@gmail.com",
+  },
+  {
+    name: "Likhitha S A",
+    post: "SENIOR EDITOR",
+    type: "editorial_board",
+    src: "/photos/members25-26/LikhithaSA.webp",
+    linkedin: "https://www.linkedin.com/in/likhitha-s-a-1b90652a2",
+    gmail: "likhithasasa@gmail.com",
+  },
+  {
+    name: "Sushma M",
+    post: "SENIOR EDITOR",
+    type: "editorial_board",
+    src: "/photos/members25-26/Sushma.jpg",
+    linkedin: "https://www.linkedin.com/in/sushma-m-429034339",
+    gmail: "sushs0305@gmail.com",
+  },
+  {
+    name: "Bhavana G",
+    post: "Graphic Designer",
+    type: "editorial_board",
+    src: "/photos/members26-27/bhavana.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "U.L Rini Linnet",
+    post: "Graphic Designer",
+    type: "editorial_board",
+    src: "/photos/members26-27/rini.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Shreeja Dimri",
+    post: "Editor",
+    type: "editorial_board",
+    src: "/photos/members26-27/Shreeja.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Samhita KS",
+    post: "Editor",
+    type: "editorial_board",
+    src: "/photos/members26-27/samhitha.png",
+    linkedin: "",
+    gmail: "",
+  },
+];
+
+/* ─── Aerospace and Electronic Systems Society (Updated Roster) ─── */
+const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
+  {
+    name: "Varun kilkile",
+    post: "AESS CHAIRPERSON",
+    type: "aerospace_and_electronic_systems_society",
+    src: "/photos/members26-27/Varun.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Thanmayi B V",
+    post: "AESS VICE CHAIRPERSON",
+    type: "aerospace_and_electronic_systems_society",
+    src: "/photos/members26-27/Thanmayi.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Lakshmi K L",
+    post: "AESS SECRETARY",
+    type: "aerospace_and_electronic_systems_society",
+    src: "",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Vishal H V",
+    post: "AESS JOINT SECRETARY",
+    type: "aerospace_and_electronic_systems_society",
+    src: "",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Maryada Sudharshan Ulagadde",
+    post: "AESS TREASURER",
+    type: "aerospace_and_electronic_systems_society",
+    src: "/photos/members26-27/maryada.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Tejas S",
+    post: "AESS TECHNICAL COORDINATOR",
+    type: "aerospace_and_electronic_systems_society",
+    src: "/photos/members26-27/Thejas.png",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Amruth S",
+    post: "AESS TECHNICAL COORDINATOR & WEBMASTER",
+    type: "aerospace_and_electronic_systems_society",
+    src: "/photos/members26-27/Amruth.png",
+    linkedin: "",
+    gmail: "",
+  },
+];
+
+const CURRENT_TEAM = [
+  ...CURRENT_EXECUTIVE_COMMITTEE.map((m) => ({ ...m, type: "executive_committee" })),
+  ...MEMBERSHIP_DEVELOPMENT_COMMITTEE,
+  ...SIGNAL_PROCESSING_SOCIETY,
+  ...ROBOTICS_AND_AUTOMATION_SOCIETY,
+  ...ELECTRON_DEVICES_SOCIETY,
+  ...AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY,
+  ...WOMEN_IN_ENGINEERING,
+  ...EDITORIAL_BOARD,
+];
 
 /* ─── Icons ─── */
 function LinkedInIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
     </svg>
-  )
+  );
 }
 
 function MailIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+      <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
     </svg>
-  )
+  );
 }
 
-/* ─── Lazy photo ─── */
+/* ─── Ultra-Sharp High-Performance Photo ─── */
 function LazyPhoto({ src, alt }) {
-  const [status, setStatus] = useState('idle')
-  const wrapRef = useRef(null)
+  const [loaded, setLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const imgRef = useRef(null);
 
   useEffect(() => {
-    if (!src) { setStatus('error'); return }
-    const el = wrapRef.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setStatus('loading'); obs.disconnect() } },
-      { rootMargin: '400px 0px' }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [src])
+    setLoaded(false);
+    setHasError(false);
+    // Instant cache-hit detection: if browser has already loaded it, show immediately
+    if (imgRef.current && imgRef.current.complete) {
+      if (imgRef.current.naturalWidth > 0) {
+        setLoaded(true);
+      } else {
+        setHasError(true);
+      }
+    }
+  }, [src]);
 
-  const showPlaceholder = !src || status === 'error' || status === 'idle'
-  const imgVisible = status === 'loading' || status === 'loaded'
+  const isTilakOrLalitha =
+    src && (src.toLowerCase().includes("tilak") || src.toLowerCase().includes("lalitha"));
+
+  const isWideDistanceShot =
+    src && src.includes("members26-27") && !isTilakOrLalitha;
+
+  const showPlaceholder = !src || hasError;
 
   return (
-    <div ref={wrapRef} style={{ width: '100%', height: '100%', position: 'relative' }}>
+    <div
+      style={{ width: "100%", height: "100%", position: "relative", overflow: "hidden" }}
+    >
       {showPlaceholder && (
         <div className="tmc-photo-placeholder" aria-hidden="true">
-          <span className="tmc-photo-placeholder-letter">{alt?.charAt(0) ?? '?'}</span>
+          <span className="tmc-photo-placeholder-letter">
+            {alt?.charAt(0) ?? "?"}
+          </span>
         </div>
       )}
-      {imgVisible && (
+      {src && !hasError && (
         <img
-          className={`tmc-photo-img ${status}`}
+          ref={imgRef}
+          className={`tmc-photo-img ${loaded ? "loaded" : "preloading"}${
+            isWideDistanceShot ? " is-zoomed-portrait" : ""
+          }`}
           src={src}
           alt={alt}
-          onLoad={() => setStatus('loaded')}
-          onError={() => setStatus('error')}
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%',
-            objectFit: 'cover', objectPosition: 'center top' }}
+          loading="lazy"
+          decoding="async"
+          onLoad={() => setLoaded(true)}
+          onError={() => setHasError(true)}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: isWideDistanceShot ? "center top" : "center top",
+          }}
         />
       )}
     </div>
-  )
+  );
 }
 
 /* ─── Member Card ─── */
 function MemberCard({ member, color }) {
-  const hasLinkedin = member.linkedin &&
-    member.linkedin !== 'Nil' &&
-    member.linkedin.trim() !== ''
+  const hasLinkedin =
+    member.linkedin &&
+    member.linkedin !== "Nil" &&
+    member.linkedin.trim() !== "";
 
-  const hasGmail = member.gmail && member.gmail.trim() !== ''
+  const hasGmail = member.gmail && member.gmail.trim() !== "";
 
   const linkedinUrl = hasLinkedin
-    ? (member.linkedin.startsWith('http') ? member.linkedin : `https://${member.linkedin}`)
-    : null
+    ? member.linkedin.startsWith("http")
+      ? member.linkedin
+      : `https://${member.linkedin}`
+    : null;
 
   return (
-    <div className="tmc-wrap" style={{ '--card-accent': color }}>
+    <div className="tmc-wrap" style={{ "--card-accent": color }}>
       {/* Neo-brutalist offset shadow block */}
       <div className="tmc-shadow" aria-hidden="true" />
 
-      <div className="tmc" role="article" aria-label={`${member.name} – ${member.post}`}>
-
+      <div
+        className="tmc"
+        role="article"
+        aria-label={`${member.name} – ${member.post}`}
+      >
         {/* ── Body: photo + info ── */}
         <div className="tmc-body">
-
           {/* Photo frame */}
           <div className="tmc-photo-frame">
             <LazyPhoto src={member.src} alt={member.name} />
@@ -130,14 +716,18 @@ function MemberCard({ member, color }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${member.name} on LinkedIn`}
-              onClick={e => e.stopPropagation()}
+              onClick={(e) => e.stopPropagation()}
             >
-              <span className="tmc-btn-icon"><LinkedInIcon /></span>
+              <span className="tmc-btn-icon">
+                <LinkedInIcon />
+              </span>
               LINKEDIN
             </a>
           ) : (
             <span className="tmc-btn disabled" aria-hidden="true">
-              <span className="tmc-btn-icon"><LinkedInIcon /></span>
+              <span className="tmc-btn-icon">
+                <LinkedInIcon />
+              </span>
               LINKEDIN
             </span>
           )}
@@ -147,42 +737,60 @@ function MemberCard({ member, color }) {
               className="tmc-btn"
               href={`mailto:${member.gmail}`}
               aria-label={`Email ${member.name}`}
-              onClick={e => e.stopPropagation()}
+              onClick={(e) => e.stopPropagation()}
             >
-              <span className="tmc-btn-icon"><MailIcon /></span>
+              <span className="tmc-btn-icon">
+                <MailIcon />
+              </span>
               EMAIL
             </a>
           ) : (
             <span className="tmc-btn disabled" aria-hidden="true">
-              <span className="tmc-btn-icon"><MailIcon /></span>
+              <span className="tmc-btn-icon">
+                <MailIcon />
+              </span>
               EMAIL
             </span>
           )}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 /* ─── Section with scroll-reveal ─── */
 function TeamSection({ categoryKey, members, color }) {
-  const ref = useRef(null)
+  const ref = useRef(null);
   useEffect(() => {
-    const el = ref.current
-    if (!el) return
+    const el = ref.current;
+    if (!el) return;
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add("visible");
+    }
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { el.classList.add('visible'); obs.disconnect() } },
-      { threshold: 0.04, rootMargin: '0px 0px -40px 0px' }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
+      ([e]) => {
+        if (e.isIntersecting) {
+          el.classList.add("visible");
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.04, rootMargin: "0px 0px -40px 0px" },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
-    <section ref={ref} className="team-section" style={{ '--section-color': color }}>
+    <section
+      ref={ref}
+      className="team-section"
+      style={{ "--section-color": color }}
+    >
       <div className="team-section-header">
         <div className="team-section-accent" />
-        <h2 className="team-section-label">{CAT_DISPLAY[categoryKey] || categoryKey}</h2>
+        <h2 className="team-section-label">
+          {CAT_DISPLAY[categoryKey] || categoryKey}
+        </h2>
         <div className="team-section-line" />
         <span className="team-section-count">{members.length}</span>
       </div>
@@ -192,45 +800,88 @@ function TeamSection({ categoryKey, members, color }) {
         ))}
       </div>
     </section>
-  )
+  );
 }
 
 /* ─── Team Page ─── */
 export default function TeamPage() {
-  const [activeCategory, setActiveCategory] = useState('all')
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [isExecomExpanded, setIsExecomExpanded] = useState(false);
+  const [palette, setPalette] = useState("editorial"); // "editorial" (Hardware Acid Lime) | "blueprint" (Blueprint Cyan)
 
-  const grouped = {}
-  current_team_photo.forEach(m => {
-    if (!grouped[m.type]) grouped[m.type] = []
-    grouped[m.type].push(m)
-  })
+  // Group current updated team (Executive Committee + SPS, etc.)
+  const currentGrouped = {};
+  CURRENT_TEAM.forEach((m) => {
+    if (!currentGrouped[m.type]) currentGrouped[m.type] = [];
+    currentGrouped[m.type].push(m);
+  });
 
-  const totalMembers = current_team_photo.length
-  const activeCats   = CATEGORIES.filter(c => c.key === 'all' || grouped[c.key])
-  const renderKeys   = activeCategory === 'all'
-    ? Object.keys(grouped)
-    : Object.keys(grouped).filter(k => k === activeCategory)
+  const currentActiveCats = CATEGORIES.filter(
+    (c) => c.key === "all" || currentGrouped[c.key],
+  );
+  const currentRenderKeys =
+    activeCategory === "all"
+      ? Object.keys(currentGrouped)
+      : Object.keys(currentGrouped).filter((k) => k === activeCategory);
+
+  // Group archived previous roster
+  const grouped = {};
+  current_team_photo.forEach((m) => {
+    if (!grouped[m.type]) grouped[m.type] = [];
+    grouped[m.type].push(m);
+  });
 
   return (
-    <div className="team-page">
-
+    <div className={`team-page palette-${palette}`}>
       <header className="team-hero">
         <div className="team-hero-badge">⚡ IEEE SJCE · 2025–26</div>
-        <h1>Our <em>Team</em></h1>
-        <p>The dedicated minds driving innovation at IEEE SJCE — students leading change, one project at a time.</p>
+        <h1>
+          Our <em>Team</em>
+        </h1>
+        <p>
+          The dedicated minds driving innovation at IEEE SJCE — students leading
+          change, one project at a time.
+        </p>
+
+        {/* ─── Accent Palette Switcher ─── */}
+        <div className="palette-switcher-bar" role="region" aria-label="Theme Palette Selector">
+          <span className="palette-switcher-label">PALETTE:</span>
+          <button
+            type="button"
+            className={`palette-switcher-btn${palette === "editorial" ? " active" : ""}`}
+            style={{ "--btn-accent": "#CCFF00" }}
+            onClick={() => setPalette("editorial")}
+          >
+            🔬 Hardware Acid Lime
+          </button>
+          <button
+            type="button"
+            className={`palette-switcher-btn${palette === "blueprint" ? " active" : ""}`}
+            style={{ "--btn-accent": "#00E5FF" }}
+            onClick={() => setPalette("blueprint")}
+          >
+            ⚡ Blueprint Cyan
+          </button>
+        </div>
+
         <span className="team-hero-count">
-          ✦ {totalMembers} members · {Object.keys(grouped).length} divisions
+          ✦ {CURRENT_TEAM.length} members · {Object.keys(currentGrouped).length} divisions
         </span>
       </header>
 
+      {/* ─── Filter Tabs for Active Divisions ─── */}
       <nav className="team-tabs-wrap" aria-label="Filter by division">
         <div className="team-tabs">
-          {activeCats.map(cat => (
+          {currentActiveCats.map((cat) => (
             <button
               key={cat.key}
               data-cat={cat.key}
-              className={`team-tab-btn${activeCategory === cat.key ? ' active' : ''}`}
-              style={activeCategory === cat.key ? { '--tab-color': cat.color } : {}}
+              className={`team-tab-btn${activeCategory === cat.key ? " active" : ""}`}
+              style={
+                activeCategory === cat.key
+                  ? { "--tab-color": cat.color }
+                  : {}
+              }
               onClick={() => setActiveCategory(cat.key)}
               aria-pressed={activeCategory === cat.key}
             >
@@ -240,16 +891,49 @@ export default function TeamPage() {
         </div>
       </nav>
 
-      <main className="team-content">
-        {renderKeys.map(key => (
+      {/* ─── Current Team Sections (Executive Committee, SPS, etc.) ─── */}
+      <main className="team-content" style={{ paddingBottom: "32px" }}>
+        {currentRenderKeys.map((key) => (
           <TeamSection
             key={key}
             categoryKey={key}
-            members={grouped[key]}
-            color={CAT_MAP[key]?.color ?? '#2563EB'}
+            members={currentGrouped[key]}
+            color={CAT_MAP[key]?.color ?? "#2563EB"}
           />
         ))}
       </main>
+
+      {/* ─── Collapsible Previous Execoms Roster ─── */}
+      <section className="execom-accordion-section">
+        <div className="execom-accordion-wrapper">
+          <button
+            type="button"
+            className={`execom-accordion-bar ${isExecomExpanded ? "is-open" : ""}`}
+            onClick={() => setIsExecomExpanded((prev) => !prev)}
+            aria-expanded={isExecomExpanded}
+          >
+            <span className="execom-accordion-title">IEEE Execom 2024-25</span>
+            <span className="execom-toggle-icon">
+              {isExecomExpanded ? "−" : "+"}
+            </span>
+          </button>
+
+          {isExecomExpanded && (
+            <div className="execom-accordion-content">
+              <div className="team-content" style={{ paddingTop: "40px" }}>
+                {Object.keys(grouped).map((key) => (
+                  <TeamSection
+                    key={key}
+                    categoryKey={key}
+                    members={grouped[key]}
+                    color={CAT_MAP[key]?.color ?? "#2563EB"}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
     </div>
-  )
+  );
 }

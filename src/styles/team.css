@@ -25,6 +25,318 @@
 }
 
 /* ══════════════════════════════════════
+   ACCENT PALETTE THEMES (Interactive Preview)
+   ══════════════════════════════════════ */
+/* 1. Cyber Hardware Neo-Brutalist (Acid Lime + Royal Blue Under-Card & Ambient Canvas) */
+.team-page.palette-editorial {
+  --accent: #CCFF00;
+  --accent-dim: #99CC00;
+  --teal: #CCFF00;
+  background-color: #0A0D14;
+  background-image:
+    /* Layer 1: Ambient Royal Cobalt atmospheric hue glow */
+    radial-gradient(circle at 14% 18%, rgba(37, 99, 235, 0.18) 0%, transparent 48%),
+    radial-gradient(circle at 86% 60%, rgba(30, 58, 138, 0.22) 0%, transparent 52%),
+    radial-gradient(circle at 45% 92%, rgba(37, 99, 235, 0.12) 0%, transparent 42%),
+    /* Layer 2: Neo-brutalist technical engineering diagonal hatch stripes */
+    repeating-linear-gradient(135deg, rgba(37, 99, 235, 0.035) 0px, rgba(37, 99, 235, 0.035) 2px, transparent 2px, transparent 28px),
+    /* Layer 3: Precision Acid Lime engineering grid lines */
+    linear-gradient(rgba(204, 255, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(204, 255, 0, 0.045) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 54px 54px, 54px 54px;
+  background-attachment: fixed;
+}
+
+.team-page.palette-editorial .team-hero::before {
+  display: none;
+}
+
+.team-page.palette-editorial .team-hero-badge {
+  background: #CCFF00;
+  color: #000000;
+  font-weight: 900;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0 #2563EB;
+}
+
+.team-page.palette-editorial .team-hero h1 em {
+  color: #CCFF00;
+}
+
+.team-page.palette-editorial .team-hero-count {
+  color: #CCFF00;
+}
+
+.team-page.palette-editorial .palette-switcher-bar {
+  background: #12151D;
+  border-color: #242B38;
+  box-shadow: 3px 3px 0 #000000;
+}
+
+/* Sticky Filter Tabs */
+.team-page.palette-editorial .team-tabs-wrap {
+  background: rgba(10, 13, 20, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1.5px solid #1E2430;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.65);
+}
+
+.team-page.palette-editorial .team-tab-btn {
+  color: #8C99AE;
+}
+
+.team-page.palette-editorial .team-tab-btn:hover {
+  color: #FFFFFF;
+  background: rgba(204, 255, 0, 0.05);
+}
+
+.team-page.palette-editorial .team-tab-btn.active {
+  color: #CCFF00;
+  border-bottom-color: #CCFF00;
+  font-weight: 800;
+}
+
+/* Section Headers — Duo-tone Engineering Hazard Accent */
+.team-page.palette-editorial .team-section-accent {
+  width: 8px;
+  height: 34px;
+  border-radius: 0;
+  background: repeating-linear-gradient(-45deg, #CCFF00, #CCFF00 5px, #2563EB 5px, #2563EB 10px);
+  border: 1.5px solid #000000;
+  box-shadow: 3px 3px 0 #000000;
+}
+
+.team-page.palette-editorial .team-section-label {
+  color: #F8FAFC;
+}
+
+.team-page.palette-editorial .team-section-line {
+  background: linear-gradient(90deg, #CCFF00 0%, #2563EB 45%, transparent 100%);
+  opacity: 0.6;
+}
+
+.team-page.palette-editorial .team-section-count {
+  color: #CCFF00;
+  background: #141720;
+  border: 1.5px solid #28331E;
+}
+
+/* Member Identity Cards — Acid Lime Shadow */
+.team-page.palette-editorial .tmc-shadow {
+  background: #e2f98b;
+  border: 2.5px solid #000000;
+}
+
+.team-page.palette-editorial .tmc {
+  background-color: #E2F885;
+  background-image: radial-gradient(circle at center, #d9ff3e 0%, #D8F768 120%);
+  border: 2.5px solid #000000;
+}
+
+.team-page.palette-editorial .tmc-photo-frame {
+  background: #D4EBA0;
+  border-right: 2.5px solid #000000;
+}
+
+.team-page.palette-editorial .tmc-photo-frame::after {
+  background: #2563EB;
+}
+
+.team-page.palette-editorial .tmc-dots {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.35) 1.5px, transparent 1.5px);
+}
+
+.team-page.palette-editorial .tmc-ieee-badge {
+  background: #000000;
+  border-top: 2.5px solid #000000;
+  border-right: 2.5px solid #000000;
+}
+
+.team-page.palette-editorial .tmc-ieee-badge img {
+  filter: brightness(0) invert(1);
+}
+
+.team-page.palette-editorial .tmc-photo-placeholder {
+  background: linear-gradient(135deg, #cde98a, #dff59e);
+}
+
+.team-page.palette-editorial .tmc-photo-placeholder-letter {
+  color: #000000;
+  opacity: 0.18;
+}
+
+.team-page.palette-editorial .tmc-info::after {
+  border-top-color: rgba(0, 0, 0, 0.3);
+  border-right-color: rgba(0, 0, 0, 0.3);
+}
+
+.team-page.palette-editorial .tmc-name {
+  color: #000000;
+}
+
+.team-page.palette-editorial .tmc-role-text {
+  background: #000000;
+  border: 1.5px solid #000000;
+  color: #CCFF00;
+  font-weight: 800;
+}
+
+.team-page.palette-editorial .tmc-footer {
+  background: #E8FF9E;
+  border-top: 2.5px solid #000000;
+}
+
+.team-page.palette-editorial .tmc-btn {
+  border-right: 2.5px solid #000000;
+  color: #000000;
+}
+
+.team-page.palette-editorial .tmc-btn:hover {
+  background: #000000;
+  color: #CCFF00;
+}
+
+.team-page.palette-editorial .tmc-btn-icon {
+  background: #000000;
+  color: #CCFF00;
+  border-color: #000000;
+}
+
+.team-page.palette-editorial .tmc-btn:hover .tmc-btn-icon {
+  background: #CCFF00;
+  color: #000000;
+}
+
+/* Accordion in Hardware Acid Lime */
+.team-page.palette-editorial .execom-accordion-bar {
+  background: #12151D;
+  border: 1.5px solid #232A38;
+}
+
+.team-page.palette-editorial .execom-accordion-bar:hover {
+  background: #171B26;
+  border-color: #CCFF00;
+}
+
+.team-page.palette-editorial .execom-accordion-bar:hover .execom-accordion-title {
+  color: #F1F5F9;
+}
+
+.team-page.palette-editorial .execom-toggle-icon {
+  color: #CCFF00;
+}
+
+.team-page.palette-editorial .execom-accordion-content {
+  background: #0D1017;
+  border: 1.5px solid #232A38;
+  border-top: none;
+}
+
+/* 2. Pure Blueprint Monolith (Cyan + Electric Violet / Tech Ultraviolet Accent) */
+.team-page.palette-blueprint {
+  --accent: #00E5FF;
+  --accent-dim: #00B8D4;
+  --teal: #00F5D4;
+  background-color: #070B14;
+  background-image:
+    /* Layer 1: Ambient Electric Ultraviolet & Cyan atmospheric hue wash */
+    radial-gradient(circle at 85% 18%, rgba(139, 92, 246, 0.16) 0%, transparent 48%),
+    radial-gradient(circle at 14% 72%, rgba(0, 229, 255, 0.14) 0%, transparent 50%),
+    radial-gradient(circle at 50% 42%, rgba(99, 102, 241, 0.10) 0%, transparent 44%),
+    /* Layer 2: Subtle technical diagonal blueprint hatch stripes */
+    repeating-linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0px, rgba(139, 92, 246, 0.03) 2px, transparent 2px, transparent 28px),
+    /* Layer 3: Cyan engineering precision grid */
+    linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 54px 54px, 54px 54px;
+  background-attachment: fixed;
+}
+
+.team-page.palette-blueprint .team-hero::before {
+  display: none;
+}
+
+.team-page.palette-blueprint .tmc-shadow {
+  background: #1D4ED8;
+  border: 2px solid #0A0E1A;
+}
+
+.team-page.palette-blueprint .team-tabs-wrap {
+  background: rgba(7, 11, 20, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1.5px solid #1E283C;
+}
+
+.team-page.palette-blueprint .team-section-accent {
+  width: 8px;
+  height: 34px;
+  border-radius: 0;
+  background: repeating-linear-gradient(-45deg, #00E5FF, #00E5FF 5px, #8B5CF6 5px, #8B5CF6 10px);
+  border: 1.5px solid #0A0E1A;
+  box-shadow: 3px 3px 0 #00E5FF;
+}
+
+.team-page.palette-blueprint .team-section-line {
+  background: linear-gradient(90deg, #00E5FF 0%, #8B5CF6 45%, transparent 100%);
+  opacity: 0.6;
+}
+
+/* ── Palette Switcher Bar ── */
+.palette-switcher-bar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px auto 0;
+  padding: 6px 12px;
+  background: rgba(17, 24, 39, 0.75);
+  border: 1.5px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+.palette-switcher-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-right: 4px;
+}
+
+.palette-switcher-btn {
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 6px 12px;
+  border: 1.5px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.palette-switcher-btn:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.palette-switcher-btn.active {
+  background: var(--btn-accent, var(--accent));
+  color: #0A0E1A;
+  border-color: #0A0E1A;
+  font-weight: 800;
+  box-shadow: 2px 2px 0 #000000;
+}
+
+/* ══════════════════════════════════════
    HERO
    ══════════════════════════════════════ */
 .team-hero {
@@ -276,14 +588,14 @@
 .tmc-photo-frame {
   position: relative;
   flex-shrink: 0;
-  width: 44%;
+  width: 38%;
   aspect-ratio: 3/4;
   background: #d0e4f8;
   border-right: 2.5px solid #0F172A;
   overflow: hidden;
 }
 
-/* Cyan bar on right edge of photo */
+/* Solid accent bar on right edge of photo — pure neo-brutalist solid color blocking */
 .tmc-photo-frame::after {
   content: '';
   position: absolute;
@@ -291,7 +603,7 @@
   right: 0;
   bottom: 0;
   width: 7px;
-  background: linear-gradient(to bottom, #00C2FF, #2563EB);
+  background: #2563EB;
   z-index: 3;
 }
 
@@ -308,29 +620,37 @@
   background-size: 8px 8px;
 }
 
-/* Photo image */
+/* Photo image — ultra-crisp GPU downsampling */
 .tmc-photo-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
   display: block;
-  transition: transform 0.4s ease, filter 0.3s ease;
-  filter: contrast(1.02);
-}
-
-.tmc-photo-img.loading {
-  filter: grayscale(80%) blur(8px);
-  transform: scale(1.06);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: opacity 0.22s ease, transform 0.35s cubic-bezier(0.2, 0, 0, 1);
+  opacity: 0;
 }
 
 .tmc-photo-img.loaded {
-  filter: contrast(1.02);
-  transform: scale(1);
+  opacity: 1;
 }
 
 .tmc-wrap:hover .tmc-photo-img.loaded {
-  transform: scale(1.05);
+  transform: scale(1.04);
+}
+
+/* Intelligent portrait auto-framing for wide/distance shots */
+.tmc-photo-img.is-zoomed-portrait {
+  transform: scale(1.7) translateZ(0);
+  transform-origin: center 3%;
+}
+
+.tmc-wrap:hover .tmc-photo-img.is-zoomed-portrait.loaded {
+  transform: scale(1.76) translateZ(0);
 }
 
 /* Placeholder */
@@ -379,10 +699,11 @@
 /* ── INFO SECTION ── */
 .tmc-info {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20px 18px 20px 20px;
+  padding: 16px 14px;
   position: relative;
   background: transparent;
 }
@@ -400,19 +721,19 @@
   pointer-events: none;
 }
 
-/* Member Name */
+/* Member Name — Space Grotesk eliminates single-letter orphan wrapping */
 .tmc-name {
-  font-family: var(--font-display);
-  font-size: clamp(0.9rem, 1.4vw, 1.15rem);
-  font-weight: 900;
+  font-family: var(--font-body);
+  font-size: clamp(0.84rem, 1.16vw, 1.02rem);
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   color: #0F172A;
-  margin: 0 0 14px;
-  line-height: 1.2;
-  word-wrap: normal;
+  margin: 0 0 10px;
+  line-height: 1.25;
+  text-wrap: balance;
   word-break: normal;
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
 }
 
 /* Role badge — filled blue pill */
@@ -423,16 +744,14 @@
   position: relative;
 }
 
-
-
 .tmc-role-text {
   background: var(--card-accent, #2563EB);
   color: #fff;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  padding: 6px 14px;
+  padding: 5px 11px;
   font-family: var(--font-body);
   border: 1.5px solid #0F172A;
   white-space: normal;
@@ -513,13 +832,83 @@
   height: 13px;
 }
 
-
-
 /* Disabled state */
 .tmc-btn.disabled {
   opacity: 0.35;
   cursor: default;
   pointer-events: none;
+}
+
+/* ══════════════════════════════════════
+   EXECOM ACCORDION SECTION (Clean Reference Style)
+   ══════════════════════════════════════ */
+.execom-accordion-section {
+  width: 100%;
+  padding: 12px 24px 64px;
+}
+
+.execom-accordion-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.execom-accordion-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #2a3544;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 14px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.execom-accordion-bar:hover {
+  background: #323f52;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.execom-accordion-bar.is-open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: rgba(255, 255, 255, 0.04);
+}
+
+.execom-accordion-title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #94a3b8;
+  letter-spacing: 0.15px;
+  transition: color 0.2s ease;
+}
+
+.execom-accordion-bar:hover .execom-accordion-title {
+  color: #f1f5f9;
+}
+
+.execom-toggle-icon {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 19px;
+  line-height: 1;
+  font-weight: 400;
+  color: #a5b4fc;
+  transition: color 0.2s ease;
+}
+
+.execom-accordion-bar:hover .execom-toggle-icon {
+  color: #c7d2fe;
+}
+
+.execom-accordion-content {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: none;
+  background: rgba(17, 24, 39, 0.6);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 /* ══════════════════════════════════════
