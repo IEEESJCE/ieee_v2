@@ -11,6 +11,11 @@ import {
   Brain,
   Code,
   Trophy,
+  Heart,
+  Bot,
+  Rocket,
+  Search,
+  Image as ImageIcon,
 } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -21,8 +26,120 @@ gsap.registerPlugin(ScrollTrigger)
 // Chronology follows the legacy site: newest events first.
 const EVENTS = [
   {
+    title: 'Snap Circuits',
+    date: '5–6 NOV 2026',
+    wing: 'EDS',
+    description:
+      'The Electron Devices Society conducted Snap Circuits, giving freshers a hands-on experience with electronic components, circuit prototyping, and basic hardware debugging.',
+    icon: <Zap size={22} />,
+    accent: '#00F5D4',
+    image: '/photos/events/anap_circuits_2026.jpeg',
+    imageAlt: 'Snap Circuits November 2026 poster',
+    featured: true,
+  },
+  {
+    title: 'Tech Detective',
+    date: '16 OCT 2026',
+    wing: 'IEEE DAY',
+    description:
+      'Celebrated as part of IEEE Day, an exhilarating technical deduction contest challenging participants to crack cryptic hardware puzzles, decipher signals, and solve engineering mysteries.',
+    icon: <Search size={22} />,
+    accent: '#00E5FF',
+    image: '/photos/events/tech_detective.jpeg',
+    imageAlt: 'Tech Detective IEEE Day event poster',
+  },
+  {
+    title: 'Radioverse',
+    date: '8–9 OCT 2026',
+    wing: 'IEEE SJCE',
+    description:
+      'A two-day immersive exploration into radio frequency engineering, wireless telemetry, antenna design, and radar applications with live demonstrations and simulation sessions.',
+    icon: <Radio size={22} />,
+    accent: '#3B82F6',
+    image: '/photos/events/radio.jpeg',
+    imageAlt: 'Radioverse event poster',
+  },
+  {
+    title: 'AESS Chapter Inauguration & Space Tech Talk',
+    date: '23 JUL 2026',
+    wing: 'AESS',
+    description:
+      'Formal inauguration of the IEEE AESS student chapter featuring chief guest Dr. Braham Himed (President, IEEE AESS) and Sri Puneeth Kumar Mishra (ISRO), accompanied by an insightful technical session on radar systems and satellite technology.',
+    icon: <Rocket size={22} />,
+    accent: '#F59E0B',
+    image: '/photos/events/aess inaugaration.jpeg',
+    imageAlt: 'AESS Chapter Inauguration event poster',
+  },
+  {
+    title: 'Kalpana Chawla Memorial Lecture',
+    date: '15 JUN 2026',
+    wing: 'WIE',
+    description:
+      'A prestigious memorial lecture organized by IEEE WIE exploring the evolution, achievements, and future horizons of the Indian Space Programme and its transformative role in national progress.',
+    icon: <Rocket size={22} />,
+    accent: '#EC4899',
+    image: '/photos/events/kalpana_chawla_2026.jpeg',
+    imageAlt: 'Kalpana Chawla Memorial Lecture poster',
+  },
+  {
+    title: 'Motion Planning in Robotics',
+    date: '4 JUN 2026',
+    wing: 'SPS & RAS',
+    description:
+      'Joint technical session by SPS and RAS exploring search-based, sampling-based, and visual motion planning algorithms for mobile robotics and autonomous navigation using ROS 2.',
+    icon: <Bot size={22} />,
+    accent: '#00E5FF',
+    image: '/photos/events/motion_planning.jpeg',
+    imageAlt: 'Motion Planning in Robotics event poster',
+  },
+  {
+    title: 'Cadence Workshop',
+    date: '28 MAY 2026',
+    wing: 'EDS',
+    description:
+      'An intensive hands-on workshop by the Electron Devices Society delving into industry-standard Cadence EDA tools, schematic entry, layout verification, and physical semiconductor design.',
+    icon: <CircuitBoard size={22} />,
+    accent: '#00F5D4',
+    image: '/photos/events/cadence.jpeg',
+    imageAlt: 'Cadence Workshop poster',
+  },
+  {
+    title: 'ML Workshop',
+    date: '27–29 MAR 2026',
+    wing: 'SPS',
+    description:
+      'A 3-day flagship workshop by the Signal Processing Society covering machine learning fundamentals, modeling in Python, and building local edge-AI inference on ESP32 & MPU6050.',
+    icon: <Brain size={22} />,
+    accent: '#8B5CF6',
+    image: '/photos/events/ml_workshop.jpeg',
+    imageAlt: 'ML Workshop poster',
+  },
+  {
+    title: 'TCL Workshop',
+    date: '14 MAR 2026',
+    wing: 'WIE',
+    description:
+      'Conducted by Women in Engineering, focusing on Tool Command Language (TCL) scripting for automating digital design flows, synthesis constraints, and simulation regression suites.',
+    icon: <Code size={22} />,
+    accent: '#F59E0B',
+    image: '/photos/events/tcl.jpeg',
+    imageAlt: 'TCL Workshop poster',
+  },
+  {
+    title: 'Prayas',
+    date: '25 DEC 2025',
+    wing: 'WIE',
+    description:
+      "IEEE WIE's flagship humanitarian outreach initiative, visiting educational institutions to foster curiosity in science and engineering through joyful, hands-on learning sessions.",
+    icon: <Heart size={22} />,
+    accent: '#FF4081',
+    image: '/photos/events/prayas.jpeg',
+    imageAlt: 'Prayas event poster',
+  },
+  {
     title: 'Soldering and Etching Workshop',
     date: '19–21 DEC 2025',
+    wing: 'EDS',
     description:
       'A three-day flagship workshop from the Electron Devices Society, giving students hands-on experience of soldering and etching through theoretical and practical sessions.',
     icon: <Wrench size={22} />,
@@ -30,11 +147,11 @@ const EVENTS = [
     image: '/photos/events/soldering.jpeg',
     imageAlt: 'Soldering and Etching workshop poster, December 2025',
     imagePosition: 'center 28%',
-    featured: true,
   },
   {
     title: 'Wave Lab',
     date: '6 DEC 2025',
+    wing: 'SPS',
     description:
       'The debut event of the SPS Wing. Students used MATLAB to explore the basics of signal processing with an industry-standard tool, and received a MATLAB license for future work.',
     icon: <Radio size={22} />,
@@ -45,6 +162,7 @@ const EVENTS = [
   {
     title: 'IOT 4.0',
     date: '21–23 NOV 2025',
+    wing: 'RAS',
     description:
       'The Robotics and Automation Society conducted the IoT 4.0 workshop, giving participants hands-on exposure to building smart, connected systems with embedded platforms.',
     icon: <Wifi size={22} />,
@@ -56,6 +174,7 @@ const EVENTS = [
   {
     title: 'Snap Circuits',
     date: '6–7 NOV 2025',
+    wing: 'EDS',
     description:
       'The Electron Devices Society conducted Snap Circuits, giving freshers a hands-on experience of electronic components while building curiosity about circuits and how they work.',
     icon: <Zap size={22} />,
@@ -67,6 +186,7 @@ const EVENTS = [
   {
     title: 'Circuitrix',
     date: '25 OCT 2025',
+    wing: 'IEEE SJCE',
     description:
       'A hands-on session designed to help students explore, create and simulate both analog and digital circuits using powerful circuit simulation tools.',
     icon: <CircuitBoard size={22} />,
@@ -77,6 +197,7 @@ const EVENTS = [
   {
     title: 'AI Expert Talk and Ideathon',
     date: '11 FEB 2025',
+    wing: 'WIE',
     description:
       'STRONG – Scientific Research for NextGen GirlGeeks was organised by the MCAA India Chapter, funded by the European Union, and supported by the MCAA-Mednight Project, IEEE Mysore Subsection and IEEE-SJCE. The event aimed to inspire young women to pursue careers in science and research.',
     icon: <Brain size={22} />,
@@ -87,6 +208,7 @@ const EVENTS = [
   {
     title: 'Soldering and Etching Workshop',
     date: '10–12 JAN 2025',
+    wing: 'EDS',
     description:
       'The Electron Devices Society conducted the Soldering and Etching Workshop, a three-day flagship event giving students practical exposure to soldering and etching.',
     icon: <Wrench size={22} />,
@@ -98,6 +220,7 @@ const EVENTS = [
   {
     title: 'IOT-3.0 Workshop',
     date: '29 NOV – 1 DEC 2024',
+    wing: 'RAS',
     description:
       'A three-day workshop covering IoT protocols and core theory before moving on to hands-on simulations with Raspberry Pi and NodeMCU.',
     icon: <Wifi size={22} />,
@@ -108,6 +231,7 @@ const EVENTS = [
   {
     title: "TUXEDO'23",
     date: '28 NOV – 4 DEC 2023',
+    wing: 'IEEE SJCE',
     description:
       "IEEE-SJCE's odd-semester technical fest brought a week of workshops, contests and events, including Snap Circuits, Web Dev Bootcamp and Scribble.",
     icon: <Trophy size={22} />,
@@ -118,6 +242,7 @@ const EVENTS = [
   {
     title: 'Web Dev Bootcamp',
     date: '30 NOV & 2–3 DEC 2023',
+    wing: 'WIE & RAS',
     description:
       'The WIE and RAS wings presented a hands-on bootcamp on building and designing interactive websites, with online sessions on 30 November and 2 December and an offline session on 3 December.',
     icon: <Code size={22} />,
@@ -128,6 +253,7 @@ const EVENTS = [
   {
     title: 'Snap Circuits',
     date: '28–29 NOV 2023',
+    wing: 'EDS',
     description:
       "The EDS wing's TUXEDO'23 event gave students a hands-on introduction to electronic components and circuit building, with no prior electronics knowledge required.",
     icon: <Zap size={22} />,
@@ -316,7 +442,7 @@ export default function EventsSection() {
                     style={{ '--card-accent': evt.accent }}
                   >
                     {/* Icon hexagon */}
-                    <div className="evt-icon-hex" style={{ background: `${evt.accent}18`, borderColor: `${evt.accent}60` }}>
+                    <div className="evt-icon-hex" style={{ background: `${evt.accent}18` }}>
                       <div className="evt-icon-inner" style={{ color: evt.accent }}>
                         {evt.icon}
                       </div>
@@ -328,15 +454,34 @@ export default function EventsSection() {
                     {/* Description */}
                     <p className="evt-card-desc">{evt.description}</p>
 
-                    {/* Event image */}
+                    {/* Event image or Neo-Brutalist poster placeholder */}
                     <div className="evt-card-image">
-                      <img
-                        src={evt.image}
-                        alt={evt.imageAlt || evt.title}
-                        loading="lazy"
-                        style={evt.imagePosition ? { objectPosition: evt.imagePosition } : undefined}
-                      />
-                      <div className="evt-card-image-overlay" />
+                      {evt.image ? (
+                        <>
+                          <img
+                            src={evt.image}
+                            alt={evt.imageAlt || evt.title}
+                            loading="lazy"
+                            style={evt.imagePosition ? { objectPosition: evt.imagePosition } : undefined}
+                          />
+                          <div className="evt-card-image-overlay" />
+                        </>
+                      ) : (
+                        <div className="evt-poster-placeholder" style={{ '--poster-accent': evt.accent }}>
+                          <div className="evt-poster-grid" aria-hidden="true" />
+                          <div className="evt-poster-center">
+                            <div className="evt-poster-badge">
+                              <ImageIcon size={14} />
+                              <span>POSTER PENDING</span>
+                            </div>
+                            <span className="evt-poster-callout">OFFICIAL ASSET PENDING</span>
+                          </div>
+                          <div className="evt-poster-footer">
+                            <span className="evt-poster-wing">IEEE-SJCE</span>
+                            <span className="evt-poster-code">EVT//{i + 1 < 10 ? `0${i + 1}` : i + 1}</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
 

@@ -1,108 +1,117 @@
-import { useEffect, useRef } from 'react'
-import { Award, Globe, Trophy, Medal } from 'lucide-react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import '../styles/achievements.css'
+import { useEffect, useRef } from "react";
+import { Award, Globe, Trophy, Medal, Star } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "../styles/achievements.css";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 const ACHIEVEMENTS = [
   {
     id: 1,
-    award: 'Outstanding Student Branch',
-    section: 'IEEE Mysore Subsection',
-    year: '2021',
-    icon: <Trophy size={28} />,
-    accent: '#00E5FF',
-    rank: 'I',
+    award: "MDC Star",
+    section: "IEEE Bangalore Section",
+    year: "2026",
+    icon: <Star size={28} />,
+    accent: "#FFE600",
+    rank: "I",
   },
   {
     id: 2,
-    award: 'Best Student Branch Website',
-    section: 'IEEE Bangalore Section',
-    year: '2019',
-    icon: <Globe size={28} />,
-    accent: '#3B82F6',
-    rank: 'II',
+    award: "Outstanding Student Branch",
+    section: "IEEE Mysore Subsection",
+    year: "2021",
+    icon: <Trophy size={28} />,
+    accent: "#00E5FF",
+    rank: "II",
   },
   {
     id: 3,
-    award: 'Best Student Branch Website',
-    section: 'IEEE Bangalore Section',
-    year: '2017',
+    award: "Best Student Branch Website",
+    section: "IEEE Bangalore Section",
+    year: "2019",
     icon: <Globe size={28} />,
-    accent: '#8B5CF6',
-    rank: 'III',
+    accent: "#3B82F6",
+    rank: "III",
   },
   {
     id: 4,
-    award: 'Best Student Branch Website',
-    section: 'IEEE Bangalore Section',
-    year: '2016',
-    icon: <Award size={28} />,
-    accent: '#00F5D4',
-    rank: 'IV',
+    award: "Best Student Branch Website",
+    section: "IEEE Bangalore Section",
+    year: "2017",
+    icon: <Globe size={28} />,
+    accent: "#8B5CF6",
+    rank: "IV",
   },
-]
+  {
+    id: 5,
+    award: "Best Student Branch Website",
+    section: "IEEE Bangalore Section",
+    year: "2016",
+    icon: <Award size={28} />,
+    accent: "#00F5D4",
+    rank: "V",
+  },
+];
 
 export default function AchievementsSection() {
-  const sectionRef = useRef(null)
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        '.ach-hero-block > *',
+        ".ach-hero-block > *",
         { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 0.8,
           stagger: 0.1,
-          ease: 'power3.out',
+          ease: "power3.out",
           scrollTrigger: {
-            trigger: '.ach-hero-block',
-            start: 'top 85%',
-            toggleActions: 'play none none none',
+            trigger: ".ach-hero-block",
+            start: "top 85%",
+            toggleActions: "play none none none",
           },
-        }
-      )
+        },
+      );
 
       gsap.fromTo(
-        '.ach-plaque',
+        ".ach-plaque",
         { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 0.75,
           stagger: 0.12,
-          ease: 'power3.out',
+          ease: "power3.out",
           scrollTrigger: {
-            trigger: '.ach-podium',
-            start: 'top 85%',
-            toggleActions: 'play none none none',
+            trigger: ".ach-podium",
+            start: "top 85%",
+            toggleActions: "play none none none",
           },
-        }
-      )
+        },
+      );
 
       gsap.fromTo(
-        '.ach-orb',
+        ".ach-orb",
         { scale: 0.8, opacity: 0 },
         {
           scale: 1,
           opacity: 1,
           duration: 0.8,
-          ease: 'back.out(1.5)',
+          ease: "back.out(1.5)",
           scrollTrigger: {
-            trigger: '.ach-hero-block',
-            start: 'top 85%',
-            toggleActions: 'play none none none',
+            trigger: ".ach-hero-block",
+            start: "top 85%",
+            toggleActions: "play none none none",
           },
-        }
-      )
-    }, sectionRef)
+        },
+      );
+    }, sectionRef);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section id="achievements" ref={sectionRef} className="ach-section">
@@ -114,18 +123,19 @@ export default function AchievementsSection() {
             <Medal size={20} className="ach-hero-icon" />
             <h2 className="ach-hero-title">Hall of Fame</h2>
             <p className="ach-hero-desc">
-              Awards that celebrate our commitment to excellence across IEEE sections nationwide.
+              Awards that celebrate our commitment to excellence across IEEE
+              sections nationwide.
             </p>
           </div>
           <div className="ach-hero-right">
             <div className="ach-hero-stats">
               <div className="ach-stat">
-                <span className="ach-stat-value">4</span>
-                <span className="ach-stat-key">Awards</span>
+                <span className="ach-stat-value">{ACHIEVEMENTS.length}</span>
+                <span className="ach-stat-key">Major Awards</span>
               </div>
               <div className="ach-stat-divider" />
               <div className="ach-stat">
-                <span className="ach-stat-value">6+</span>
+                <span className="ach-stat-value">10+</span>
                 <span className="ach-stat-key">Years</span>
               </div>
             </div>
@@ -145,7 +155,7 @@ export default function AchievementsSection() {
               <article
                 key={item.id}
                 className="ach-plaque"
-                style={{ '--plaque-accent': item.accent }}
+                style={{ "--plaque-accent": item.accent }}
               >
                 <span className="ach-plaque-year-bg">{item.year}</span>
 
@@ -166,5 +176,5 @@ export default function AchievementsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

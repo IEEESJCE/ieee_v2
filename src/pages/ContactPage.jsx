@@ -7,7 +7,7 @@ const CONTACT_EMAIL = 'kumarsubrato1103@gmail.com'
 
 const CHANNELS = [
   { icon: Mail, label: 'Email', value: 'ieeesjce2019@gmail.com', href: 'mailto:ieeesjce2019@gmail.com', accent: '#00E5FF' },
-  { icon: Phone, label: 'Phone', value: '+91 7795317819', href: 'tel:+917795317819', accent: '#3B82F6' },
+  { icon: Phone, label: 'Phone', value: '+91 734 925 8281', href: 'tel:+917349258281', accent: '#3B82F6' },
   { icon: Instagram, label: 'Instagram', value: '@ieee_sjce', href: 'https://www.instagram.com/ieee_sjce/', accent: '#EC4899' },
   { icon: Linkedin, label: 'LinkedIn', value: 'IEEE-SJCE', href: 'https://www.linkedin.com/company/ieee-sjce/', accent: '#60A5FA' },
 ]

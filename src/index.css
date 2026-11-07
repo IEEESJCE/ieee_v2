@@ -29,6 +29,7 @@
   --shadow-blue: 0 4px 16px rgba(59, 130, 246, 0.25);
   --font-display: 'Dela Gothic One', sans-serif;
   --font-body: 'Space Grotesk', sans-serif;
+  --font-mono: 'Space Mono', monospace;
   --radius: 8px;
   --radius-md: 12px;
   --mode: dark;

@@ -1,0 +1,111 @@
+/* ═══════════════════════════════════════════════════════════
+   EDS 2.5D VECTOR ILLUSTRATION (MATCHING WIE & RAS AESTHETICS)
+   ═══════════════════════════════════════════════════════════ */
+
+.eds-illust-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #090E1A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eds-illust-svg {
+  width: 100%;
+  height: 100%;
+  max-width: 320px;
+  max-height: 320px;
+  display: block;
+  margin: auto;
+}
+
+/* ─── Floating Hero Subject (Engineer + Isometric Workbench) ─── */
+.eds-hero-float {
+  animation: eds-char-float 4.6s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes eds-char-float {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-6px);
+  }
+}
+
+/* ─── Rotating Gears in Background (Exact match to RAS) ─── */
+.eds-gear-1 {
+  animation: eds-gear-spin-cw 24s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.eds-gear-2 {
+  animation: eds-gear-spin-ccw 18s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes eds-gear-spin-cw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes eds-gear-spin-ccw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* ─── Glowing Semiconductor Chip Core ─── */
+.eds-chip-glow {
+  animation: eds-glow-pulse 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes eds-glow-pulse {
+  0% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 3px #00E5FF);
+  }
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px #00E5FF) drop-shadow(0 0 16px rgba(0, 229, 255, 0.7));
+  }
+}
+
+/* ─── Oscilloscope Screen Line ─── */
+.eds-scope-wave {
+  stroke-dasharray: 6 3;
+  animation: eds-scope-flow 2s linear infinite;
+}
+
+@keyframes eds-scope-flow {
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+
+/* ─── Holographic Electron Orbit ─── */
+.eds-orbit-pulse {
+  animation: eds-orbit-spin 14s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes eds-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

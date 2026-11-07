@@ -25,219 +25,18 @@
 }
 
 /* ══════════════════════════════════════
-   ACCENT PALETTE THEMES (Interactive Preview)
+   BLUEPRINT CYAN IDENTITY SYSTEM
    ══════════════════════════════════════ */
-/* 1. Cyber Hardware Neo-Brutalist (Acid Lime + Royal Blue Under-Card & Ambient Canvas) */
-.team-page.palette-editorial {
-  --accent: #CCFF00;
-  --accent-dim: #99CC00;
-  --teal: #CCFF00;
-  background-color: #0A0D14;
-  background-image:
-    /* Layer 1: Ambient Royal Cobalt atmospheric hue glow */
-    radial-gradient(circle at 14% 18%, rgba(37, 99, 235, 0.18) 0%, transparent 48%),
-    radial-gradient(circle at 86% 60%, rgba(30, 58, 138, 0.22) 0%, transparent 52%),
-    radial-gradient(circle at 45% 92%, rgba(37, 99, 235, 0.12) 0%, transparent 42%),
-    /* Layer 2: Neo-brutalist technical engineering diagonal hatch stripes */
-    repeating-linear-gradient(135deg, rgba(37, 99, 235, 0.035) 0px, rgba(37, 99, 235, 0.035) 2px, transparent 2px, transparent 28px),
-    /* Layer 3: Precision Acid Lime engineering grid lines */
-    linear-gradient(rgba(204, 255, 0, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(204, 255, 0, 0.045) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 54px 54px, 54px 54px;
-  background-attachment: fixed;
-}
-
-.team-page.palette-editorial .team-hero::before {
-  display: none;
-}
-
-.team-page.palette-editorial .team-hero-badge {
-  background: #CCFF00;
-  color: #000000;
-  font-weight: 900;
-  border: 2px solid #000000;
-  box-shadow: 4px 4px 0 #2563EB;
-}
-
-.team-page.palette-editorial .team-hero h1 em {
-  color: #CCFF00;
-}
-
-.team-page.palette-editorial .team-hero-count {
-  color: #CCFF00;
-}
-
-.team-page.palette-editorial .palette-switcher-bar {
-  background: #12151D;
-  border-color: #242B38;
-  box-shadow: 3px 3px 0 #000000;
-}
-
-/* Sticky Filter Tabs */
-.team-page.palette-editorial .team-tabs-wrap {
-  background: rgba(10, 13, 20, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1.5px solid #1E2430;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.65);
-}
-
-.team-page.palette-editorial .team-tab-btn {
-  color: #8C99AE;
-}
-
-.team-page.palette-editorial .team-tab-btn:hover {
-  color: #FFFFFF;
-  background: rgba(204, 255, 0, 0.05);
-}
-
-.team-page.palette-editorial .team-tab-btn.active {
-  color: #CCFF00;
-  border-bottom-color: #CCFF00;
-  font-weight: 800;
-}
-
-/* Section Headers — Duo-tone Engineering Hazard Accent */
-.team-page.palette-editorial .team-section-accent {
-  width: 8px;
-  height: 34px;
-  border-radius: 0;
-  background: repeating-linear-gradient(-45deg, #CCFF00, #CCFF00 5px, #2563EB 5px, #2563EB 10px);
-  border: 1.5px solid #000000;
-  box-shadow: 3px 3px 0 #000000;
-}
-
-.team-page.palette-editorial .team-section-label {
-  color: #F8FAFC;
-}
-
-.team-page.palette-editorial .team-section-line {
-  background: linear-gradient(90deg, #CCFF00 0%, #2563EB 45%, transparent 100%);
-  opacity: 0.6;
-}
-
-.team-page.palette-editorial .team-section-count {
-  color: #CCFF00;
-  background: #141720;
-  border: 1.5px solid #28331E;
-}
-
-/* Member Identity Cards — Acid Lime Shadow */
-.team-page.palette-editorial .tmc-shadow {
-  background: #e2f98b;
-  border: 2.5px solid #000000;
-}
-
-.team-page.palette-editorial .tmc {
-  background-color: #E2F885;
-  background-image: radial-gradient(circle at center, #d9ff3e 0%, #D8F768 120%);
-  border: 2.5px solid #000000;
-}
-
-.team-page.palette-editorial .tmc-photo-frame {
-  background: #D4EBA0;
-  border-right: 2.5px solid #000000;
-}
-
-.team-page.palette-editorial .tmc-photo-frame::after {
-  background: #2563EB;
-}
-
-.team-page.palette-editorial .tmc-dots {
-  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.35) 1.5px, transparent 1.5px);
-}
-
-.team-page.palette-editorial .tmc-ieee-badge {
-  background: #000000;
-  border-top: 2.5px solid #000000;
-  border-right: 2.5px solid #000000;
-}
-
-.team-page.palette-editorial .tmc-ieee-badge img {
-  filter: brightness(0) invert(1);
-}
-
-.team-page.palette-editorial .tmc-photo-placeholder {
-  background: linear-gradient(135deg, #cde98a, #dff59e);
-}
-
-.team-page.palette-editorial .tmc-photo-placeholder-letter {
-  color: #000000;
-  opacity: 0.18;
-}
-
-.team-page.palette-editorial .tmc-info::after {
-  border-top-color: rgba(0, 0, 0, 0.3);
-  border-right-color: rgba(0, 0, 0, 0.3);
-}
-
-.team-page.palette-editorial .tmc-name {
-  color: #000000;
-}
-
-.team-page.palette-editorial .tmc-role-text {
-  background: #000000;
-  border: 1.5px solid #000000;
-  color: #CCFF00;
-  font-weight: 800;
-}
-
-.team-page.palette-editorial .tmc-footer {
-  background: #E8FF9E;
-  border-top: 2.5px solid #000000;
-}
-
-.team-page.palette-editorial .tmc-btn {
-  border-right: 2.5px solid #000000;
-  color: #000000;
-}
-
-.team-page.palette-editorial .tmc-btn:hover {
-  background: #000000;
-  color: #CCFF00;
-}
-
-.team-page.palette-editorial .tmc-btn-icon {
-  background: #000000;
-  color: #CCFF00;
-  border-color: #000000;
-}
-
-.team-page.palette-editorial .tmc-btn:hover .tmc-btn-icon {
-  background: #CCFF00;
-  color: #000000;
-}
-
-/* Accordion in Hardware Acid Lime */
-.team-page.palette-editorial .execom-accordion-bar {
-  background: #12151D;
-  border: 1.5px solid #232A38;
-}
-
-.team-page.palette-editorial .execom-accordion-bar:hover {
-  background: #171B26;
-  border-color: #CCFF00;
-}
-
-.team-page.palette-editorial .execom-accordion-bar:hover .execom-accordion-title {
-  color: #F1F5F9;
-}
-
-.team-page.palette-editorial .execom-toggle-icon {
-  color: #CCFF00;
-}
-
-.team-page.palette-editorial .execom-accordion-content {
-  background: #0D1017;
-  border: 1.5px solid #232A38;
-  border-top: none;
-}
-
-/* 2. Pure Blueprint Monolith (Cyan + Electric Violet / Tech Ultraviolet Accent) */
 .team-page.palette-blueprint {
   --accent: #00E5FF;
   --accent-dim: #00B8D4;
   --teal: #00F5D4;
+  background-color: #070B14;
+  background-image: none;
+}
+
+/* Background gradient & grid kept strictly to hero above the navbar */
+.team-page.palette-blueprint .team-hero {
   background-color: #070B14;
   background-image:
     /* Layer 1: Ambient Electric Ultraviolet & Cyan atmospheric hue wash */
@@ -250,7 +49,6 @@
     linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 54px 54px, 54px 54px;
-  background-attachment: fixed;
 }
 
 .team-page.palette-blueprint .team-hero::before {
@@ -259,14 +57,20 @@
 
 .team-page.palette-blueprint .tmc-shadow {
   background: #1D4ED8;
-  border: 2px solid #0A0E1A;
+  border: 2.5px solid #0A0E1A;
 }
 
 .team-page.palette-blueprint .team-tabs-wrap {
-  background: rgba(7, 11, 20, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #070B14;
   border-bottom: 1.5px solid #1E283C;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Below the nav bar: clean solid dark background, no patterns/gradients */
+.team-page.palette-blueprint .team-content,
+.team-page.palette-blueprint .execom-accordion-section {
+  background-color: #070B14;
+  background-image: none;
 }
 
 .team-page.palette-blueprint .team-section-accent {
@@ -281,59 +85,6 @@
 .team-page.palette-blueprint .team-section-line {
   background: linear-gradient(90deg, #00E5FF 0%, #8B5CF6 45%, transparent 100%);
   opacity: 0.6;
-}
-
-/* ── Palette Switcher Bar ── */
-.palette-switcher-bar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 18px auto 0;
-  padding: 6px 12px;
-  background: rgba(17, 24, 39, 0.75);
-  border: 1.5px solid var(--border-color);
-  border-radius: 6px;
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
-}
-
-.palette-switcher-label {
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-right: 4px;
-}
-
-.palette-switcher-btn {
-  font-family: var(--font-body);
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  padding: 6px 12px;
-  border: 1.5px solid transparent;
-  border-radius: 4px;
-  background: transparent;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all 0.15s ease;
-  white-space: nowrap;
-}
-
-.palette-switcher-btn:hover {
-  color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.palette-switcher-btn.active {
-  background: var(--btn-accent, var(--accent));
-  color: #0A0E1A;
-  border-color: #0A0E1A;
-  font-weight: 800;
-  box-shadow: 2px 2px 0 #000000;
 }
 
 /* ══════════════════════════════════════
