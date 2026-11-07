@@ -169,37 +169,38 @@ export default function HomePage() {
         <div className="nb-section-inner">
           <div className="nb-landing">
             <div className="nb-bg">
+              {/* Circuit background image */}
               <div className="nb-bg-image" />
 
+              {/* Floating neo-brutal geometric shapes */}
               <div ref={floatingRef} className="nb-floating-shapes">
-                {/* Right side */}
+                {/* Left side shapes */}
                 <div className="nb-shape nb-shape-1" />
                 <div className="nb-shape nb-shape-2" />
                 <div className="nb-shape nb-shape-3" />
+                <div className="nb-shape nb-shape-4" />
+
+                {/* Right side shapes */}
                 <div className="nb-shape nb-shape-5" />
-                {/* Left side */}
                 <div className="nb-shape nb-shape-6" />
                 <div className="nb-shape nb-shape-7" />
-                <div className="nb-shape nb-shape-8" />
-                <div className="nb-shape nb-shape-9" />
               </div>
 
               <div className="nb-hero-wrapper">
                 <div ref={heroRef} className="nb-hero-content nb-hero-centered">
-                  <span className="gsap-hero nb-hero-label">⚡ IEEE Student Branch — SJCE Mysuru</span>
+                  <span className="gsap-hero nb-hero-label">
+                    ⚡ IEEE STUDENT BRANCH — SJCE MYSURU
+                  </span>
                   <h1 className="gsap-hero nb-hero-title">IEEE SJCE</h1>
                   <h2 className="gsap-hero nb-hero-tagline-big">
                     <span className="tagline-row">
-                      <ColourfulText text="INNOVATE" color="var(--accent)" />
+                      <span className="tagline-cyan">INNOVATE</span>
                       <span className="tagline-dot"> · </span>
-                      <ColourfulText text="INSPIRE" color="var(--teal)" />
-                    </span>
-                    <span className="tagline-row">
-                      <span className="tagline-dot tagline-dot-mobile"> · </span>
-                      <ColourfulText text="ENGINEER" color="var(--blue-light)" />
+                      <span className="tagline-cyan">INSPIRE</span>
+                      <span className="tagline-dot"> · </span>
+                      <span className="tagline-cyan">ENGINEER</span>
                     </span>
                   </h2>
-                  <div className="gsap-hero nb-hero-divider" />
                   <p className="gsap-hero nb-hero-subtitle">Advancing Technology for Humanity</p>
                   <p className="gsap-hero nb-hero-tagline">Building tomorrow's engineers, today.</p>
                   <div className="gsap-hero nb-hero-buttons">
@@ -216,7 +217,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* CTA bar — centered */}
+              {/* Bottom CTA Box matching screenshot */}
               <div ref={ctaRef} className="nb-cta-bar">
                 <h3 className="gsap-cta">EXPLORE THE FUTURE OF TECHNOLOGY</h3>
                 <button className="gsap-cta nb-btn nb-btn-outline" onClick={() => navigate('/societies')}>

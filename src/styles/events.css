@@ -283,8 +283,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid;
-  border-radius: 12px;
+  border: none;
   transform: rotate(0deg);
   position: relative;
   transition: all 0.3s ease;
@@ -354,6 +353,89 @@
   inset: 0;
   background: linear-gradient(180deg, transparent 40%, rgba(10, 14, 26, 0.6) 100%);
   pointer-events: none;
+}
+
+/* ─── Poster Placeholder ─── */
+.evt-poster-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  background: #090e17;
+  border: 1.5px dashed color-mix(in srgb, var(--poster-accent, var(--accent)) 45%, var(--border-color));
+  overflow: hidden;
+  user-select: none;
+}
+
+.evt-poster-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 14px 14px;
+  pointer-events: none;
+}
+
+.evt-poster-center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  gap: 5px;
+}
+
+.evt-poster-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono, monospace);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--poster-accent, var(--accent));
+  background: rgba(0, 0, 0, 0.7);
+  padding: 3px 8px;
+  border: 1px solid var(--poster-accent, var(--accent));
+  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.8);
+}
+
+.evt-poster-callout {
+  font-family: var(--font-mono, monospace);
+  font-size: 8.5px;
+  letter-spacing: 0.8px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.evt-poster-footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-mono, monospace);
+  font-size: 8.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  padding-top: 5px;
+}
+
+.evt-poster-wing {
+  color: var(--poster-accent, var(--accent));
+  font-weight: 800;
+}
+
+.evt-poster-code {
+  letter-spacing: 1px;
 }
 
 /* ─── Timeline Node (dot on the line) ─── */

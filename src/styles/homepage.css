@@ -15,10 +15,12 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background: var(--bg);
+  background-color: #060B18;
   transition: background 0.3s;
+  overflow: hidden;
 }
 
+/* ─── Glowing Circuit Wallpaper with Central Bulb Diamond ─── */
 .nb-bg-image {
   position: absolute;
   inset: 0;
@@ -26,121 +28,120 @@
   background-image: url('/ieee-bg.png');
   background-size: cover;
   background-position: center;
-  opacity: 0.33;
+  opacity: 0.82;
   mix-blend-mode: screen;
+  pointer-events: none;
 }
 
-
-/* ─── Floating shapes ─── */
+/* ─── Floating Neo-Brutalist Geometric Shapes (Matching Reference) ─── */
 .nb-floating-shapes {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .nb-shape {
   position: absolute;
-  border: 3px solid #000;
+  border: 2px solid #000000;
   border-radius: 0;
+  transition: transform 0.3s ease;
 }
 
+/* Shape 1: Top-Left Blue Square */
 .nb-shape-1 {
-  width: 80px; height: 80px;
-  top: 10%; right: 15%;
-  background: var(--accent);
-  opacity: 1;
-  box-shadow: 8px 8px 0 0 var(--accent);
-  animation: float 5s ease-in-out infinite;
+  width: 68px;
+  height: 68px;
+  top: 16%;
+  left: 9.5%;
+  background: #3B82F6;
+  border: 2px solid #000000;
+  box-shadow: 6px 6px 0 0 #00E5FF;
+  animation: nb-float-slow 6s ease-in-out infinite;
 }
 
+/* Shape 2: Mid-Left Cyan Circle */
 .nb-shape-2 {
-  width: 120px; height: 120px;
-  top: 32%; right: 8%;
-  background: var(--blue);
-  opacity: 1;
-  box-shadow: 10px 10px 0 0 var(--accent);
-  animation: float 7s ease-in-out infinite 0.5s;
+  width: 96px;
+  height: 96px;
+  top: 40%;
+  left: 3.8%;
+  background: #00E5FF;
   border-radius: 50%;
+  border: 2.5px solid #000000;
+  box-shadow: 6px 6px 0 0 #000000;
+  animation: nb-float-slow 7s ease-in-out infinite 0.5s;
 }
 
+/* Shape 3: Inner-Left Small Cyan Square */
 .nb-shape-3 {
-  width: 50px; height: 50px;
-  bottom: 28%; right: 22%;
-  background: var(--teal);
-  opacity: 1;
-  box-shadow: 6px 6px 0 0 var(--accent);
-  animation: float 4s ease-in-out infinite 1s;
-  transform: rotate(45deg);
+  width: 36px;
+  height: 36px;
+  top: 66%;
+  left: 16%;
+  background: #00E5FF;
+  border: 2px solid #000000;
+  box-shadow: 5px 5px 0 0 #000000;
+  animation: nb-float-slow 5s ease-in-out infinite 1s;
 }
 
+/* Shape 4: Bottom-Left Hollow Cyan Square */
 .nb-shape-4 {
-  width: 60px; height: 60px;
-  top: 18%; left: 25%;
-  border-color: var(--accent);
-  background: transparent;
-  opacity: 1;
-  box-shadow: 6px 6px 0 0 var(--accent);
-  animation: float 6s ease-in-out infinite 0.3s;
+  width: 48px;
+  height: 48px;
+  bottom: 12%;
+  left: 5.8%;
+  background: #060B18;
+  border: 2px solid #00E5FF;
+  box-shadow: 5px 5px 0 0 #00E5FF;
+  animation: nb-float-slow 6.5s ease-in-out infinite 0.2s;
 }
 
+/* Shape 5: Top-Right Cyan Rectangle/Square */
 .nb-shape-5 {
-  width: 30px; height: 30px;
-  bottom: 22%; right: 38%;
-  background: var(--accent);
-  opacity: 1;
-  box-shadow: 4px 4px 0 0 var(--accent);
-  animation: float 3.5s ease-in-out infinite 0.8s;
+  width: 72px;
+  height: 72px;
+  top: 15%;
+  right: 13%;
+  background: #00E5FF;
+  border: 2px solid #000000;
+  box-shadow: 6px 6px 0 0 #00E5FF;
+  animation: nb-float-slow 6.2s ease-in-out infinite 0.8s;
 }
 
-/* ─── Left-side shapes (mirrored) ─── */
+/* Shape 6: Mid-Right Large Blue Circle */
 .nb-shape-6 {
-  width: 80px; height: 80px;
-  top: 12%; left: 12%;
-  background: var(--blue);
-  opacity: 1;
-  box-shadow: 8px 8px 0 0 var(--accent);
-  animation: float 5.5s ease-in-out infinite 0.2s;
+  width: 104px;
+  height: 104px;
+  top: 35%;
+  right: 5.5%;
+  background: #3B82F6;
+  border-radius: 50%;
+  border: 2.5px solid #000000;
+  box-shadow: 6px 6px 0 0 #00E5FF;
+  animation: nb-float-slow 7.2s ease-in-out infinite 0.3s;
 }
 
+/* Shape 7: Bottom-Right Cyan Square */
 .nb-shape-7 {
-  width: 110px; height: 110px;
-  top: 38%; left: 6%;
-  background: var(--accent);
-  opacity: 1;
-  box-shadow: 10px 10px 0 0 var(--accent);
-  animation: float 6.5s ease-in-out infinite 0.7s;
-  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  top: 68%;
+  right: 16%;
+  background: #00E5FF;
+  border: 2px solid #000000;
+  box-shadow: 5px 5px 0 0 #000000;
+  animation: nb-float-slow 5.2s ease-in-out infinite 1.2s;
 }
 
-.nb-shape-8 {
-  width: 45px; height: 45px;
-  bottom: 30%; left: 18%;
-  background: var(--cyan);
-  opacity: 1;
-  box-shadow: 5px 5px 0 0 var(--accent);
-  animation: float 4.5s ease-in-out infinite 1.2s;
-  transform: rotate(30deg);
-}
-
-.nb-shape-9 {
-  width: 55px; height: 55px;
-  bottom: 18%; left: 8%;
-  background: transparent;
-  border-color: var(--accent);
-  opacity: 1;
-  box-shadow: 6px 6px 0 0 var(--accent);
-  animation: float 5s ease-in-out infinite 0.4s;
-}
-
-.nb-shape-10 {
-  width: 35px; height: 35px;
-  top: 55%; left: 28%;
-  background: var(--teal);
-  opacity: 1;
-  box-shadow: 4px 4px 0 0 var(--accent);
-  animation: float 4s ease-in-out infinite 1.5s;
-  border-radius: 50%;
+@keyframes nb-float-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 /* ─── Hero ─── */
@@ -170,39 +171,42 @@
 }
 
 .nb-hero-label {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--accent);
-  background: var(--bg-card);
-  padding: 6px 16px;
+  background: rgba(6, 11, 24, 0.9);
+  padding: 6px 18px;
   border: 2px solid var(--accent);
-  border-radius: 0;
   box-shadow: 4px 4px 0 0 var(--accent);
+  border-radius: 0px;
   margin-bottom: 16px;
 }
 
 .nb-hero-title {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 7vw, 6rem);
+  font-size: clamp(3.2rem, 7.5vw, 6.2rem);
   line-height: 0.95;
-  color: var(--primary-strong);
+  color: #FFFFFF;
   letter-spacing: -2px;
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   text-transform: uppercase;
 }
 
 /* ─── Big tagline (INNOVATE · INSPIRE · ENGINEER) ─── */
 .nb-hero-tagline-big {
   font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2.8vw, 2rem);
+  font-size: clamp(1.2rem, 2.6vw, 2rem);
   line-height: 1.2;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  margin: 0 0 8px;
+  color: var(--accent);
+  margin: 0 0 14px;
   white-space: nowrap;
 }
 
@@ -215,106 +219,98 @@
 }
 
 .tagline-dot-mobile {
-  /* Visible on desktop (inline with the rest), hidden on mobile */
   display: inline;
 }
 
-.tagline-cyan  { color: var(--accent); }
-.tagline-teal  { color: var(--teal); }
-.tagline-blue  { color: var(--blue-light); }
-.tagline-dot   { color: var(--text-muted); }
-
-.nb-hero-divider {
-  width: 120px;
-  height: 4px;
-  background: var(--border-color);
-  margin: 16px auto;
-  position: relative;
+.tagline-cyan {
+  color: var(--accent);
 }
 
-.nb-hero-centered .nb-hero-divider {
-  margin: 16px auto;
-}
-
-.nb-hero-divider::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  width: 40px;
-  height: 4px;
-  background: var(--accent);
+.tagline-dot {
+  color: var(--accent);
 }
 
 .nb-hero-subtitle {
-  font-size: 17px;
+  font-family: var(--font-body);
+  font-size: 16px;
   font-weight: 600;
-  color: var(--primary);
-  margin: 0 0 4px;
+  color: #FFFFFF;
+  margin: 0 0 6px;
+  letter-spacing: 0.5px;
 }
 
 .nb-hero-tagline {
+  font-family: var(--font-body);
   font-size: 14px;
   color: var(--teal);
-  font-weight: 500;
+  font-weight: 600;
   margin: 0;
-}
-
-/* ─── ColourfulText characters ─── */
-.nb-colourful-char {
-  display: inline-block;
-  white-space: pre;
-  font-family: inherit;
-  letter-spacing: inherit;
 }
 
 .nb-hero-buttons {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   margin-top: 24px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-/* ─── CTA bar (centered) ─── */
+/* ─── Bottom Framed Box (Matching Reference) ─── */
 .nb-cta-bar {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
   gap: 12px;
-  padding: 20px 32px;
-  border: 4px solid var(--accent);
+  padding: 18px 48px;
+  border: 2.5px solid #00E5FF;
+  box-shadow: 8px 8px 0 0 #00E5FF;
   border-radius: 0;
-  background: var(--bg-card);
-  box-shadow: 10px 10px 0 0 var(--accent);
+  background: rgba(5, 10, 22, 0.95);
   position: relative;
   z-index: 2;
-  margin: 0 auto 16px;
-  max-width: 600px;
-  width: calc(100% - 96px);
-  transition: background 0.3s;
+  margin: 0 auto 20px;
+  max-width: 620px;
+  width: calc(100% - 48px);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.nb-cta-bar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--blue), var(--teal));
+.nb-cta-bar:hover {
+  transform: translateY(-2px);
+  box-shadow: 10px 10px 0 0 #00E5FF;
 }
 
 .nb-cta-bar h3 {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 800;
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: -0.5px;
-  color: var(--primary-strong);
+  letter-spacing: 2px;
+  color: #FFFFFF;
+}
+
+.nb-cta-bar .nb-btn-outline {
+  background: #060B18;
+  border: 2px solid #00E5FF;
+  box-shadow: 4px 4px 0 0 #00E5FF;
+  color: #FFFFFF;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  padding: 8px 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nb-cta-bar .nb-btn-outline:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 #00E5FF;
+  background: #0B1324;
 }
 
 /* ─── Marquee ─── */
@@ -360,15 +356,14 @@
   .nb-landing { height: auto; min-height: calc(100dvh - 59px); overflow: visible; }
   .nb-hero-wrapper { padding: 0 20px; display: flex; align-items: center; justify-content: center; padding-top: 40px; padding-bottom: 40px; }
   .nb-hero-content { max-width: 100%; }
-  .nb-hero-centered { gap: 20px; }
+  .nb-hero-centered { gap: 16px; }
   .nb-hero-label { font-size: 10px; letter-spacing: 1.5px; padding: 5px 12px; margin-bottom: 8px; }
-  .nb-hero-title { font-size: 3rem; letter-spacing: -1px; margin-bottom: 6px; }
-  .nb-hero-tagline-big { font-size: 0.9rem; letter-spacing: 1px; white-space: normal; margin-bottom: 4px; }
+  .nb-hero-title { font-size: 2.8rem; letter-spacing: -1px; margin-bottom: 6px; }
+  .nb-hero-tagline-big { font-size: 0.95rem; letter-spacing: 1px; white-space: normal; margin-bottom: 4px; }
   .tagline-row { display: block; text-align: center; white-space: nowrap; }
   .tagline-dot-mobile { display: none; }
-  .nb-hero-divider { margin: 10px auto; }
-  .nb-hero-subtitle { font-size: 15px; margin-bottom: 4px; }
-  .nb-hero-tagline { font-size: 15px; margin-bottom: 6px; }
+  .nb-hero-subtitle { font-size: 14px; margin-bottom: 4px; }
+  .nb-hero-tagline { font-size: 13px; margin-bottom: 6px; }
   .nb-hero-buttons {
     flex-direction: column;
     align-items: center;
@@ -383,28 +378,9 @@
     max-width: 260px;
     justify-content: center;
   }
+  .nb-floating-shapes { display: none; }
   .nb-cta-bar { display: none; }
   .nb-marquee-word { font-size: 10px; }
-
-  /* Show only 2 small shapes on mobile */
-  .nb-floating-shapes { display: block; }
-  .nb-shape-1, .nb-shape-2, .nb-shape-3, .nb-shape-4,
-  .nb-shape-5, .nb-shape-6, .nb-shape-7, .nb-shape-8,
-  .nb-shape-9, .nb-shape-10 { display: none; }
-
-  .nb-shape-1 {
-    display: block;
-    width: 40px; height: 40px;
-    top: 8%; right: 8%;
-    opacity: 0.12;
-  }
-  .nb-shape-7 {
-    display: block;
-    width: 50px; height: 50px;
-    bottom: 12%; left: 6%;
-    top: auto;
-    opacity: 0.10;
-  }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -413,8 +389,6 @@
   .nb-hero-title { font-size: 3.5rem; }
   .nb-hero-tagline-big { font-size: 1.1rem; }
   .nb-cta-bar { width: calc(100% - 56px); }
-  .nb-shape-1 { width: 60px; height: 60px; }
-  .nb-shape-2 { width: 90px; height: 90px; }
 }
 
 /* ═══════════════════════════════════════════════
@@ -476,38 +450,37 @@
    LIGHT MODE OVERRIDES — Homepage
    ═══════════════════════════════════════════════ */
 
-/* Background image — lighter, softer blend */
-:root.light .nb-bg-image {
-  opacity: 0.25;
-  mix-blend-mode: multiply;
+:root.light .nb-bg {
+  background-color: #F8FAFC;
 }
 
-/* Floating shapes — increased visibility on light bg */
-:root.light .nb-shape-1 { opacity: 0.20; background: var(--accent); }
-:root.light .nb-shape-2 { opacity: 0.16; background: var(--blue); }
-:root.light .nb-shape-3 { opacity: 0.18; background: var(--teal); }
-:root.light .nb-shape-4 { opacity: 0.20; border-color: var(--cyan); }
-:root.light .nb-shape-5 { opacity: 0.18; background: var(--accent); }
-:root.light .nb-shape-6 { opacity: 0.18; background: var(--blue); }
-:root.light .nb-shape-7 { opacity: 0.14; background: var(--accent); }
-:root.light .nb-shape-8 { opacity: 0.16; background: var(--cyan); }
-:root.light .nb-shape-9 { opacity: 0.20; border-color: var(--teal); }
-:root.light .nb-shape-10 { opacity: 0.14; background: var(--teal); }
+:root.light .nb-bg-image {
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+}
 
 /* Hero label — crisper on light bg */
 :root.light .nb-hero-label {
   background: #FFFFFF;
-  box-shadow: var(--shadow-sm);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
-/* CTA bar — gradient adjusted for light */
+/* CTA bar — framed light mode */
 :root.light .nb-cta-bar {
   background: #FFFFFF;
-  box-shadow: var(--shadow);
+  border-color: var(--accent);
+  box-shadow: 8px 8px 0 0 var(--accent);
 }
 
-:root.light .nb-cta-bar::before {
-  background: linear-gradient(90deg, var(--accent), var(--blue), var(--teal));
+:root.light .nb-cta-bar h3 {
+  color: #0A0E1A;
+}
+
+:root.light .nb-cta-bar .nb-btn-outline {
+  background: #F1F5F9;
+  border-color: #CBD5E1;
+  color: #0A0E1A;
 }
 
 /* Marquee strip — light surface */
