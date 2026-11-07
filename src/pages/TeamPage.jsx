@@ -33,7 +33,7 @@ const CATEGORIES = [
   },
   { key: "women_in_engineering", label: "WIE", color: "#4F46E5" },
   { key: "editorial_board", label: "Editorial Board", color: "#1E3A8A" },
-  { key: "web_development_board", label: "Web Dev Board", color: "#00C2FF" },
+  { key: "web_development_board", label: "Web Dev Board", color: "#1E3A8A" },
 ];
 const CAT_MAP = Object.fromEntries(CATEGORIES.map((c) => [c.key, c]));
 const CAT_DISPLAY = {
@@ -183,7 +183,7 @@ const CURRENT_EXECUTIVE_COMMITTEE = [
 const MEMBERSHIP_DEVELOPMENT_COMMITTEE = [
   {
     name: "Varsha Lakshmi K",
-    post: "SBMDC CHAIRPERSON",
+    post: "CHAIRPERSON",
     type: "membership_development_committee",
     src: "/photos/members25-26/Varsha Lakshmi K.jpg",
     linkedin: "https://www.linkedin.com/in/varsha-lakshmi-k-7159b22ab",
@@ -191,7 +191,7 @@ const MEMBERSHIP_DEVELOPMENT_COMMITTEE = [
   },
   {
     name: "Sukruthi Rao",
-    post: "SBMDC VICE CHAIRPERSON",
+    post: "VICE CHAIRPERSON",
     type: "membership_development_committee",
     src: "/photos/members25-26/Sukruthi Rao.jpg",
     linkedin: "https://www.linkedin.com/in/sukruthi-rao-923627313",
@@ -199,7 +199,7 @@ const MEMBERSHIP_DEVELOPMENT_COMMITTEE = [
   },
   {
     name: "Vishwas A Gowda",
-    post: "SBMDC Secretary",
+    post: "Secretary",
     type: "membership_development_committee",
     src: "/photos/members26-27/vishwas.jpg",
     linkedin: "https://www.linkedin.com/in/vishwas-a-gowda",
@@ -219,7 +219,7 @@ const MEMBERSHIP_DEVELOPMENT_COMMITTEE = [
 const SIGNAL_PROCESSING_SOCIETY = [
   {
     name: "Rahul Murali",
-    post: "SPS CHAIRPERSON",
+    post: "CHAIRPERSON",
     type: "signal_processing_society",
     src: "/photos/members25-26/Rahul Murali.jpg",
     linkedin: "https://www.linkedin.com/in/rahul-murali-405677335",
@@ -227,7 +227,7 @@ const SIGNAL_PROCESSING_SOCIETY = [
   },
   {
     name: "Shravan Krishna",
-    post: "SPS VICE CHAIRPERSON",
+    post: "VICE CHAIRPERSON",
     type: "signal_processing_society",
     src: "/photos/members25-26/Shravan Krishna.jpg",
     linkedin: "https://www.linkedin.com/in/shravan-krishna-0a4486292",
@@ -235,19 +235,11 @@ const SIGNAL_PROCESSING_SOCIETY = [
   },
   {
     name: "Muskan",
-    post: "SPS SENIOR TECHNICAL COORDINATOR",
+    post: "SENIOR TECHNICAL COORDINATOR",
     type: "signal_processing_society",
     src: "/photos/members25-26/Muskan fayaz.jpg",
     linkedin: "https://www.linkedin.com/in/muskan-fayaz-52757b306",
     gmail: "muskanfayaz48@gmail.com",
-  },
-  {
-    name: "Rajath R Prasad",
-    post: "WEB DEVELOPMENT BOARD CHIEF",
-    type: "signal_processing_society",
-    src: "/photos/members25-26/RajathRP.jpg",
-    linkedin: "https://www.linkedin.com/in/rajath-r-prasad",
-    gmail: "rajath2010rrp@gmail.com",
   },
   {
     name: "Jeevashree G",
@@ -267,7 +259,7 @@ const SIGNAL_PROCESSING_SOCIETY = [
   },
   {
     name: "Priya N Madanbhavi",
-    post: "SPS TREASURER",
+    post: "TREASURER",
     type: "signal_processing_society",
     src: "",
     linkedin: "https://www.linkedin.com/in/priya-madanbhavi",
@@ -275,19 +267,11 @@ const SIGNAL_PROCESSING_SOCIETY = [
   },
   {
     name: "Manogna S",
-    post: "SPS TECHNICAL COORDINATOR",
+    post: "TECHNICAL COORDINATOR",
     type: "signal_processing_society",
     src: "/photos/members26-27/manogna.jpg",
     linkedin: "https://www.linkedin.com/in/manogna-s-b7553541b",
     gmail: "manogna973@gmail.com",
-  },
-  {
-    name: "Deekshith S Kumar",
-    post: "SPS WEBMASTER",
-    type: "signal_processing_society",
-    src: "/photos/members26-27/deekshith.jpg",
-    linkedin: "",
-    gmail: "",
   },
 ];
 
@@ -295,7 +279,7 @@ const SIGNAL_PROCESSING_SOCIETY = [
 const ROBOTICS_AND_AUTOMATION_SOCIETY = [
   {
     name: "Prithveesh Rao",
-    post: "RAS CHAIRPERSON",
+    post: "CHAIRPERSON",
     type: "robotics_and_automation_society",
     src: "/photos/members25-26/Prithveesh Rao.jpeg",
     linkedin: "https://www.linkedin.com/in/prithveesh-rao-4345521a1",
@@ -303,7 +287,7 @@ const ROBOTICS_AND_AUTOMATION_SOCIETY = [
   },
   {
     name: "Chinmay G C",
-    post: "RAS VICE CHAIRPERSON",
+    post: "VICE CHAIRPERSON",
     type: "robotics_and_automation_society",
     src: "/photos/members25-26/Chinmay GC.jpg",
     linkedin: "https://www.linkedin.com/in/chinmay-gc",
@@ -311,7 +295,7 @@ const ROBOTICS_AND_AUTOMATION_SOCIETY = [
   },
   {
     name: "Rohan A S Gowda",
-    post: "RAS SENIOR TECHNICAL COORDINATOR",
+    post: "SENIOR TECHNICAL COORDINATOR",
     type: "robotics_and_automation_society",
     src: "/photos/members25-26/Rohan A S Gowda.jpg",
     linkedin: "https://www.linkedin.com/in/rohan-a-s-gowda-b27580292",
@@ -319,7 +303,7 @@ const ROBOTICS_AND_AUTOMATION_SOCIETY = [
   },
   {
     name: "Adhya Bhat M",
-    post: "RAS SECRETARY",
+    post: "SECRETARY",
     type: "robotics_and_automation_society",
     src: "/photos/members26-27/aadhya.jpg",
     linkedin: "https://www.linkedin.com/in/adhya-bhat-m/",
@@ -327,7 +311,7 @@ const ROBOTICS_AND_AUTOMATION_SOCIETY = [
   },
   {
     name: "Diya Y Bhandarkar",
-    post: "RAS JOINT SECRETARY",
+    post: "JOINT SECRETARY",
     type: "robotics_and_automation_society",
     src: "/photos/members26-27/diya.jpg",
     linkedin: "https://www.linkedin.com/in/diya-y-bhandarkar",
@@ -335,7 +319,7 @@ const ROBOTICS_AND_AUTOMATION_SOCIETY = [
   },
   {
     name: "Sagar M L",
-    post: "RAS TECHNICAL COORDINATOR",
+    post: "TECHNICAL COORDINATOR",
     type: "robotics_and_automation_society",
     src: "/photos/members26-27/sagar.jpg",
     linkedin: "https://www.linkedin.com/in/sagar-m-l-0b9311438",
@@ -347,7 +331,7 @@ const ROBOTICS_AND_AUTOMATION_SOCIETY = [
 const ELECTRON_DEVICES_SOCIETY = [
   {
     name: "Pramathi H B",
-    post: "EDS CHAIRPERSON",
+    post: "CHAIRPERSON",
     type: "electron_devices_society",
     src: "/photos/members25-26/Pramathi H.B.jpg",
     linkedin: "https://www.linkedin.com/in/pramathi-h-b-808487292",
@@ -355,7 +339,7 @@ const ELECTRON_DEVICES_SOCIETY = [
   },
   {
     name: "Harshith A R",
-    post: "EDS VICE CHAIRPERSON",
+    post: "VICE CHAIRPERSON",
     type: "electron_devices_society",
     src: "/photos/members25-26/harshith ar.JPG",
     linkedin: "https://www.linkedin.com/in/harshi76",
@@ -363,7 +347,7 @@ const ELECTRON_DEVICES_SOCIETY = [
   },
   {
     name: "Sachin K S",
-    post: "EDS SENIOR TECHNICAL COORDINATOR",
+    post: "SENIOR TECHNICAL COORDINATOR",
     type: "electron_devices_society",
     src: "/photos/members25-26/Sachin K.S.jpg",
     linkedin: "https://www.linkedin.com/in/sachinks21",
@@ -371,7 +355,7 @@ const ELECTRON_DEVICES_SOCIETY = [
   },
   {
     name: "Nimai Udupi",
-    post: "EDS SECRETARY",
+    post: "SECRETARY",
     type: "electron_devices_society",
     src: "/photos/members26-27/nimai.jpg",
     linkedin: "",
@@ -379,7 +363,7 @@ const ELECTRON_DEVICES_SOCIETY = [
   },
   {
     name: "Aadhira M",
-    post: "EDS JOINT SECRETARY",
+    post: "JOINT SECRETARY",
     type: "electron_devices_society",
     src: "/photos/members26-27/aadhira.jpg",
     linkedin: "https://www.linkedin.com/in/aadhira-m-4712a8372/",
@@ -387,7 +371,7 @@ const ELECTRON_DEVICES_SOCIETY = [
   },
   {
     name: "Hemanth B Kumar",
-    post: "EDS TECHNICAL COORDINATOR",
+    post: "TECHNICAL COORDINATOR",
     type: "electron_devices_society",
     src: "/photos/members26-27/hemanth.jpg",
     linkedin: "https://www.linkedin.com/in/hemanth-b-kumar-a12057430",
@@ -399,7 +383,7 @@ const ELECTRON_DEVICES_SOCIETY = [
 const WOMEN_IN_ENGINEERING = [
   {
     name: "Anagha V. Bhat",
-    post: "WIE CHAIRPERSON",
+    post: "CHAIRPERSON",
     type: "women_in_engineering",
     src: "/photos/members25-26/Anagha V Bhat.jpeg",
     linkedin: "http://linkedin.com/in/anagha-v-bhat-012195361",
@@ -407,7 +391,7 @@ const WOMEN_IN_ENGINEERING = [
   },
   {
     name: "Pratham M S",
-    post: "WIE VICE CHAIRPERSON",
+    post: "VICE CHAIRPERSON",
     type: "women_in_engineering",
     src: "/photos/members25-26/Pratham MS.jpeg",
     linkedin: "http://www.linkedin.com/in/pratham-ms-1312i",
@@ -415,7 +399,7 @@ const WOMEN_IN_ENGINEERING = [
   },
   {
     name: "Dhanya B",
-    post: "WIE SENIOR TECHNICAL COORDINATOR",
+    post: "SENIOR TECHNICAL COORDINATOR",
     type: "women_in_engineering",
     src: "/photos/members25-26/DhanyaBGowda.jpg",
     linkedin: "https://www.linkedin.com/in/dhanya-b-146755360",
@@ -423,7 +407,7 @@ const WOMEN_IN_ENGINEERING = [
   },
   {
     name: "Apoorva Raveendra Bhat",
-    post: "WIE SECRETARY",
+    post: "SECRETARY",
     type: "women_in_engineering",
     src: "/photos/members26-27/apoorva.jpg",
     linkedin: "https://www.linkedin.com/in/apoorva-r-bhat",
@@ -431,7 +415,7 @@ const WOMEN_IN_ENGINEERING = [
   },
   {
     name: "S K Gouthami",
-    post: "WIE JOINT SECRETARY",
+    post: "JOINT SECRETARY",
     type: "women_in_engineering",
     src: "/photos/members26-27/gouthami.jpg",
     linkedin: "https://www.linkedin.com/in/s-k-gouthami",
@@ -439,7 +423,7 @@ const WOMEN_IN_ENGINEERING = [
   },
   {
     name: "Arpitha N",
-    post: "WIE TECHNICAL COORDINATOR",
+    post: "TECHNICAL COORDINATOR",
     type: "women_in_engineering",
     src: "/photos/members26-27/arpitha.jpg",
     linkedin: "https://www.linkedin.com/in/arpitha-n-215937331",
@@ -451,7 +435,7 @@ const WOMEN_IN_ENGINEERING = [
 const EDITORIAL_BOARD = [
   {
     name: "Mythri G",
-    post: "EDITORIAL BOARD CHAIRPERSON",
+    post: "CHAIRPERSON",
     type: "editorial_board",
     src: "/photos/members25-26/Mythri G.jpg",
     linkedin: "https://www.linkedin.com/in/mythri-g-285546330",
@@ -459,7 +443,7 @@ const EDITORIAL_BOARD = [
   },
   {
     name: "Shalini H R",
-    post: "EDITORIAL BOARD VICE CHAIRPERSON",
+    post: "VICE CHAIRPERSON",
     type: "editorial_board",
     src: "/photos/members25-26/Shalini.jpeg",
     linkedin: "https://www.linkedin.com/in/shalini-h-r-15092005shr",
@@ -519,7 +503,7 @@ const EDITORIAL_BOARD = [
 const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
   {
     name: "Varun Kilkile",
-    post: "AESS CHAIRPERSON",
+    post: "CHAIRPERSON",
     type: "aerospace_and_electronic_systems_society",
     src: "/photos/members26-27/Varun.jpg",
     linkedin: "https://www.linkedin.com/in/varun-kilkile-5442a8393",
@@ -527,7 +511,7 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
   },
   {
     name: "Thanmayi B V",
-    post: "AESS VICE CHAIRPERSON",
+    post: "VICE CHAIRPERSON",
     type: "aerospace_and_electronic_systems_society",
     src: "/photos/members26-27/Thanmayi.jpg",
     linkedin: "https://www.linkedin.com/in/thanmayi-bv-094005378",
@@ -535,7 +519,7 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
   },
   {
     name: "Lakshmi K L",
-    post: "AESS SECRETARY",
+    post: "SECRETARY",
     type: "aerospace_and_electronic_systems_society",
     src: "/photos/members26-27/lakshmi.jpg",
     linkedin: "",
@@ -543,7 +527,7 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
   },
   {
     name: "Vishal H V",
-    post: "AESS JOINT SECRETARY",
+    post: "JOINT SECRETARY",
     type: "aerospace_and_electronic_systems_society",
     src: "",
     linkedin: "",
@@ -551,7 +535,7 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
   },
   {
     name: "Maryada Sudharshan Ulagadde",
-    post: "AESS TREASURER",
+    post: "TREASURER",
     type: "aerospace_and_electronic_systems_society",
     src: "/photos/members26-27/maryada.jpg",
     linkedin: "",
@@ -559,16 +543,36 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
   },
   {
     name: "Tejas S",
-    post: "AESS TECHNICAL COORDINATOR",
+    post: "TECHNICAL COORDINATOR",
     type: "aerospace_and_electronic_systems_society",
     src: "/photos/members26-27/Thejas.jpg",
     linkedin: "",
     gmail: "",
   },
+];
+
+/* ─── Web Development Board ─── */
+const WEB_DEVELOPMENT_BOARD = [
   {
-    name: "Amruth S",
-    post: "AESS TECHNICAL COORDINATOR & WEBMASTER",
-    type: "aerospace_and_electronic_systems_society",
+    name: "Rajath R Prasad",
+    post: "CHAIRPERSON",
+    type: "web_development_board",
+    src: "/photos/members25-26/RajathRP.jpg",
+    linkedin: "https://www.linkedin.com/in/rajath-r-prasad",
+    gmail: "rajath2010rrp@gmail.com",
+  },
+  {
+    name: "Deekshith S Kumar",
+    post: "WEBMASTER",
+    type: "web_development_board",
+    src: "/photos/members26-27/deekshith.jpg",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Amruth",
+    post: "WEBMASTER",
+    type: "web_development_board",
     src: "/photos/members26-27/Amruth.jpg",
     linkedin: "",
     gmail: "",
@@ -587,6 +591,7 @@ const CURRENT_TEAM = [
   ...AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY,
   ...WOMEN_IN_ENGINEERING,
   ...EDITORIAL_BOARD,
+  ...WEB_DEVELOPMENT_BOARD,
 ];
 
 /* ─── Icons ─── */
@@ -900,7 +905,7 @@ export default function TeamPage() {
             onClick={() => setIsExecomExpanded((prev) => !prev)}
             aria-expanded={isExecomExpanded}
           >
-            <span className="execom-accordion-title">IEEE Execom 2024-25</span>
+            <span className="execom-accordion-title">IEEE Execom 2025-26</span>
             <span className="execom-toggle-icon">
               {isExecomExpanded ? "−" : "+"}
             </span>
