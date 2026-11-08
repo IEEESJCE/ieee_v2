@@ -38,6 +38,19 @@ const EVENTS = [
     featured: true,
   },
   {
+    title: 'MATLAB Workshop',
+    date: '4–5 NOV 2026',
+    wing: 'SPS',
+    description:
+      'The Signal Processing Society conducted an intensive hands-on workshop on MATLAB, covering computational mathematics, matrix manipulation, algorithm development, and practical signal processing workflows.',
+    icon: <Code size={22} />,
+    accent: '#8B5CF6',
+    image: '/photos/events/matlab.png',
+    imageAlt: 'MATLAB Workshop session, November 2026',
+    imagePosition: 'center 40%',
+    featured: true,
+  },
+  {
     title: 'Tech Detective',
     date: '16 OCT 2026',
     wing: 'IEEE DAY',
@@ -271,21 +284,23 @@ export default function EventsSection() {
   const [activeIndex, setActiveIndex] = useState(0) // newest event
 
   useEffect(() => {
-    // Animate header
-    gsap.fromTo(titleRef.current.children,
-      { y: 40, opacity: 0 },
-      {
-        y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out',
-        scrollTrigger: { trigger: titleRef.current, start: 'top 85%', toggleActions: 'play none none none' },
-      }
-    )
+    // GSAP ScrollTrigger header entrance animation on both mobile & desktop
+    if (titleRef.current?.children) {
+      gsap.fromTo(titleRef.current.children,
+        { y: 30, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out',
+          scrollTrigger: { trigger: titleRef.current, start: 'top 92%', toggleActions: 'play none none none' },
+        }
+      )
+    }
 
-    // Animate cards staggered
+    // GSAP ScrollTrigger cards entrance animation
     gsap.fromTo('.evt-card',
-      { y: 60, opacity: 0 },
+      { y: 50, opacity: 0 },
       {
-        y: 0, opacity: 1, duration: 0.7, stagger: 0.12, ease: 'power3.out',
-        scrollTrigger: { trigger: '.evt-timeline-track', start: 'top 80%', toggleActions: 'play none none none' },
+        y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+        scrollTrigger: { trigger: '.evt-timeline-track', start: 'top 88%', toggleActions: 'play none none none' },
       }
     )
 

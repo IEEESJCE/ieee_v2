@@ -64,7 +64,7 @@ const SOCIETIES = [
       "https://lottie.host/?file=2f28a704-d29d-4531-975b-c3e7e6d9bf20/WVBLEk0GNv.json",
     tagline: "Empowering women in STEM globally.",
     about:
-      "IEEE Women in Engineering (WIE) is a global network of IEEE members and volunteers dedicated to promoting women engineers and scientists and inspiring girls around the world to follow their academic interests in a career in engineering and science. It is the world’s largest technical professional organization dedicated to advancing technology for the benefit of humanity. Its goal is to facilitate the recruitment and retention of women in technical disciplines globally. IEEE WIE envisions a vibrant community of IEEE women and men collectively using their diverse talents to innovate the benefit of humanity..",
+      "IEEE Women in Engineering (WIE) is a global network of IEEE members and volunteers dedicated to promoting women engineers and scientists and inspiring girls around the world to follow their academic interests in a career in engineering and science. It is the world’s largest technical professional organization dedicated to advancing technology for the benefit of humanity. Its goal is to facilitate the recruitment and retention of women in technical disciplines globally. IEEE WIE envisions a vibrant community of IEEE women and men collectively using their diverse talents to innovate the benefit of humanity.",
     events: [
       {
         title: "PRAYAS",
@@ -123,7 +123,7 @@ const SOCIETIES = [
     events: [
       {
         title: "AUDIO SIGNAL PROCESSING TECH TALK",
-        desc: "Formal wing inauguration featuring a technical session by Dr. Jayasudha BSK on \"Deep Dive into Audio Signal Processing,\" exploring real-world DSP techniques used in automotive products at Harman International.",
+        desc: 'Formal wing inauguration featuring a technical session by Dr. Jayasudha BSK on "Deep Dive into Audio Signal Processing," exploring real-world DSP techniques used in automotive products at Harman International.',
       },
       {
         title: "ML WORKSHOP",
@@ -151,11 +151,13 @@ const SOCIETIES = [
       "IEEE-SJCE AESS aims to keep students up to date with the latest developments in aerospace and electronic systems technology. Aerospace and electronic systems encompass the design, development, and integration of complex systems operating across air, space, ocean, and ground environments. The field incorporates technologies such as radar, avionics, satellite systems, navigation, communication, and guidance and control, with research emphasising system integration, precision, reliability, and operational efficiency. The IEEE Aerospace and Electronic Systems Society's objectives are technical, scientific, literary, professional, and educational in character. The Society strives for the advancement of the theory and practice of aerospace and electronic systems engineering, along with allied arts and sciences, and for the promotion of technical knowledge and professional development among its members.",
     events: [
       {
-        title: "AESS STUDENT CHAPTER INAUGURATION & TECHNICAL TALK ON SPACE TECHNOLOGY",
+        title:
+          "AESS STUDENT CHAPTER INAUGURATION & TECHNICAL TALK ON SPACE TECHNOLOGY",
         desc: "Formal inauguration of the IEEE AESS student chapter on 23rd July 2026, featuring chief guest Dr. Braham Himed (President, IEEE AESS & Senior Research Head, AFRL USA) and Sri Puneeth Kumar Mishra (BoG Member AESS, ISRO), accompanied by an insightful technical session on radar systems, satellite tech, and IEEE professional opportunities.",
       },
       {
-        title: "HANDS-ON MATLAB WORKSHOP: SIGNAL PROCESSING AND CONTROL SYSTEMS",
+        title:
+          "HANDS-ON MATLAB WORKSHOP: SIGNAL PROCESSING AND CONTROL SYSTEMS",
         desc: "A two-day hands-on workshop organized by AESS, SPS, and RAS in association with the ECE Department, conducted by Dr. Riyaz A. Rahiman (CoreEL Technologies). Sessions introduce MATLAB fundamentals, model development, and system simulation using MATLAB, Simulink, and Simscape, focusing on practical signal processing and control system applications.",
       },
     ],
@@ -444,7 +446,10 @@ function SpsWaveVisual() {
 /* ─── Animated AESS Aerospace & Avionics Satellite Visual (2.5D Dynamic Camera Perspective) ─── */
 function AessAerospaceVisual() {
   return (
-    <div className="aess-camera-wrap" aria-label="AESS Aerospace & Satellite Avionics Visual">
+    <div
+      className="aess-camera-wrap"
+      aria-label="AESS Aerospace & Satellite Avionics Visual"
+    >
       <div className="aess-camera-viewport">
         <svg
           className="aess-radar-svg"
@@ -460,41 +465,77 @@ function AessAerospaceVisual() {
             </radialGradient>
 
             {/* Solar Panel Photovoltaic Blue Gradient */}
-            <linearGradient id="aess-solar-pv" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id="aess-solar-pv"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#1D4ED8" />
               <stop offset="60%" stopColor="#1E3A8A" />
               <stop offset="100%" stopColor="#0F172A" />
             </linearGradient>
 
             {/* Gold Foil Kapton MLI Top Lighting */}
-            <linearGradient id="aess-gold-top" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id="aess-gold-top"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#FEF08A" />
               <stop offset="60%" stopColor="#FDE047" />
               <stop offset="100%" stopColor="#F59E0B" />
             </linearGradient>
 
             {/* Gold Foil Kapton MLI Left Midtone */}
-            <linearGradient id="aess-gold-left" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id="aess-gold-left"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#F59E0B" />
               <stop offset="70%" stopColor="#D97706" />
               <stop offset="100%" stopColor="#B45309" />
             </linearGradient>
 
             {/* Gold Foil Kapton MLI Right Shadow */}
-            <linearGradient id="aess-gold-right" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id="aess-gold-right"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#D97706" />
               <stop offset="60%" stopColor="#B45309" />
               <stop offset="100%" stopColor="#78350F" />
             </linearGradient>
 
             {/* Radar Scan Cone Gradient */}
-            <linearGradient id="aess-sweep-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id="aess-sweep-grad"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.45" />
               <stop offset="100%" stopColor="#F59E0B" stopOpacity="0" />
             </linearGradient>
 
             {/* Soft Shadow Blur */}
-            <filter id="aess-shadow-blur" x="-30%" y="-30%" width="160%" height="160%">
+            <filter
+              id="aess-shadow-blur"
+              x="-30%"
+              y="-30%"
+              width="160%"
+              height="160%"
+            >
               <feGaussianBlur stdDeviation="8" />
             </filter>
 
@@ -525,128 +566,452 @@ function AessAerospaceVisual() {
             [150, 310, 1.2, "2.6s"],
           ].map(([sx, sy, r, dur], i) => (
             <circle key={i} cx={sx} cy={sy} r={r} fill="#E2E8F0" opacity="0.65">
-              <animate attributeName="opacity" values="0.25;0.95;0.25" dur={dur} repeatCount="indefinite" />
+              <animate
+                attributeName="opacity"
+                values="0.25;0.95;0.25"
+                dur={dur}
+                repeatCount="indefinite"
+              />
             </circle>
           ))}
 
           {/* 2.5D Tilted Keplerian Orbital Trajectory Planes */}
           <g transform="rotate(-16 190 190)" opacity="0.75">
             {/* Outer Orbit */}
-            <ellipse cx="190" cy="190" rx="155" ry="62" stroke="#334155" strokeWidth="1.2" strokeDasharray="5 5" fill="none" />
+            <ellipse
+              cx="190"
+              cy="190"
+              rx="155"
+              ry="62"
+              stroke="#334155"
+              strokeWidth="1.2"
+              strokeDasharray="5 5"
+              fill="none"
+            />
             {/* Mid Orbit */}
-            <ellipse cx="190" cy="190" rx="112" ry="45" stroke="#475569" strokeWidth="1.4" strokeDasharray="6 3" fill="none" opacity="0.85" />
+            <ellipse
+              cx="190"
+              cy="190"
+              rx="112"
+              ry="45"
+              stroke="#475569"
+              strokeWidth="1.4"
+              strokeDasharray="6 3"
+              fill="none"
+              opacity="0.85"
+            />
             {/* Inner Proximity Ring */}
-            <ellipse cx="190" cy="190" rx="68" ry="27" stroke="#F59E0B" strokeWidth="1" strokeDasharray="3 3" fill="none" opacity="0.5" />
+            <ellipse
+              cx="190"
+              cy="190"
+              rx="68"
+              ry="27"
+              stroke="#F59E0B"
+              strokeWidth="1"
+              strokeDasharray="3 3"
+              fill="none"
+              opacity="0.5"
+            />
 
             {/* Orbital Tracking Beacons */}
             <circle cx="78" cy="172" r="3.2" fill="#10B981" />
-            <circle cx="78" cy="172" r="7" fill="none" stroke="#10B981" strokeWidth="1.2" opacity="0.75">
-              <animate attributeName="r" values="3;10;3" dur="2.4s" repeatCount="indefinite" />
-              <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.4s" repeatCount="indefinite" />
+            <circle
+              cx="78"
+              cy="172"
+              r="7"
+              fill="none"
+              stroke="#10B981"
+              strokeWidth="1.2"
+              opacity="0.75"
+            >
+              <animate
+                attributeName="r"
+                values="3;10;3"
+                dur="2.4s"
+                repeatCount="indefinite"
+              />
+              <animate
+                attributeName="opacity"
+                values="0.8;0.2;0.8"
+                dur="2.4s"
+                repeatCount="indefinite"
+              />
             </circle>
 
             <circle cx="288" cy="204" r="3.2" fill="#F59E0B" />
-            <circle cx="288" cy="204" r="7" fill="none" stroke="#F59E0B" strokeWidth="1.2" opacity="0.75">
-              <animate attributeName="r" values="3;11;3" dur="2.8s" repeatCount="indefinite" />
-              <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.8s" repeatCount="indefinite" />
+            <circle
+              cx="288"
+              cy="204"
+              r="7"
+              fill="none"
+              stroke="#F59E0B"
+              strokeWidth="1.2"
+              opacity="0.75"
+            >
+              <animate
+                attributeName="r"
+                values="3;11;3"
+                dur="2.8s"
+                repeatCount="indefinite"
+              />
+              <animate
+                attributeName="opacity"
+                values="0.8;0.2;0.8"
+                dur="2.8s"
+                repeatCount="indefinite"
+              />
             </circle>
           </g>
 
           {/* Sweeping 2.5D Radar / Sensor Scan Cone */}
           <g className="aess-radar-sweep">
-            <path d="M 190 185 L 125 35 A 150 75 0 0 1 255 45 Z" fill="url(#aess-sweep-grad)" />
-            <line x1="190" y1="185" x2="255" y2="45" stroke="#F59E0B" strokeWidth="2" opacity="0.9" />
+            <path
+              d="M 190 185 L 125 35 A 150 75 0 0 1 255 45 Z"
+              fill="url(#aess-sweep-grad)"
+            />
+            <line
+              x1="190"
+              y1="185"
+              x2="255"
+              y2="45"
+              stroke="#F59E0B"
+              strokeWidth="2"
+              opacity="0.9"
+            />
           </g>
 
           {/* Curved Atmospheric Earth Horizon at Bottom */}
-          <path d="M 5 375 Q 190 315, 375 375" fill="none" stroke="#0369A1" strokeWidth="7" opacity="0.35" />
-          <path d="M 5 375 Q 190 315, 375 375" fill="none" stroke="#0284C7" strokeWidth="3.5" opacity="0.7" />
-          <path d="M 5 375 Q 190 315, 375 375" fill="none" stroke="#38BDF8" strokeWidth="1.6" opacity="0.95" />
-          <path d="M 5 375 Q 190 315, 375 375" fill="none" stroke="#FFFFFF" strokeWidth="0.8" opacity="0.85" />
+          <path
+            d="M 5 375 Q 190 315, 375 375"
+            fill="none"
+            stroke="#0369A1"
+            strokeWidth="7"
+            opacity="0.35"
+          />
+          <path
+            d="M 5 375 Q 190 315, 375 375"
+            fill="none"
+            stroke="#0284C7"
+            strokeWidth="3.5"
+            opacity="0.7"
+          />
+          <path
+            d="M 5 375 Q 190 315, 375 375"
+            fill="none"
+            stroke="#38BDF8"
+            strokeWidth="1.6"
+            opacity="0.95"
+          />
+          <path
+            d="M 5 375 Q 190 315, 375 375"
+            fill="none"
+            stroke="#FFFFFF"
+            strokeWidth="0.8"
+            opacity="0.85"
+          />
 
           {/* Hero 2.5D Satellite & Avionics Payload (Rich Multi-Planar Depth) */}
           <g className="aess-satellite-float">
             {/* Ground / Orbital Drop Shadow */}
-            <ellipse cx="190" cy="225" rx="48" ry="16" fill="#01040A" opacity="0.65" filter="url(#aess-shadow-blur)" />
+            <ellipse
+              cx="190"
+              cy="225"
+              rx="48"
+              ry="16"
+              fill="#01040A"
+              opacity="0.65"
+              filter="url(#aess-shadow-blur)"
+            />
 
             {/* Scientific Magnetometer Instrument Boom */}
-            <line x1="190" y1="145" x2="242" y2="102" stroke="#64748B" strokeWidth="1.8" />
-            <circle cx="242" cy="102" r="3" fill="#CBD5E1" stroke="#334155" strokeWidth="1" />
+            <line
+              x1="190"
+              y1="145"
+              x2="242"
+              y2="102"
+              stroke="#64748B"
+              strokeWidth="1.8"
+            />
+            <circle
+              cx="242"
+              cy="102"
+              r="3"
+              fill="#CBD5E1"
+              stroke="#334155"
+              strokeWidth="1"
+            />
 
             {/* Signal Transmission Pulse Waves from Dish */}
-            <circle cx="190" cy="102" r="14" fill="none" stroke="#F59E0B" strokeWidth="1.4" className="aess-signal-ping" />
-            <circle cx="190" cy="102" r="26" fill="none" stroke="#F59E0B" strokeWidth="1.1" className="aess-signal-ping" style={{ animationDelay: '-1.4s' }} />
+            <circle
+              cx="190"
+              cy="102"
+              r="14"
+              fill="none"
+              stroke="#F59E0B"
+              strokeWidth="1.4"
+              className="aess-signal-ping"
+            />
+            <circle
+              cx="190"
+              cy="102"
+              r="26"
+              fill="none"
+              stroke="#F59E0B"
+              strokeWidth="1.1"
+              className="aess-signal-ping"
+              style={{ animationDelay: "-1.4s" }}
+            />
 
             {/* ─── Left Solar Array (2.5D Extruded Panel) ─── */}
             <g id="left-wing">
               {/* Articulated Mount Boom */}
-              <line x1="126" y1="182" x2="160" y2="192" stroke="#F59E0B" strokeWidth="3.2" strokeLinecap="round" />
+              <line
+                x1="126"
+                y1="182"
+                x2="160"
+                y2="192"
+                stroke="#F59E0B"
+                strokeWidth="3.2"
+                strokeLinecap="round"
+              />
               <circle cx="160" cy="192" r="2.5" fill="#B45309" />
               {/* Panel Thickness / Bottom Edge */}
               <polygon points="56,192 126,204 126,209 56,197" fill="#78350F" />
               {/* Panel Side Bevel */}
               <polygon points="50,172 56,192 56,197 50,177" fill="#92400E" />
               {/* Panel Top Active Photovoltaic Face */}
-              <polygon points="50,172 120,184 126,204 56,192" fill="url(#aess-solar-pv)" stroke="#F59E0B" strokeWidth="1.4" />
+              <polygon
+                points="50,172 120,184 126,204 56,192"
+                fill="url(#aess-solar-pv)"
+                stroke="#F59E0B"
+                strokeWidth="1.4"
+              />
               {/* Solar Cell Grid Divides */}
-              <line x1="68" y1="175" x2="74" y2="195" stroke="#60A5FA" strokeWidth="0.8" opacity="0.75" />
-              <line x1="86" y1="178" x2="92" y2="198" stroke="#60A5FA" strokeWidth="0.8" opacity="0.75" />
-              <line x1="104" y1="181" x2="110" y2="201" stroke="#60A5FA" strokeWidth="0.8" opacity="0.75" />
-              <line x1="53" y1="182" x2="123" y2="194" stroke="#60A5FA" strokeWidth="0.8" opacity="0.75" />
+              <line
+                x1="68"
+                y1="175"
+                x2="74"
+                y2="195"
+                stroke="#60A5FA"
+                strokeWidth="0.8"
+                opacity="0.75"
+              />
+              <line
+                x1="86"
+                y1="178"
+                x2="92"
+                y2="198"
+                stroke="#60A5FA"
+                strokeWidth="0.8"
+                opacity="0.75"
+              />
+              <line
+                x1="104"
+                y1="181"
+                x2="110"
+                y2="201"
+                stroke="#60A5FA"
+                strokeWidth="0.8"
+                opacity="0.75"
+              />
+              <line
+                x1="53"
+                y1="182"
+                x2="123"
+                y2="194"
+                stroke="#60A5FA"
+                strokeWidth="0.8"
+                opacity="0.75"
+              />
             </g>
 
             {/* ─── Right Solar Array (2.5D Extruded Panel) ─── */}
             <g id="right-wing">
               {/* Articulated Mount Boom */}
-              <line x1="220" y1="188" x2="254" y2="198" stroke="#F59E0B" strokeWidth="3.2" strokeLinecap="round" />
+              <line
+                x1="220"
+                y1="188"
+                x2="254"
+                y2="198"
+                stroke="#F59E0B"
+                strokeWidth="3.2"
+                strokeLinecap="round"
+              />
               <circle cx="220" cy="188" r="2.5" fill="#B45309" />
               {/* Panel Thickness / Bottom Edge */}
-              <polygon points="254,198 324,210 324,215 254,203" fill="#78350F" />
+              <polygon
+                points="254,198 324,210 324,215 254,203"
+                fill="#78350F"
+              />
               {/* Panel Side Bevel */}
-              <polygon points="324,210 330,190 330,195 324,215" fill="#92400E" />
+              <polygon
+                points="324,210 330,190 330,195 324,215"
+                fill="#92400E"
+              />
               {/* Panel Top Active Photovoltaic Face */}
-              <polygon points="248,178 318,190 324,210 254,198" fill="url(#aess-solar-pv)" stroke="#F59E0B" strokeWidth="1.4" />
+              <polygon
+                points="248,178 318,190 324,210 254,198"
+                fill="url(#aess-solar-pv)"
+                stroke="#F59E0B"
+                strokeWidth="1.4"
+              />
               {/* Solar Cell Grid Divides */}
-              <line x1="266" y1="181" x2="272" y2="201" stroke="#60A5FA" strokeWidth="0.8" opacity="0.75" />
-              <line x1="284" y1="184" x2="290" y2="204" stroke="#60A5FA" strokeWidth="0.8" opacity="0.75" />
-              <line x1="302" y1="187" x2="308" y2="207" stroke="#60A5FA" strokeWidth="0.8" opacity="0.75" />
-              <line x1="251" y1="188" x2="321" y2="200" stroke="#60A5FA" strokeWidth="0.8" opacity="0.75" />
+              <line
+                x1="266"
+                y1="181"
+                x2="272"
+                y2="201"
+                stroke="#60A5FA"
+                strokeWidth="0.8"
+                opacity="0.75"
+              />
+              <line
+                x1="284"
+                y1="184"
+                x2="290"
+                y2="204"
+                stroke="#60A5FA"
+                strokeWidth="0.8"
+                opacity="0.75"
+              />
+              <line
+                x1="302"
+                y1="187"
+                x2="308"
+                y2="207"
+                stroke="#60A5FA"
+                strokeWidth="0.8"
+                opacity="0.75"
+              />
+              <line
+                x1="251"
+                y1="188"
+                x2="321"
+                y2="200"
+                stroke="#60A5FA"
+                strokeWidth="0.8"
+                opacity="0.75"
+              />
             </g>
 
             {/* ─── Central Satellite Bus (Isometric 2.5D Hexahedron with Multi-Planar Depth) ─── */}
             <g id="sat-bus">
               {/* Top Face (Illuminated by Sunlight) */}
-              <polygon points="190,146 222,162 190,178 158,162" fill="url(#aess-gold-top)" stroke="#B45309" strokeWidth="1" />
-              <polygon points="186,151 210,162 190,172 166,160" fill="#FEF08A" opacity="0.85" />
+              <polygon
+                points="190,146 222,162 190,178 158,162"
+                fill="url(#aess-gold-top)"
+                stroke="#B45309"
+                strokeWidth="1"
+              />
+              <polygon
+                points="186,151 210,162 190,172 166,160"
+                fill="#FEF08A"
+                opacity="0.85"
+              />
 
               {/* Left Face (Midtone Gold Foil with Seam Lines) */}
-              <polygon points="158,162 190,178 190,218 158,202" fill="url(#aess-gold-left)" stroke="#B45309" strokeWidth="1" />
-              <line x1="158" y1="182" x2="190" y2="198" stroke="#78350F" strokeWidth="0.8" opacity="0.5" />
+              <polygon
+                points="158,162 190,178 190,218 158,202"
+                fill="url(#aess-gold-left)"
+                stroke="#B45309"
+                strokeWidth="1"
+              />
+              <line
+                x1="158"
+                y1="182"
+                x2="190"
+                y2="198"
+                stroke="#78350F"
+                strokeWidth="0.8"
+                opacity="0.5"
+              />
               {/* Thermal Radiator Louver */}
-              <polygon points="168,178 180,184 180,198 168,192" fill="#0F172A" stroke="#475569" strokeWidth="0.8" />
+              <polygon
+                points="168,178 180,184 180,198 168,192"
+                fill="#0F172A"
+                stroke="#475569"
+                strokeWidth="0.8"
+              />
 
               {/* Right Face (Deep Shadow Gold Foil) */}
-              <polygon points="190,178 222,162 222,202 190,218" fill="url(#aess-gold-right)" stroke="#B45309" strokeWidth="1" />
-              <line x1="190" y1="198" x2="222" y2="182" stroke="#78350F" strokeWidth="0.8" opacity="0.5" />
+              <polygon
+                points="190,178 222,162 222,202 190,218"
+                fill="url(#aess-gold-right)"
+                stroke="#B45309"
+                strokeWidth="1"
+              />
+              <line
+                x1="190"
+                y1="198"
+                x2="222"
+                y2="182"
+                stroke="#78350F"
+                strokeWidth="0.8"
+                opacity="0.5"
+              />
 
               {/* Star Tracker Optical Camera Cylinder */}
-              <ellipse cx="208" cy="184" rx="4.5" ry="3.2" fill="#0A0E1A" stroke="#38BDF8" strokeWidth="1.2" />
+              <ellipse
+                cx="208"
+                cy="184"
+                rx="4.5"
+                ry="3.2"
+                fill="#0A0E1A"
+                stroke="#38BDF8"
+                strokeWidth="1.2"
+              />
               <circle cx="208" cy="184" r="1.8" fill="#00E5FF" />
 
               {/* ─── High-Gain Parabolic Dish Antenna (True 2.5D Depth) ─── */}
               <g id="parabolic-dish">
                 {/* Gimbal Stalk */}
-                <line x1="190" y1="146" x2="190" y2="124" stroke="#64748B" strokeWidth="2.8" strokeLinecap="round" />
+                <line
+                  x1="190"
+                  y1="146"
+                  x2="190"
+                  y2="124"
+                  stroke="#64748B"
+                  strokeWidth="2.8"
+                  strokeLinecap="round"
+                />
                 {/* Outer Dish Rim */}
-                <ellipse cx="190" cy="116" rx="24" ry="10" fill="#CBD5E1" stroke="#334155" strokeWidth="1.5" />
+                <ellipse
+                  cx="190"
+                  cy="116"
+                  rx="24"
+                  ry="10"
+                  fill="#CBD5E1"
+                  stroke="#334155"
+                  strokeWidth="1.5"
+                />
                 {/* Concave Dish Shadow */}
                 <ellipse cx="190" cy="116" rx="19" ry="7.5" fill="#475569" />
                 <ellipse cx="190" cy="116" rx="13" ry="5" fill="#1E293B" />
                 {/* Feed Horn Struts */}
-                <line x1="176" y1="116" x2="190" y2="102" stroke="#94A3B8" strokeWidth="1.3" />
-                <line x1="204" y1="116" x2="190" y2="102" stroke="#94A3B8" strokeWidth="1.3" />
+                <line
+                  x1="176"
+                  y1="116"
+                  x2="190"
+                  y2="102"
+                  stroke="#94A3B8"
+                  strokeWidth="1.3"
+                />
+                <line
+                  x1="204"
+                  y1="116"
+                  x2="190"
+                  y2="102"
+                  stroke="#94A3B8"
+                  strokeWidth="1.3"
+                />
                 {/* Transceiver Beacon Tip */}
-                <circle cx="190" cy="102" r="3.2" fill="#F59E0B" filter="url(#aess-glow)" />
+                <circle
+                  cx="190"
+                  cy="102"
+                  r="3.2"
+                  fill="#F59E0B"
+                  filter="url(#aess-glow)"
+                />
                 <circle cx="190" cy="102" r="1.2" fill="#FFFFFF" />
               </g>
             </g>
@@ -755,7 +1120,11 @@ export default function SocietiesPage() {
                     className="soc-logo-badge"
                     aria-label={`${active.name} official emblem`}
                   >
-                    <Icon size={26} strokeWidth={2.6} className="soc-badge-icon" />
+                    <Icon
+                      size={26}
+                      strokeWidth={2.6}
+                      className="soc-badge-icon"
+                    />
                   </div>
                   <h2>{active.name}</h2>
                 </div>

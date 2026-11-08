@@ -20,6 +20,7 @@ import Footer from '../components/Footer'
 import '../styles/homepage.css'
 
 gsap.registerPlugin(ScrollTrigger)
+ScrollTrigger.config({ ignoreMobileResize: true })
 
 /* ─────────────────────────────────────────────
    Marquee Strip (truly infinite — 4x repeat)
@@ -72,10 +73,14 @@ export default function HomePage() {
 
     const ctaEls = ctaRef.current?.querySelectorAll('.gsap-cta')
     if (ctaEls?.length) {
-      gsap.fromTo(ctaEls,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power2.out', delay: 1.8 }
-      )
+      if (window.innerWidth >= 768) {
+        gsap.fromTo(ctaEls,
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power2.out', delay: 1.8 }
+        )
+      } else {
+        gsap.set(ctaEls, { y: 0, opacity: 1 })
+      }
     }
 
     if (floatingRef.current) {
@@ -125,20 +130,19 @@ export default function HomePage() {
           panel.style.marginBottom = fakeScrollRatio ? (innerPanel.offsetHeight * fakeScrollRatio + 'px') : '0px'
         }
 
-        // On mobile, pin and animate ONLY when the bottom of the section reaches the bottom of the viewport.
-        // This ensures the user can scroll natively through the entire tall section before it scales away.
+        // Section-to-section slide deck animation on BOTH laptop & mobile!
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: panel,
-            start: isDesktop && !isLanding ? 'top top' : 'bottom bottom',
-            end: () => fakeScrollRatio ? `+=${innerPanel.offsetHeight}` : (isDesktop ? '+=600' : '+=400'),
-            pinSpacing: false,
+            start: 'top top',
+            end: () => fakeScrollRatio ? `+=${innerPanel.offsetHeight}` : (isDesktop ? '+=600' : '+=450'),
             pin: true,
-            scrub: true,
+            pinSpacing: false,
+            scrub: isDesktop ? true : 0.6,
           }
         })
 
-        if (fakeScrollRatio) {
+        if (fakeScrollRatio && isDesktop) {
           tl.to(innerPanel, {
             yPercent: -100,
             y: window.innerHeight,
@@ -149,7 +153,7 @@ export default function HomePage() {
 
         tl.fromTo(panel,
           { scale: 1, opacity: 1, y: 0 },
-          { scale: isLanding ? 1 : 0.82, opacity: 0, y: isLanding ? 0 : (isDesktop ? -40 : -60), duration: 1, ease: 'power2.in' }
+          { scale: isLanding ? 1 : 0.85, opacity: 0, y: isDesktop ? -40 : -20, duration: 1, ease: 'power2.in' }
         )
       })
 

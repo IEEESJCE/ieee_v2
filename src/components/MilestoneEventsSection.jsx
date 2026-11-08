@@ -9,71 +9,80 @@ gsap.registerPlugin(ScrollTrigger)
 const EVENTS = [
   {
     id: 1,
-    title: 'Latex Workshop',
-    content: 'LaTeX is a typesetting software used to generate professional-looking documents.',
-    img: '/photos/events/latex_workshop.jpeg',
-    icon: <FileText size={18} />,
-    accent: '#3B82F6',
-    tag: 'Workshop',
-  },
-  {
-    id: 2,
-    title: 'Bug Bounty',
-    content: 'IEEE-SJCE is delighted to welcome you all to BUG BOUNTY — an online treasure hunt!',
-    img: '/photos/events/bug_bounty.jpeg',
-    icon: <Bug size={18} />,
-    accent: '#8B5CF6',
-    tag: 'Competition',
-  },
-  {
-    id: 3,
-    title: 'Quiz-Bizz',
-    content: 'QUIZBIZZ is an event for people of all branches to test their skills and knowledge in various fields.',
-    img: '/photos/events/quizbizz.jpeg',
-    icon: <Brain size={18} />,
-    accent: '#00E5FF',
-    tag: 'Quiz',
-  },
-  {
-    id: 4,
-    title: 'Robotics 13',
-    content: 'Technology has always made life simple, and robots have changed the course of our lives in unimaginable ways.',
+    title: 'Robotics 17',
+    content: 'The 17th edition of our premier robotics bootcamp, guiding students through microcontroller architecture, sensor arrays, motor control, and autonomous navigation.',
     img: '/photos/events/robotics_13.jpeg',
     icon: <Bot size={18} />,
     accent: '#EC4899',
     tag: 'Robotics',
   },
   {
-    id: 5,
-    title: 'IOT Workshop',
-    content: 'This cool, futuristic-seeming sorcery is what we formally call IoT — the Internet of Things.',
-    img: '/photos/events/iot.png',
+    id: 2,
+    title: 'Soldering & Etching',
+    content: 'Hands-on PCB fabrication and hardware prototyping where participants design circuit traces, chemically etch copper boards, and master precision through-hole soldering.',
+    img: '/photos/events/soldering_etching_jan_2025.jpeg',
+    icon: <Wrench size={18} />,
+    accent: '#00E5FF',
+    tag: 'Hardware',
+  },
+  {
+    id: 3,
+    title: 'ML Workshop',
+    content: 'A comprehensive deep dive into machine learning workflows, exploring Python data pipelines, feature engineering, neural network foundations, and model inference.',
+    img: '/photos/events/ml_workshop.jpeg',
+    icon: <Brain size={18} />,
+    accent: '#8B5CF6',
+    tag: 'Intelligence',
+  },
+  {
+    id: 4,
+    title: 'IoT 4.0',
+    content: 'Hands-on connected devices bootcamp exploring ESP32 microcontrollers, sensor telemetry streams, MQTT cloud brokers, and smart edge automation.',
+    img: '/photos/events/iot_4_0_2025.jpg',
     icon: <Wifi size={18} />,
     accent: '#00F5D4',
+    tag: 'IoT',
+  },
+  {
+    id: 5,
+    title: 'Latex Workshop',
+    content: 'Professional typesetting software workshop teaching students to structure, format, and render publication-grade IEEE papers and technical documentation.',
+    img: '/photos/events/latex_workshop.jpeg',
+    icon: <FileText size={18} />,
+    accent: '#3B82F6',
     tag: 'Workshop',
   },
   {
     id: 6,
+    title: 'Bug Bounty',
+    content: 'High-energy cyber capture-the-flag and code debugging challenge testing analytical reasoning, security audits, and rapid problem-solving skills.',
+    img: '/photos/events/bug_bounty.jpeg',
+    icon: <Bug size={18} />,
+    accent: '#A855F7',
+    tag: 'Competition',
+  },
+  {
+    id: 7,
+    title: 'Quiz-Bizz',
+    content: 'Flagship inter-branch technical and business quiz evaluating participants across engineering domains, technological breakthroughs, and business acumen.',
+    img: '/photos/events/quizbizz.jpeg',
+    icon: <Brain size={18} />,
+    accent: '#38BDF8',
+    tag: 'Quiz',
+  },
+  {
+    id: 8,
     title: 'PC Assembly',
-    content: "Building a computer is fun, affordable and empowering. It's fun being able to choose all of the parts.",
+    content: 'Interactive hardware masterclass demystifying computing architectures, motherboard chipsets, thermal management, and step-by-step custom PC assembly.',
     img: '/photos/events/pc.jpg',
     icon: <Cpu size={18} />,
     accent: '#60A5FA',
     tag: 'Hands-on',
   },
   {
-    id: 7,
-    title: 'Soldering Workshop',
-    content: "How is your relation-chip with electronics? Not great? Fret not — we're here to build a strong one from scratch.",
-    img: '/photos/events/soldering.jpeg',
-    icon: <Wrench size={18} />,
-    accent: '#F59E0B',
-    tag: 'Workshop',
-  },
-  {
-    id: 8,
+    id: 9,
     title: 'SQL Bootcamp',
-    content: 'How do you fetch the second-highest salary in a given database? Or, even simpler — learn SQL from the basics.',
+    content: 'Foundational relational database workshop covering SQL syntax, table schemas, multi-table joins, subqueries, and query performance optimization.',
     img: '/photos/events/sql.jpg',
     icon: <Database size={18} />,
     accent: '#22D3EE',
@@ -137,11 +146,11 @@ export default function MilestoneEventsSection() {
               <span>Since Day One</span>
             </div>
             <h2 className="ms-intro-title">
-              Milestone
+              Flagship
               <em>Events</em>
             </h2>
             <p className="ms-intro-text">
-              Iconic workshops and competitions that built IEEE SJCE&apos;s legacy — scroll the filmstrip to explore each chapter.
+              Iconic workshops and premier competitions that define IEEE SJCE&apos;s flagship legacy — scroll the filmstrip to explore each edition.
             </p>
             <div className="ms-intro-stat">
               <span className="ms-stat-num">{EVENTS.length}</span>
