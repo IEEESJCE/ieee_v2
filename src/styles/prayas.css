@@ -289,11 +289,43 @@
    ═══════════════════════════════════════════════ */
 
 :root.light .pry-section {
-  background: var(--bg-surface);
+  background: #FFFFFF !important;
+  border-top: 1.5px solid #CBD5E1 !important;
 }
 
-:root.light .pry-tab,
-:root.light .pry-panel,
+:root.light .pry-title {
+  color: #0F172A !important;
+}
+
+:root.light .pry-tab {
+  background: #F8FAFC !important;
+  border: 1.5px solid #CBD5E1 !important;
+  color: #334155 !important;
+}
+
+:root.light .pry-tab:hover {
+  background: #FFFFFF !important;
+  border-color: #0F172A !important;
+  color: #0F172A !important;
+}
+
+:root.light .pry-tab-active {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  color: #0F172A !important;
+  box-shadow: 4px 4px 0 0 #EC4899 !important;
+  font-weight: 800 !important;
+}
+
+:root.light .pry-panel {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 6px 6px 0 0 #EC4899 !important;
+}
+
 :root.light .pry-pills span {
-  background: #FFFFFF;
+  background: #F1F5F9 !important;
+  border: 1.5px solid #CBD5E1 !important;
+  color: #0F172A !important;
+  font-weight: 600 !important;
 }

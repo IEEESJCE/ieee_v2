@@ -337,6 +337,108 @@
 }
 
 /* ─── Light mode ─── */
-:root.light .brd-card,
-:root.light .brd-mag-card { background: #fff; }
-:root.light .brd-card-init li { background: #F0F4FF; }
+:root.light .brd-page {
+  background-color: #EDF2F7 !important;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.08) 1px, transparent 1px) !important;
+  background-size: 32px 32px !important;
+}
+
+:root.light .brd-hero-eyebrow {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 3px 3px 0 0 #2563EB !important;
+}
+
+:root.light .brd-hero h1 {
+  color: #0F172A !important;
+}
+
+:root.light .brd-hero p {
+  color: #475569 !important;
+}
+
+:root.light .brd-card {
+  background: #FFFFFF !important;
+  border: 2.5px solid #0F172A !important;
+  box-shadow: 8px 8px 0 0 var(--card-accent) !important;
+}
+
+:root.light .brd-card:hover {
+  transform: translate(-3px, -3px) !important;
+  box-shadow: 11px 11px 0 0 var(--card-accent) !important;
+}
+
+:root.light .brd-card-icon {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 3px 3px 0 0 var(--card-accent) !important;
+}
+
+:root.light .brd-card-top h2 {
+  color: #0F172A !important;
+}
+
+:root.light .brd-card-lottie {
+  background: #F8FAFC !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 4px 4px 0 0 var(--card-accent) !important;
+}
+
+:root.light .brd-card-about {
+  color: #334155 !important;
+  background: #F8FAFC !important;
+  border: 1.5px solid #CBD5E1 !important;
+  padding: 14px 16px !important;
+  border-radius: 0 !important;
+  margin: 18px 24px 0 !important;
+}
+
+:root.light .brd-card-init h3 {
+  color: #0F172A !important;
+  border-bottom: 2.5px solid var(--card-accent) !important;
+}
+
+:root.light .brd-card-init li {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  border-left: 6px solid var(--card-accent) !important;
+  box-shadow: 4px 4px 0 0 #0F172A !important;
+  color: #0F172A !important;
+}
+
+:root.light .brd-card-init li strong {
+  color: #0F172A !important;
+}
+
+:root.light .brd-card-init li span {
+  color: #475569 !important;
+}
+
+:root.light .brd-mag-card {
+  background: #FFFFFF !important;
+  border: 2.5px solid #0F172A !important;
+  box-shadow: 8px 8px 0 0 #8B5CF6 !important;
+}
+
+:root.light .brd-mag-cover {
+  border: 2px solid #0F172A !important;
+  box-shadow: 4px 4px 0 0 #0F172A !important;
+}
+
+:root.light .brd-mag-body h2 {
+  color: #0F172A !important;
+}
+
+:root.light .brd-mag-body p {
+  color: #475569 !important;
+}
+
+:root.light .brd-mag-btn {
+  background: #8B5CF6 !important;
+  color: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 4px 4px 0 0 #0F172A !important;
+}

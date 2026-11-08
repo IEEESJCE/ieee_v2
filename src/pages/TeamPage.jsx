@@ -151,8 +151,8 @@ const CURRENT_EXECUTIVE_COMMITTEE = [
     name: "Pruthvi Shree",
     post: "Publicity Coordinator",
     src: "/photos/members26-27/Pruthvi_Shree.jpg",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/pruthvi-shree-80625236a",
+    gmail: "pruthvishreelokesha@gmail.com",
     imageStyle: {
       transform: "scale(1.9) translateZ(0)",
       transformOrigin: "center 32%",
@@ -206,8 +206,8 @@ const CURRENT_EXECUTIVE_COMMITTEE = [
     name: "Ruchitha S",
     post: "Reporter",
     src: "",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/ruchitha-s-bb33203a0",
+    gmail: "ruchisrini13@gmail.com",
   },
 ];
 
@@ -422,8 +422,8 @@ const ELECTRON_DEVICES_SOCIETY = [
     post: "SECRETARY",
     type: "electron_devices_society",
     src: "/photos/members26-27/Nimai_Udupi.jpg",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/nimai-u-7531bb3a9",
+    gmail: "nimai08.u@gmail.com",
     imageStyle: {
       transform: "scale(1.8) translateZ(0)",
       transformOrigin: "center 40%",
@@ -582,8 +582,8 @@ const EDITORIAL_BOARD = [
     post: "Editor",
     type: "editorial_board",
     src: "/photos/members26-27/Shreeja_Dimri.jpg",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/shreeja-dimri-a04619363?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+    gmail: "shreeja614@gmail.com",
     imageStyle: {
       transform: "scale(1.8) translateZ(0) translateX(-5px)",
       transformOrigin: "center 50%",
@@ -634,7 +634,7 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
     post: "SECRETARY",
     type: "aerospace_and_electronic_systems_society",
     src: "/photos/members26-27/Lakshmi_K_L.jpg",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/lakshmi-k-l-18215735b/",
     gmail: "sanjana.2262006@gmail.com",
     imageStyle: {
       transform: "scale(1.8) translateZ(0)",
@@ -646,16 +646,16 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
     post: "JOINT SECRETARY",
     type: "aerospace_and_electronic_systems_society",
     src: "",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/vishal-hv-912a9833b?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    gmail: "vishalhv06@gmail.com",
   },
   {
     name: "Maryada Sudharshan Ulagadde",
     post: "TREASURER",
     type: "aerospace_and_electronic_systems_society",
     src: "/photos/members26-27/Maryada_Sudarshan_Ulagadde.jpg",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/maryada-ulagadde-745399379",
+    gmail: "maryadaulagadde@gmail.com",
     imageStyle: {
       transform: "scale(1.8) translateZ(0)",
       transformOrigin: "center 38%",
@@ -666,8 +666,8 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
     post: "TECHNICAL COORDINATOR",
     type: "aerospace_and_electronic_systems_society",
     src: "/photos/members26-27/Thejas_S.jpg",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/thejas-shreenivas",
+    gmail: "thejaskashyap3141@gmail.com",
     imageStyle: {
       transform: "scale(1.3) translateZ(0)",
       transformOrigin: "center -3%",
@@ -690,8 +690,8 @@ const WEB_DEVELOPMENT_BOARD = [
     post: "WEBMASTER",
     type: "web_development_board",
     src: "/photos/members26-27/Deekshith_S_Kumar.jpg",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/deekshith-s-kumar-a9062a245/",
+    gmail: "deekshithskumar2005@gmail.com",
     imageStyle: {
       transform: "scale(1.7) translateZ(0)",
       transformOrigin: "center 38%",
@@ -702,8 +702,8 @@ const WEB_DEVELOPMENT_BOARD = [
     post: "WEBMASTER",
     type: "web_development_board",
     src: "/photos/members26-27/Amruth.jpg",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/amruth-s-798090126?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+    gmail: "amruthshivu@gmail.com",
   },
 ];
 

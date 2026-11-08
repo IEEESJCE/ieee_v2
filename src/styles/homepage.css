@@ -452,38 +452,134 @@
 
 :root.light .nb-bg {
   background-color: #F8FAFC;
+  background-image:
+    radial-gradient(circle at 50% 30%, rgba(37, 99, 235, 0.07) 0%, transparent 65%),
+    linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 48px 48px, 48px 48px;
 }
 
 :root.light .nb-bg-image {
-  opacity: 0.18;
-  mix-blend-mode: multiply;
+  display: block !important;
+  opacity: 0.45 !important;
+  filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(1.2) !important;
+  mix-blend-mode: multiply !important;
 }
 
-/* Hero label — crisper on light bg */
+/* Hero label */
 :root.light .nb-hero-label {
-  background: #FFFFFF;
-  color: var(--accent);
-  border-color: var(--accent);
+  background: #EFF6FF;
+  color: #1D4ED8;
+  border: 1px solid #BFDBFE;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
+  border-radius: 9999px;
 }
 
-/* CTA bar — framed light mode */
+/* Headings & Text */
+:root.light .nb-hero-title {
+  color: #0F172A;
+}
+
+:root.light .nb-hero-subtitle {
+  color: #334155;
+}
+
+:root.light .nb-hero-tagline {
+  color: #64748B;
+}
+
+:root.light .nb-hero-tagline-big,
+:root.light .tagline-cyan,
+:root.light .tagline-dot {
+  color: #2563EB;
+}
+
+/* Floating Shapes in Light Mode — crisp neo-brutalist block shadows matching Dark Mode */
+:root.light .nb-shape {
+  border: 2px solid #0F172A !important;
+  opacity: 1 !important;
+}
+
+:root.light .nb-shape-1 {
+  background: #3B82F6 !important;
+  box-shadow: 6px 6px 0 0 #0F172A !important;
+}
+
+:root.light .nb-shape-2 {
+  background: #00E5FF !important;
+  border: 2.5px solid #0F172A !important;
+  box-shadow: 6px 6px 0 0 #0F172A !important;
+}
+
+:root.light .nb-shape-3 {
+  background: #00E5FF !important;
+  box-shadow: 5px 5px 0 0 #0F172A !important;
+}
+
+:root.light .nb-shape-4 {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 5px 5px 0 0 #2563EB !important;
+}
+
+:root.light .nb-shape-5 {
+  background: #00E5FF !important;
+  box-shadow: 6px 6px 0 0 #0F172A !important;
+}
+
+:root.light .nb-shape-6 {
+  background: #3B82F6 !important;
+  border: 2.5px solid #0F172A !important;
+  box-shadow: 6px 6px 0 0 #0F172A !important;
+}
+
+:root.light .nb-shape-7 {
+  background: #00E5FF !important;
+  box-shadow: 5px 5px 0 0 #0F172A !important;
+}
+
+/* CTA bar — framed light mode with crisp neo-brutalist solid shadow */
 :root.light .nb-cta-bar {
-  background: #FFFFFF;
-  border-color: var(--accent);
-  box-shadow: 8px 8px 0 0 var(--accent);
+  background: #FFFFFF !important;
+  border: 2.5px solid #0F172A !important;
+  box-shadow: 8px 8px 0 0 #2563EB !important;
+}
+
+:root.light .nb-cta-bar:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 10px 10px 0 0 #2563EB !important;
 }
 
 :root.light .nb-cta-bar h3 {
-  color: #0A0E1A;
+  color: #0F172A !important;
 }
 
 :root.light .nb-cta-bar .nb-btn-outline {
-  background: #F1F5F9;
-  border-color: #CBD5E1;
-  color: #0A0E1A;
+  background: #0F172A !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 4px 4px 0 0 #2563EB !important;
+  color: #FFFFFF !important;
+}
+
+:root.light .nb-cta-bar .nb-btn-outline:hover {
+  background: #2563EB !important;
+  border-color: #0F172A !important;
+  box-shadow: 2px 2px 0 0 #0F172A !important;
+  color: #FFFFFF !important;
+  transform: translate(2px, 2px) !important;
 }
 
 /* Marquee strip — light surface */
 :root.light .nb-marquee-wrapper {
-  background: var(--bg-card);
+  background: #FFFFFF;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+:root.light .nb-marquee-word {
+  color: #2563EB;
+}
+
+:root.light .nb-marquee-dot {
+  color: #94A3B8;
 }

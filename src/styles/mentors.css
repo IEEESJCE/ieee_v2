@@ -471,15 +471,59 @@
 /* ═══════════════════════════════════════════════
    LIGHT MODE
    ═══════════════════════════════════════════════ */
-:root.light .mnt-section { background: var(--bg-surface); }
-:root.light .mnt-face { background: #EAF3FF; border-color: #0F172A; }
-:root.light .mnt-back {
-  background: linear-gradient(
-    160deg,
-    color-mix(in srgb, var(--mnt-accent) 12%, #EAF3FF),
-    #EAF3FF
-  );
+:root.light .mnt-section {
+  background-color: #EDF2F7 !important;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.07) 1px, transparent 1px) !important;
+  background-size: 32px 32px !important;
+  border-top: 2px solid #0F172A !important;
 }
-:root.light .mnt-footer { background: #EAF3FF; }
-:root.light .mnt-social-btn { background: rgba(255,255,255,0.85); }
-:root.light .mnt-social-btn:not(.mnt-social-disabled):hover { color: #fff; }
+
+:root.light .mnt-title {
+  color: #0F172A !important;
+}
+
+:root.light .mnt-subtitle {
+  color: #475569 !important;
+}
+
+/* Card face in light mode: technical micro-grid replaces flat white void */
+:root.light .mnt-face {
+  background-color: #FFFFFF !important;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px) !important;
+  background-size: 16px 16px !important;
+  border-color: #0F172A !important;
+}
+
+:root.light .mnt-card::before {
+  background: #2563EB !important;
+}
+
+:root.light .mnt-name {
+  color: #0F172A !important;
+}
+
+:root.light .mnt-role {
+  background: #2563EB !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid #0F172A !important;
+  box-shadow: 2px 2px 0 0 #0F172A !important;
+}
+
+:root.light .mnt-footer {
+  background: #F8FAFC !important;
+  border-top: 2.5px solid #0F172A !important;
+}
+
+:root.light .mnt-footer-btn {
+  color: #0F172A !important;
+  border-right: 2.5px solid #0F172A !important;
+}
+
+:root.light .mnt-footer-btn:hover {
+  background: #2563EB !important;
+  color: #FFFFFF !important;
+}

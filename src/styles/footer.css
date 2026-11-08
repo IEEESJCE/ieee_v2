@@ -188,13 +188,49 @@
    ═══════════════════════════════════════════════ */
 
 :root.light .ft {
-  background: var(--bg-surface);
+  background: #0B1120 !important;
+  border-top: 2.5px solid #0F172A !important;
 }
 
-:root.light .ft-bottom {
-  background: var(--bg-card);
+:root.light .ft-logo {
+  color: #FFFFFF !important;
+}
+
+:root.light .ft-tagline {
+  color: #38BDF8 !important;
+}
+
+:root.light .ft-col-title {
+  color: #FFFFFF !important;
+  border-bottom: 2px solid #1E293B !important;
+}
+
+:root.light .ft-links a {
+  color: #94A3B8 !important;
+}
+
+:root.light .ft-links a:hover {
+  color: #38BDF8 !important;
 }
 
 :root.light .ft-social a {
-  background: #FFFFFF;
+  background: #111827 !important;
+  border: 1.5px solid #1E293B !important;
+  color: #E2E8F0 !important;
+  box-shadow: 2px 2px 0 0 #38BDF8 !important;
+}
+
+:root.light .ft-social a:hover {
+  background: #2563EB !important;
+  color: #FFFFFF !important;
+  border-color: #2563EB !important;
+}
+
+:root.light .ft-bottom {
+  background: #060913 !important;
+  border-top: 1px solid #1E293B !important;
+}
+
+:root.light .ft-bottom p {
+  color: #64748B !important;
 }

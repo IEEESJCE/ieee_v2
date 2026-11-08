@@ -147,4 +147,60 @@
   .cnt-form-card { grid-row: auto; }
 }
 
-:root.light .cnt-form-card, :root.light .cnt-chip { background: #fff; }
+/* ─── Light mode ─── */
+:root.light .cnt-page {
+  background-color: #EDF2F7 !important;
+  background-image:
+    radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.06) 0%, transparent 65%),
+    linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 48px 48px, 48px 48px !important;
+}
+
+:root.light .cnt-hero h1 {
+  color: #0F172A !important;
+}
+
+:root.light .cnt-hero p {
+  color: #475569 !important;
+}
+
+:root.light .cnt-form-card {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 6px 6px 0 0 #2563EB !important;
+}
+
+:root.light .cnt-form-card input,
+:root.light .cnt-form-card textarea {
+  background: #F8FAFC !important;
+  border: 1.5px solid #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+:root.light .cnt-form-card input:focus,
+:root.light .cnt-form-card textarea:focus {
+  background: #FFFFFF !important;
+  border-color: #2563EB !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+:root.light .cnt-chip {
+  background: #FFFFFF !important;
+  border: 1.5px solid #CBD5E1 !important;
+  box-shadow: 3px 3px 0 0 var(--chip-accent, #2563EB) !important;
+}
+
+:root.light .cnt-chip:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 5px 5px 0 0 var(--chip-accent, #2563EB) !important;
+  border-color: #0F172A !important;
+}
+
+:root.light .cnt-chip-title {
+  color: #0F172A !important;
+}
+
+:root.light .cnt-chip-sub {
+  color: #475569 !important;
+}

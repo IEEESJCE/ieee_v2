@@ -416,17 +416,48 @@
    ═══════════════════════════════════════════════ */
 
 :root.light .ms-section {
-  background: var(--bg-surface);
+  background: #FFFFFF !important;
+  border-top: 1.5px solid #CBD5E1 !important;
+}
+
+:root.light .ms-intro-title {
+  color: #0F172A !important;
+}
+
+:root.light .ms-intro-desc {
+  color: #475569 !important;
 }
 
 :root.light .ms-intro-stat {
-  background: #FFFFFF;
+  background: #F8FAFC !important;
+  border: 1.5px solid #0F172A !important;
+  box-shadow: 4px 4px 0 0 #2563EB !important;
 }
 
 :root.light .ms-poster-frame {
-  background: #FFFFFF;
+  background: #FFFFFF !important;
+  border: 1.5px solid #0F172A !important;
+  box-shadow: 4px 4px 0 0 rgba(15, 23, 42, 0.12), 0 10px 20px -3px rgba(15, 23, 42, 0.08) !important;
+}
+
+:root.light .ms-poster:hover .ms-poster-frame {
+  transform: translateY(-4px) !important;
+  box-shadow: 6px 6px 0 0 var(--poster-accent, #2563EB), 0 14px 28px -4px rgba(37, 99, 235, 0.2) !important;
+  border-color: #0F172A !important;
 }
 
 :root.light .ms-poster-content {
-  background: #FFFFFF;
+  background: #FFFFFF !important;
+  border-top: 1px solid #E2E8F0 !important;
+}
+
+:root.light .ms-poster-title {
+  color: #0F172A !important;
+}
+
+:root.light .ms-poster-tag {
+  background: #0F172A !important;
+  color: #FFFFFF !important;
+  border-color: #0F172A !important;
+  box-shadow: 2px 2px 0 0 var(--poster-accent, #2563EB) !important;
 }

@@ -726,20 +726,117 @@
 
 /* ─── Light mode overrides ─── */
 :root.light .soc-page {
-  background-color: #F0F4FF;
+  background-color: #EDF2F7;
   background-image:
-    linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+    radial-gradient(circle at 50% 10%, rgba(37, 99, 235, 0.06) 0%, transparent 60%),
+    linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
 }
+
+:root.light .soc-hero-eyebrow {
+  background: #EFF6FF !important;
+  color: #1D4ED8 !important;
+  border: 1.5px solid #0F172A !important;
+  box-shadow: 3px 3px 0 0 #2563EB !important;
+  border-radius: 0 !important;
+}
+
+:root.light .soc-hero h1 {
+  color: #0F172A !important;
+}
+
+:root.light .soc-hero p {
+  color: #475569 !important;
+}
+
 :root.light .soc-stage {
-  background: #FFFFFF;
+  background: #FFFFFF !important;
+  border: 2.5px solid #0F172A !important;
+  box-shadow: 8px 8px 0 0 var(--stage-accent) !important;
+  border-radius: 0 !important;
 }
-:root.light .soc-event-tile {
-  background: #F8FAFC;
+
+:root.light .soc-stage::before {
+  border-bottom: 2px solid #0F172A !important;
 }
-:root.light .soc-rail-btn {
-  background: #FFFFFF;
+
+/* Fix muddy translucent tag in Light Mode */
+:root.light .soc-stage-tag {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border: 1.5px solid #0F172A !important;
+  box-shadow: 3px 3px 0 0 var(--stage-accent) !important;
+  font-weight: 800 !important;
 }
+
+:root.light .soc-logo-badge {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 4px 4px 0 0 #0F172A !important;
+}
+
+:root.light .soc-title-wrap h2 {
+  color: #0F172A !important;
+}
+
+:root.light .soc-stage-copy p {
+  color: #334155 !important;
+}
+
 :root.light .soc-stage-extra {
-  background: color-mix(in srgb, var(--stage-accent) 8%, #EAF3FF);
+  background: #F8FAFC !important;
+  border: 1.5px solid #CBD5E1 !important;
+  border-left: 4px solid var(--stage-accent) !important;
+  color: #0F172A !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+:root.light .soc-stage-visual {
+  border: 2.5px solid #0F172A !important;
+  box-shadow: 6px 6px 0 0 var(--stage-accent) !important;
+}
+
+:root.light .soc-rail-btn {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  color: #334155 !important;
+  box-shadow: 3px 3px 0 0 #0F172A !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+}
+
+:root.light .soc-rail-btn:hover {
+  background: #F1F5F9 !important;
+  color: #0F172A !important;
+  border-color: #0F172A !important;
+  transform: translate(-1px, -1px) !important;
+  box-shadow: 5px 5px 0 0 #0F172A !important;
+}
+
+:root.light .soc-rail-btn.active {
+  background: #0F172A !important;
+  color: #FFFFFF !important;
+  border-color: #0F172A !important;
+  box-shadow: 4px 4px 0 0 var(--stage-accent, #2563EB) !important;
+}
+
+:root.light .soc-event-tile {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 4px 4px 0 0 var(--stage-accent) !important;
+  border-radius: 0 !important;
+}
+
+:root.light .soc-event-tile:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 6px 6px 0 0 var(--stage-accent) !important;
+}
+
+:root.light .soc-event-tile h4 {
+  color: #0F172A !important;
+}
+
+:root.light .soc-event-tile p {
+  color: #64748B !important;
 }

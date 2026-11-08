@@ -160,7 +160,7 @@ export default function MentorsSection() {
                       onClick={(e) => e.stopPropagation()}
                     >
                       <span className="mnt-footer-icon">
-                        <Mail />
+                        <Mail size={13} />
                       </span>
                       EMAIL
                     </a>
@@ -175,14 +175,14 @@ export default function MentorsSection() {
                         onClick={(e) => e.stopPropagation()}
                       >
                         <span className="mnt-footer-icon">
-                          <Linkedin />
+                          <Linkedin size={13} />
                         </span>
                         LINKEDIN
                       </a>
                     ) : (
                       <span className="mnt-footer-btn disabled">
                         <span className="mnt-footer-icon">
-                          <Linkedin />
+                          <Linkedin size={13} />
                         </span>
                         N/A
                       </span>

@@ -258,3 +258,77 @@
     font-size: 13px;
   }
 }
+
+/* ═══════════════════════════════════════════════
+   LIGHT MODE
+   ═══════════════════════════════════════════════ */
+
+:root.light .stf-section {
+  background: #FFFFFF !important;
+  border-top: 1.5px solid #CBD5E1 !important;
+}
+
+:root.light .stf-badge {
+  background: #EFF6FF !important;
+  border: 1.5px solid #2563EB !important;
+  color: #1D4ED8 !important;
+}
+
+:root.light .stf-title {
+  color: #0F172A !important;
+}
+
+:root.light .stf-subtitle {
+  color: #475569 !important;
+}
+
+:root.light .stf-tab {
+  background: #F8FAFC !important;
+  border: 1.5px solid #CBD5E1 !important;
+  color: #334155 !important;
+}
+
+:root.light .stf-tab:hover {
+  background: #FFFFFF !important;
+  border-color: #0F172A !important;
+  color: #0F172A !important;
+}
+
+:root.light .stf-tab-active {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  color: #0F172A !important;
+  box-shadow: 4px 4px 0 0 var(--tab-accent, #2563EB) !important;
+  font-weight: 800 !important;
+}
+
+:root.light .stf-panel {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 6px 6px 0 0 rgba(15, 23, 42, 0.12), 0 12px 28px -4px rgba(15, 23, 42, 0.08) !important;
+}
+
+:root.light .stf-copy {
+  border-left: 1.5px solid #CBD5E1 !important;
+}
+
+:root.light .stf-copy h3 {
+  color: #0F172A !important;
+}
+
+:root.light .stf-copy p {
+  color: #475569 !important;
+}
+
+:root.light .stf-stats {
+  border-top: 1.5px dashed #CBD5E1 !important;
+}
+
+:root.light .stf-stat-value {
+  color: var(--tab-accent, #2563EB) !important;
+  font-weight: 800 !important;
+}
+
+:root.light .stf-stat-label {
+  color: #64748B !important;
+}
