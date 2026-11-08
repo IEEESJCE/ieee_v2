@@ -440,6 +440,318 @@
   transform: scale(1.76) translateZ(0);
 }
 
+/* ─── Individual Bespoke Framing Overrides ─── */
+/* Suthej Sunil */
+.tmc-photo-img[src*="Suthej_S"],
+.tmc-photo-img[src*="suthej"] {
+  transform: scale(2.2) translateZ(0) !important;
+  transform-origin: center 39% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Suthej_S"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="suthej"].loaded {
+  transform: scale(2.28) translateZ(0) !important;
+}
+
+/* Tilak K S */
+.tmc-photo-img[src*="Tilak_K_S"],
+.tmc-photo-img[src*="Tilak"] {
+  transform: scale(1.4) translateZ(0) !important;
+  transform-origin: center 50% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Tilak_K_S"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="Tilak"].loaded {
+  transform: scale(1.46) translateZ(0) !important;
+  transform-origin: center 50% !important;
+}
+
+/* Lalitha M N */
+.tmc-photo-img[src*="Lalitha_M_N"],
+.tmc-photo-img[src*="lalitha"] {
+  transform: scale(1.7) translateZ(0) !important;
+  transform-origin: center 79% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Lalitha_M_N"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="lalitha"].loaded {
+  transform: scale(1.76) translateZ(0) !important;
+  transform-origin: center 79% !important;
+}
+
+/* Pruthvi Shree & Mayuri Kulkarni */
+.tmc-photo-img[src*="Pruthvi_Shree"],
+.tmc-photo-img[src*="pruthvi"],
+.tmc-photo-img[src*="Mayuri_Kulkarni"],
+.tmc-photo-img[src*="mayuri"] {
+  transform: scale(1.9) translateZ(0) !important;
+  transform-origin: center 32% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Pruthvi_Shree"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="pruthvi"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="Mayuri_Kulkarni"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="mayuri"].loaded {
+  transform: scale(1.96) translateZ(0) !important;
+  transform-origin: center 32% !important;
+}
+
+/* Holika P */
+.tmc-photo-img[src*="Holika_P"],
+.tmc-photo-img[src*="holika"] {
+  transform: scale(2) translateZ(0) !important;
+  transform-origin: center 62% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Holika_P"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="holika"].loaded {
+  transform: scale(2.06) translateZ(0) !important;
+  transform-origin: center 62% !important;
+}
+
+/* Aprameya P & Meghana I S */
+.tmc-photo-img[src*="Aprameya_P"],
+.tmc-photo-img[src*="aprameya"],
+.tmc-photo-img[src*="Meghana_I_S"],
+.tmc-photo-img[src*="meghana"] {
+  transform: scale(1.8) translateZ(0) !important;
+  transform-origin: center 25% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Aprameya_P"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="aprameya"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="Meghana_I_S"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="meghana"].loaded {
+  transform: scale(1.86) translateZ(0) !important;
+  transform-origin: center 25% !important;
+}
+
+/* Vishwas A Gowda */
+.tmc-photo-img[src*="Vishwas_A_Gowda"],
+.tmc-photo-img[src*="vishwas"] {
+  transform: scale(1.8) translateZ(0) translateX(-3px) !important;
+  transform-origin: center 3% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Vishwas_A_Gowda"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="vishwas"].loaded {
+  transform: scale(1.86) translateZ(0) translateX(-3px) !important;
+  transform-origin: center 3% !important;
+}
+
+/* Jeevashree G */
+.tmc-photo-img[src*="Jeevashree_G"],
+.tmc-photo-img[src*="jeevashree"] {
+  transform: scale(1.9) translateZ(0) !important;
+  transform-origin: center 56% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Jeevashree_G"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="jeevashree"].loaded {
+  transform: scale(1.96) translateZ(0) !important;
+  transform-origin: center 56% !important;
+}
+
+/* Veeresh Katnur */
+.tmc-photo-img[src*="Veeresh_Katnur"],
+.tmc-photo-img[src*="veeresh"] {
+  transform: scale(1.6) translateZ(0) !important;
+  transform-origin: center 16% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Veeresh_Katnur"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="veeresh"].loaded {
+  transform: scale(1.66) translateZ(0) !important;
+  transform-origin: center 16% !important;
+}
+
+/* Manogna S */
+.tmc-photo-img[src*="Manogna_S"],
+.tmc-photo-img[src*="manogna"] {
+  transform: scale(1.8) translateZ(0) translateX(-3px) !important;
+  transform-origin: center 32% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Manogna_S"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="manogna"].loaded {
+  transform: scale(1.86) translateZ(0) translateX(-3px) !important;
+  transform-origin: center 32% !important;
+}
+
+/* Adhya Bhat M, Diya Y Bhandarkar & Sagar M L */
+.tmc-photo-img[src*="Adhya_Bhat_M"],
+.tmc-photo-img[src*="adhya"],
+.tmc-photo-img[src*="Diya_Y_Bhandarkar"],
+.tmc-photo-img[src*="diya"],
+.tmc-photo-img[src*="Sagar_M_L"],
+.tmc-photo-img[src*="sagar"] {
+  transform: scale(1.9) translateZ(0) !important;
+  transform-origin: center 53% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Adhya_Bhat_M"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="adhya"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="Diya_Y_Bhandarkar"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="diya"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="Sagar_M_L"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="sagar"].loaded {
+  transform: scale(1.96) translateZ(0) !important;
+  transform-origin: center 53% !important;
+}
+
+/* Nimai Udupi, Hemanth B Kumar & Aadhira M */
+.tmc-photo-img[src*="Nimai_Udupi"],
+.tmc-photo-img[src*="nimai"],
+.tmc-photo-img[src*="Hemanth_B_Kumar"],
+.tmc-photo-img[src*="hemanth"],
+.tmc-photo-img[src*="Aadhira_M"],
+.tmc-photo-img[src*="aadhira"],
+.tmc-photo-img[src*="aadhir"] {
+  transform: scale(1.8) translateZ(0) !important;
+  transform-origin: center 40% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Nimai_Udupi"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="nimai"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="Hemanth_B_Kumar"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="hemanth"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="Aadhira_M"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="aadhira"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="aadhir"].loaded {
+  transform: scale(1.86) translateZ(0) !important;
+  transform-origin: center 40% !important;
+}
+
+/* AESS (Thanmayi, Lakshmi, Maryada) */
+.tmc-photo-img[src*="Thanmayi_B_V"],
+.tmc-photo-img[src*="thanmayi"],
+.tmc-photo-img[src*="Lakshmi_K_L"],
+.tmc-photo-img[src*="lakshmi"],
+.tmc-photo-img[src*="Maryada_Sudarshan_Ulagadde"],
+.tmc-photo-img[src*="maryada"] {
+  transform: scale(1.8) translateZ(0) !important;
+  transform-origin: center 38% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Thanmayi_B_V"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="thanmayi"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="Lakshmi_K_L"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="lakshmi"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="Maryada_Sudarshan_Ulagadde"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="maryada"].loaded {
+  transform: scale(1.86) translateZ(0) !important;
+  transform-origin: center 38% !important;
+}
+
+/* Varun Kilkile & Thejas S */
+.tmc-photo-img[src*="Varun_Kilkile"],
+.tmc-photo-img[src*="varun"],
+.tmc-photo-img[src*="Thejas_S"],
+.tmc-photo-img[src*="thejas"],
+.tmc-photo-img[src*="tejas"] {
+  transform: scale(1.3) translateZ(0) !important;
+  transform-origin: center -3% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Varun_Kilkile"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="varun"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="Thejas_S"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="thejas"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="tejas"].loaded {
+  transform: scale(1.36) translateZ(0) !important;
+  transform-origin: center -3% !important;
+}
+
+/* WIE: Apoorva R Bhat, S K Gouthami & Arpitha N */
+.tmc-photo-img[src*="Apoorva_R_Bhat"],
+.tmc-photo-img[src*="apoorva"],
+.tmc-photo-img[src*="S_K_Gouthami"],
+.tmc-photo-img[src*="gouthami"],
+.tmc-photo-img[src*="Arpitha_N"],
+.tmc-photo-img[src*="arpitha"] {
+  transform: scale(1.8) translateZ(0) !important;
+  transform-origin: center 32% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Apoorva_R_Bhat"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="apoorva"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="S_K_Gouthami"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="gouthami"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="Arpitha_N"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="arpitha"].loaded {
+  transform: scale(1.86) translateZ(0) !important;
+  transform-origin: center 32% !important;
+}
+
+/* Bhavana G */
+.tmc-photo-img[src*="Bhavana_G"],
+.tmc-photo-img[src*="bhavana"] {
+  transform: scale(1.9) translateZ(0) !important;
+  transform-origin: center 61% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Bhavana_G"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="bhavana"].loaded {
+  transform: scale(1.96) translateZ(0) !important;
+  transform-origin: center 61% !important;
+}
+
+/* U.L Rini Linnet */
+.tmc-photo-img[src*="U.L_Rini_Linnet"],
+.tmc-photo-img[src*="rini"] {
+  transform: scale(1.8) translateZ(0) !important;
+  transform-origin: center 35% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="U.L_Rini_Linnet"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="rini"].loaded {
+  transform: scale(1.86) translateZ(0) !important;
+  transform-origin: center 35% !important;
+}
+
+/* Shreeja Dimri & Samhita KS */
+.tmc-photo-img[src*="Shreeja_Dimri"],
+.tmc-photo-img[src*="shreeja"],
+.tmc-photo-img[src*="Samhita_KS"],
+.tmc-photo-img[src*="samhita"],
+.tmc-photo-img[src*="samhitha"] {
+  transform: scale(1.8) translateZ(0) translateX(-5px) !important;
+  transform-origin: center 50% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Shreeja_Dimri"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="shreeja"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="Samhita_KS"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="samhita"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="samhitha"].loaded {
+  transform: scale(1.86) translateZ(0) translateX(-5px) !important;
+  transform-origin: center 50% !important;
+}
+
+/* Deekshith S Kumar */
+.tmc-photo-img[src*="Deekshith_S_Kumar"],
+.tmc-photo-img[src*="deekshith"] {
+  transform: scale(1.7) translateZ(0) !important;
+  transform-origin: center 38% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Deekshith_S_Kumar"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="deekshith"].loaded {
+  transform: scale(1.76) translateZ(0) !important;
+  transform-origin: center 38% !important;
+}
+
+/* Chinmay G C (2026-27) */
+.tmc-photo-img[src*="members26-27"][src*="Chinmay"] {
+  transform: scale(1.5) translateZ(0) !important;
+  transform-origin: center 47% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="members26-27"][src*="Chinmay"].loaded {
+  transform: scale(1.56) translateZ(0) !important;
+  transform-origin: center 47% !important;
+}
+
 /* Placeholder */
 .tmc-photo-placeholder {
   position: absolute;
