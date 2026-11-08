@@ -9,7 +9,11 @@
   overflow: hidden;
   background: var(--bg);
   border-top: var(--border);
-  padding: 80px 0 70px;
+  padding: 28px 0 24px;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   transition: background 0.3s;
 }
 
@@ -51,7 +55,7 @@
 /* ─── Header ─── */
 .evt-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 22px;
 }
 
 .evt-overline {
@@ -97,7 +101,7 @@
 /* ─── Timeline Wrapper ─── */
 .evt-timeline-wrapper {
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 22px;
 }
 
 /* ─── Nav Arrows ─── */
@@ -156,8 +160,8 @@
 /* ─── Timeline Track (scrollable) ─── */
 .evt-timeline-track {
   overflow-x: auto;
-  overflow-y: visible;
-  padding: 0 60px;
+  overflow-y: hidden;
+  padding: 10px 60px 24px;
   scrollbar-width: none;
   -ms-overflow-style: none;
   position: relative;
@@ -170,7 +174,7 @@
 /* ─── Timeline Horizontal Line ─── */
 .evt-timeline-line {
   position: absolute;
-  bottom: 22px;
+  bottom: 20px;
   left: 0;
   width: 100%;
   height: 3px;
@@ -192,7 +196,7 @@
 .evt-cards-row {
   display: flex;
   gap: 28px;
-  padding: 0 0 50px;
+  padding: 8px 0 42px;
   min-width: max-content;
   position: relative;
 }
@@ -215,7 +219,7 @@
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
   text-align: center;
   transition: all 0.3s ease;
 }
@@ -225,18 +229,21 @@
   text-shadow: 0 0 20px currentColor;
 }
 
-/* ─── Card ─── */
+/* ─── Card (Equal Length across all cards) ─── */
 .evt-card {
   width: 100%;
+  height: 375px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 10px;
-  padding: 20px 16px 14px;
+  padding: 14px 12px 12px;
   text-align: center;
   position: relative;
   transition: border-color 0.3s ease, transform 0.3s ease;
   overflow: hidden;
   box-shadow: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .evt-card::before {
@@ -275,11 +282,11 @@
   box-shadow: var(--shadow);
 }
 
-/* ─── Icon Hexagon ─── */
+/* ─── Icon Hexagon (Fixed at Top) ─── */
 .evt-icon-hex {
-  width: 52px;
-  height: 52px;
-  margin: 0 auto 14px;
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -287,11 +294,12 @@
   transform: rotate(0deg);
   position: relative;
   transition: all 0.3s ease;
+  flex-shrink: 0;
   clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
 }
 
 .evt-card-active .evt-icon-hex {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .evt-icon-inner {
@@ -305,35 +313,72 @@
   filter: drop-shadow(0 0 8px currentColor);
 }
 
-/* ─── Card Title ─── */
+/* ─── Card Title (Fixed at Top - Never Cut Off, Never Scrolled) ─── */
 .evt-card-title {
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: 12.5px;
   color: var(--primary-strong);
   text-transform: uppercase;
-  letter-spacing: 0px;
+  letter-spacing: 0.2px;
   margin: 0 0 8px;
   line-height: 1.3;
+  flex-shrink: 0;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: visible;
+  padding: 0 2px;
 }
 
-/* ─── Card Description ─── */
+/* ─── Card Description (Scrollable on Hover Only, Custom Frameless Scrollbar) ─── */
 .evt-card-desc {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--text-muted);
-  margin: 0 0 14px;
-  line-height: 1.6;
+  margin: 0 0 8px;
+  line-height: 1.5;
   font-weight: 400;
+  flex: 1;
+  min-height: 0;
+  overflow-y: hidden;
+  padding: 0 4px;
+  text-align: center;
 }
 
-/* ─── Card Image ─── */
+.evt-card:hover .evt-card-desc,
+.evt-card-desc:hover {
+  overflow-y: auto;
+}
+
+.evt-card-desc::-webkit-scrollbar {
+  width: 3.5px;
+}
+
+.evt-card-desc::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.evt-card-desc::-webkit-scrollbar-thumb {
+  background: rgba(37, 99, 235, 0.45);
+  border-radius: 4px;
+}
+
+:root.light .evt-card-desc::-webkit-scrollbar-thumb {
+  background: #2563EB;
+}
+
+/* ─── Card Image (Fixed at Bottom) ─── */
 .evt-card-image {
   width: 100%;
-  height: 120px;
+  height: 105px;
   border-radius: var(--radius);
   overflow: hidden;
   position: relative;
   border: 1px solid var(--border-color);
+  flex-shrink: 0;
+  margin-top: auto;
 }
 
 .evt-card-image img {
@@ -625,6 +670,71 @@
    LIGHT MODE OVERRIDES — Events
    ═══════════════════════════════════════════════ */
 
+:root.light .evt-section {
+  background-color: #EDF2F7 !important;
+  background-image:
+    radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 70%),
+    linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 40px 40px, 40px 40px !important;
+  border-top: 1.5px solid #CBD5E1 !important;
+}
+
+:root.light .evt-title {
+  color: #0F172A !important;
+}
+
+:root.light .evt-subtitle {
+  color: #475569 !important;
+}
+
+:root.light .evt-card {
+  background: #FFFFFF !important;
+  border: 1.5px solid #0F172A !important;
+  box-shadow: 4px 4px 0 0 rgba(15, 23, 42, 0.12), 0 10px 20px -3px rgba(15, 23, 42, 0.06) !important;
+}
+
+:root.light .evt-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 6px 6px 0 0 var(--card-accent, #2563EB), 0 14px 28px -4px rgba(37, 99, 235, 0.18) !important;
+}
+
+:root.light .evt-card-active .evt-card {
+  transform: translateY(-4px) !important;
+  border-color: #0F172A !important;
+  box-shadow: 6px 6px 0 0 var(--card-accent, #2563EB), 0 14px 28px -4px rgba(37, 99, 235, 0.18) !important;
+}
+
+:root.light .evt-card-title {
+  color: #0F172A !important;
+}
+
+:root.light .evt-card-desc {
+  color: #475569 !important;
+}
+
+:root.light .evt-date {
+  color: #0F172A !important;
+}
+
+:root.light .evt-nav {
+  background: #FFFFFF !important;
+  border: 1.5px solid #0F172A !important;
+  color: #0F172A !important;
+  box-shadow: 3px 3px 0 0 #0F172A !important;
+}
+
+:root.light .evt-nav:hover {
+  background: #2563EB !important;
+  color: #FFFFFF !important;
+  border-color: #0F172A !important;
+  box-shadow: 4px 4px 0 0 #0F172A !important;
+}
+
+:root.light .evt-timeline-track {
+  background: transparent !important;
+}
+
 /* Circuit board — subtler on light */
 :root.light .evt-circuit-group {
   animation-name: circuit-pulse-light;
@@ -636,24 +746,9 @@
   100% { opacity: 0.06; }
 }
 
-/* Nav arrows — clean highlight */
-:root.light .evt-nav:hover {
-  box-shadow: var(--shadow), 0 0 12px rgba(0, 151, 178, 0.2);
-}
-
 /* Timeline line glow — subtle bright blue */
 :root.light .evt-timeline-line-fill {
   box-shadow: 0 0 8px var(--accent), 0 0 20px rgba(0, 151, 178, 0.12);
-}
-
-/* Active card — softer glow */
-:root.light .evt-card-active .evt-card {
-  box-shadow: var(--shadow), 0 0 20px rgba(0, 151, 178, 0.08);
-}
-
-/* Featured card — clean accent border */
-:root.light .evt-card-featured {
-  box-shadow: var(--shadow), 0 0 24px rgba(0, 151, 178, 0.10) !important;
 }
 
 /* Card image — light gradient overlay */
@@ -674,8 +769,11 @@
 /* Footer card — white surface */
 :root.light .evt-footer {
   background: #FFFFFF;
+  border: 1.5px solid #0F172A;
+  box-shadow: 4px 4px 0 0 #0F172A;
 }
 
 :root.light .evt-footer-icon {
-  background: var(--bg-card);
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
 }

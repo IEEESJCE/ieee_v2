@@ -188,9 +188,6 @@ export default function HomePage() {
 
               <div className="nb-hero-wrapper">
                 <div ref={heroRef} className="nb-hero-content nb-hero-centered">
-                  <span className="gsap-hero nb-hero-label">
-                    ⚡ IEEE STUDENT BRANCH — SJCE MYSURU
-                  </span>
                   <h1 className="gsap-hero nb-hero-title">IEEE SJCE</h1>
                   <h2 className="gsap-hero nb-hero-tagline-big">
                     <span className="tagline-row">

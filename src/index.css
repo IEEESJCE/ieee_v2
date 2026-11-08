@@ -37,27 +37,27 @@
 
 /* ─── LIGHT MODE — variable overrides ─── */
 :root.light {
-  --bg: #EAF3FF;
-  --bg-surface: #EEF2FF;
+  --bg: #F8FAFC;
+  --bg-surface: #FFFFFF;
   --bg-card: #FFFFFF;
-  --bg-elevated: #E0E8FF;
-  --primary: #1A2340;
-  --primary-strong: #0A0E1A;
-  --text-muted: #4A5C7A;
-  --accent: #0097B2;
-  --accent-dim: #007A94;
-  --teal: #00B89A;
+  --bg-elevated: #F1F5F9;
+  --primary: #0F172A;
+  --primary-strong: #020617;
+  --text-muted: #64748B;
+  --accent: #2563EB;
+  --accent-dim: #1D4ED8;
+  --teal: #0284C7;
   --blue: #2563EB;
   --blue-light: #3B82F6;
   --blue-dark: #1E40AF;
-  --cyan: #0891B2;
-  --border-color: #C8D6F0;
-  --border: 1px solid #C8D6F0;
-  --border-accent: 1px solid #0097B2;
-  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
-  --shadow-blue: 0 4px 16px rgba(37, 99, 235, 0.20);
+  --cyan: #0284C7;
+  --border-color: #CBD5E1;
+  --border: 1.5px solid #CBD5E1;
+  --border-accent: 1.5px solid #2563EB;
+  --shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 10px 24px -4px rgba(15, 23, 42, 0.09);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 16px 36px -4px rgba(15, 23, 42, 0.12);
+  --shadow-blue: 0 4px 16px rgba(37, 99, 235, 0.22);
   --mode: light;
 }
 

@@ -2,7 +2,19 @@ import { useState, useEffect, useRef } from "react";
 import { current_team_photo } from "../components/team_photo";
 import "../styles/team.css";
 
-/* ─── Category config ─── */
+/* ─── Category config & Division Order ─── */
+const DIVISION_ORDER = [
+  "executive_committee",
+  "membership_development_committee",
+  "electron_devices_society",
+  "robotics_and_automation_society",
+  "signal_processing_society",
+  "aerospace_and_electronic_systems_society",
+  "women_in_engineering",
+  "editorial_board",
+  "web_development_board",
+];
+
 const CATEGORIES = [
   { key: "all", label: "All", color: "#2563EB" },
   {
@@ -12,19 +24,19 @@ const CATEGORIES = [
   },
   { key: "membership_development_committee", label: "MDC", color: "#0EA5E9" },
   {
-    key: "signal_processing_society",
-    label: "Signal Processing",
-    color: "#0369A1",
+    key: "electron_devices_society",
+    label: "EDS",
+    color: "#0284C7",
   },
   {
     key: "robotics_and_automation_society",
-    label: "Robotics & Automation",
+    label: "RAS",
     color: "#1D4ED8",
   },
   {
-    key: "electron_devices_society",
-    label: "Electron Devices",
-    color: "#0284C7",
+    key: "signal_processing_society",
+    label: "SPS",
+    color: "#0369A1",
   },
   {
     key: "aerospace_and_electronic_systems_society",
@@ -32,7 +44,7 @@ const CATEGORIES = [
     color: "#6366F1",
   },
   { key: "women_in_engineering", label: "WIE", color: "#4F46E5" },
-  { key: "editorial_board", label: "Editorial Board", color: "#1E3A8A" },
+  { key: "editorial_board", label: "Editorial", color: "#1E3A8A" },
   { key: "web_development_board", label: "Web Dev Board", color: "#1E3A8A" },
 ];
 const CAT_MAP = Object.fromEntries(CATEGORIES.map((c) => [c.key, c]));
@@ -151,8 +163,8 @@ const CURRENT_EXECUTIVE_COMMITTEE = [
     name: "Pruthvi Shree",
     post: "Publicity Coordinator",
     src: "/photos/members26-27/Pruthvi_Shree.jpg",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/pruthvi-shree-80625236a",
+    gmail: "pruthvishreelokesha@gmail.com",
     imageStyle: {
       transform: "scale(1.9) translateZ(0)",
       transformOrigin: "center 32%",
@@ -206,8 +218,8 @@ const CURRENT_EXECUTIVE_COMMITTEE = [
     name: "Ruchitha S",
     post: "Reporter",
     src: "",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/ruchitha-s-bb33203a0",
+    gmail: "ruchisrini13@gmail.com",
   },
 ];
 
@@ -422,8 +434,8 @@ const ELECTRON_DEVICES_SOCIETY = [
     post: "SECRETARY",
     type: "electron_devices_society",
     src: "/photos/members26-27/Nimai_Udupi.jpg",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/nimai-u-7531bb3a9",
+    gmail: "nimai08.u@gmail.com",
     imageStyle: {
       transform: "scale(1.8) translateZ(0)",
       transformOrigin: "center 40%",
@@ -582,8 +594,8 @@ const EDITORIAL_BOARD = [
     post: "Editor",
     type: "editorial_board",
     src: "/photos/members26-27/Shreeja_Dimri.jpg",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/shreeja-dimri-a04619363?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+    gmail: "shreeja614@gmail.com",
     imageStyle: {
       transform: "scale(1.8) translateZ(0) translateX(-5px)",
       transformOrigin: "center 50%",
@@ -634,7 +646,7 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
     post: "SECRETARY",
     type: "aerospace_and_electronic_systems_society",
     src: "/photos/members26-27/Lakshmi_K_L.jpg",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/lakshmi-k-l-18215735b/",
     gmail: "sanjana.2262006@gmail.com",
     imageStyle: {
       transform: "scale(1.8) translateZ(0)",
@@ -646,16 +658,16 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
     post: "JOINT SECRETARY",
     type: "aerospace_and_electronic_systems_society",
     src: "",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/vishal-hv-912a9833b?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    gmail: "vishalhv06@gmail.com",
   },
   {
     name: "Maryada Sudharshan Ulagadde",
     post: "TREASURER",
     type: "aerospace_and_electronic_systems_society",
     src: "/photos/members26-27/Maryada_Sudarshan_Ulagadde.jpg",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/maryada-ulagadde-745399379",
+    gmail: "maryadaulagadde@gmail.com",
     imageStyle: {
       transform: "scale(1.8) translateZ(0)",
       transformOrigin: "center 38%",
@@ -666,8 +678,8 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
     post: "TECHNICAL COORDINATOR",
     type: "aerospace_and_electronic_systems_society",
     src: "/photos/members26-27/Thejas_S.jpg",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/thejas-shreenivas",
+    gmail: "thejaskashyap3141@gmail.com",
     imageStyle: {
       transform: "scale(1.3) translateZ(0)",
       transformOrigin: "center -3%",
@@ -690,8 +702,8 @@ const WEB_DEVELOPMENT_BOARD = [
     post: "WEBMASTER",
     type: "web_development_board",
     src: "/photos/members26-27/Deekshith_S_Kumar.jpg",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/deekshith-s-kumar-a9062a245/",
+    gmail: "deekshithskumar2005@gmail.com",
     imageStyle: {
       transform: "scale(1.7) translateZ(0)",
       transformOrigin: "center 38%",
@@ -702,8 +714,8 @@ const WEB_DEVELOPMENT_BOARD = [
     post: "WEBMASTER",
     type: "web_development_board",
     src: "/photos/members26-27/Amruth.jpg",
-    linkedin: "",
-    gmail: "",
+    linkedin: "https://www.linkedin.com/in/amruth-s-798090126?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+    gmail: "amruthshivu@gmail.com",
   },
 ];
 
@@ -713,9 +725,9 @@ const CURRENT_TEAM = [
     type: "executive_committee",
   })),
   ...MEMBERSHIP_DEVELOPMENT_COMMITTEE,
-  ...SIGNAL_PROCESSING_SOCIETY,
-  ...ROBOTICS_AND_AUTOMATION_SOCIETY,
   ...ELECTRON_DEVICES_SOCIETY,
+  ...ROBOTICS_AND_AUTOMATION_SOCIETY,
+  ...SIGNAL_PROCESSING_SOCIETY,
   ...AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY,
   ...WOMEN_IN_ENGINEERING,
   ...EDITORIAL_BOARD,
@@ -960,13 +972,17 @@ export default function TeamPage() {
     currentGrouped[m.type].push(m);
   });
 
+  const sortedRenderKeys = (keys) => {
+    return DIVISION_ORDER.filter((k) => keys.includes(k));
+  };
+
   const currentActiveCats = CATEGORIES.filter(
     (c) => c.key === "all" || currentGrouped[c.key],
   );
   const currentRenderKeys =
     activeCategory === "all"
-      ? Object.keys(currentGrouped)
-      : Object.keys(currentGrouped).filter((k) => k === activeCategory);
+      ? sortedRenderKeys(Object.keys(currentGrouped))
+      : [activeCategory].filter((k) => currentGrouped[k]);
 
   // Group archived previous roster
   const grouped = {};
@@ -974,6 +990,7 @@ export default function TeamPage() {
     if (!grouped[m.type]) grouped[m.type] = [];
     grouped[m.type].push(m);
   });
+  const archivedRenderKeys = sortedRenderKeys(Object.keys(grouped));
 
   return (
     <div className="team-page palette-blueprint">
@@ -1043,7 +1060,7 @@ export default function TeamPage() {
           {isExecomExpanded && (
             <div className="execom-accordion-content">
               <div className="team-content" style={{ paddingTop: "40px" }}>
-                {Object.keys(grouped).map((key) => (
+                {archivedRenderKeys.map((key) => (
                   <TeamSection
                     key={key}
                     categoryKey={key}

@@ -228,7 +228,7 @@ export const current_team_photo = [
   {
     "id": 3,
     "type": "robotics_and_automation_society",
-    "src": "/photos/members25-26/Chinmay GC.jpg",
+    "src": "/photos/members25-26/Chinmay GC.png",
     "name": "Chinmay G C",
     "post": "JOINT SECRETARY",
     "linkedin": "https://www.linkedin.com/in/chinmay-gc",

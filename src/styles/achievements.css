@@ -365,11 +365,109 @@
    ═══════════════════════════════════════════════ */
 
 :root.light .ach-section {
-  background: var(--bg);
+  background-color: #EDF2F7 !important;
+  background-image:
+    radial-gradient(circle at 50% 10%, rgba(37, 99, 235, 0.08) 0%, transparent 60%),
+    linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 48px 48px, 48px 48px !important;
+  border-top: 1.5px solid #CBD5E1 !important;
 }
 
-:root.light .ach-hero-stats,
-:root.light .ach-plaque,
+:root.light .ach-rays {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(37, 99, 235, 0.06) 30deg,
+    transparent 60deg,
+    rgba(2, 132, 199, 0.06) 90deg,
+    transparent 120deg
+  ) !important;
+  opacity: 0.8 !important;
+}
+
+:root.light .ach-hero-block {
+  border-bottom: 2px solid #CBD5E1 !important;
+}
+
+:root.light .ach-hero-icon {
+  color: #2563EB !important;
+}
+
+:root.light .ach-hero-title {
+  color: #0F172A !important;
+}
+
+:root.light .ach-hero-desc {
+  color: #475569 !important;
+}
+
+:root.light .ach-hero-stats {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 6px 6px 0 0 #2563EB !important;
+}
+
+:root.light .ach-stat-value {
+  color: #2563EB !important;
+}
+
+:root.light .ach-stat-key {
+  color: #64748B !important;
+}
+
+:root.light .ach-stat-divider {
+  background: #CBD5E1 !important;
+}
+
 :root.light .ach-orb {
-  background: #FFFFFF;
+  background: #0F172A !important;
+  border: 2.5px solid #0F172A !important;
+  box-shadow: 5px 5px 0 0 #2563EB !important;
+}
+
+:root.light .ach-plaque {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 6px 6px 0 0 var(--plaque-accent) !important;
+}
+
+:root.light .ach-plaque:hover {
+  transform: translate(-3px, -3px) !important;
+  box-shadow: 10px 10px 0 0 var(--plaque-accent) !important;
+}
+
+:root.light .ach-plaque-year-bg {
+  color: color-mix(in srgb, var(--plaque-accent) 15%, transparent) !important;
+}
+
+:root.light .ach-plaque-medal {
+  background: color-mix(in srgb, var(--plaque-accent) 16%, #FFFFFF) !important;
+  border: 2px solid var(--plaque-accent) !important;
+}
+
+:root.light .ach-plaque-rank {
+  background: #0F172A !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid #0F172A !important;
+  box-shadow: 2px 2px 0 0 var(--plaque-accent) !important;
+}
+
+:root.light .ach-plaque-year {
+  color: var(--plaque-accent) !important;
+  font-weight: 900 !important;
+}
+
+:root.light .ach-plaque[style*="#FFE600"] .ach-plaque-year,
+:root.light .ach-plaque[style*="ffe600"] .ach-plaque-year {
+  color: #B45309 !important;
+}
+
+:root.light .ach-plaque-award {
+  color: #0F172A !important;
+}
+
+:root.light .ach-plaque-section {
+  color: #475569 !important;
+  font-weight: 700 !important;
 }

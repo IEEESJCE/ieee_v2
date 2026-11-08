@@ -197,9 +197,10 @@
 .team-tabs {
   display: flex;
   overflow-x: auto;
-  max-width: 1300px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 40px;
+  gap: 10px;
   scrollbar-width: none;
 }
 
@@ -209,11 +210,11 @@
 
 .team-tab-btn {
   font-family: var(--font-body);
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 14px 22px;
+  padding: 18px 28px;
   border: none;
   border-bottom: 3px solid transparent;
   background: transparent;
@@ -752,6 +753,19 @@
   transform-origin: center 47% !important;
 }
 
+/* Adithi BS */
+.tmc-photo-img[src*="Adithi_BS"],
+.tmc-photo-img[src*="adithi"] {
+  transform: scale(1.2) translateZ(0) !important;
+  transform-origin: center 3% !important;
+}
+
+.tmc-wrap:hover .tmc-photo-img[src*="Adithi_BS"].loaded,
+.tmc-wrap:hover .tmc-photo-img[src*="adithi"].loaded {
+  transform: scale(1.26) translateZ(0) !important;
+  transform-origin: center 3% !important;
+}
+
 /* Placeholder */
 .tmc-photo-placeholder {
   position: absolute;
@@ -1033,11 +1047,12 @@
 
   .team-tabs {
     padding: 0 16px;
+    gap: 6px;
   }
 
   .team-tab-btn {
-    padding: 12px 14px;
-    font-size: 9px;
+    padding: 14px 18px;
+    font-size: 11.5px;
   }
 
   .team-grid {
@@ -1066,4 +1081,168 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
   }
+}
+
+/* ══════════════════════════════════════
+   LIGHT MODE OVERRIDES — Team Page
+   ══════════════════════════════════════ */
+:root.light .team-page,
+:root.light .team-page.palette-blueprint,
+:root.light .team-page.palette-blueprint .team-content,
+:root.light .team-page.palette-blueprint .execom-accordion-section {
+  background-color: #CBD8E6 !important;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.08) 1px, transparent 1px) !important;
+  background-size: 36px 36px !important;
+}
+
+/* Hero in Light Mode — darker architectural drafting slate */
+:root.light .team-page.palette-blueprint .team-hero {
+  background-color: #CBD8E6 !important;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.08) 1px, transparent 1px) !important;
+  background-size: 36px 36px !important;
+}
+
+:root.light .team-hero-badge {
+  background: #2563EB !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid #0F172A !important;
+  box-shadow: 4px 4px 0 #0F172A !important;
+}
+
+:root.light .team-hero h1 {
+  color: #0F172A !important;
+}
+
+:root.light .team-hero h1 em {
+  color: #2563EB !important;
+}
+
+:root.light .team-hero p {
+  color: #475569 !important;
+}
+
+:root.light .team-hero-count {
+  color: #2563EB !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid #0F172A !important;
+  box-shadow: 2px 2px 0 #0F172A !important;
+  padding: 4px 14px;
+}
+
+/* Tabs in Light Mode */
+:root.light .team-page.palette-blueprint .team-tabs-wrap {
+  background: #FFFFFF !important;
+  border-bottom: 2.5px solid #0F172A !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05) !important;
+}
+
+:root.light .team-tab-btn {
+  color: #475569 !important;
+}
+
+:root.light .team-tab-btn:hover {
+  color: #0F172A !important;
+  background: #F1F5F9 !important;
+}
+
+:root.light .team-tab-btn.active {
+  color: #2563EB !important;
+  border-bottom-color: #2563EB !important;
+  font-weight: 800 !important;
+}
+
+/* Section Header in Light Mode */
+:root.light .team-section-label {
+  color: #0F172A !important;
+}
+
+:root.light .team-page.palette-blueprint .team-section-accent {
+  background: #2563EB !important;
+  border: 1.5px solid #0F172A !important;
+  box-shadow: 3px 3px 0 #0F172A !important;
+}
+
+:root.light .team-page.palette-blueprint .team-section-line {
+  background: linear-gradient(90deg, #2563EB 0%, #CBD5E1 55%, transparent 100%) !important;
+  opacity: 0.6 !important;
+}
+
+:root.light .team-section-count {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border: 1.5px solid #0F172A !important;
+  box-shadow: 2px 2px 0 #0F172A !important;
+}
+
+/* Member Cards in Light Mode */
+:root.light .tmc {
+  background-color: #FFFFFF !important;
+  background-image: radial-gradient(circle at 100% 0%, #EFF6FF 0%, #FFFFFF 85%) !important;
+  border: 2.5px solid #0F172A !important;
+}
+
+:root.light .tmc-shadow {
+  background: #2563EB !important;
+  border: 2.5px solid #0F172A !important;
+}
+
+:root.light .tmc-name {
+  color: #0F172A !important;
+}
+
+:root.light .tmc-photo-frame {
+  background: #E2E8F0 !important;
+  border-right: 2.5px solid #0F172A !important;
+}
+
+:root.light .tmc-footer {
+  background: #F8FAFC !important;
+  border-top: 2.5px solid #0F172A !important;
+}
+
+:root.light .tmc-btn {
+  color: #0F172A !important;
+  border-right: 2.5px solid #0F172A !important;
+}
+
+:root.light .tmc-btn:hover {
+  background: #2563EB !important;
+  color: #FFFFFF !important;
+}
+
+:root.light .tmc-ieee-badge {
+  border-top: 2.5px solid #0F172A !important;
+  border-right: 2.5px solid #0F172A !important;
+}
+
+/* Execom Accordion in Light Mode */
+:root.light .execom-accordion-bar {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 4px 4px 0 0 #0F172A !important;
+}
+
+:root.light .execom-accordion-bar:hover {
+  background: #F1F5F9 !important;
+}
+
+:root.light .execom-accordion-title {
+  color: #0F172A !important;
+  font-weight: 700 !important;
+}
+
+:root.light .execom-toggle-icon {
+  color: #2563EB !important;
+  font-weight: 800 !important;
+}
+
+:root.light .execom-accordion-content {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  border-top: none !important;
+  box-shadow: 4px 4px 0 0 #0F172A !important;
 }
