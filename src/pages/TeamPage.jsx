@@ -2,7 +2,19 @@ import { useState, useEffect, useRef } from "react";
 import { current_team_photo } from "../components/team_photo";
 import "../styles/team.css";
 
-/* ─── Category config ─── */
+/* ─── Category config & Division Order ─── */
+const DIVISION_ORDER = [
+  "executive_committee",
+  "membership_development_committee",
+  "electron_devices_society",
+  "robotics_and_automation_society",
+  "signal_processing_society",
+  "aerospace_and_electronic_systems_society",
+  "women_in_engineering",
+  "editorial_board",
+  "web_development_board",
+];
+
 const CATEGORIES = [
   { key: "all", label: "All", color: "#2563EB" },
   {
@@ -12,19 +24,19 @@ const CATEGORIES = [
   },
   { key: "membership_development_committee", label: "MDC", color: "#0EA5E9" },
   {
-    key: "signal_processing_society",
-    label: "Signal Processing",
-    color: "#0369A1",
+    key: "electron_devices_society",
+    label: "EDS",
+    color: "#0284C7",
   },
   {
     key: "robotics_and_automation_society",
-    label: "Robotics & Automation",
+    label: "RAS",
     color: "#1D4ED8",
   },
   {
-    key: "electron_devices_society",
-    label: "Electron Devices",
-    color: "#0284C7",
+    key: "signal_processing_society",
+    label: "SPS",
+    color: "#0369A1",
   },
   {
     key: "aerospace_and_electronic_systems_society",
@@ -32,7 +44,7 @@ const CATEGORIES = [
     color: "#6366F1",
   },
   { key: "women_in_engineering", label: "WIE", color: "#4F46E5" },
-  { key: "editorial_board", label: "Editorial Board", color: "#1E3A8A" },
+  { key: "editorial_board", label: "Editorial", color: "#1E3A8A" },
   { key: "web_development_board", label: "Web Dev Board", color: "#1E3A8A" },
 ];
 const CAT_MAP = Object.fromEntries(CATEGORIES.map((c) => [c.key, c]));
@@ -713,9 +725,9 @@ const CURRENT_TEAM = [
     type: "executive_committee",
   })),
   ...MEMBERSHIP_DEVELOPMENT_COMMITTEE,
-  ...SIGNAL_PROCESSING_SOCIETY,
-  ...ROBOTICS_AND_AUTOMATION_SOCIETY,
   ...ELECTRON_DEVICES_SOCIETY,
+  ...ROBOTICS_AND_AUTOMATION_SOCIETY,
+  ...SIGNAL_PROCESSING_SOCIETY,
   ...AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY,
   ...WOMEN_IN_ENGINEERING,
   ...EDITORIAL_BOARD,
@@ -960,13 +972,17 @@ export default function TeamPage() {
     currentGrouped[m.type].push(m);
   });
 
+  const sortedRenderKeys = (keys) => {
+    return DIVISION_ORDER.filter((k) => keys.includes(k));
+  };
+
   const currentActiveCats = CATEGORIES.filter(
     (c) => c.key === "all" || currentGrouped[c.key],
   );
   const currentRenderKeys =
     activeCategory === "all"
-      ? Object.keys(currentGrouped)
-      : Object.keys(currentGrouped).filter((k) => k === activeCategory);
+      ? sortedRenderKeys(Object.keys(currentGrouped))
+      : [activeCategory].filter((k) => currentGrouped[k]);
 
   // Group archived previous roster
   const grouped = {};
@@ -974,6 +990,7 @@ export default function TeamPage() {
     if (!grouped[m.type]) grouped[m.type] = [];
     grouped[m.type].push(m);
   });
+  const archivedRenderKeys = sortedRenderKeys(Object.keys(grouped));
 
   return (
     <div className="team-page palette-blueprint">
@@ -1043,7 +1060,7 @@ export default function TeamPage() {
           {isExecomExpanded && (
             <div className="execom-accordion-content">
               <div className="team-content" style={{ paddingTop: "40px" }}>
-                {Object.keys(grouped).map((key) => (
+                {archivedRenderKeys.map((key) => (
                   <TeamSection
                     key={key}
                     categoryKey={key}

@@ -197,9 +197,10 @@
 .team-tabs {
   display: flex;
   overflow-x: auto;
-  max-width: 1300px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 40px;
+  gap: 10px;
   scrollbar-width: none;
 }
 
@@ -209,11 +210,11 @@
 
 .team-tab-btn {
   font-family: var(--font-body);
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 14px 22px;
+  padding: 18px 28px;
   border: none;
   border-bottom: 3px solid transparent;
   background: transparent;
@@ -1046,11 +1047,12 @@
 
   .team-tabs {
     padding: 0 16px;
+    gap: 6px;
   }
 
   .team-tab-btn {
-    padding: 12px 14px;
-    font-size: 9px;
+    padding: 14px 18px;
+    font-size: 11.5px;
   }
 
   .team-grid {
@@ -1088,17 +1090,20 @@
 :root.light .team-page.palette-blueprint,
 :root.light .team-page.palette-blueprint .team-content,
 :root.light .team-page.palette-blueprint .execom-accordion-section {
-  background-color: #F8FAFC !important;
-  background-image: none !important;
+  background-color: #CBD8E6 !important;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.08) 1px, transparent 1px) !important;
+  background-size: 36px 36px !important;
 }
 
-/* Hero in Light Mode */
+/* Hero in Light Mode — darker architectural drafting slate */
 :root.light .team-page.palette-blueprint .team-hero {
-  background-color: #F8FAFC !important;
+  background-color: #CBD8E6 !important;
   background-image:
-    linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px) !important;
-  background-size: 48px 48px !important;
+    linear-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.08) 1px, transparent 1px) !important;
+  background-size: 36px 36px !important;
 }
 
 :root.light .team-hero-badge {
