@@ -117,7 +117,8 @@ export default function HomePage() {
         if (i >= allPanels.length - 2) return
 
         const isLanding = panel.classList.contains('nb-section-landing')
-        const innerPanel = isLanding ? panel.querySelector('.nb-section-inner') : null
+        const innerPanel = isLanding ? panel.querySelector('.nb-section-inner') : panel.firstElementChild
+        const fadeDistance = isDesktop ? 600 : 450
 
         // Calculate if we need a fake scroll for landing page ONLY on desktop
         let fakeScrollRatio = 0
@@ -130,12 +131,18 @@ export default function HomePage() {
           panel.style.marginBottom = fakeScrollRatio ? (innerPanel.offsetHeight * fakeScrollRatio + 'px') : '0px'
         }
 
+        // Sections taller than the viewport (e.g. Hall of Fame on mobile) need
+        // their remaining content revealed before the panel fades away.
+        const overflow = (!isLanding && innerPanel)
+          ? Math.max(0, panel.offsetHeight - window.innerHeight)
+          : 0
+
         // Section-to-section slide deck animation on BOTH laptop & mobile!
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: panel,
             start: 'top top',
-            end: () => fakeScrollRatio ? `+=${innerPanel.offsetHeight}` : (isDesktop ? '+=600' : '+=450'),
+            end: () => fakeScrollRatio ? `+=${innerPanel.offsetHeight}` : `+=${overflow + fadeDistance}`,
             pin: true,
             pinSpacing: false,
             scrub: isDesktop ? true : 0.6,
@@ -151,9 +158,17 @@ export default function HomePage() {
           })
         }
 
+        if (overflow > 0) {
+          tl.to(innerPanel, {
+            y: -overflow,
+            duration: overflow,
+            ease: 'none',
+          })
+        }
+
         tl.fromTo(panel,
           { scale: 1, opacity: 1, y: 0 },
-          { scale: isLanding ? 1 : 0.85, opacity: 0, y: isDesktop ? -40 : -20, duration: 1, ease: 'power2.in' }
+          { scale: isLanding ? 1 : 0.85, opacity: 0, y: isDesktop ? -40 : -20, duration: isLanding ? 1 : fadeDistance, ease: 'power2.in' }
         )
       })
 
