@@ -117,58 +117,90 @@ const CURRENT_EXECUTIVE_COMMITTEE = [
   {
     name: "Suthej Sunil",
     post: "Chair-Elect",
-    src: "/photos/members26-27/suthej.jpg",
+    src: "/photos/members26-27/Suthej_S.jpg",
     linkedin: "https://www.linkedin.com/in/suthejs",
     gmail: "suthejsunil2020@gmail.com",
+    imageStyle: {
+      transform: "scale(2.2) translateZ(0)",
+      transformOrigin: "center 39%",
+    },
   },
   {
     name: "Tilak K S",
     post: "Treasurer",
-    src: "/photos/members26-27/Tilak.jpg",
+    src: "/photos/members26-27/Tilak_K_S.jpg",
     linkedin: "https://www.linkedin.com/in/tilak-k-s-b5a40439a",
     gmail: "tilakks0205@gmail.com",
+    imageStyle: {
+      transform: "scale(1.4) translateZ(0)",
+      transformOrigin: "center 50%",
+    },
   },
   {
     name: "Lalitha M N",
     post: "Chief Student Coordinator",
-    src: "/photos/members26-27/lalitha.jpg",
+    src: "/photos/members26-27/Lalitha_M_N.jpg",
     linkedin: "https://www.linkedin.com/in/lalitha-m-n-2820093aa",
     gmail: "lalithamn3@gmail.com",
+    imageStyle: {
+      transform: "scale(1.7) translateZ(0)",
+      transformOrigin: "center 79%",
+    },
   },
   {
     name: "Pruthvi Shree",
     post: "Publicity Coordinator",
-    src: "/photos/members26-27/pruthvishree.jpg",
+    src: "/photos/members26-27/Pruthvi_Shree.jpg",
     linkedin: "",
     gmail: "",
+    imageStyle: {
+      transform: "scale(1.9) translateZ(0)",
+      transformOrigin: "center 32%",
+    },
   },
   {
     name: "Mayuri Kulkarni",
     post: "Publicity Coordinator",
-    src: "/photos/members26-27/Mayuri.jpg",
+    src: "/photos/members26-27/Mayuri_Kulkarni.jpg",
     linkedin: "https://www.linkedin.com/in/mayuri-kulkarni-635a75327",
     gmail: "mayurikulkarni1609@gmail.com",
+    imageStyle: {
+      transform: "scale(1.9) translateZ(0)",
+      transformOrigin: "center 32%",
+    },
   },
   {
     name: "Holika P",
     post: "Student Coordinator",
-    src: "/photos/members26-27/Holika.jpg",
+    src: "/photos/members26-27/Holika_P.jpg",
     linkedin: "https://www.linkedin.com/in/holika-p-330452333",
     gmail: "holikaprakash@gmail.com",
+    imageStyle: {
+      transform: "scale(2) translateZ(0)",
+      transformOrigin: "center 62%",
+    },
   },
   {
     name: "Aprameya P",
     post: "Student Coordinator",
-    src: "/photos/members26-27/aprameya.jpg",
+    src: "/photos/members26-27/Aprameya_P.jpg",
     linkedin: "https://www.linkedin.com/in/aprameya-p-b0768a330",
     gmail: "aprameyapilinguli@gmail.com",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0)",
+      transformOrigin: "center 25%",
+    },
   },
   {
     name: "Meghana I S",
     post: "Reporter",
-    src: "/photos/members26-27/Meghana.jpg",
+    src: "/photos/members26-27/Meghana_I_S.jpg",
     linkedin: "https://www.linkedin.com/in/meghana-i-s-7aa276387",
     gmail: "ismeghana14@gmail.com",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0)",
+      transformOrigin: "center 25%",
+    },
   },
   {
     name: "Ruchitha S",
@@ -201,15 +233,19 @@ const MEMBERSHIP_DEVELOPMENT_COMMITTEE = [
     name: "Vishwas A Gowda",
     post: "Secretary",
     type: "membership_development_committee",
-    src: "/photos/members26-27/vishwas.jpg",
+    src: "/photos/members26-27/Vishwas_A_Gowda.jpg",
     linkedin: "https://www.linkedin.com/in/vishwas-a-gowda",
     gmail: "vishwasgowda13@gmail.com",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0) translateX(-3px)",
+      transformOrigin: "center 3%",
+    },
   },
   {
     name: "Adithi BS",
     post: "SBMDC Ambassador",
     type: "membership_development_committee",
-    src: "/photos/members26-27/adithi.jpg",
+    src: "/photos/members26-27/Adithi_BS.jpg",
     linkedin: "https://www.linkedin.com/in/adithi-bs-78270039a",
     gmail: "adithibs720@gmail.com",
   },
@@ -245,17 +281,25 @@ const SIGNAL_PROCESSING_SOCIETY = [
     name: "Jeevashree G",
     post: "SECRETARY",
     type: "signal_processing_society",
-    src: "/photos/members26-27/jeevashree.jpg",
+    src: "/photos/members26-27/Jeevashree_G.jpg",
     linkedin: "https://www.linkedin.com/in/jeevashree-g-b7294133a",
     gmail: "jeevashree0210@gmail.com",
+    imageStyle: {
+      transform: "scale(1.9) translateZ(0)",
+      transformOrigin: "center 56%",
+    },
   },
   {
     name: "Veeresh Katnur",
     post: "JOINT SECRETARY",
     type: "signal_processing_society",
-    src: "/photos/members26-27/Veeresh.jpg",
+    src: "/photos/members26-27/Veeresh_Katnur.jpg",
     linkedin: "https://www.linkedin.com/in/veeresh-katnur-332197442",
     gmail: "veereshkatnur01@gmail.com",
+    imageStyle: {
+      transform: "scale(1.6) translateZ(0)",
+      transformOrigin: "center 16%",
+    },
   },
   {
     name: "Priya N Madanbhavi",
@@ -269,9 +313,13 @@ const SIGNAL_PROCESSING_SOCIETY = [
     name: "Manogna S",
     post: "TECHNICAL COORDINATOR",
     type: "signal_processing_society",
-    src: "/photos/members26-27/manogna.jpg",
+    src: "/photos/members26-27/Manogna_S.jpg",
     linkedin: "https://www.linkedin.com/in/manogna-s-b7553541b",
     gmail: "manogna973@gmail.com",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0) translateX(-3px)",
+      transformOrigin: "center 32%",
+    },
   },
 ];
 
@@ -289,9 +337,13 @@ const ROBOTICS_AND_AUTOMATION_SOCIETY = [
     name: "Chinmay G C",
     post: "VICE CHAIRPERSON",
     type: "robotics_and_automation_society",
-    src: "/photos/members25-26/Chinmay GC.jpg",
+    src: "/photos/members26-27/Chinmay G C.jpg",
     linkedin: "https://www.linkedin.com/in/chinmay-gc",
     gmail: "chinmaygchandramouli@gmail.com",
+    imageStyle: {
+      transform: "scale(1.5) translateZ(0)",
+      transformOrigin: "center 47%",
+    },
   },
   {
     name: "Rohan A S Gowda",
@@ -305,25 +357,37 @@ const ROBOTICS_AND_AUTOMATION_SOCIETY = [
     name: "Adhya Bhat M",
     post: "SECRETARY",
     type: "robotics_and_automation_society",
-    src: "/photos/members26-27/aadhya.jpg",
+    src: "/photos/members26-27/Adhya_Bhat_M.jpg",
     linkedin: "https://www.linkedin.com/in/adhya-bhat-m/",
     gmail: "adhya.bhat@gmail.com",
+    imageStyle: {
+      transform: "scale(1.9) translateZ(0)",
+      transformOrigin: "center 53%",
+    },
   },
   {
     name: "Diya Y Bhandarkar",
     post: "JOINT SECRETARY",
     type: "robotics_and_automation_society",
-    src: "/photos/members26-27/diya.jpg",
+    src: "/photos/members26-27/Diya_Y_Bhandarkar.jpg",
     linkedin: "https://www.linkedin.com/in/diya-y-bhandarkar",
     gmail: "diyaybhandarkar@gmail.com",
+    imageStyle: {
+      transform: "scale(1.9) translateZ(0)",
+      transformOrigin: "center 53%",
+    },
   },
   {
     name: "Sagar M L",
     post: "TECHNICAL COORDINATOR",
     type: "robotics_and_automation_society",
-    src: "/photos/members26-27/sagar.jpg",
+    src: "/photos/members26-27/Sagar_M_L.jpg",
     linkedin: "https://www.linkedin.com/in/sagar-m-l-0b9311438",
     gmail: "sagarml777@gmail.com",
+    imageStyle: {
+      transform: "scale(1.9) translateZ(0)",
+      transformOrigin: "center 53%",
+    },
   },
 ];
 
@@ -357,25 +421,37 @@ const ELECTRON_DEVICES_SOCIETY = [
     name: "Nimai Udupi",
     post: "SECRETARY",
     type: "electron_devices_society",
-    src: "/photos/members26-27/nimai.jpg",
+    src: "/photos/members26-27/Nimai_Udupi.jpg",
     linkedin: "",
     gmail: "",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0)",
+      transformOrigin: "center 40%",
+    },
   },
   {
     name: "Aadhira M",
     post: "JOINT SECRETARY",
     type: "electron_devices_society",
-    src: "/photos/members26-27/aadhira.jpg",
+    src: "/photos/members26-27/Aadhira_M.jpg",
     linkedin: "https://www.linkedin.com/in/aadhira-m-4712a8372/",
     gmail: "fly2aadhi@gmail.com",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0)",
+      transformOrigin: "center 40%",
+    },
   },
   {
     name: "Hemanth B Kumar",
     post: "TECHNICAL COORDINATOR",
     type: "electron_devices_society",
-    src: "/photos/members26-27/hemanth.jpg",
+    src: "/photos/members26-27/Hemanth_B_Kumar.jpg",
     linkedin: "https://www.linkedin.com/in/hemanth-b-kumar-a12057430",
     gmail: "hbkumar4506@gmail.com",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0)",
+      transformOrigin: "center 40%",
+    },
   },
 ];
 
@@ -409,25 +485,37 @@ const WOMEN_IN_ENGINEERING = [
     name: "Apoorva Raveendra Bhat",
     post: "SECRETARY",
     type: "women_in_engineering",
-    src: "/photos/members26-27/apoorva.jpg",
+    src: "/photos/members26-27/Apoorva_R_Bhat.jpg",
     linkedin: "https://www.linkedin.com/in/apoorva-r-bhat",
     gmail: "apoorvabhat123@gmail.com",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0)",
+      transformOrigin: "center 32%",
+    },
   },
   {
     name: "S K Gouthami",
     post: "JOINT SECRETARY",
     type: "women_in_engineering",
-    src: "/photos/members26-27/gouthami.jpg",
+    src: "/photos/members26-27/S_K_Gouthami.jpg",
     linkedin: "https://www.linkedin.com/in/s-k-gouthami",
     gmail: "gouthamikarunanidhi@gmail.com",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0)",
+      transformOrigin: "center 32%",
+    },
   },
   {
     name: "Arpitha N",
     post: "TECHNICAL COORDINATOR",
     type: "women_in_engineering",
-    src: "/photos/members26-27/arpitha.jpg",
+    src: "/photos/members26-27/Arpitha_N.jpg",
     linkedin: "https://www.linkedin.com/in/arpitha-n-215937331",
     gmail: "arpithan217@gmail.com",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0)",
+      transformOrigin: "center 32%",
+    },
   },
 ];
 
@@ -469,33 +557,49 @@ const EDITORIAL_BOARD = [
     name: "Bhavana G",
     post: "Graphic Designer",
     type: "editorial_board",
-    src: "/photos/members26-27/bhavana.jpg",
+    src: "/photos/members26-27/Bhavana_G.jpg",
     linkedin: "https://www.linkedin.com/in/bhavana-galebhe",
     gmail: "bhavanagalebhe20@gmail.com",
+    imageStyle: {
+      transform: "scale(1.9) translateZ(0)",
+      transformOrigin: "center 61%",
+    },
   },
   {
     name: "U.L Rini Linnet",
     post: "Graphic Designer",
     type: "editorial_board",
-    src: "/photos/members26-27/rini.jpg",
+    src: "/photos/members26-27/U.L_Rini_Linnet.jpg",
     linkedin: "https://www.linkedin.com/in/rini-linnet-761888351/",
     gmail: "rinilinnet@gmail.com",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0)",
+      transformOrigin: "center 35%",
+    },
   },
   {
     name: "Shreeja Dimri",
     post: "Editor",
     type: "editorial_board",
-    src: "/photos/members26-27/Shreeja.jpg",
+    src: "/photos/members26-27/Shreeja_Dimri.jpg",
     linkedin: "",
     gmail: "",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0) translateX(-5px)",
+      transformOrigin: "center 50%",
+    },
   },
   {
     name: "Samhita KS",
     post: "Editor",
     type: "editorial_board",
-    src: "/photos/members26-27/samhitha.jpg",
+    src: "/photos/members26-27/Samhita_KS.jpg",
     linkedin: "https://www.linkedin.com/in/samhita-ks",
     gmail: "samhitakssri@gmail.com",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0) translateX(-5px)",
+      transformOrigin: "center 50%",
+    },
   },
 ];
 
@@ -505,25 +609,37 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
     name: "Varun Kilkile",
     post: "CHAIRPERSON",
     type: "aerospace_and_electronic_systems_society",
-    src: "/photos/members26-27/Varun.jpg",
+    src: "/photos/members26-27/Varun_Kilkile.jpg",
     linkedin: "https://www.linkedin.com/in/varun-kilkile-5442a8393",
     gmail: "varun04kilkile@gmail.com",
+    imageStyle: {
+      transform: "scale(1.3) translateZ(0)",
+      transformOrigin: "center -3%",
+    },
   },
   {
     name: "Thanmayi B V",
     post: "VICE CHAIRPERSON",
     type: "aerospace_and_electronic_systems_society",
-    src: "/photos/members26-27/Thanmayi.jpg",
+    src: "/photos/members26-27/Thanmayi_B_V.jpg",
     linkedin: "https://www.linkedin.com/in/thanmayi-bv-094005378",
     gmail: "thanmayibv111@gmail.com",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0)",
+      transformOrigin: "center 38%",
+    },
   },
   {
     name: "Lakshmi K L",
     post: "SECRETARY",
     type: "aerospace_and_electronic_systems_society",
-    src: "/photos/members26-27/lakshmi.jpg",
+    src: "/photos/members26-27/Lakshmi_K_L.jpg",
     linkedin: "",
     gmail: "sanjana.2262006@gmail.com",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0)",
+      transformOrigin: "center 38%",
+    },
   },
   {
     name: "Vishal H V",
@@ -537,17 +653,25 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
     name: "Maryada Sudharshan Ulagadde",
     post: "TREASURER",
     type: "aerospace_and_electronic_systems_society",
-    src: "/photos/members26-27/maryada.jpg",
+    src: "/photos/members26-27/Maryada_Sudarshan_Ulagadde.jpg",
     linkedin: "",
     gmail: "",
+    imageStyle: {
+      transform: "scale(1.8) translateZ(0)",
+      transformOrigin: "center 38%",
+    },
   },
   {
     name: "Tejas S",
     post: "TECHNICAL COORDINATOR",
     type: "aerospace_and_electronic_systems_society",
-    src: "/photos/members26-27/Thejas.jpg",
+    src: "/photos/members26-27/Thejas_S.jpg",
     linkedin: "",
     gmail: "",
+    imageStyle: {
+      transform: "scale(1.3) translateZ(0)",
+      transformOrigin: "center -3%",
+    },
   },
 ];
 
@@ -565,9 +689,13 @@ const WEB_DEVELOPMENT_BOARD = [
     name: "Deekshith S Kumar",
     post: "WEBMASTER",
     type: "web_development_board",
-    src: "/photos/members26-27/deekshith.jpg",
+    src: "/photos/members26-27/Deekshith_S_Kumar.jpg",
     linkedin: "",
     gmail: "",
+    imageStyle: {
+      transform: "scale(1.7) translateZ(0)",
+      transformOrigin: "center 38%",
+    },
   },
   {
     name: "Amruth",
@@ -612,7 +740,7 @@ function MailIcon() {
 }
 
 /* ─── Ultra-Sharp High-Performance Photo ─── */
-function LazyPhoto({ src, alt }) {
+function LazyPhoto({ src, alt, imageStyle }) {
   const [loaded, setLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const imgRef = useRef(null);
@@ -660,7 +788,7 @@ function LazyPhoto({ src, alt }) {
         <img
           ref={imgRef}
           className={`tmc-photo-img ${loaded ? "loaded" : "preloading"}${
-            isWideDistanceShot ? " is-zoomed-portrait" : ""
+            isWideDistanceShot && !imageStyle ? " is-zoomed-portrait" : ""
           }`}
           src={src}
           alt={alt}
@@ -675,6 +803,7 @@ function LazyPhoto({ src, alt }) {
             height: "100%",
             objectFit: "cover",
             objectPosition: isWideDistanceShot ? "center top" : "center top",
+            ...imageStyle,
           }}
         />
       )}
@@ -711,7 +840,7 @@ function MemberCard({ member, color }) {
         <div className="tmc-body">
           {/* Photo frame */}
           <div className="tmc-photo-frame">
-            <LazyPhoto src={member.src} alt={member.name} />
+            <LazyPhoto src={member.src} alt={member.name} imageStyle={member.imageStyle} />
           </div>
 
           {/* Info */}
