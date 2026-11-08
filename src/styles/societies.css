@@ -668,28 +668,44 @@
 @media (max-width: 860px) {
   .soc-shell {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
+    padding: 0 16px 40px;
   }
   .soc-rail {
     position: static;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 8px;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .soc-rail::-webkit-scrollbar {
+    display: none;
   }
   .soc-rail-btn {
     width: auto;
-    flex: 0 1 auto;
+    flex-shrink: 0;
+    padding: 10px 14px;
+    font-size: 12px;
   }
   .soc-rail-active {
-    box-shadow: 4px 4px 0 0 var(--rail-accent);
+    box-shadow: 3.5px 3.5px 0 0 var(--rail-accent);
+  }
+  .soc-stage {
+    box-shadow: 4px 4px 0 0 var(--stage-accent);
   }
   .soc-stage-top {
     grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px 20px;
   }
   .soc-stage-visual {
-    max-width: 240px;
+    max-width: 220px;
     margin: 0 auto;
+    box-shadow: 4px 4px 0 0 var(--stage-accent);
   }
 }
 

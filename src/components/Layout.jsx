@@ -129,9 +129,10 @@ function Navbar({ isDark, toggleTheme }) {
 
           <div ref={joinRef} className="nb-nav-right">
             <button
-              className="nb-theme-toggle"
+              className="nb-theme-toggle nb-theme-toggle-desktop"
               onClick={toggleTheme}
               title={isDark ? "Switch to light" : "Switch to dark"}
+              aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
             >
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
@@ -145,9 +146,23 @@ function Navbar({ isDark, toggleTheme }) {
             </a>
           </div>
 
-          <button className="nb-hamburger" onClick={() => setMobileOpen(true)}>
-            <Menu size={26} />
-          </button>
+          <div className="nb-mobile-controls">
+            <button
+              className="nb-theme-toggle nb-theme-toggle-mobile"
+              onClick={toggleTheme}
+              title={isDark ? "Switch to light" : "Switch to dark"}
+              aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+            >
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <button
+              className="nb-hamburger"
+              onClick={() => setMobileOpen(true)}
+              aria-label="Open navigation menu"
+            >
+              <Menu size={26} />
+            </button>
+          </div>
         </div>
       </nav>
 

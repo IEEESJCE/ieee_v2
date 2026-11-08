@@ -598,48 +598,65 @@
 
 @media (max-width: 767px) {
   .evt-section {
-    padding: 50px 0 40px;
+    padding: 36px 0 32px;
+    min-height: auto;
+    overflow: visible;
+    display: block;
   }
   .evt-inner {
     padding: 0 16px;
   }
   .evt-header {
-    margin-bottom: 30px;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .evt-header * {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
   .evt-title {
-    font-size: 1.8rem;
+    font-size: 1.85rem;
+    line-height: 1.1;
   }
   .evt-overline {
     font-size: 10px;
     letter-spacing: 3px;
+    margin-bottom: 8px;
   }
   .evt-subtitle {
     font-size: 13px;
+    line-height: 1.5;
   }
   .evt-nav {
-    width: 36px;
-    height: 36px;
+    display: none;
   }
-  .evt-nav-left { left: 4px; }
-  .evt-nav-right { right: 4px; }
   .evt-timeline-track {
-    padding: 0 44px;
+    padding: 10px 20px 24px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
   .evt-timeline-line {
-    left: 44px;
-    right: 44px;
-  }
-  .evt-card-wrapper {
-    width: 200px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
   }
   .evt-cards-row {
-    gap: 20px;
+    gap: 16px;
+    padding: 6px 0 36px;
+  }
+  .evt-card-wrapper {
+    width: 235px;
+    scroll-snap-align: start;
   }
   .evt-card {
-    padding: 18px 14px 14px;
+    height: 380px;
+    padding: 14px 12px 12px;
   }
   .evt-card-image {
-    height: 90px;
+    height: 100px;
   }
   .evt-circuit-bg {
     display: none;
