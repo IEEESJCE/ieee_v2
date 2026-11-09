@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { FileText, Bug, Brain, Bot, Wifi, Cpu, Wrench, Database, Sparkles } from 'lucide-react'
+import { FileText, Bug, Brain, Bot, Wifi, Cpu, Wrench, Database, Sparkles, Globe } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '../styles/milestone-events.css'
@@ -9,15 +9,33 @@ gsap.registerPlugin(ScrollTrigger)
 const EVENTS = [
   {
     id: 1,
-    title: 'Robotics 17',
-    content: 'The 17th edition of our premier robotics bootcamp, guiding students through microcontroller architecture, sensor arrays, motor control, and autonomous navigation.',
+    title: 'International IEEE Conferences',
+    content: 'Premier global summits hosted by IEEE SJCE, notably ICETEG 2025 (International Conference on Emerging Technologies in Electronics and Green Energy, 10–11 Oct 2025) and IEEE MysuruCon 2022 (16–17 Oct 2022).',
+    img: '/photos/events/iceteg.png',
+    icon: <Globe size={18} />,
+    accent: '#F59E0B',
+    tag: 'Conference',
+  },
+  {
+    id: 2,
+    title: 'Robotics Workshop',
+    content: 'Our premier annual hands-on robotics bootcamp, guiding students through microcontroller architecture, sensor arrays, motor control, and autonomous navigation.',
     img: '/photos/events/robotics_13.jpeg',
     icon: <Bot size={18} />,
     accent: '#EC4899',
     tag: 'Robotics',
   },
   {
-    id: 2,
+    id: 3,
+    title: 'IoT Workshop',
+    content: 'Annual connected devices bootcamp exploring ESP32 microcontrollers, sensor telemetry streams, MQTT cloud brokers, and smart edge automation.',
+    img: '/photos/events/iot_4_0_2025.jpg',
+    icon: <Wifi size={18} />,
+    accent: '#00F5D4',
+    tag: 'IoT',
+  },
+  {
+    id: 4,
     title: 'Soldering & Etching',
     content: 'Hands-on PCB fabrication and hardware prototyping where participants design circuit traces, chemically etch copper boards, and master precision through-hole soldering.',
     img: '/photos/events/soldering_etching_jan_2025.jpeg',
@@ -26,7 +44,7 @@ const EVENTS = [
     tag: 'Hardware',
   },
   {
-    id: 3,
+    id: 5,
     title: 'ML Workshop',
     content: 'A comprehensive deep dive into machine learning workflows, exploring Python data pipelines, feature engineering, neural network foundations, and model inference.',
     img: '/photos/events/ml_workshop.jpeg',
@@ -35,16 +53,7 @@ const EVENTS = [
     tag: 'Intelligence',
   },
   {
-    id: 4,
-    title: 'IoT 4.0',
-    content: 'Hands-on connected devices bootcamp exploring ESP32 microcontrollers, sensor telemetry streams, MQTT cloud brokers, and smart edge automation.',
-    img: '/photos/events/iot_4_0_2025.jpg',
-    icon: <Wifi size={18} />,
-    accent: '#00F5D4',
-    tag: 'IoT',
-  },
-  {
-    id: 5,
+    id: 6,
     title: 'Latex Workshop',
     content: 'Professional typesetting software workshop teaching students to structure, format, and render publication-grade IEEE papers and technical documentation.',
     img: '/photos/events/latex_workshop.jpeg',
@@ -53,7 +62,7 @@ const EVENTS = [
     tag: 'Workshop',
   },
   {
-    id: 6,
+    id: 7,
     title: 'Bug Bounty',
     content: 'High-energy cyber capture-the-flag and code debugging challenge testing analytical reasoning, security audits, and rapid problem-solving skills.',
     img: '/photos/events/bug_bounty.jpeg',
@@ -62,7 +71,7 @@ const EVENTS = [
     tag: 'Competition',
   },
   {
-    id: 7,
+    id: 8,
     title: 'Quiz-Bizz',
     content: 'Flagship inter-branch technical and business quiz evaluating participants across engineering domains, technological breakthroughs, and business acumen.',
     img: '/photos/events/quizbizz.jpeg',
@@ -71,7 +80,7 @@ const EVENTS = [
     tag: 'Quiz',
   },
   {
-    id: 8,
+    id: 9,
     title: 'PC Assembly',
     content: 'Interactive hardware masterclass demystifying computing architectures, motherboard chipsets, thermal management, and step-by-step custom PC assembly.',
     img: '/photos/events/pc.jpg',
@@ -80,7 +89,7 @@ const EVENTS = [
     tag: 'Hands-on',
   },
   {
-    id: 9,
+    id: 10,
     title: 'SQL Bootcamp',
     content: 'Foundational relational database workshop covering SQL syntax, table schemas, multi-table joins, subqueries, and query performance optimization.',
     img: '/photos/events/sql.jpg',

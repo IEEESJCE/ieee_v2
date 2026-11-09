@@ -382,7 +382,7 @@ const ROBOTICS_AND_AUTOMATION_SOCIETY = [
     post: "JOINT SECRETARY",
     type: "robotics_and_automation_society",
     src: "/photos/members26-27/Diya_Y_Bhandarkar.jpg",
-    linkedin: "https://www.linkedin.com/in/diya-y-bhandarkar",
+    linkedin: "https://www.linkedin.com/in/diya-y-bhandarkar-80576b362",
     gmail: "diyaybhandarkar@gmail.com",
     imageStyle: {
       transform: "scale(1.9) translateZ(0)",

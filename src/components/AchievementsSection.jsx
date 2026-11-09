@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Award, Globe, Trophy, Medal, Star } from "lucide-react";
+import { Award, Globe, Trophy, Medal, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "../styles/achievements.css";
@@ -45,32 +45,57 @@ const ACHIEVEMENTS = [
   },
   {
     id: 5,
+    award: "Silver Jubilee Milestone",
+    section: "IEEE Bangalore Section · 25 Yrs (Est. 1991)",
+    year: "2016",
+    icon: <Medal size={28} />,
+    accent: "#E2E8F0",
+    rank: "V",
+  },
+  {
+    id: 6,
     award: "Best Student Branch Website",
     section: "IEEE Bangalore Section",
     year: "2016",
     icon: <Award size={28} />,
     accent: "#00F5D4",
-    rank: "V",
+    rank: "VI",
+  },
+  {
+    id: 7,
+    award: "Best Student Branch in India",
+    section: "IEEE India Council",
+    year: "2003–04",
+    icon: <Trophy size={28} />,
+    accent: "#F59E0B",
+    rank: "VII",
   },
 ];
 
 export default function AchievementsSection() {
   const sectionRef = useRef(null);
+  const trackRef = useRef(null);
+
+  const scrollPodium = (direction) => {
+    if (trackRef.current) {
+      trackRef.current.scrollBy({ left: direction * 280, behavior: "smooth" });
+    }
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".ach-hero-block > *",
-        { y: 50, opacity: 0 },
+        { y: 30, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 0.8,
-          stagger: 0.1,
+          stagger: 0.12,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: ".ach-hero-block",
-            start: "top 85%",
+            trigger: sectionRef.current,
+            start: "top 92%",
             toggleActions: "play none none none",
           },
         },
@@ -78,16 +103,16 @@ export default function AchievementsSection() {
 
       gsap.fromTo(
         ".ach-plaque",
-        { y: 50, opacity: 0 },
+        { y: 40, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.75,
-          stagger: 0.12,
+          duration: 0.7,
+          stagger: 0.08,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: ".ach-podium",
-            start: "top 85%",
+            trigger: sectionRef.current,
+            start: "top 88%",
             toggleActions: "play none none none",
           },
         },
@@ -102,8 +127,8 @@ export default function AchievementsSection() {
           duration: 0.8,
           ease: "back.out(1.5)",
           scrollTrigger: {
-            trigger: ".ach-hero-block",
-            start: "top 85%",
+            trigger: sectionRef.current,
+            start: "top 90%",
             toggleActions: "play none none none",
           },
         },
@@ -135,7 +160,7 @@ export default function AchievementsSection() {
               </div>
               <div className="ach-stat-divider" />
               <div className="ach-stat">
-                <span className="ach-stat-value">10+</span>
+                <span className="ach-stat-value">30+</span>
                 <span className="ach-stat-key">Years</span>
               </div>
             </div>
@@ -150,7 +175,15 @@ export default function AchievementsSection() {
         </div>
 
         <div className="ach-podium">
-          <div className="ach-plaque-row">
+          <button
+            className="ach-nav-btn ach-nav-prev"
+            onClick={() => scrollPodium(-1)}
+            aria-label="Previous awards"
+          >
+            <ChevronLeft size={20} />
+          </button>
+
+          <div ref={trackRef} className="ach-plaque-row">
             {ACHIEVEMENTS.map((item) => (
               <article
                 key={item.id}
@@ -173,7 +206,16 @@ export default function AchievementsSection() {
               </article>
             ))}
           </div>
+
+          <button
+            className="ach-nav-btn ach-nav-next"
+            onClick={() => scrollPodium(1)}
+            aria-label="Next awards"
+          >
+            <ChevronRight size={20} />
+          </button>
         </div>
+        <p className="ach-scroll-hint">← Scroll or swipe to explore all awards →</p>
       </div>
     </section>
   );
