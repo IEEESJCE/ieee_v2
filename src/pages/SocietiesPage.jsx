@@ -93,7 +93,7 @@ const SOCIETIES = [
       "IEEE-SJCE RAS aims to keep the students up to date on the latest automation technology. Robotics focuses on systems incorporating sensors and actuators that operate autonomously or semi-autonomously in cooperation with humans. Robotics research emphasises intelligence and adaptability to cope with unstructured environments. Automation research emphasises efficiency, quality, and reliability, focusing on systems that operate autonomously.The IEEE Robotics and Automation Society's objectives are scientific, literary, and educational in character. The Society strives for the advancement of the theory and practice of robotics and automation engineering, along with allied arts and sciences, and for the maintenance of high professional standards among its members.",
     events: [
       {
-        title: "IOT 4.0",
+        title: "IoT 4.0",
         desc: "A three-day workshop giving participants hands-on exposure to building smart, connected systems. Using Raspberry Pi as the core platform, participants explore IoT concepts and develop practical applications for real-world problems.",
       },
       {

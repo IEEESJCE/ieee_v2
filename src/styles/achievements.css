@@ -7,8 +7,12 @@
   width: 100%;
   background: var(--bg-surface);
   border-top: var(--border);
-  padding: 80px 0 96px;
-  overflow: hidden;
+  padding: 32px 0 28px;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: visible;
 }
 
 .ach-rays {
@@ -36,11 +40,12 @@
 }
 
 .ach-inner {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 48px;
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 
 /* ─── Hero header ─── */
@@ -49,8 +54,8 @@
   grid-template-columns: 1fr auto;
   gap: 32px;
   align-items: center;
-  margin-bottom: 56px;
-  padding-bottom: 28px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
   border-bottom: 2px solid var(--border-color);
 }
 
@@ -147,31 +152,100 @@
   pointer-events: none;
 }
 
-/* ─── Plaque grid ─── */
+/* ─── Plaque Podium (Horizontal Track) ─── */
 .ach-podium {
   position: relative;
+  width: 100%;
 }
 
 .ach-plaque-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: flex;
+  flex-wrap: nowrap;
   gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 12px 10px 24px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--border-color);
+  scroll-snap-type: x mandatory;
+}
+
+.ach-plaque-row::-webkit-scrollbar {
+  height: 6px;
+}
+
+.ach-plaque-row::-webkit-scrollbar-track {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.ach-plaque-row::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
 }
 
 .ach-plaque {
+  flex: 0 0 260px;
+  width: 260px;
+  scroll-snap-align: start;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   min-height: 290px;
-  padding: 36px 20px 28px;
+  padding: 32px 18px 24px;
   background: var(--bg-card);
   border: 2px solid var(--border-color);
   border-radius: 0;
   box-shadow: 6px 6px 0 0 var(--plaque-accent);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   overflow: hidden;
+}
+
+.ach-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  color: var(--primary-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0 0 var(--border-color);
+}
+
+.ach-nav-btn:hover {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--border-color);
+  box-shadow: 6px 6px 0 0 #000;
+}
+
+.ach-nav-prev {
+  left: -20px;
+}
+
+.ach-nav-next {
+  right: -20px;
+}
+
+.ach-scroll-hint {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 6px;
+  margin-bottom: 0;
 }
 
 .ach-plaque:hover {
@@ -289,74 +363,87 @@
    RESPONSIVE
    ═══════════════════════════════════════════════ */
 
-@media (min-width: 1280px) {
-  .ach-plaque-row {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
+@media (max-width: 1024px) {
+  .ach-nav-prev {
+    left: -12px;
   }
-
-  .ach-plaque {
-    min-height: 310px;
-    padding: 32px 14px 28px;
-  }
-
-  .ach-plaque-award {
-    font-size: 16px;
-    font-weight: 800;
-  }
-
-  .ach-plaque-section {
-    font-size: 13px;
-    font-weight: 700;
-  }
-}
-
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .ach-plaque-row {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+  .ach-nav-next {
+    right: -12px;
   }
 }
 
 @media (max-width: 767px) {
   .ach-section {
-    padding: 56px 0 72px;
+    padding: 36px 0 32px;
+    min-height: auto;
+    overflow: visible;
+    display: block;
   }
 
   .ach-inner {
-    padding: 0 20px;
+    padding: 0 16px;
   }
 
   .ach-hero-block {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    margin-bottom: 40px;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    text-align: center;
+  }
+
+  .ach-hero-block * {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .ach-hero-title {
+    font-size: 1.85rem;
+    line-height: 1.1;
+  }
+
+  .ach-hero-desc {
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 8px auto 16px;
+    text-align: center;
   }
 
   .ach-hero-right {
-    flex-direction: column;
-    align-items: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
     width: 100%;
   }
 
   .ach-hero-stats {
-    justify-content: center;
+    padding: 12px 20px;
+    gap: 16px;
   }
 
   .ach-orb {
-    width: 80px;
-    height: 80px;
-    align-self: center;
+    width: 64px;
+    height: 64px;
+  }
+
+  .ach-nav-btn {
+    display: none;
   }
 
   .ach-plaque-row {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    padding: 8px 6px 20px;
+    gap: 14px;
   }
 
   .ach-plaque {
-    min-height: auto;
-    padding: 32px 20px 28px;
+    flex: 0 0 235px;
+    width: 235px;
+    min-height: 280px;
+    padding: 28px 16px 22px;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }
 
@@ -470,4 +557,18 @@
 :root.light .ach-plaque-section {
   color: #475569 !important;
   font-weight: 700 !important;
+}
+
+:root.light .ach-nav-btn {
+  background: #FFFFFF !important;
+  border: 1.5px solid #0F172A !important;
+  color: #0F172A !important;
+  box-shadow: 3px 3px 0 0 #0F172A !important;
+}
+
+:root.light .ach-nav-btn:hover {
+  background: #2563EB !important;
+  color: #FFFFFF !important;
+  border-color: #0F172A !important;
+  box-shadow: 4px 4px 0 0 #0F172A !important;
 }

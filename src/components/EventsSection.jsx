@@ -173,7 +173,7 @@ const EVENTS = [
     imageAlt: 'Wave Lab signal processing workshop poster',
   },
   {
-    title: 'IOT 4.0',
+    title: 'IoT 4.0',
     date: '21–23 NOV 2025',
     wing: 'RAS',
     description:
@@ -231,7 +231,7 @@ const EVENTS = [
     imagePosition: 'center 28%',
   },
   {
-    title: 'IOT-3.0 Workshop',
+    title: 'IoT-3.0 Workshop',
     date: '29 NOV – 1 DEC 2024',
     wing: 'RAS',
     description:
