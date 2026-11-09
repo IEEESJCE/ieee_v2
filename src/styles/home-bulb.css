@@ -4,8 +4,8 @@
    WebGL bulb has started. If WebGL is unavailable the hero stays exactly as before.
    ═══════════════════════════════════════════════ */
 
-/* Hero becomes see-through so the fixed bulb canvas behind it shows.
-   The canvas paints the page background colour itself. */
+/* Hero becomes see-through so the layers behind it show
+   (circuit picture → 3D bulb canvas → hero content). */
 .has-bulb .nb-section-landing,
 .has-bulb .nb-bg {
   background-color: transparent;
@@ -15,24 +15,63 @@
   background-color: transparent;
 }
 
-/* Fade out the flat bulb painted in the middle of ieee-bg.png, keeping the
-   circuits and the glowing diamond frame. The 3D bulb takes its place.
-   The hole is an upright oval sized in vh (the 3D bulb's size follows the screen
-   height) and centred a little below the middle, matching the hero pose
-   (y: -0.22, s: 1.12 in HomePage.jsx). */
+/* The circuit picture inside the hero sat ON TOP of the bulb. With the bulb running,
+   it's hidden here and drawn by .hero-backdrop (below) UNDER the bulb instead. */
 .has-bulb .nb-bg-image {
-  /* two masks, both must allow a pixel (intersect):
-     1) the oval hole for the bulb
-     2) a soft fade over the bottom quarter, so the picture has no hard bottom edge
-        (with transparent sections that edge showed as a box when Events slid up) */
-  -webkit-mask-image:
-    radial-gradient(ellipse 26vh 37vh at 50% 57%, transparent 70%, #000 100%),
-    linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    radial-gradient(ellipse 26vh 37vh at 50% 57%, transparent 70%, #000 100%),
-    linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
-  mask-composite: intersect;
+  visibility: hidden;
+}
+
+/* ─── Hero backdrop: the circuit picture on its own fixed layer under the bulb ───
+   Rendered by HomePage just before the bulb canvas (same z-index 0, earlier in the
+   page → painted below it). src/lib/heroBackdrop.js sets its box to match the hero
+   every frame and sets --hero-fade to the hero's opacity.
+   Same look as .nb-bg-image in homepage.css (cover, 82% opacity, screen blend). */
+.hero-backdrop {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  container-type: size; /* lets ::after use cqw/cqh (safe: the box has a fixed size) */
+  background-image: url('/ieee-bg.png');
+  background-size: cover;
+  background-position: center;
+  opacity: calc(0.82 * var(--hero-fade, 1));
+  mix-blend-mode: screen;
+  /* soft fade over the bottom quarter, so the picture has no hard bottom edge */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
+}
+
+:root.light .hero-backdrop {
+  opacity: calc(0.45 * var(--hero-fade, 1));
+  filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(1.2);
+  mix-blend-mode: multiply;
+}
+
+/* Hide the flat bulb painted in the middle of ieee-bg.png — the 3D bulb takes its place.
+   No hole and no blur: it's painted over with the plain dark-blue disc it sits on
+   (rgb 0 37 119, sampled from the image), so the rings and circuits stay sharp.
+
+   The patch must line up with the picture at every screen size. The picture uses
+   background-size: cover, so the ::after box is sized the same way, using container
+   query units (cqw/cqh = 1% of the backdrop's width/height):
+     width  = max(100% of the box, height × 1672/940)   (1672×940 = the image's size)
+     height = max(100% of the box, width × 940/1672)
+   and centred like background-position: center. The ellipse is then placed in the
+   image's own coordinates: flat bulb centre ≈ (837, 480) px, radii ≈ 110 × 168 px. */
+.hero-backdrop::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(100cqw, 177.87cqh);
+  height: max(100cqh, 56.22cqw);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse 6.6% 17.9% at 50.06% 51.06%,
+    rgb(0 37 119) 86%,
+    rgb(0 37 119 / 0) 100%
+  );
 }
 
 /* ─── Fully transparent sections: one continuous background, the bulb behind ───
@@ -40,7 +79,7 @@
    Both layers are cleared, and everything that draws a section-sized box is removed:
    background colours, light-mode grid patterns, the divider line on top of each
    section, and the full-size decorations (Flagship Events' diagonal stripes,
-   Hall of Fame's light rays). The canvas behind paints the single page colour.
+   Hall of Fame's light rays). The page background shows through as one colour.
    Cards, tiles and buttons keep their own surfaces. */
 .has-bulb .nb-events-wrapper,
 .has-bulb .nb-milestones-wrapper,
@@ -105,4 +144,129 @@
   text-shadow:
     0 0 6px rgba(248, 250, 252, 0.95),
     0 0 14px rgba(248, 250, 252, 0.9);
+}
+
+/* ─── Hall of Fame: plaques lit by the bulb (src/lib/bulb-effects/achievementsLight.js) ───
+   The effect sets --lit (0…1) and --lx/--ly (where the bulb is, relative to the plaque).
+   Without the effect (no WebGL, reduced motion) --lit is 0 and nothing changes.
+   Light only ADDS: a warm outer glow + a soft highlight on the side facing the bulb. */
+.has-bulb .ach-plaque {
+  --lit: 0;
+  --lx: 50%;
+  --ly: 50%;
+  /* the glow changes every frame, so only the hover lift is animated */
+  transition: transform 0.25s ease;
+  box-shadow:
+    6px 6px 0 0 var(--plaque-accent),
+    0 0 calc(var(--lit) * 38px) calc(var(--lit) * 4px) rgb(255 213 74 / calc(var(--lit) * 0.5));
+}
+
+.has-bulb .ach-plaque:hover {
+  box-shadow:
+    10px 10px 0 0 var(--plaque-accent),
+    0 0 calc(var(--lit) * 38px) calc(var(--lit) * 4px) rgb(255 213 74 / calc(var(--lit) * 0.5));
+}
+
+/* the highlight: sits above the big faded year, below the medal and text (z-index 2–3) */
+.has-bulb .ach-plaque::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--lx) var(--ly),
+    rgb(255 213 74 / calc(var(--lit) * 0.3)) 0%,
+    rgb(255 213 74 / calc(var(--lit) * 0.08)) 45%,
+    transparent 75%
+  );
+}
+
+/* Light mode: pale yellow vanishes on white cards, so use a deeper amber */
+:root.light .has-bulb .ach-plaque {
+  box-shadow:
+    6px 6px 0 0 var(--plaque-accent),
+    0 0 calc(var(--lit) * 34px) calc(var(--lit) * 3px) rgb(245 158 11 / calc(var(--lit) * 0.55)) !important;
+}
+
+:root.light .has-bulb .ach-plaque:hover {
+  box-shadow:
+    10px 10px 0 0 var(--plaque-accent),
+    0 0 calc(var(--lit) * 34px) calc(var(--lit) * 3px) rgb(245 158 11 / calc(var(--lit) * 0.55)) !important;
+}
+
+:root.light .has-bulb .ach-plaque::after {
+  background: radial-gradient(
+    circle at var(--lx) var(--ly),
+    rgb(245 158 11 / calc(var(--lit) * 0.16)) 0%,
+    rgb(245 158 11 / calc(var(--lit) * 0.05)) 45%,
+    transparent 75%
+  );
+}
+
+/* ─── What We Stand For: tabs + photo panel lit by the bulb (bulb-effects/standForLight.js) ───
+   Same idea as the Hall of Fame plaques: --lit (0…1) and --lx/--ly come from
+   proximityGlow.js; without the effect --lit is 0 and nothing changes.
+   The active tab keeps its own coloured offset shadow under the glow. */
+.has-bulb .stf-tab,
+.has-bulb .stf-panel {
+  --lit: 0;
+  --lx: 50%;
+  --ly: 50%;
+  position: relative;
+}
+
+.has-bulb .stf-tab {
+  box-shadow: 0 0 calc(var(--lit) * 26px) calc(var(--lit) * 2px) rgb(255 213 74 / calc(var(--lit) * 0.4));
+}
+
+.has-bulb .stf-tab-active {
+  box-shadow:
+    4px 4px 0 0 color-mix(in srgb, var(--tab-accent) 40%, transparent),
+    0 0 calc(var(--lit) * 26px) calc(var(--lit) * 2px) rgb(255 213 74 / calc(var(--lit) * 0.4));
+}
+
+.has-bulb .stf-panel {
+  box-shadow: 0 0 calc(var(--lit) * 44px) calc(var(--lit) * 4px) rgb(255 213 74 / calc(var(--lit) * 0.45));
+}
+
+/* warm highlight on the side facing the bulb; above the photo, never blocks clicks */
+.has-bulb .stf-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--lx) var(--ly),
+    rgb(255 213 74 / calc(var(--lit) * 0.22)) 0%,
+    rgb(255 213 74 / calc(var(--lit) * 0.06)) 45%,
+    transparent 75%
+  );
+}
+
+/* Light mode: deeper amber (pale yellow vanishes on white); keeps standfor.css's own shadows */
+:root.light .has-bulb .stf-tab {
+  box-shadow: 0 0 calc(var(--lit) * 24px) calc(var(--lit) * 2px) rgb(245 158 11 / calc(var(--lit) * 0.5)) !important;
+}
+
+:root.light .has-bulb .stf-tab-active {
+  box-shadow:
+    4px 4px 0 0 var(--tab-accent, #2563EB),
+    0 0 calc(var(--lit) * 24px) calc(var(--lit) * 2px) rgb(245 158 11 / calc(var(--lit) * 0.5)) !important;
+}
+
+:root.light .has-bulb .stf-panel {
+  box-shadow:
+    6px 6px 0 0 rgba(15, 23, 42, 0.12),
+    0 12px 28px -4px rgba(15, 23, 42, 0.08),
+    0 0 calc(var(--lit) * 40px) calc(var(--lit) * 3px) rgb(245 158 11 / calc(var(--lit) * 0.5)) !important;
+}
+
+:root.light .has-bulb .stf-panel::after {
+  background: radial-gradient(
+    circle at var(--lx) var(--ly),
+    rgb(245 158 11 / calc(var(--lit) * 0.12)) 0%,
+    rgb(245 158 11 / calc(var(--lit) * 0.04)) 45%,
+    transparent 75%
+  );
 }

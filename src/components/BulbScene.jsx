@@ -12,8 +12,11 @@ import '../styles/bulb-scene.css'
 
 /* ═════════════════════════════════════════════════════════════
    BulbScene — the IEEE logo bulb, built entirely in code with Three.js.
-   Rendered into a fixed, full-screen canvas BEHIND the page content
-   (pointer-events: none, so it never blocks clicks or scrolling).
+   Rendered into a fixed, full-screen, TRANSPARENT canvas (only the bulb and
+   its glow are drawn; the page background shows through everywhere else).
+   It sits behind the hero, and in front of the sections from Events on
+   (desktop — see bulbLayer.js). pointer-events: none, so it never blocks
+   clicks or scrolling.
 
    The bulb starts OFF (dark blue filament, clear glass) and switches ON
    shortly after the page has loaded: one quick flicker, then it warms up
@@ -23,11 +26,6 @@ import '../styles/bulb-scene.css'
    (0 = off, 1 = fully on), so the switch-on animation only animates that.
    ═════════════════════════════════════════════════════════════ */
 
-/* Read a CSS custom property from <html> (e.g. --bg) so the canvas matches the theme */
-function cssVar(name, fallback) {
-  const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim()
-  return v || fallback
-}
 
 const THEME = {
   dark: {
@@ -190,8 +188,11 @@ function buildHalo() {
                at   = scroll position in px where this pose is reached
                x, y = position as a fraction of half the screen (-1 … 1; y up)
                s    = size (1 = the normal size for this screen)
-               tilt = sideways lean in radians, glow = 0…1 light strength */
-export default function BulbScene({ autoRotate = false, layout = 'center', riseIn = false, onReady, activeRef, getStops }) {
+               tilt = sideways lean in radians, glow = 0…1 light strength
+   getLightOnAt  optional () => scroll px. The bulb stays OFF above this scroll position
+               and switches on (with its flicker) once you scroll past it; scrolling
+               back above it fades the light out again. Without it: on after load. */
+export default function BulbScene({ autoRotate = false, layout = 'center', riseIn = false, onReady, activeRef, getStops, getLightOnAt }) {
   const canvasRef = useRef(null)
   // Keep the latest onReady in a ref so a new function each render doesn't restart the scene
   const onReadyRef = useRef(onReady)
@@ -210,14 +211,15 @@ export default function BulbScene({ autoRotate = false, layout = 'center', riseI
     /* ─── Renderer ─── */
     let renderer
     try {
-      renderer = new THREE.WebGLRenderer({ canvas, antialias: !isMobile, alpha: false })
+      // alpha: true → the canvas is see-through wherever nothing is drawn
+      renderer = new THREE.WebGLRenderer({ canvas, antialias: !isMobile, alpha: true })
     } catch {
       return // WebGL unavailable — leave the page exactly as it is
     }
     const dpr = Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2)
     renderer.setPixelRatio(dpr)
     renderer.setSize(window.innerWidth, window.innerHeight, false)
-    // No tone mapping: keeps the canvas background exactly the page's --bg colour
+    renderer.setClearColor(0x000000, 0) // clear to fully transparent
     renderer.toneMapping = THREE.NoToneMapping
 
     /* ─── Scene, camera, lights ─── */
@@ -270,7 +272,12 @@ export default function BulbScene({ autoRotate = false, layout = 'center', riseI
           uniform sampler2D bloomTexture;
           varying vec2 vUv;
           void main() {
-            gl_FragColor = texture2D(baseTexture, vUv) + texture2D(bloomTexture, vUv);
+            vec4 base = texture2D(baseTexture, vUv);
+            vec3 glow = texture2D(bloomTexture, vUv).rgb;
+            // The canvas is transparent, so the glow must also make its pixels visible:
+            // opacity = the bulb's own, or the glow's brightest channel, whichever is more
+            float a = max(base.a, max(glow.r, max(glow.g, glow.b)));
+            gl_FragColor = vec4(base.rgb + glow, clamp(a, 0.0, 1.0));
           }`,
       }),
       'baseTexture'
@@ -375,7 +382,8 @@ export default function BulbScene({ autoRotate = false, layout = 'center', riseI
     /* ─── Theme + light level → colours ─── */
     let theme = THEME.dark
     let level = 0 // 0 = off, 1 = fully on
-    const bgColor = new THREE.Color()
+    let canSwitchOn = false // true once the page has loaded (and the rise is done)
+    let lightOnAt = 0 // scroll px from which the light may be on (getLightOnAt, see props)
     const tmpA = new THREE.Color()
     const tmpB = new THREE.Color()
     // Glow strength 0…1 (on top of the on/off level). Comes from the scroll poses when
@@ -406,8 +414,6 @@ export default function BulbScene({ autoRotate = false, layout = 'center', riseI
     const applyTheme = () => {
       const isLight = document.documentElement.classList.contains('light')
       theme = isLight ? THEME.light : THEME.dark
-      bgColor.set(cssVar('--bg', isLight ? '#F8FAFC' : '#0A0E1A'))
-      scene.background = bgColor
       metalMat.color.set(theme.metal)
       // Additive glow is invisible on a white page, so blend normally in light mode
       halo.material.blending = isLight ? THREE.NormalBlending : THREE.AdditiveBlending
@@ -440,6 +446,7 @@ export default function BulbScene({ autoRotate = false, layout = 'center', riseI
     const scrollMode = typeof getStops === 'function'
     let stops = [] // [{ at, x, y, s, tilt, glow }] sorted by `at`
     const recomputeStops = () => {
+      if (typeof getLightOnAt === 'function') lightOnAt = getLightOnAt() // sections may have moved
       if (!scrollMode) return
       const list = (getStops() || []).filter((p) => Number.isFinite(p.at))
       // fill in any missing keys (e.g. fade) so blending never hits undefined
@@ -500,11 +507,9 @@ export default function BulbScene({ autoRotate = false, layout = 'center', riseI
     const render = () => {
       // 1) glow pass: only the filament, on black
       if (level > 0) {
-        scene.background = null
         camera.layers.set(BLOOM_LAYER)
         bloomComposer.render()
         camera.layers.set(0)
-        scene.background = bgColor
       }
       // 2) normal scene + glow on top → screen
       mixPass.uniforms.bloomTexture.value = level > 0 ? bloomComposer.renderTarget2.texture : blackTexture
@@ -584,7 +589,16 @@ export default function BulbScene({ autoRotate = false, layout = 'center', riseI
       if (reducedMotion) return Math.min(Math.max(t / 0.8, 0), 1) // gentle fade, no flicker
       return flickerLevel(t)
     }
-    const lightSettled = (now) => switchOnAt !== null && (now - switchOnAt) / 1000 > WARMUP + 0.05
+    // Settled = fully on after the warm-up, or fully off after fading out
+    const lightSettled = (now) =>
+      switchOnAt === null ? level === 0 : (now - switchOnAt) / 1000 > WARMUP + 0.05
+
+    // getLightOnAt: on only past that scroll position (e.g. off in the hero)
+    const wantsLight = () => canSwitchOn && window.scrollY >= lightOnAt
+    const updateSwitch = (now) => {
+      if (switchOnAt === null && wantsLight()) switchOnAt = now // start the flicker-on
+      else if (switchOnAt !== null && !wantsLight()) switchOnAt = null // fade back out
+    }
 
     const tick = (now) => {
       const dt = Math.min((now - last) / 1000, 0.05) // seconds; clamped after tab switches
@@ -594,7 +608,9 @@ export default function BulbScene({ autoRotate = false, layout = 'center', riseI
       if (bulb.flash > 0) bulb.flash = Math.max(0, bulb.flash - dt * 4)
       const moving = stepPose(dt)
       updatePosition(now)
-      level = lightTarget(now)
+      updateSwitch(now)
+      // switched off → the light fades out over ~0.25 s
+      level = switchOnAt === null ? Math.max(0, level - dt * 4) : lightTarget(now)
       applyLight()
       publishState()
       // Fully faded out and staying that way → skip drawing and let the loop rest
@@ -625,6 +641,8 @@ export default function BulbScene({ autoRotate = false, layout = 'center', riseI
     // Once the page has fully loaded (images, fonts, etc.):
     //   riseIn → rise for RISE_DUR, short pause, then switch on
     //   otherwise → switch on after TURN_ON_DELAY
+    //   (with getLightOnAt: only allowed to switch on from then; it actually switches
+    //    on once you've scrolled past that point — see updateSwitch)
     let switchTimer = 0
     const onPageLoaded = () => {
       recomputeStops() // images/fonts are in, so section positions are final
@@ -634,7 +652,7 @@ export default function BulbScene({ autoRotate = false, layout = 'center', riseI
       }
       const delay = rising ? RISE_DUR + SWITCH_AFTER_RISE : TURN_ON_DELAY
       switchTimer = window.setTimeout(() => {
-        switchOnAt = performance.now()
+        canSwitchOn = true
         startLoop()
       }, delay * 1000)
     }
@@ -719,7 +737,7 @@ export default function BulbScene({ autoRotate = false, layout = 'center', riseI
       pmrem.dispose()
       renderer.dispose()
     }
-  }, [autoRotate, layout, riseIn, activeRef, getStops])
+  }, [autoRotate, layout, riseIn, activeRef, getStops, getLightOnAt])
 
   return <canvas ref={canvasRef} className="bulb-canvas" aria-hidden="true" />
 }

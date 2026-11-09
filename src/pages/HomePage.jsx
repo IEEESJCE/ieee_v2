@@ -21,9 +21,13 @@ import '../styles/home-bulb.css'
 const BulbScene = lazy(() => import('../components/BulbScene'))
 
 // Bulb poses per section + section-position helpers (shared with the section effects)
-import { getBulbStops, HOLDS, holdPx } from '../lib/bulbPoses'
+import { getBulbStops, getLightOnAt, HOLDS, holdPx } from '../lib/bulbPoses'
 // Section effects that react to the bulb (installed once the bulb is running)
 import { installBulbEffects } from '../lib/bulb-effects'
+// Puts the bulb in front of the sections from Events on (desktop)
+import { installBulbLayer } from '../lib/bulbLayer'
+// Draws the hero's circuit picture under the bulb
+import { installHeroBackdrop } from '../lib/heroBackdrop'
 
 gsap.registerPlugin(ScrollTrigger)
 ScrollTrigger.config({ ignoreMobileResize: true })
@@ -58,6 +62,15 @@ export default function HomePage() {
   const containerRef = useRef(null)
   // true once the 3D bulb has started; only then does the hero become see-through
   const [hasBulb, setHasBulb] = useState(false)
+  const backdropRef = useRef(null)
+
+  // Once the bulb runs: the hero's circuit picture moves to its own layer under the
+  // bulb (src/lib/heroBackdrop.js). This runs after React has rendered the
+  // .hero-backdrop div, so backdropRef.current is set.
+  useEffect(() => {
+    if (!hasBulb) return
+    return installHeroBackdrop(backdropRef.current)
+  }, [hasBulb])
 
   // Section effects that react to the bulb. Installed only once the bulb is running
   // (hasBulb), never under reduced motion, with lighter versions on phones.
@@ -72,12 +85,20 @@ export default function HomePage() {
       {
         isDesktop: '(min-width: 768px)',
         isMobile: '(max-width: 767px)',
+        isWide: '(min-width: 1024px)',
         reduce: '(prefers-reduced-motion: reduce)',
       },
       (context) => {
-        const { isMobile, reduce } = context.conditions
-        if (reduce) return
-        return installBulbEffects({ isMobile })
+        const { isMobile, isWide, reduce } = context.conditions
+        // ≥1024px: bulb in front of the sections from Events on (not an animation,
+        // so it applies under reduced motion too). Narrower screens keep it behind:
+        // headings fill the width there, so in front it would cover text.
+        const removeLayer = isWide ? installBulbLayer() : null
+        const removeEffects = reduce ? null : installBulbEffects({ isMobile })
+        return () => {
+          removeLayer?.()
+          removeEffects?.()
+        }
       }
     )
     return () => mm.revert()
@@ -227,13 +248,18 @@ export default function HomePage() {
 
   return (
     <>
-    {/* Fixed WebGL bulb behind the hero (rises in, then switches on) */}
+    {/* Hero circuit picture, drawn UNDER the bulb once the bulb is running
+        (kept lined up with the hero by installHeroBackdrop) */}
+    {hasBulb && <div ref={backdropRef} className="hero-backdrop" aria-hidden="true" />}
+
+    {/* Fixed WebGL bulb behind the hero (rises in OFF; switches on when it reaches Events) */}
     <Suspense fallback={null}>
       <BulbScene
         layout="hero"
         riseIn
         autoRotate
         getStops={getBulbStops}
+        getLightOnAt={getLightOnAt}
         onReady={() => setHasBulb(true)}
       />
     </Suspense>

@@ -12,3 +12,10 @@
   z-index: 0;
   pointer-events: none; /* never blocks clicks or scrolling */
 }
+
+/* From Events on (desktop), the bulb is drawn IN FRONT of the sections
+   (src/lib/bulbLayer.js adds .is-front). The section wrappers use z-index 10–55 (Mentors is 90, but the bulb has faded out by then);
+   the lightning overlay is 95 and the navbar 999, so 90 sits between them. */
+.bulb-canvas.is-front {
+  z-index: 90;
+}

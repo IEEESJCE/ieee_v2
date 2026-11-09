@@ -8,18 +8,23 @@
    Effects are added one phase at a time (see the plan):
      Phase 1  eventsEmerge       — Events cards come out from behind the bulb
      Phase 2  flagshipBolts      — lightning from the bulb to the Flagship Events posters
-     Phase 3  achievementsLight  — Hall of Fame cards lit by the bulb's proximity
-     Phase 4  standForReveal     — spotlight pose + slow reveal
-     Phase 5  societiesOrbit     — society tiles emerge around the centred bulb
+     Phase 3  achievementsLight  — bulb sweeps over the Hall of Fame plaques, lighting them
+     Phase 4  standForLight      — bulb tilted like a lamp in the top-right corner; tabs + panel glow
+     Phase 5  societiesEmerge    — wing tiles come out of the big centred bulb, then it shrinks away
    ───────────────────────────────────────────── */
 
 import eventsEmerge from './eventsEmerge'
 import flagshipBolts from './flagshipBolts'
+import achievementsLight from './achievementsLight'
+import standForLight from './standForLight'
+import societiesEmerge from './societiesEmerge'
 
 const EFFECTS = [
   eventsEmerge,
   flagshipBolts,
-  // later phases are added here
+  achievementsLight,
+  standForLight,
+  societiesEmerge,
 ]
 
 export function installBulbEffects(options) {

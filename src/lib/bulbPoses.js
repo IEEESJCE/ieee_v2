@@ -1,3 +1,5 @@
+import { bulb, GLASS_CENTER_Y } from './bulbBus'
+
 /* ─────────────────────────────────────────────
    Bulb scroll choreography — one pose per home page section.
    Shared by HomePage (which passes getBulbStops to BulbScene) and the
@@ -12,14 +14,39 @@
    fromEnter  if true, the bulb only starts blending into this pose when the section
               begins to ENTER the screen (its top at the bottom of the screen), instead
               of right after the previous section's stop
+   holdTo     (held sections only) where the bulb ends up at the END of the hold, e.g.
+              { x: 0.7 } — during the hold it glides from the pose to here, scroll-linked.
+              Without it the bulb stays still during the hold.
+   holdSteps  (held sections only) like holdTo but in several stages: a list of
+              { at, ...changes }, `at` = fraction of the hold (0…1). Each step keeps
+              everything from the step before and changes only what it lists, e.g.
+              [{ at: 0.7 }, { at: 1, s: 0.3, fade: 0 }] = stay put until 70%, then shrink away.
+   center     if true, x and y are worked out so the GLASS sits exactly in the middle
+              of the screen (at every size, and for every step's size)
+   mobile     overrides used on phones (≤767px) instead of the values above
    ───────────────────────────────────────────── */
 export const BULB_POSES = [
   { selector: '.nb-section-landing',      x: 0,     y: -0.22, s: 1.12, tilt: 0,     glow: 0.7 },  // hero: big, centred, lower half, lit
   { selector: '.nb-events-wrapper',       x: 0.62,  y: 0,     s: 0.62, tilt: -0.12, glow: 1 },    // right, smaller
   { selector: '.nb-milestones-wrapper',   x: 0.3,   y: 0.6,   s: 0.45, tilt: 0.1,   glow: 1 },    // Flagship Events: up top, right of the heading — bolts strike down onto the posters
-  { selector: '.nb-achievements-wrapper', x: -0.6,  y: -0.05, s: 0.66, tilt: 0.2,   glow: 1 },    // stays left
-  { selector: '.nb-standfor-wrapper',     x: 0.62,  y: 0,     s: 0.62, tilt: -0.15, glow: 1 },    // back to the right
-  { selector: '.nb-societies-wrapper',    x: -0.62, y: 0.05,  s: 0.6,  tilt: 0.18,  glow: 1 },    // our societies: swings left
+  // Hall of Fame (desktop): arrives left of the plaque row, then during the hold sweeps
+  // left → right over all the plaques (they light up as it passes, achievementsLight.js)
+  // before moving on to What We Stand For on the right. Phones: stays left, no sweep.
+  { selector: '.nb-achievements-wrapper', x: -0.8,  y: 0.3,   s: 0.5,  tilt: 0.2,   glow: 1,
+    holdTo: { x: 0.8, tilt: -0.15 },
+    mobile: { x: -0.6, y: -0.05, s: 0.66 } },
+  // What We Stand For (desktop): small, in the empty top-right corner (right of the heading,
+  // above the photo panel), turned ~135° so the glass points down-left at the tabs and panel
+  // like a lamp. Placed so it never covers any text. Phones: the old pose.
+  { selector: '.nb-standfor-wrapper',     x: 0.42,  y: 0.72,  s: 0.45, tilt: 2.36,  glow: 1,
+    mobile: { x: 0.62, y: 0, s: 0.62, tilt: -0.15 } },
+  // Our Societies: the bulb grows and sits in the exact centre of the screen. During the
+  // hold (desktop) the wing tiles come out of it one by one (bulb-effects/societiesEmerge.js),
+  // then the bulb shrinks back into the centre and fades out, so it never stays on top of
+  // tile text. Phones: big and centred behind the content, no hold.
+  { selector: '.nb-societies-wrapper',    center: true, s: 1.3, tilt: 0, glow: 1,
+    holdSteps: [{ at: 0.72 }, { at: 1, s: 0.25, glow: 0.4, fade: 0 }],
+    mobile: { s: 0.9 } },
   // Mentors: the bulb fades out gently WHILE Mentors slides in (fromEnter), staying where
   // it was, and is completely gone (fade 0 → nothing drawn) for Mentors and the footer.
   { selector: '.nb-mentors-wrapper',      x: -0.62, y: 0.05,  s: 0.5,  tilt: 0.18,  glow: 0, fade: 0, fromEnter: true },
@@ -35,20 +62,50 @@ export const BULB_POSES = [
 export const HOLDS = {
   '.nb-events-wrapper': { desktop: 0.9, mobile: 0.6 }, // event cards come out of the bulb (right → left)
   '.nb-milestones-wrapper': { desktop: 0.6, mobile: 0.45 }, // lightning from the bulb to each Flagship Events poster
+  '.nb-achievements-wrapper': { desktop: 1.2, mobile: 0 }, // the bulb sweeps over the plaques (desktop only)
+  '.nb-standfor-wrapper': { desktop: 0.5, mobile: 0 }, // the bulb rests in its corner, lighting the section (desktop only)
+  '.nb-societies-wrapper': { desktop: 1.2, mobile: 0 }, // wing tiles come out of the centred bulb, then it shrinks away
 }
 
 /** Hold length in px for a section (0 if it has none). */
 export function holdPx(selector) {
   const h = HOLDS[selector]
   if (!h) return 0
-  const mobile = window.innerWidth <= 767
-  return Math.round(window.innerHeight * (mobile ? h.mobile : h.desktop))
+  return Math.round(window.innerHeight * (isMobile() ? h.mobile : h.desktop))
+}
+
+const isMobile = () => window.innerWidth <= 767
+
+/**
+ * The pose y that puts the glass centre exactly in the middle of the screen for size s.
+ * Same numbers BulbScene renders with (bulb.view): the bulb's origin sits at
+ * y·(visibleH/2) + navOffset, and the glass centre GLASS_CENTER_Y·scale above that.
+ */
+function centredY(s) {
+  const v = bulb.view
+  if (!v) return 0
+  const scale = Math.min(s * v.sizeFactor, v.maxScale)
+  return -(v.navOffset + GLASS_CENTER_Y * scale) / (v.visibleH / 2)
+}
+
+/** A pose entry with the phone overrides applied (on phones) and helper fields removed. */
+function resolvePose({ mobile, ...pose }) {
+  return isMobile() && mobile ? { ...pose, ...mobile } : pose
+}
+
+/** Fill in x/y for a `center: true` pose (see centredY). */
+function place(pose, center) {
+  return center ? { ...pose, x: 0, y: centredY(pose.s ?? 1) } : pose
 }
 
 /** The pose for one section (by its selector), with defaults filled in. */
 export function getPose(selector) {
   const p = BULB_POSES.find((pose) => pose.selector === selector)
-  return p ? { fade: 1, ...p } : null
+  if (!p) return null
+  const { center, ...pose } = resolvePose(p)
+  delete pose.holdTo // hold-only fields, not part of the pose itself
+  delete pose.holdSteps
+  return place({ fade: 1, ...pose }, center)
 }
 
 // Document scroll position at which a section's top reaches the top of the screen.
@@ -58,11 +115,22 @@ export function sectionScrollTop(el) {
   return box.getBoundingClientRect().top + window.scrollY
 }
 
+/**
+ * Scroll position (px) where the bulb switches ON. It stays off in the hero and lights
+ * up as it arrives at the 2nd section (Events): 85% of the way there, so the damped
+ * glide has nearly landed. Scrolling back above this turns it off again.
+ */
+export function getLightOnAt() {
+  const el = document.querySelector(BULB_POSES[1].selector)
+  return el ? sectionScrollTop(el) * 0.85 : 0
+}
+
 /** Real section positions → bulb stops [{ at, x, y, s, tilt, glow, fade }] for BulbScene. */
 export function getBulbStops() {
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight
   const stops = []
-  for (const { selector, fromEnter, ...pose } of BULB_POSES) {
+  for (const entry of BULB_POSES) {
+    const { selector, fromEnter, holdTo, holdSteps, center, ...pose } = resolvePose(entry)
     const el = document.querySelector(selector)
     if (!el) continue
     let at = Math.min(sectionScrollTop(el), maxScroll)
@@ -75,12 +143,19 @@ export function getBulbStops() {
     const enterAt = at - window.innerHeight
     if (fromEnter && prev && enterAt > prev.at) stops.push({ ...prev, at: enterAt })
 
-    const stop = { fade: 1, ...pose, at }
+    const stop = place({ fade: 1, ...pose, at }, center)
     stops.push(stop)
-    // a held section gets a second, identical stop at the end of its hold,
-    // so the bulb stays put while the section's effect plays
+    // a held section gets more stops during its hold: by default one identical stop at
+    // the end (the bulb stays put while the section's effect plays); holdTo moves it by
+    // the end (a sweep); holdSteps moves it in stages
     const hold = holdPx(selector)
-    if (hold) stops.push({ ...stop, at: Math.min(at + hold, maxScroll) })
+    if (hold) {
+      let current = stop
+      for (const { at: f, ...change } of holdSteps ?? [{ at: 1, ...holdTo }]) {
+        current = place({ ...current, ...change, at: Math.min(at + hold * f, maxScroll) }, center)
+        stops.push(current)
+      }
+    }
   }
   return stops
 }
