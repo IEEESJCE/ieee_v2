@@ -16,7 +16,7 @@ const SOCIETIES = [
   {
     id: "student-branch",
     short: "Student Branch",
-    name: "IEEE SJCE Student Branch",
+    name: "IEEE-SJCE Student Branch",
     icon: Zap,
     accent: "#3B82F6",
     animation:

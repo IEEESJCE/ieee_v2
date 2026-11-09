@@ -6,7 +6,7 @@ import '../styles/intro-animation.css'
 let animationTimeline = null
 
 /* ═══════════════════════════════════════════════
-   IEEE SJCE — FUTURISTIC INTRO ANIMATION
+   IEEE-SJCE — FUTURISTIC INTRO ANIMATION
    5-Phase Cinematic System Power-On Sequence
    ═══════════════════════════════════════════════ */
 
@@ -530,7 +530,7 @@ export default function IntroAnimation({ onComplete }) {
 
         {/* Logo */}
         <div className="intro-logo-container">
-          <img ref={logoRef} src="/logo.png" alt="IEEE SJCE" className="intro-logo" />
+          <img ref={logoRef} src="/logo.png" alt="IEEE-SJCE" className="intro-logo" />
         </div>
 
         {/* Energy pulse */}

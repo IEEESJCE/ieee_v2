@@ -150,7 +150,7 @@ export default function MilestoneEventsSection() {
               <em>Events</em>
             </h2>
             <p className="ms-intro-text">
-              Iconic workshops and premier competitions that define IEEE SJCE&apos;s flagship legacy — scroll the filmstrip to explore each edition.
+              Iconic workshops and premier competitions that define IEEE-SJCE&apos;s flagship legacy — scroll the filmstrip to explore each edition.
             </p>
             <div className="ms-intro-stat">
               <span className="ms-stat-num">{EVENTS.length}</span>

@@ -100,32 +100,31 @@
   box-shadow: 6px 6px 0 0 var(--accent);
 }
 
-.ach-stat {
-  display: flex;
+/* Silver Jubilee message (replaces the old number stats) */
+.ach-jubilee {
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  text-align: center;
+  padding: 22px 28px;
 }
 
-.ach-stat-value {
+.ach-jubilee-title {
   font-family: var(--font-display);
-  font-size: 2.2rem;
-  line-height: 1;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   color: var(--accent);
 }
 
-.ach-stat-key {
-  font-size: 10px;
+.ach-jubilee-sub {
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--text-muted);
-}
-
-.ach-stat-divider {
-  width: 2px;
-  height: 40px;
-  background: var(--border-color);
 }
 
 .ach-orb {
@@ -139,12 +138,24 @@
   overflow: hidden;
 }
 
-.ach-orb-lottie {
-  width: 100%;
-  height: 100%;
-  border: none;
+.ach-orb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ach-orb-trophy {
+  width: 64%;
+  height: 64%;
   display: block;
-  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
+}
+
+.ach-orb-trophy-num {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  fill: #334155;
 }
 
 /* ─── Plaque grid ─── */
@@ -222,22 +233,6 @@
   box-shadow: none;
 }
 
-.ach-plaque-rank {
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 800;
-  color: var(--primary-strong);
-  letter-spacing: 1.5px;
-  z-index: 3;
-  padding: 3px 8px;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1.5px solid var(--border-color);
-  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.6);
-}
-
 .ach-plaque-year {
   position: relative;
   z-index: 3;
@@ -291,7 +286,7 @@
 
 @media (min-width: 1280px) {
   .ach-plaque-row {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 16px;
   }
 
@@ -408,16 +403,12 @@
   box-shadow: 6px 6px 0 0 #2563EB !important;
 }
 
-:root.light .ach-stat-value {
+:root.light .ach-jubilee-title {
   color: #2563EB !important;
 }
 
-:root.light .ach-stat-key {
+:root.light .ach-jubilee-sub {
   color: #64748B !important;
-}
-
-:root.light .ach-stat-divider {
-  background: #CBD5E1 !important;
 }
 
 :root.light .ach-orb {
@@ -446,12 +437,6 @@
   border: 2px solid var(--plaque-accent) !important;
 }
 
-:root.light .ach-plaque-rank {
-  background: #0F172A !important;
-  color: #FFFFFF !important;
-  border: 1.5px solid #0F172A !important;
-  box-shadow: 2px 2px 0 0 var(--plaque-accent) !important;
-}
 
 :root.light .ach-plaque-year {
   color: var(--plaque-accent) !important;

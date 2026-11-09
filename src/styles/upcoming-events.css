@@ -1,0 +1,416 @@
+/* UPCOMING EVENTS — hero mirrors the Contact / Membership pages,
+   each event is an Instagram-style post (photos left, caption right) */
+.upe-page {
+  background: var(--bg-surface);
+  min-height: 70vh;
+  padding-bottom: 48px;
+}
+
+.upe-hero {
+  text-align: center;
+  padding: 56px 24px 36px;
+}
+
+.upe-hero-icon { display: block; color: var(--accent); margin: 0 auto 12px; }
+
+.upe-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  color: var(--primary-strong);
+  margin: 0 0 10px;
+}
+
+.upe-hero p {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.upe-body {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ─── Post block (soft edges) ─── */
+.upe-post {
+  --post-h: 480px; /* photo is square: this sets both its width and height */
+  display: grid;
+  grid-template-columns: var(--post-h) 1fr;
+  height: var(--post-h);
+  background: var(--bg-card);
+  border: var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  /* clip (not hidden) so the sticky Register button can follow the page on mobile */
+  overflow: clip;
+  box-shadow: var(--shadow-lg);
+}
+
+/* ─── Carousel (left) ─── */
+.upe-carousel {
+  position: relative;
+  background: #000;
+  min-width: 0;
+}
+
+.upe-carousel-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.upe-carousel-track::-webkit-scrollbar { display: none; }
+
+.upe-carousel-img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  scroll-snap-align: start;
+  display: block;
+}
+
+.upe-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #0F172A;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.upe-carousel-btn:hover { transform: translateY(-50%) scale(1.08); }
+.upe-carousel-btn:disabled { opacity: 0; pointer-events: none; }
+.upe-carousel-prev { left: 12px; }
+.upe-carousel-next { right: 12px; }
+
+.upe-carousel-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.55); /* keeps dots visible on light photos */
+}
+
+.upe-carousel-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.upe-carousel-dot.is-active {
+  background: #FFFFFF;
+  transform: scale(1.2);
+}
+
+.upe-carousel-btn:focus-visible,
+.upe-carousel-dot:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ─── Caption (right) ─── */
+.upe-post-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  border-left: var(--border);
+}
+
+.upe-post-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: var(--border);
+  flex-shrink: 0;
+}
+
+.upe-post-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  object-fit: cover;
+}
+
+.upe-post-handle {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.upe-post-handle strong {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--primary-strong);
+}
+
+.upe-post-handle span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* the caption scrolls inside the block, like an Instagram post */
+.upe-post-caption {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px 24px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 45%, transparent) transparent;
+}
+
+.upe-post-caption p { margin: 0 0 12px; }
+
+.upe-post-quote {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  font-style: italic;
+  color: var(--primary-strong);
+}
+
+.upe-post-quote cite {
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.upe-post-callout {
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: var(--accent);
+}
+
+.upe-post-event-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: var(--primary-strong);
+  text-align: center;
+  margin-bottom: 4px !important;
+}
+
+.upe-post-expansion {
+  text-align: center;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.upe-post-details {
+  list-style: none;
+  margin: 4px 0 16px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 12px;
+  background: var(--bg-elevated);
+  border: var(--border);
+}
+
+.upe-post-details li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.upe-post-details svg { color: var(--accent); flex-shrink: 0; }
+.upe-post-details strong { color: var(--primary-strong); }
+
+.upe-post-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.upe-post-contacts-title {
+  flex-basis: 100%;
+  font-weight: 600;
+  color: var(--primary-strong);
+}
+
+.upe-post-contacts a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.upe-post-contacts a:hover {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+/* ─── Floating "Register Now" button (coral, soft edges) ─── */
+.upe-register-float {
+  position: sticky;
+  bottom: 16px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  pointer-events: none; /* only the button itself is clickable */
+  z-index: 2;
+}
+
+.upe-register-btn {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: #FF7F6B;
+  color: #0F172A;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(255, 127, 107, 0.45), 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.upe-register-btn:hover {
+  background: #FF907E;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(255, 127, 107, 0.55), 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+.upe-register-btn:active {
+  transform: translateY(0);
+}
+
+.upe-register-btn:focus-visible {
+  outline: 2px solid #FF7F6B;
+  outline-offset: 3px;
+}
+
+.upe-register-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.upe-register-btn:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ─── Tablet: slightly smaller square photo ─── */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .upe-post { --post-h: 400px; }
+}
+
+/* ─── Mobile: stack photos on top, caption below (no inner scroll) ─── */
+@media (max-width: 767px) {
+  .upe-hero { padding: 40px 16px 28px; }
+  .upe-body { padding: 0 16px 48px; }
+
+  .upe-post {
+    grid-template-columns: 1fr;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  .upe-carousel { aspect-ratio: 1 / 1; }
+
+  .upe-post-content { border-left: none; border-top: var(--border); }
+  .upe-post-caption { overflow: visible; padding: 16px 16px 20px; font-size: 14px; }
+}
+
+/* ─── Light mode ─── */
+:root.light .upe-page {
+  background-color: #EDF2F7 !important;
+  background-image:
+    radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.06) 0%, transparent 65%),
+    linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 48px 48px, 48px 48px !important;
+}
+
+:root.light .upe-hero h1 { color: #0F172A !important; }
+:root.light .upe-hero p { color: #475569 !important; }
+
+:root.light .upe-post {
+  background: #FFFFFF;
+  border: 2px solid #0F172A;
+  box-shadow: 6px 6px 0 0 #2563EB;
+}
+
+:root.light .upe-post-content,
+:root.light .upe-post-header { border-color: #CBD5E1; }
+
+:root.light .upe-post-caption { color: #334155; }
+
+:root.light .upe-post-handle strong,
+:root.light .upe-post-quote,
+:root.light .upe-post-event-name,
+:root.light .upe-post-details strong,
+:root.light .upe-post-contacts-title { color: #0F172A; }
+
+:root.light .upe-post-details {
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+}
+
+:root.light .upe-post-avatar,
+:root.light .upe-post-quote { border-color: #2563EB; }
+
+:root.light .upe-post-quote { background: rgba(37, 99, 235, 0.06); }
+
+:root.light .upe-post-quote cite,
+:root.light .upe-post-callout,
+:root.light .upe-post-details svg,
+:root.light .upe-post-contacts a { color: #2563EB; }
+
+:root.light .upe-post-contacts a { border-color: #2563EB; }
+:root.light .upe-post-contacts a:hover { background: rgba(37, 99, 235, 0.08); }
+
+@media (max-width: 767px) {
+  :root.light .upe-post-content { border-top-color: #CBD5E1; }
+}

@@ -316,6 +316,46 @@
   background: #0B1324;
 }
 
+/* "Dive in" block — the whole CTA box is the button */
+.nb-cta-dive {
+  flex-direction: row;
+  max-width: 240px;
+  padding: 14px 32px;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.nb-cta-dive:active {
+  transform: translate(4px, 4px);
+  box-shadow: 4px 4px 0 0 #00E5FF;
+}
+
+.nb-cta-dive:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 4px;
+}
+
+.nb-cta-dive-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.nb-cta-dive:hover .nb-cta-dive-text svg {
+  transform: translateX(4px);
+}
+
+.nb-cta-dive-text svg {
+  transition: transform 0.2s ease;
+}
+
 /* ─── Marquee ─── */
 .nb-marquee-wrapper {
   width: 100%;
@@ -552,6 +592,15 @@
     letter-spacing: 1px !important;
     box-shadow: 3px 3px 0 0 #00E5FF !important;
   }
+  .nb-cta-bar.nb-cta-dive {
+    flex-direction: row !important;
+    max-width: 200px !important;
+    padding: 10px 20px !important;
+  }
+  .nb-cta-dive-text {
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
   .nb-marquee-word {
     font-size: 10px;
   }
@@ -728,6 +777,14 @@
 
 :root.light .nb-cta-bar h3 {
   color: #0F172A !important;
+}
+
+:root.light .nb-cta-dive-text {
+  color: #0F172A;
+}
+
+:root.light .nb-cta-dive:focus-visible {
+  outline-color: #2563EB;
 }
 
 :root.light .nb-cta-bar .nb-btn-outline {

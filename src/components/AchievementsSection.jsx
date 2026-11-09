@@ -14,7 +14,6 @@ const ACHIEVEMENTS = [
     year: "2026",
     icon: <Star size={28} />,
     accent: "#FFE600",
-    rank: "I",
   },
   {
     id: 2,
@@ -23,7 +22,6 @@ const ACHIEVEMENTS = [
     year: "2021",
     icon: <Trophy size={28} />,
     accent: "#00E5FF",
-    rank: "II",
   },
   {
     id: 3,
@@ -32,7 +30,6 @@ const ACHIEVEMENTS = [
     year: "2019",
     icon: <Globe size={28} />,
     accent: "#3B82F6",
-    rank: "III",
   },
   {
     id: 4,
@@ -41,7 +38,6 @@ const ACHIEVEMENTS = [
     year: "2017",
     icon: <Globe size={28} />,
     accent: "#8B5CF6",
-    rank: "IV",
   },
   {
     id: 5,
@@ -50,7 +46,13 @@ const ACHIEVEMENTS = [
     year: "2016",
     icon: <Award size={28} />,
     accent: "#00F5D4",
-    rank: "V",
+  },
+  {
+    id: 6,
+    award: "Best Student Branch (India)",
+    year: "2003–2004",
+    icon: <Trophy size={28} />,
+    accent: "#EC4899",
   },
 ];
 
@@ -128,23 +130,32 @@ export default function AchievementsSection() {
             </p>
           </div>
           <div className="ach-hero-right">
-            <div className="ach-hero-stats">
-              <div className="ach-stat">
-                <span className="ach-stat-value">{ACHIEVEMENTS.length}</span>
-                <span className="ach-stat-key">Major Awards</span>
-              </div>
-              <div className="ach-stat-divider" />
-              <div className="ach-stat">
-                <span className="ach-stat-value">10+</span>
-                <span className="ach-stat-key">Years</span>
-              </div>
+            <div className="ach-hero-stats ach-jubilee">
+              <span className="ach-jubilee-title">Silver Jubilee Milestone</span>
+              <span className="ach-jubilee-sub">25 years down, forever to go!</span>
             </div>
-            <div className="ach-orb">
-              <iframe
-                title="Achievement animation"
-                className="ach-orb-lottie"
-                src="https://lottie.host/?file=f399cd9d-eb80-432b-b0da-04e11035a8e4/RKEVGpvACW.json"
-              />
+            <div className="ach-orb" role="img" aria-label="Silver trophy">
+              <svg className="ach-orb-trophy" viewBox="0 0 64 64" aria-hidden="true">
+                <defs>
+                  <linearGradient id="ach-silver" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#F8FAFC" />
+                    <stop offset="45%" stopColor="#CBD5E1" />
+                    <stop offset="70%" stopColor="#94A3B8" />
+                    <stop offset="100%" stopColor="#E2E8F0" />
+                  </linearGradient>
+                </defs>
+                {/* handles */}
+                <path d="M18 15 H11 C11 27 16 31 22 31" fill="none" stroke="url(#ach-silver)" strokeWidth="4" strokeLinecap="round" />
+                <path d="M46 15 H53 C53 27 48 31 42 31" fill="none" stroke="url(#ach-silver)" strokeWidth="4" strokeLinecap="round" />
+                {/* cup */}
+                <path d="M17 9 H47 V23 C47 33 41 40 32 40 C23 40 17 33 17 23 Z" fill="url(#ach-silver)" />
+                <path d="M22 13 V23" stroke="#FFFFFF" strokeOpacity="0.7" strokeWidth="2" strokeLinecap="round" />
+                <text x="33" y="28" textAnchor="middle" className="ach-orb-trophy-num">25</text>
+                {/* stem + base */}
+                <rect x="29" y="40" width="6" height="8" fill="url(#ach-silver)" />
+                <rect x="22" y="47" width="20" height="4" rx="1" fill="url(#ach-silver)" />
+                <rect x="18" y="51" width="28" height="6" rx="1.5" fill="url(#ach-silver)" />
+              </svg>
             </div>
           </div>
         </div>
@@ -163,11 +174,12 @@ export default function AchievementsSection() {
 
                 <div className="ach-plaque-medal">{item.icon}</div>
 
-                <span className="ach-plaque-rank">{item.rank}</span>
                 <span className="ach-plaque-year">{item.year}</span>
 
                 <h3 className="ach-plaque-award">{item.award}</h3>
-                <p className="ach-plaque-section">{item.section}</p>
+                {item.section && (
+                  <p className="ach-plaque-section">{item.section}</p>
+                )}
 
                 <div className="ach-plaque-base" aria-hidden="true" />
               </article>

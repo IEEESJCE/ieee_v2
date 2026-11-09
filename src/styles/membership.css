@@ -1,0 +1,86 @@
+/* MEMBERSHIP — mirrors the Contact page layout */
+.mbr-page {
+  background: var(--bg-surface);
+  min-height: 70vh;
+  padding-bottom: 48px;
+}
+
+.mbr-hero {
+  text-align: center;
+  padding: 56px 24px 36px;
+}
+
+.mbr-hero-icon,
+.mbr-card-icon { display: block; color: var(--accent); margin: 0 auto 12px; }
+
+.mbr-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  color: var(--primary-strong);
+  margin: 0 0 10px;
+}
+
+.mbr-hero p {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.mbr-body {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+.mbr-card {
+  text-align: center;
+  padding: 40px 32px;
+  background: var(--bg-card);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+
+.mbr-card h2 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.mbr-card p {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .mbr-hero { padding: 40px 16px 28px; }
+  .mbr-body { padding: 0 16px 48px; }
+  .mbr-card { padding: 28px 20px; }
+}
+
+/* ─── Light mode ─── */
+:root.light .mbr-page {
+  background-color: #EDF2F7 !important;
+  background-image:
+    radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.06) 0%, transparent 65%),
+    linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 48px 48px, 48px 48px !important;
+}
+
+:root.light .mbr-hero h1 { color: #0F172A !important; }
+:root.light .mbr-hero p,
+:root.light .mbr-card p { color: #475569 !important; }
+
+:root.light .mbr-card {
+  background: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 6px 6px 0 0 #2563EB !important;
+}

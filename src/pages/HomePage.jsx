@@ -26,7 +26,7 @@ ScrollTrigger.config({ ignoreMobileResize: true })
    Marquee Strip (truly infinite — 4x repeat)
    ───────────────────────────────────────────── */
 function MarqueeStrip() {
-  const items = ['INNOVATE', '◆', 'ENGINEER', '◆', 'INSPIRE', '◆', 'BUILD', '◆', 'IEEE SJCE', '◆']
+  const items = ['INNOVATE', '◆', 'ENGINEER', '◆', 'INSPIRE', '◆', 'BUILD', '◆', 'IEEE-SJCE', '◆']
   const repeated = [...items, ...items, ...items, ...items]
   return (
     <div className="nb-marquee-wrapper">
@@ -207,7 +207,7 @@ export default function HomePage() {
 
               <div className="nb-hero-wrapper">
                 <div ref={heroRef} className="nb-hero-content nb-hero-centered">
-                  <h1 className="gsap-hero nb-hero-title">IEEE SJCE</h1>
+                  <h1 className="gsap-hero nb-hero-title">IEEE-SJCE</h1>
                   <h2 className="gsap-hero nb-hero-tagline-big">
                     <span className="tagline-row">
                       <span className="tagline-cyan">INNOVATE</span>
@@ -220,11 +220,9 @@ export default function HomePage() {
                   <p className="gsap-hero nb-hero-subtitle">Advancing Technology for Humanity</p>
                   <p className="gsap-hero nb-hero-tagline">Building tomorrow's engineers, today.</p>
                   <div className="gsap-hero nb-hero-buttons">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScyUvp_2L7Mw3ENLSANaXTQiZmqJJFhxETfKFOXWl9o8wn3Uw/viewform" target='_blank' rel="noopener noreferrer">
-                      <button className="nb-btn nb-btn-accent">
-                        GET STARTED <ArrowRight size={14} />
-                      </button>
-                    </a>
+                    <button className="nb-btn nb-btn-accent" onClick={() => navigate('/membership')}>
+                      JOIN US <ArrowRight size={14} />
+                    </button>
                     <button className="nb-btn nb-btn-blue"
                       onClick={() => document.getElementById('events-section')?.scrollIntoView({ behavior: 'smooth' })}>
                       EXPLORE EVENTS
@@ -233,13 +231,17 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Bottom CTA Box matching screenshot */}
-              <div ref={ctaRef} className="nb-cta-bar">
-                <h3 className="gsap-cta">EXPLORE THE FUTURE OF TECHNOLOGY</h3>
-                <button className="gsap-cta nb-btn nb-btn-outline" onClick={() => navigate('/societies')}>
-                  LEARN MORE <ArrowRight size={14} />
-                </button>
-              </div>
+              {/* Bottom CTA: single "Dive in" block (same action as the old LEARN MORE button) */}
+              <button
+                ref={ctaRef}
+                type="button"
+                className="nb-cta-bar nb-cta-dive"
+                onClick={() => navigate('/societies')}
+              >
+                <span className="gsap-cta nb-cta-dive-text">
+                  DIVE IN <ArrowRight size={16} />
+                </span>
+              </button>
 
               <MarqueeStrip />
             </div>

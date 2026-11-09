@@ -110,8 +110,8 @@ function Navbar({ isDark, toggleTheme }) {
             tabIndex={0}
             onKeyDown={(e) => e.key === "Enter" && navigate("/home")}
           >
-            <img src="/logo.png" alt="IEEE SJCE" className="nb-logo-img" />
-            <span className="nb-logo-text">IEEE SJCE</span>
+            <img src="/logo.png" alt="IEEE-SJCE" className="nb-logo-img" />
+            <span className="nb-logo-text">IEEE-SJCE</span>
           </div>
 
           <div ref={linksRef} className="nb-nav-links">

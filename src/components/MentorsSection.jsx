@@ -113,7 +113,7 @@ export default function MentorsSection() {
           <GraduationCap size={22} className="mnt-header-icon" />
           <h2 className="mnt-title">Our Mentors</h2>
           <p className="mnt-subtitle">
-            The faculty advisors guiding IEEE SJCE — hover a card to connect.
+            The faculty advisors guiding IEEE-SJCE — hover a card to connect.
           </p>
         </div>
 

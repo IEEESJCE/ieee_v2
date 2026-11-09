@@ -536,60 +536,166 @@
   50% { transform: scale(1.4); opacity: 0.15; }
 }
 
-/* ─── Footer ─── */
-.evt-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 20px 32px;
-  background: var(--bg-card);
-  border: var(--border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  max-width: 500px;
-  margin: 0 auto;
-  transition: all 0.3s ease;
+/* ─── "Upcoming events" tile (first tile, links to /upcomingevents) ─── */
+.evt-upcoming-tile {
+  text-decoration: none;
+  color: inherit;
 }
 
-.evt-footer:hover {
-  box-shadow: var(--shadow);
-  transform: translateY(-2px);
+.evt-upcoming-tile:focus-visible {
+  outline: none;
 }
 
-.evt-footer-icon {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-elevated);
-  border: var(--border);
-  border-radius: var(--radius-md);
+.evt-upcoming-tile:focus-visible .evt-upcoming-card {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.evt-upcoming-date {
   color: var(--accent);
-  flex-shrink: 0;
-  box-shadow: var(--shadow-sm);
 }
 
-.evt-footer-text {
+/* dashed border = "not happened yet" */
+.evt-upcoming-card {
+  border: 1.5px dashed var(--accent);
+  background:
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--accent) 12%, transparent) 0%, transparent 60%),
+    var(--bg-card);
+}
+
+.evt-upcoming-hex {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.evt-upcoming-hex .evt-icon-inner {
+  color: var(--accent);
+}
+
+/* Larger, roomier text so the tile feels full (event tiles are unchanged) */
+.evt-upcoming-card .evt-icon-hex {
+  width: 50px;
+  height: 50px;
+  margin: 2px auto 12px;
+}
+
+.evt-upcoming-card .evt-card-title {
+  color: var(--accent);
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  min-height: 0;
+  margin: 0 0 14px;
+}
+
+.evt-upcoming-card .evt-card-desc {
+  flex: none;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 0 8px;
+  margin: 0;
+  overflow: visible;
+}
+
+/* Live "work in progress" indicator — sits at the bottom where posters go */
+.evt-upcoming-wip {
+  margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-}
-
-.evt-footer-heading {
-  font-family: var(--font-display);
-  font-size: 14px;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 4px;
   color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
-.evt-footer-sub {
-  font-family: var(--font-body);
-  font-size: 13px;
-  color: var(--text-muted);
-  font-weight: 400;
+/* two meshing gears turning in opposite directions */
+.evt-wip-gears {
+  position: relative;
+  width: 58px;
+  height: 40px;
+}
+
+.evt-wip-gear {
+  position: absolute;
+}
+
+.evt-wip-gear-a {
+  left: 0;
+  bottom: 0;
+  animation: evt-wip-spin 4s linear infinite;
+}
+
+.evt-wip-gear-b {
+  right: 0;
+  top: 0;
+  opacity: 0.75;
+  animation: evt-wip-spin 2.6s linear infinite reverse;
+}
+
+@keyframes evt-wip-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* sliding caution-stripe bar */
+.evt-wip-bar {
+  width: 80%;
+  height: 8px;
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--accent) 0 8px,
+    transparent 8px 16px
+  );
+  background-size: 22.6px 100%;
+  opacity: 0.85;
+  animation: evt-wip-stripes 0.9s linear infinite;
+}
+
+@keyframes evt-wip-stripes {
+  to { background-position: 22.6px 0; }
+}
+
+/* "In the works" label with a pulsing live dot */
+.evt-wip-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.evt-wip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: evt-wip-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes evt-wip-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); }
+  50% { box-shadow: 0 0 0 6px transparent; }
+}
+
+/* speed the gears up a little on hover */
+.evt-upcoming-tile:hover .evt-wip-gear-a { animation-duration: 2s; }
+.evt-upcoming-tile:hover .evt-wip-gear-b { animation-duration: 1.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .evt-wip-gear,
+  .evt-wip-bar,
+  .evt-wip-dot {
+    animation: none;
+  }
+}
+
+/* hollow dot on the timeline for a future event */
+.evt-upcoming-node .evt-node-dot {
+  background: var(--bg-card);
+  border: 2px solid var(--accent);
 }
 
 /* ═══════════════════════════════════════════════
@@ -660,17 +766,6 @@
   }
   .evt-circuit-bg {
     display: none;
-  }
-  .evt-footer {
-    padding: 16px 20px;
-    gap: 12px;
-    max-width: 100%;
-  }
-  .evt-footer-heading {
-    font-size: 12px;
-  }
-  .evt-footer-sub {
-    font-size: 11px;
   }
 }
 
@@ -783,14 +878,13 @@
   box-shadow: 0 0 0 3px var(--node-color, var(--accent)), 0 0 12px var(--node-color, var(--accent));
 }
 
-/* Footer card — white surface */
-:root.light .evt-footer {
-  background: #FFFFFF;
-  border: 1.5px solid #0F172A;
-  box-shadow: 4px 4px 0 0 #0F172A;
+/* Upcoming events tile — blue on light surface */
+:root.light .evt-upcoming-tile {
+  --accent: #2563EB;
 }
 
-:root.light .evt-footer-icon {
-  background: #F1F5F9;
-  border: 1px solid #CBD5E1;
+:root.light .evt-upcoming-card,
+:root.light .evt-card-active .evt-upcoming-card {
+  border: 1.5px dashed #2563EB !important;
+  background: #FFFFFF !important;
 }

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
-  Calendar,
+  CalendarClock,
+  Cog,
   ChevronLeft,
   ChevronRight,
   Wrench,
@@ -64,7 +66,7 @@ const EVENTS = [
   {
     title: 'Radioverse',
     date: '8–9 OCT 2026',
-    wing: 'IEEE SJCE',
+    wing: 'IEEE-SJCE',
     description:
       'A two-day immersive exploration into radio frequency engineering, wireless telemetry, antenna design, and radar applications with live demonstrations and simulation sessions.',
     icon: <Radio size={22} />,
@@ -199,7 +201,7 @@ const EVENTS = [
   {
     title: 'Circuitrix',
     date: '25 OCT 2025',
-    wing: 'IEEE SJCE',
+    wing: 'IEEE-SJCE',
     description:
       'A hands-on session designed to help students explore, create and simulate both analog and digital circuits using powerful circuit simulation tools.',
     icon: <CircuitBoard size={22} />,
@@ -244,7 +246,7 @@ const EVENTS = [
   {
     title: "TUXEDO'23",
     date: '28 NOV – 4 DEC 2023',
-    wing: 'IEEE SJCE',
+    wing: 'IEEE-SJCE',
     description:
       "IEEE-SJCE's odd-semester technical fest brought a week of workshops, contests and events, including Snap Circuits, Web Dev Bootcamp and Scribble.",
     icon: <Trophy size={22} />,
@@ -276,11 +278,15 @@ const EVENTS = [
   },
 ]
 
+// activeIndex value used for the "upcoming events" tile (it sits before EVENTS[0])
+const UPCOMING_INDEX = -1
+
 export default function EventsSection() {
   const sectionRef = useRef(null)
   const titleRef = useRef(null)
   const trackRef = useRef(null)
   const cardsRef = useRef([])
+  const upcomingRef = useRef(null)
   const [activeIndex, setActiveIndex] = useState(0) // newest event
 
   useEffect(() => {
@@ -326,14 +332,15 @@ export default function EventsSection() {
 
   const scrollToCard = (dir) => {
     const next = activeIndex + dir
-    if (next < 0 || next >= EVENTS.length) return
+    // UPCOMING_INDEX (-1) is the "upcoming events" tile left of the newest event
+    if (next < UPCOMING_INDEX || next >= EVENTS.length) return
     setActiveIndex(next)
   }
 
   // Center the active card in the viewport
   useEffect(() => {
-    if (trackRef.current && cardsRef.current[activeIndex]) {
-      const card = cardsRef.current[activeIndex]
+    const card = activeIndex === UPCOMING_INDEX ? upcomingRef.current : cardsRef.current[activeIndex]
+    if (trackRef.current && card) {
       const track = trackRef.current
       const trackRect = track.getBoundingClientRect()
       const cardRect = card.getBoundingClientRect()
@@ -419,7 +426,7 @@ export default function EventsSection() {
         <div className="evt-timeline-wrapper">
           {/* Nav arrows */}
           <button
-            className={`evt-nav evt-nav-left ${activeIndex === 0 ? 'evt-nav-disabled' : ''}`}
+            className={`evt-nav evt-nav-left ${activeIndex === UPCOMING_INDEX ? 'evt-nav-disabled' : ''}`}
             onClick={() => scrollToCard(-1)}
             aria-label="Previous event"
           >
@@ -441,6 +448,48 @@ export default function EventsSection() {
               <div className="evt-timeline-line">
                 <div className="evt-timeline-line-fill" />
               </div>
+
+              {/* Upcoming events tile — sits left of the newest event, links to /upcomingevents */}
+              <Link
+                to="/upcomingevents"
+                ref={upcomingRef}
+                className={`evt-card-wrapper evt-upcoming-tile ${activeIndex === UPCOMING_INDEX ? 'evt-card-active' : ''}`}
+              >
+                <div className="evt-date evt-upcoming-date">COMING SOON</div>
+
+                <div className="evt-card evt-upcoming-card" style={{ '--card-accent': 'var(--accent)' }}>
+                  <div className="evt-icon-hex evt-upcoming-hex">
+                    <div className="evt-icon-inner">
+                      <CalendarClock size={22} />
+                    </div>
+                  </div>
+
+                  <h3 className="evt-card-title">Peek into upcoming events</h3>
+
+                  <p className="evt-card-desc">
+                    Workshops, talks and competitions on the way. See what&apos;s next at IEEE&#8209;SJCE.
+                  </p>
+
+                  {/* Live "work in progress" indicator (replaces the poster area) */}
+                  <div className="evt-upcoming-wip">
+                    <div className="evt-wip-gears" aria-hidden="true">
+                      <Cog size={34} className="evt-wip-gear evt-wip-gear-a" />
+                      <Cog size={22} className="evt-wip-gear evt-wip-gear-b" />
+                    </div>
+                    <div className="evt-wip-bar" aria-hidden="true" />
+                    <span className="evt-wip-label">
+                      <span className="evt-wip-dot" aria-hidden="true" />
+                      In the works
+                    </span>
+                  </div>
+                </div>
+
+                <div className="evt-node evt-upcoming-node" style={{ '--node-color': 'var(--accent)' }}>
+                  <div className="evt-node-dot" />
+                  <div className="evt-node-glow" />
+                </div>
+              </Link>
+
               {EVENTS.map((evt, i) => (
                 <div
                   key={i}
@@ -511,16 +560,6 @@ export default function EventsSection() {
           </div>
         </div>
 
-        {/* ─── Footer CTA ─── */}
-        <div className="evt-footer">
-          <div className="evt-footer-icon">
-            <Calendar size={24} />
-          </div>
-          <div className="evt-footer-text">
-            <span className="evt-footer-heading">And many more to come...</span>
-            <span className="evt-footer-sub">Stay tuned for exciting events ahead!</span>
-          </div>
-        </div>
       </div>
     </section>
   )

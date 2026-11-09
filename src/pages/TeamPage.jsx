@@ -995,12 +995,12 @@ export default function TeamPage() {
   return (
     <div className="team-page palette-blueprint">
       <header className="team-hero">
-        <div className="team-hero-badge">⚡ IEEE SJCE · 2025–26</div>
+        <div className="team-hero-badge">⚡ IEEE-SJCE · 2025–26</div>
         <h1>
           Our <em>Team</em>
         </h1>
         <p>
-          The dedicated minds driving innovation at IEEE SJCE — students leading
+          The dedicated minds driving innovation at IEEE-SJCE — students leading
           change, one project at a time.
         </p>
 

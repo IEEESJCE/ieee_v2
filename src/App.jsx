@@ -6,6 +6,8 @@ import BoardsPage from './pages/BoardsPage.jsx'
 import ContactPage from './pages/ContactPage.jsx'
 import GalleryPage from './pages/GalleryPage.jsx'
 import TeamPage from './pages/TeamPage.jsx'
+import MembershipPage from './pages/MembershipPage.jsx'
+import UpcomingEventsPage from './pages/UpcomingEventsPage.jsx'
 import Layout from './components/Layout.jsx'
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/team" element={<TeamPage />} />
+        <Route path="/membership" element={<MembershipPage />} />
+        <Route path="/upcomingevents" element={<UpcomingEventsPage />} />
       </Route>
     </Routes>
   )
