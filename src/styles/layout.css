@@ -512,3 +512,59 @@
   background: var(--bg);
   color: var(--primary);
 }
+
+/* ═══════════════════════════════════════════════
+   PRAYAS button — sits left of the theme toggle.
+   Reuses .nb-theme-toggle's look (border, offset shadow, hover, light mode);
+   only the width, text and heart colour differ.
+   ═══════════════════════════════════════════════ */
+.nb-prayas-btn {
+  width: auto;
+  gap: 6px;
+  padding: 0 12px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nb-prayas-btn svg {
+  color: #EC4899; /* Prayas pink */
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.nb-prayas-btn:hover svg {
+  color: currentColor;
+}
+
+/* current page */
+.nb-prayas-btn.is-active {
+  background: var(--accent);
+  color: #000;
+}
+
+.nb-prayas-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Phone top bar: compact so it fits beside the theme toggle and menu button */
+.nb-prayas-btn-mobile {
+  height: 38px;
+  padding: 0 8px;
+  gap: 4px;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+:root.light .nb-prayas-btn.is-active {
+  background: #2563EB !important;
+  color: #FFFFFF !important;
+}
+
+:root.light .nb-prayas-btn:focus-visible {
+  outline-color: #2563EB;
+}

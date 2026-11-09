@@ -1,0 +1,108 @@
+/* ═══════════════════════════════════════════════
+   HOME PAGE — 3D BULB INTEGRATION
+   Every rule is scoped under .has-bulb, a class HomePage adds only after the
+   WebGL bulb has started. If WebGL is unavailable the hero stays exactly as before.
+   ═══════════════════════════════════════════════ */
+
+/* Hero becomes see-through so the fixed bulb canvas behind it shows.
+   The canvas paints the page background colour itself. */
+.has-bulb .nb-section-landing,
+.has-bulb .nb-bg {
+  background-color: transparent;
+}
+
+:root.light .has-bulb .nb-bg {
+  background-color: transparent;
+}
+
+/* Fade out the flat bulb painted in the middle of ieee-bg.png, keeping the
+   circuits and the glowing diamond frame. The 3D bulb takes its place.
+   The hole is an upright oval sized in vh (the 3D bulb's size follows the screen
+   height) and centred a little below the middle, matching the hero pose
+   (y: -0.22, s: 1.12 in HomePage.jsx). */
+.has-bulb .nb-bg-image {
+  /* two masks, both must allow a pixel (intersect):
+     1) the oval hole for the bulb
+     2) a soft fade over the bottom quarter, so the picture has no hard bottom edge
+        (with transparent sections that edge showed as a box when Events slid up) */
+  -webkit-mask-image:
+    radial-gradient(ellipse 26vh 37vh at 50% 57%, transparent 70%, #000 100%),
+    linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    radial-gradient(ellipse 26vh 37vh at 50% 57%, transparent 70%, #000 100%),
+    linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* ─── Fully transparent sections: one continuous background, the bulb behind ───
+   Each section is a pinned wrapper (homepage.css) holding the section itself.
+   Both layers are cleared, and everything that draws a section-sized box is removed:
+   background colours, light-mode grid patterns, the divider line on top of each
+   section, and the full-size decorations (Flagship Events' diagonal stripes,
+   Hall of Fame's light rays). The canvas behind paints the single page colour.
+   Cards, tiles and buttons keep their own surfaces. */
+.has-bulb .nb-events-wrapper,
+.has-bulb .nb-milestones-wrapper,
+.has-bulb .nb-achievements-wrapper,
+.has-bulb .nb-standfor-wrapper,
+.has-bulb .nb-societies-wrapper,
+.has-bulb .nb-mentors-wrapper {
+  background: transparent;
+}
+
+/* !important + :root.light: these sections set !important light-mode backgrounds */
+.has-bulb .evt-section,
+.has-bulb .ms-section,
+.has-bulb .ach-section,
+.has-bulb .stf-section,
+.has-bulb .sct-section,
+.has-bulb .mnt-section,
+:root.light .has-bulb .evt-section,
+:root.light .has-bulb .ms-section,
+:root.light .has-bulb .ach-section,
+:root.light .has-bulb .stf-section,
+:root.light .has-bulb .sct-section,
+:root.light .has-bulb .mnt-section {
+  background: transparent !important;
+  border-top-color: transparent !important;
+}
+
+/* section-sized decorative layers */
+.has-bulb .ms-diagonal-bg,
+.has-bulb .ach-rays {
+  display: none;
+}
+
+/* footer: a little more solid — it's mostly small text */
+.has-bulb .ft {
+  background-color: color-mix(in srgb, var(--bg) 86%, transparent);
+}
+
+/* the footer stays dark navy in light mode (footer.css), so keep that colour at 90% */
+:root.light .has-bulb .ft {
+  background-color: rgba(11, 17, 32, 0.9) !important; /* #0B1120 at 90% */
+}
+
+/* Keep the hero text readable when the lit bulb glows behind it */
+.has-bulb .nb-hero-title {
+  text-shadow: 0 2px 24px rgba(6, 11, 24, 0.85), 0 0 2px rgba(6, 11, 24, 0.6);
+}
+
+.has-bulb .nb-hero-tagline-big,
+.has-bulb .nb-hero-subtitle,
+.has-bulb .nb-hero-tagline {
+  text-shadow:
+    0 0 6px rgba(6, 11, 24, 0.95),
+    0 0 14px rgba(6, 11, 24, 0.9),
+    0 1px 2px rgba(6, 11, 24, 1);
+}
+
+:root.light .has-bulb .nb-hero-title,
+:root.light .has-bulb .nb-hero-tagline-big,
+:root.light .has-bulb .nb-hero-subtitle,
+:root.light .has-bulb .nb-hero-tagline {
+  text-shadow:
+    0 0 6px rgba(248, 250, 252, 0.95),
+    0 0 14px rgba(248, 250, 252, 0.9);
+}

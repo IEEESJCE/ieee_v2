@@ -646,11 +646,8 @@
 .nb-milestones-wrapper,
 .nb-achievements-wrapper,
 .nb-standfor-wrapper,
-.nb-bangalore-wrapper,
-.nb-flagship-wrapper,
-.nb-prayas-wrapper,
-.nb-mentors-wrapper,
-.nb-sponsors-wrapper {
+.nb-societies-wrapper,
+.nb-mentors-wrapper {
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -661,11 +658,8 @@
 .nb-milestones-wrapper  { z-index: 30; background: var(--bg-surface); }
 .nb-achievements-wrapper { z-index: 40; background: var(--bg); }
 .nb-standfor-wrapper    { z-index: 50; background: var(--bg); }
-.nb-bangalore-wrapper   { z-index: 60; background: var(--bg-surface); }
-.nb-flagship-wrapper    { z-index: 70; background: var(--bg); }
-.nb-prayas-wrapper      { z-index: 80; background: var(--bg-surface); }
+.nb-societies-wrapper   { z-index: 55; background: var(--bg-surface); }
 .nb-mentors-wrapper     { z-index: 90; background: var(--bg); }
-.nb-sponsors-wrapper    { z-index: 100; background: var(--bg-surface); }
 
 
 

@@ -8,6 +8,8 @@ import GalleryPage from './pages/GalleryPage.jsx'
 import TeamPage from './pages/TeamPage.jsx'
 import MembershipPage from './pages/MembershipPage.jsx'
 import UpcomingEventsPage from './pages/UpcomingEventsPage.jsx'
+import PrayasPage from './pages/PrayasPage.jsx'
+import BulbTestPage from './pages/BulbTestPage.jsx' // TEMPORARY: 3D bulb preview
 import Layout from './components/Layout.jsx'
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
         <Route path="/team" element={<TeamPage />} />
         <Route path="/membership" element={<MembershipPage />} />
         <Route path="/upcomingevents" element={<UpcomingEventsPage />} />
+        <Route path="/prayas" element={<PrayasPage />} />
+        <Route path="/bulb-test" element={<BulbTestPage />} />
       </Route>
     </Routes>
   )

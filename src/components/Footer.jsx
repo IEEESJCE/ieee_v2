@@ -1,4 +1,5 @@
 import { Instagram, Facebook, Linkedin, Youtube, MapPin, Mail, Phone } from 'lucide-react'
+import SponsorStrip from './SponsorStrip'
 import '../styles/footer.css'
 
 const LINKS = [
@@ -24,6 +25,9 @@ export default function Footer() {
   return (
     <footer className="ft">
       <div className="ft-stripe" aria-hidden="true" />
+
+      {/* Scrolling sponsor logos, just above the address */}
+      <SponsorStrip />
 
       <div className="ft-main">
         <div className="ft-brand">

@@ -1,0 +1,14 @@
+/* ═══════════════════════════════════════════════
+   3D BULB CANVAS
+   Fixed full-screen WebGL canvas that sits behind the page content.
+   ═══════════════════════════════════════════════ */
+
+.bulb-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: 0;
+  pointer-events: none; /* never blocks clicks or scrolling */
+}

@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
@@ -10,14 +10,20 @@ import EventsSection from '../components/EventsSection'
 import MilestoneEventsSection from '../components/MilestoneEventsSection'
 import AchievementsSection from '../components/AchievementsSection'
 import StandForSection from '../components/StandForSection'
-import BangaloreSection from '../components/BangaloreSection'
-import FlagshipSection from '../components/FlagshipSection'
-import PrayasSection from '../components/PrayasSection'
+import SocietiesSection from '../components/SocietiesSection'
 import MentorsSection from '../components/MentorsSection'
-import SponsorSection from '../components/SponsorSection'
 import Footer from '../components/Footer'
 
 import '../styles/homepage.css'
+import '../styles/home-bulb.css'
+
+// 3D bulb behind the hero — lazy-loaded so Three.js downloads separately and never delays first paint
+const BulbScene = lazy(() => import('../components/BulbScene'))
+
+// Bulb poses per section + section-position helpers (shared with the section effects)
+import { getBulbStops, HOLDS, holdPx } from '../lib/bulbPoses'
+// Section effects that react to the bulb (installed once the bulb is running)
+import { installBulbEffects } from '../lib/bulb-effects'
 
 gsap.registerPlugin(ScrollTrigger)
 ScrollTrigger.config({ ignoreMobileResize: true })
@@ -50,6 +56,32 @@ export default function HomePage() {
   const ctaRef = useRef(null)
   const floatingRef = useRef(null)
   const containerRef = useRef(null)
+  // true once the 3D bulb has started; only then does the hero become see-through
+  const [hasBulb, setHasBulb] = useState(false)
+
+  // Section effects that react to the bulb. Installed only once the bulb is running
+  // (hasBulb), never under reduced motion, with lighter versions on phones.
+  // gsap.matchMedia re-runs this when the screen crosses the mobile breakpoint and
+  // undoes everything (its ScrollTriggers, inline styles) on cleanup.
+  useEffect(() => {
+    if (!hasBulb) return
+    const mm = gsap.matchMedia()
+    // NOTE: gsap.matchMedia only runs the callback when at least ONE condition matches,
+    // so isDesktop + isMobile together guarantee it always runs.
+    mm.add(
+      {
+        isDesktop: '(min-width: 768px)',
+        isMobile: '(max-width: 767px)',
+        reduce: '(prefers-reduced-motion: reduce)',
+      },
+      (context) => {
+        const { isMobile, reduce } = context.conditions
+        if (reduce) return
+        return installBulbEffects({ isMobile })
+      }
+    )
+    return () => mm.revert()
+  }, [hasBulb])
 
   useEffect(() => {
     if (location.hash) {
@@ -105,30 +137,26 @@ export default function HomePage() {
         document.querySelector('.nb-milestones-wrapper'),
         document.querySelector('.nb-achievements-wrapper'),
         document.querySelector('.nb-standfor-wrapper'),
-        document.querySelector('.nb-bangalore-wrapper'),
-        document.querySelector('.nb-flagship-wrapper'),
-        document.querySelector('.nb-prayas-wrapper'),
+        document.querySelector('.nb-societies-wrapper'),
         document.querySelector('.nb-mentors-wrapper'),
-        document.querySelector('.nb-sponsors-wrapper'),
       ].filter(Boolean)
 
-      allPanels.forEach((panel, i) => {
-        // Mentors and sponsors scroll normally into the footer (no pin/shrink).
-        if (i >= allPanels.length - 2) return
+      allPanels.forEach((panel) => {
+        // Mentors scrolls normally into the footer (no pin/shrink).
+        if (panel.classList.contains('nb-mentors-wrapper')) return
 
         const isLanding = panel.classList.contains('nb-section-landing')
         const innerPanel = isLanding ? panel.querySelector('.nb-section-inner') : panel.firstElementChild
-        const fadeDistance = isDesktop ? 600 : 450
 
-        // Calculate if we need a fake scroll for landing page ONLY on desktop
-        let fakeScrollRatio = 0
+        // Fade gap: each section fades out COMPLETELY before the next one slides in.
+        // The sections are see-through (only the bulb canvas behind), so if the next
+        // section arrived while this one was still fading, their content would overlap.
+        const fadeGap = Math.round(window.innerHeight * (isDesktop ? 0.4 : 0.35))
+
+        // Landing (desktop): extra scroll to reveal a hero taller than the screen
+        let fakeScroll = 0
         if (isLanding && innerPanel && isDesktop) {
-          const difference = innerPanel.offsetHeight - window.innerHeight
-          fakeScrollRatio = difference > 0 ? (difference / (difference + window.innerHeight)) : 0
-        }
-
-        if (isLanding && innerPanel) {
-          panel.style.marginBottom = fakeScrollRatio ? (innerPanel.offsetHeight * fakeScrollRatio + 'px') : '0px'
+          fakeScroll = Math.max(0, innerPanel.offsetHeight - window.innerHeight)
         }
 
         // Sections taller than the viewport (e.g. Hall of Fame on mobile) need
@@ -137,26 +165,41 @@ export default function HomePage() {
           ? Math.max(0, panel.offsetHeight - window.innerHeight)
           : 0
 
+        // Hold: some sections stay still for extra scrolling after reaching the top, so a
+        // bulb effect can play (see HOLDS in src/lib/bulbPoses.js).
+        const holdSelector = Object.keys(HOLDS).find((sel) => panel.matches(sel))
+        const hold = holdSelector ? holdPx(holdSelector) : 0
+
+        // Everything this section does while pinned, in px of scrolling:
+        //   [fake scroll / hold] → [overflow] → [fade out over the gap]
+        // A bottom margin of the same length delays the next section until it's done.
+        const pinLength = fakeScroll + hold + overflow + fadeGap
+        // The next section starts entering once this one's bottom edge (+ margin) passes the
+        // bottom of the screen, i.e. after (height − screen height + margin) of scrolling.
+        // Make that equal pinLength. (The hero is 71px shorter than the screen, so it needs
+        // a little extra; a section taller than the screen already covers its overflow.)
+        const margin = pinLength - (panel.offsetHeight - window.innerHeight)
+        panel.style.marginBottom = `${Math.max(0, margin)}px`
+
         // Section-to-section slide deck animation on BOTH laptop & mobile!
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: panel,
             start: 'top top',
-            end: () => fakeScrollRatio ? `+=${innerPanel.offsetHeight}` : `+=${overflow + fadeDistance}`,
+            end: `+=${pinLength}`,
             pin: true,
             pinSpacing: false,
             scrub: isDesktop ? true : 0.6,
           }
         })
 
-        if (fakeScrollRatio && isDesktop) {
-          tl.to(innerPanel, {
-            yPercent: -100,
-            y: window.innerHeight,
-            duration: 1 / (1 - fakeScrollRatio) - 1,
-            ease: 'none',
-          })
+        // landing: move the tall hero up to reveal its bottom
+        if (fakeScroll > 0) {
+          tl.to(innerPanel, { y: -fakeScroll, duration: fakeScroll, ease: 'none' })
         }
+
+        // the hold: an empty stretch (the panel stays still while a bulb effect plays)
+        if (hold > 0) tl.to({}, { duration: hold })
 
         if (overflow > 0) {
           tl.to(innerPanel, {
@@ -166,9 +209,10 @@ export default function HomePage() {
           })
         }
 
+        // fade out completely during the gap (the next section hasn't started yet)
         tl.fromTo(panel,
           { scale: 1, opacity: 1, y: 0 },
-          { scale: isLanding ? 1 : 0.85, opacity: 0, y: isDesktop ? -40 : -20, duration: isLanding ? 1 : fadeDistance, ease: 'power2.in' }
+          { scale: isLanding ? 1 : 0.85, opacity: 0, y: isDesktop ? -40 : -20, duration: fadeGap, ease: 'power2.in' }
         )
       })
 
@@ -182,7 +226,19 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div ref={containerRef} className="nb-panels-container">
+    <>
+    {/* Fixed WebGL bulb behind the hero (rises in, then switches on) */}
+    <Suspense fallback={null}>
+      <BulbScene
+        layout="hero"
+        riseIn
+        autoRotate
+        getStops={getBulbStops}
+        onReady={() => setHasBulb(true)}
+      />
+    </Suspense>
+
+    <div ref={containerRef} className={`nb-panels-container${hasBulb ? ' has-bulb' : ''}`}>
       {/* ════════ PANEL 1: Landing ════════ */}
       <section className="nb-section nb-section-landing">
         <div className="nb-section-inner">
@@ -269,33 +325,20 @@ export default function HomePage() {
         <StandForSection />
       </div>
 
-      {/* ════════ PANEL 6: Bangalore Section ════════ */}
-      <div className="nb-bangalore-wrapper">
-        <BangaloreSection />
+      {/* ════════ Our Societies (IEEE wing tiles) ════════ */}
+      <div className="nb-societies-wrapper">
+        <SocietiesSection />
       </div>
 
-      {/* ════════ PANEL 7: Flagship Programs ════════ */}
-      <div className="nb-flagship-wrapper">
-        <FlagshipSection />
-      </div>
-
-      {/* ════════ PANEL 8: Prayas ════════ */}
-      <div className="nb-prayas-wrapper">
-        <PrayasSection />
-      </div>
 
       {/* ════════ PANEL 9: Mentors ════════ */}
       <div className="nb-mentors-wrapper">
         <MentorsSection />
       </div>
 
-      {/* ════════ PANEL 10: Sponsors ════════ */}
-      <div className="nb-sponsors-wrapper">
-        <SponsorSection />
-      </div>
-
-      {/* ════════ PANEL 11: Footer ════════ */}
+      {/* ════════ Footer (includes the scrolling sponsor logos) ════════ */}
       <Footer />
     </div>
+    </>
   )
 }

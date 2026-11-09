@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, ArrowRight, Moon, Sun } from "lucide-react";
-import { useNavigate, useLocation, Outlet } from "react-router-dom";
+import { Menu, X, ArrowRight, Moon, Sun, Heart } from "lucide-react";
+import { useNavigate, useLocation, Outlet, Link } from "react-router-dom";
 import gsap from "gsap";
 import "../styles/layout.css";
 
@@ -128,6 +128,15 @@ function Navbar({ isDark, toggleTheme }) {
           </div>
 
           <div ref={joinRef} className="nb-nav-right">
+            {/* PRAYAS — left of the theme toggle; opens the Prayas page */}
+            <Link
+              to="/prayas"
+              className={`nb-theme-toggle nb-prayas-btn${location.pathname === "/prayas" ? " is-active" : ""}`}
+              aria-current={location.pathname === "/prayas" ? "page" : undefined}
+            >
+              <Heart size={15} aria-hidden="true" />
+              <span>PRAYAS</span>
+            </Link>
             <button
               className="nb-theme-toggle nb-theme-toggle-desktop"
               onClick={toggleTheme}
@@ -147,6 +156,14 @@ function Navbar({ isDark, toggleTheme }) {
           </div>
 
           <div className="nb-mobile-controls">
+            <Link
+              to="/prayas"
+              className={`nb-theme-toggle nb-prayas-btn nb-prayas-btn-mobile${location.pathname === "/prayas" ? " is-active" : ""}`}
+              aria-current={location.pathname === "/prayas" ? "page" : undefined}
+            >
+              <Heart size={13} aria-hidden="true" />
+              <span>PRAYAS</span>
+            </Link>
             <button
               className="nb-theme-toggle nb-theme-toggle-mobile"
               onClick={toggleTheme}

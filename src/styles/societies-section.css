@@ -1,0 +1,227 @@
+/* ═══════════════════════════════════════════════
+   OUR SOCIETIES — home page wing tiles
+   (sct- prefix to avoid clashing with the Societies page's soc- classes)
+   ═══════════════════════════════════════════════ */
+
+.sct-section {
+  position: relative;
+  width: 100%;
+  background: var(--bg-surface);
+  border-top: var(--border);
+  padding: 80px 0 88px;
+  overflow: hidden;
+}
+
+.sct-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* ─── Header (matches What We Stand For) ─── */
+.sct-header {
+  max-width: 640px;
+  margin-bottom: 44px;
+}
+
+.sct-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 6px 14px;
+  background: color-mix(in srgb, var(--accent) 10%, var(--bg-card));
+  border: 2px dashed var(--border-color);
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.sct-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  color: var(--primary-strong);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 1.05;
+  margin: 0 0 14px;
+}
+
+.sct-subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── Tile grid: 3 columns on laptops, 2 on tablets, 1 on phones ─── */
+.sct-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.sct-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px 22px 20px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-top: 4px solid var(--wing-accent);
+  box-shadow: 6px 6px 0 0 var(--wing-accent);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.sct-tile-link:hover,
+.sct-tile-link:focus-visible {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 0 var(--wing-accent);
+}
+
+.sct-tile-link:focus-visible {
+  outline: 2px solid var(--wing-accent);
+  outline-offset: 4px;
+}
+
+.sct-tile-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.sct-tile-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  color: var(--wing-accent);
+  background: color-mix(in srgb, var(--wing-accent) 14%, var(--bg-elevated));
+  border: 2px solid var(--wing-accent);
+}
+
+.sct-tile-new {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  padding: 4px 8px;
+  color: #0F172A;
+  background: var(--wing-accent);
+}
+
+.sct-tile-short {
+  font-family: var(--font-display);
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: var(--wing-accent);
+}
+
+.sct-tile-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--primary-strong);
+  margin: 2px 0 0;
+  line-height: 1.35;
+}
+
+.sct-tile-tagline {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 2px 0 0;
+  flex: 1;
+}
+
+.sct-tile-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--wing-accent);
+}
+
+.sct-tile-cta svg {
+  transition: transform 0.2s ease;
+}
+
+.sct-tile-link:hover .sct-tile-cta svg {
+  transform: translateX(4px);
+}
+
+/* ─── Responsive ─── */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .sct-inner { padding: 0 32px; }
+  .sct-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 767px) {
+  .sct-section { padding: 56px 0 64px; }
+  .sct-inner { padding: 0 16px; }
+  .sct-header { margin-bottom: 28px; }
+  .sct-title { font-size: 1.9rem; }
+  .sct-subtitle { font-size: 13.5px; }
+  .sct-grid { grid-template-columns: 1fr; gap: 16px; }
+  .sct-tile { padding: 18px 18px 16px; box-shadow: 4px 4px 0 0 var(--wing-accent); }
+  .sct-tile-short { font-size: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sct-tile,
+  .sct-tile-cta svg {
+    transition: none;
+  }
+}
+
+/* ─── Light mode (neo-brutalist white tiles, like the Hall of Fame) ─── */
+:root.light .sct-section {
+  background-color: #EDF2F7 !important;
+  background-image:
+    radial-gradient(circle at 50% 10%, rgba(37, 99, 235, 0.06) 0%, transparent 60%),
+    linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 48px 48px, 48px 48px !important;
+  border-top: 1.5px solid #CBD5E1 !important;
+}
+
+:root.light .sct-title { color: #0F172A !important; }
+:root.light .sct-subtitle { color: #475569 !important; }
+
+:root.light .sct-badge {
+  color: #2563EB;
+  background: #FFFFFF;
+  border-color: #CBD5E1;
+}
+
+:root.light .sct-tile {
+  background: #FFFFFF;
+  border: 2px solid #0F172A;
+  border-top: 4px solid var(--wing-accent);
+}
+
+:root.light .sct-tile-name { color: #0F172A; }
+:root.light .sct-tile-tagline { color: #475569; }
+
+/* bright accents (cyan, mint, amber) are hard to read as text on white — use navy there */
+:root.light .sct-tile-short,
+:root.light .sct-tile-cta {
+  color: #0F172A;
+}
+
+:root.light .sct-tile-icon {
+  background: color-mix(in srgb, var(--wing-accent) 18%, #FFFFFF);
+}
