@@ -252,11 +252,11 @@ export default function HomePage() {
         (kept lined up with the hero by installHeroBackdrop) */}
     {hasBulb && <div ref={backdropRef} className="hero-backdrop" aria-hidden="true" />}
 
-    {/* Fixed WebGL bulb behind the hero (rises in OFF; switches on when it reaches Events) */}
+    {/* Fixed WebGL bulb. Hidden in the hero; fades in on the picture's painted bulb as you
+        scroll (bulbPoses.js, fromLogo) and switches on when it reaches Events */}
     <Suspense fallback={null}>
       <BulbScene
         layout="hero"
-        riseIn
         autoRotate
         getStops={getBulbStops}
         getLightOnAt={getLightOnAt}

@@ -31,7 +31,6 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  container-type: size; /* lets ::after use cqw/cqh (safe: the box has a fixed size) */
   background-image: url('/ieee-bg.png');
   background-size: cover;
   background-position: center;
@@ -46,32 +45,6 @@
   opacity: calc(0.45 * var(--hero-fade, 1));
   filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(1.2);
   mix-blend-mode: multiply;
-}
-
-/* Hide the flat bulb painted in the middle of ieee-bg.png — the 3D bulb takes its place.
-   No hole and no blur: it's painted over with the plain dark-blue disc it sits on
-   (rgb 0 37 119, sampled from the image), so the rings and circuits stay sharp.
-
-   The patch must line up with the picture at every screen size. The picture uses
-   background-size: cover, so the ::after box is sized the same way, using container
-   query units (cqw/cqh = 1% of the backdrop's width/height):
-     width  = max(100% of the box, height × 1672/940)   (1672×940 = the image's size)
-     height = max(100% of the box, width × 940/1672)
-   and centred like background-position: center. The ellipse is then placed in the
-   image's own coordinates: flat bulb centre ≈ (837, 480) px, radii ≈ 110 × 168 px. */
-.hero-backdrop::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: max(100cqw, 177.87cqh);
-  height: max(100cqh, 56.22cqw);
-  transform: translate(-50%, -50%);
-  background: radial-gradient(
-    ellipse 6.6% 17.9% at 50.06% 51.06%,
-    rgb(0 37 119) 86%,
-    rgb(0 37 119 / 0) 100%
-  );
 }
 
 /* ─── Fully transparent sections: one continuous background, the bulb behind ───

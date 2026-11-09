@@ -76,3 +76,21 @@ export function poseToScreen(pose) {
     radius: GLASS_RADIUS * scale * pxPerUnit,
   }
 }
+
+/**
+ * The opposite of poseToScreen: the pose { x, y, s } that puts the glass centre at
+ * screen point (px, py) with a glass radius of `radius` px. Same numbers as above.
+ */
+export function screenToPose(px, py, radius) {
+  const v = bulb.view
+  if (!v) return { x: 0, y: 0, s: 1 }
+  const pxPerUnit = window.innerHeight / v.visibleH
+  const scale = Math.min(radius / (GLASS_RADIUS * pxPerUnit), v.maxScale)
+  const worldX = (px - window.innerWidth / 2) / pxPerUnit
+  const worldY = (window.innerHeight / 2 - py) / pxPerUnit
+  return {
+    x: worldX / ((v.visibleW / 2) * v.sideScale),
+    y: (worldY - v.navOffset - GLASS_CENTER_Y * scale) / (v.visibleH / 2),
+    s: scale / v.sizeFactor,
+  }
+}

@@ -1,4 +1,4 @@
-import { bulb, GLASS_CENTER_Y } from './bulbBus'
+import { bulb, GLASS_CENTER_Y, screenToPose } from './bulbBus'
 
 /* ─────────────────────────────────────────────
    Bulb scroll choreography — one pose per home page section.
@@ -11,6 +11,9 @@ import { bulb, GLASS_CENTER_Y } from './bulbBus'
    tilt  sideways lean in radians (+ = counter-clockwise)
    glow  0…1 light strength
    fade  0…1 visibility of the whole bulb (0 = gone, and it stops rendering); defaults to 1
+   fromLogo   (hero only) the bulb is hidden at the top of the page and fades in ON the
+              bulb painted in the centre of the hero picture (ieee-bg.png), same place and
+              size, while the hero fades away; then it glides on to the next section
    fromEnter  if true, the bulb only starts blending into this pose when the section
               begins to ENTER the screen (its top at the bottom of the screen), instead
               of right after the previous section's stop
@@ -26,7 +29,8 @@ import { bulb, GLASS_CENTER_Y } from './bulbBus'
    mobile     overrides used on phones (≤767px) instead of the values above
    ───────────────────────────────────────────── */
 export const BULB_POSES = [
-  { selector: '.nb-section-landing',      x: 0,     y: -0.22, s: 1.12, tilt: 0,     glow: 0.7 },  // hero: big, centred, lower half, lit
+  // hero: not shown at all; fades in on the picture's painted bulb as you scroll (fromLogo)
+  { selector: '.nb-section-landing',      fromLogo: true, tilt: 0,      glow: 0.7 },
   { selector: '.nb-events-wrapper',       x: 0.62,  y: 0,     s: 0.62, tilt: -0.12, glow: 1 },    // right, smaller
   { selector: '.nb-milestones-wrapper',   x: 0.3,   y: 0.6,   s: 0.45, tilt: 0.1,   glow: 1 },    // Flagship Events: up top, right of the heading — bolts strike down onto the posters
   // Hall of Fame (desktop): arrives left of the plaque row, then during the hold sweeps
@@ -103,6 +107,7 @@ export function getPose(selector) {
   const p = BULB_POSES.find((pose) => pose.selector === selector)
   if (!p) return null
   const { center, ...pose } = resolvePose(p)
+  delete pose.fromLogo
   delete pose.holdTo // hold-only fields, not part of the pose itself
   delete pose.holdSteps
   return place({ fade: 1, ...pose }, center)
@@ -113,6 +118,62 @@ export function getPose(selector) {
 export function sectionScrollTop(el) {
   const box = el.parentElement?.classList.contains('pin-spacer') ? el.parentElement : el
   return box.getBoundingClientRect().top + window.scrollY
+}
+
+/* The hero picture (ieee-bg.png, 1672 × 940, shown with background-size: cover,
+   centred) has a flat bulb painted in the middle of the IEEE logo:
+   glass centre ≈ (837, 480) px, glass radius ≈ 100 px, in the image's own pixels. */
+const BG_W = 1672
+const BG_H = 940
+const LOGO_BULB = { x: 837, y: 480, r: 100 }
+
+/** Where the painted bulb is on screen (px) while the hero is pinned at the top. */
+function logoBulbOnScreen(landing) {
+  const bg = landing.querySelector('.nb-bg')
+  if (!bg) return null
+  const box = bg.getBoundingClientRect()
+  const top = box.top - landing.getBoundingClientRect().top // inside the hero
+  const k = Math.max(box.width / BG_W, box.height / BG_H) // cover scale
+  const imgLeft = box.left + (box.width - BG_W * k) / 2
+  const imgTop = top + (box.height - BG_H * k) / 2
+  return { x: imgLeft + LOGO_BULB.x * k, y: imgTop + LOGO_BULB.y * k, r: LOGO_BULB.r * k }
+}
+
+/**
+ * Hero stops for `fromLogo`: hidden on the painted bulb at the top of the page, then
+ * fully visible on it once the hero has faded away (= when the next section starts
+ * coming in). The hero moves up a little first (HomePage: its fake scroll on tall
+ * heroes) and while fading (the fade's y shift), so the stops follow it.
+ */
+function logoStops(landing, pose) {
+  const p = logoBulbOnScreen(landing)
+  const next = document.querySelector(BULB_POSES[1].selector)
+  if (!p || !next) return []
+  const inner = landing.querySelector('.nb-section-inner')
+  const fakeScroll = !isMobile() && inner ? Math.max(0, inner.offsetHeight - window.innerHeight) : 0
+  const top = sectionScrollTop(landing) // the hero's top on screen at scroll 0
+  const pinEnd = top + fakeScroll // the hero starts fading here
+  const shownAt = Math.max(pinEnd + 1, sectionScrollTop(next) - window.innerHeight)
+  const hidden = (y, at) => ({ ...pose, ...screenToPose(p.x, y, p.r), at, fade: 0 })
+  const stops = [hidden(top + p.y, 0)]
+  // the hero scrolls normally until its top reaches the top of the screen (it's pinned
+  // from there), then a tall hero moves up by fakeScroll — the hidden bulb follows…
+  if (top > 0) stops.push(hidden(p.y, top))
+  if (fakeScroll > 0) stops.push(hidden(p.y - fakeScroll, pinEnd))
+  // …then it fades in exactly as the hero fades out. HomePage fades the hero with
+  // ease 'power2.in' (progress t → t²) and moves it up 40px (20px on phones) on the
+  // same curve, so a few in-between stops follow that curve.
+  const fadeShift = isMobile() ? 20 : 40
+  for (const t of [0.25, 0.5, 0.75, 1]) {
+    const e = t * t
+    stops.push({
+      ...pose,
+      ...screenToPose(p.x, p.y - fakeScroll - fadeShift * e, p.r),
+      at: pinEnd + (shownAt - pinEnd) * t,
+      fade: e,
+    })
+  }
+  return stops
 }
 
 /**
@@ -130,9 +191,13 @@ export function getBulbStops() {
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight
   const stops = []
   for (const entry of BULB_POSES) {
-    const { selector, fromEnter, holdTo, holdSteps, center, ...pose } = resolvePose(entry)
+    const { selector, fromEnter, fromLogo, holdTo, holdSteps, center, ...pose } = resolvePose(entry)
     const el = document.querySelector(selector)
     if (!el) continue
+    if (fromLogo) {
+      stops.push(...logoStops(el, { fade: 1, ...pose }))
+      continue
+    }
     let at = Math.min(sectionScrollTop(el), maxScroll)
     if (selector === '.nb-section-landing') at = 0
     if (selector === 'footer.ft') at = maxScroll
