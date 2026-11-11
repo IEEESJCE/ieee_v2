@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import ColourfulText from '../components/ui/colourful-text'
 
-import EventsSection from '../components/EventsSection'
+import MagazineSection from '../components/magazine/MagazineSection'
 import MilestoneEventsSection from '../components/MilestoneEventsSection'
 import AchievementsSection from '../components/AchievementsSection'
 import StandForSection from '../components/StandForSection'
@@ -247,9 +247,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ════════ PANEL 2: Events ════════ */}
+      {/* ════════ PANEL 2: The IEEE Chronicle ════════ */}
+      {/* The previous Events Timeline remains in components/EventsSection.jsx
+          until the magazine experience has been fully verified. */}
       <div className="nb-events-wrapper">
-        <EventsSection />
+        <MagazineSection />
       </div>
 
       {/* ════════ PANEL 3: Milestone Events ════════ */}

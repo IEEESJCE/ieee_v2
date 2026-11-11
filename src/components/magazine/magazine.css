@@ -1,0 +1,118 @@
+/* ─────────────────────────────────────────────
+   THE IEEE CHRONICLE — magazine-only stylesheet
+   Tailwind handles layout, type, colour and spacing.
+   This file only contains tokens, paper texture and
+   the physical book / PageFlip integration details.
+   ───────────────────────────────────────────── */
+
+.magazine-scope {
+  --mag-paper: #f3ead9;
+  --mag-paper-deep: #e8dcc3;
+  --mag-ink: #111111;
+  --mag-ink-soft: #4a443a;
+  --mag-yellow: #ffd84d;
+  --mag-blue: #1e40af;
+  --mag-blue-soft: #dbe6ff;
+  --mag-line: rgba(17, 17, 17, 0.22);
+}
+
+.mag-display {
+  font-family: var(--font-display);
+}
+
+.mag-body {
+  font-family: var(--font-body);
+}
+
+.mag-mono {
+  font-family: var(--font-mono);
+}
+
+/* Warm paper with a barely-there print grain */
+.mag-paper {
+  background-color: var(--mag-paper);
+  background-image:
+    radial-gradient(rgba(17, 17, 17, 0.035) 0.6px, transparent 0.6px),
+    radial-gradient(rgba(17, 17, 17, 0.022) 0.6px, transparent 0.6px);
+  background-position: 0 0, 3px 4px;
+  background-size: 7px 7px, 11px 11px;
+}
+
+.mag-grain {
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* Fold shadows on the inside edges of each spread */
+.mag-spine-left {
+  box-shadow: inset -18px 0 22px -20px rgba(0, 0, 0, 0.7);
+}
+
+.mag-spine-right {
+  box-shadow: inset 18px 0 22px -20px rgba(0, 0, 0, 0.7);
+}
+
+/* Translucent tape used by the photo plates */
+.mag-tape {
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(17, 17, 17, 0.16);
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.12);
+}
+
+/* Closed book gives the cover a physical spine + page block */
+.mag-closed-book {
+  perspective: 1800px;
+}
+
+.mag-closed-book-inner {
+  transform: rotateY(-7deg) rotateX(1.5deg);
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.22, 0.8, 0.24, 1);
+}
+
+.mag-closed-book:hover .mag-closed-book-inner {
+  transform: rotateY(-3deg) rotateX(0.5deg);
+}
+
+.mag-open-enter {
+  animation: mag-open-enter 0.55s cubic-bezier(0.22, 0.8, 0.24, 1) both;
+}
+
+@keyframes mag-open-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* The flip book must never create an inner scroll area */
+.magazine-scope .stf__parent,
+.magazine-scope .stf__wrapper,
+.magazine-scope .mag-flipbook {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+
+.magazine-scope .stf__item,
+.magazine-scope .stf__item > div {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mag-closed-book-inner,
+  .mag-closed-book:hover .mag-closed-book-inner {
+    transform: none;
+    transition: none;
+  }
+
+  .mag-open-enter {
+    animation: none;
+  }
+}
