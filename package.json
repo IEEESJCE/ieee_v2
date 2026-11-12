@@ -4,14 +4,16 @@
   "version": "2.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --host"
   },
   "dependencies": {
+    "exceljs": "^4.4.0",
     "framer-motion": "^11.12.0",
     "gsap": "^3.14.2",
     "lucide-react": "^0.460.0",
+    "pdf-lib": "^1.17.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",

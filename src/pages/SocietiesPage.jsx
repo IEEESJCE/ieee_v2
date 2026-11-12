@@ -8,6 +8,7 @@ import {
   ChevronRight,
   ChevronLeft,
   Rocket,
+  Terminal,
 } from "lucide-react";
 import gsap from "gsap";
 import "../styles/societies.css";
@@ -16,15 +17,52 @@ const SOCIETIES = [
   {
     id: "student-branch",
     short: "Student Branch",
-    name: "IEEE SJCE Student Branch",
+    name: "IEEE-SJCE Student Branch",
     icon: Zap,
     accent: "#3B82F6",
     animation:
       "https://lottie.host/?file=89a9d017-c9c2-4e7c-a02e-c33653a6972a/3dpYgASICZ.json",
     tagline: "Advancing technology and professional development.",
     about:
-      "IEEE-SJCE Student Branch which started as an elite group 29 years ago, today has sprawled throughout the campus of SJCE, making the students technically more competitive, more professional and capable of enhancing their abilities as an engineer. Since then IEEE-SJCE Student Branch, a division under Region 10 of IEEE has been known for the immensity with which its members were bestowed. The very success story of its students as professionals into their respective fields after graduations speaks of its standards.IEEE-SJCE Student Branch, which started 29 years ago, has grown to represent 330+ members across six engineering disciplines. With a focus on technical excellence and professional growth, we conduct two major technical fests annually and organize workshops to keep students industry-ready.",
-    events: [],
+      "IEEE-SJCE Student Branch, established in the year 1991, celebrates 35 years of excellence. Having started as an elite group, today it has sprawled throughout the campus of SJCE, making students technically more competitive, more professional, and capable of enhancing their abilities as engineers. Since then, IEEE-SJCE Student Branch, a division under Region 10 of IEEE, has been known for the immensity with which its members were bestowed. The very success story of its students as professionals speaks to its standards. IEEE-SJCE Student Branch has grown to represent 330+ members across six engineering disciplines. With a focus on technical excellence and professional growth, we conduct two major technical fests annually and organize workshops to keep students industry-ready.",
+    events: [
+      {
+        title: "ORIENTATION DAY",
+        desc: "The premier annual induction event welcoming new members to IEEE-SJCE. Students meet the Execom, discover technical societies, connect with mentors and seniors, and embark on an enriching engineering journey.",
+      },
+      {
+        title: "TECHTOUR (INDUSTRIAL VISIT)",
+        desc: "Educational industrial study visits to ISRO Telemetry, Tracking and Command Network (ISTRAC) and the Centre for Nanoscience and Engineering (CeNSE) at IISc Bengaluru, providing firsthand exposure to satellite mission telemetry, cleanroom semiconductor fabrication, and molecular characterization labs.",
+      },
+      {
+        title: "FUN-FINITY / FUNsane",
+        desc: "Signature freshers welcome and social gathering evenings dedicated to breaking away from routine, unwinding, and celebrating community spirit through interactive team challenges, icebreakers, music, and laughter.",
+      },
+      {
+        title: "RADIOVERSE",
+        desc: "A two-day immersive technical exploration into radio frequency engineering, wireless telemetry, antenna design, and radar applications with live simulation sessions and demonstrations.",
+      },
+      {
+        title: "TECH DETECTIVE",
+        desc: "Celebrated on the occasion of IEEE Day, an exhilarating technical deduction and clue-hunting contest where participants decipher encrypted signals, solve cryptic hardware puzzles, and crack complex engineering mysteries.",
+      },
+      {
+        title: "CIRCUITRIX",
+        desc: "Hands-on circuit simulation competition challenging participants to create, analyze, and troubleshoot analog and digital circuits using modern SPICE tools.",
+      },
+      {
+        title: "ELECTROCLUES",
+        desc: "An engaging circuit debugging and deduction competition organized under the IEEE Illuminate series for IEEE Day. Features 'Wire and Win' rapid-fire circuit debugging with a 90-second buzzer clock alongside deductive electronics puzzle challenges.",
+      },
+      {
+        title: "PRE-CONFERENCE WORKSHOP (ICETEG)",
+        desc: "Hosted as part of the International Conference on Emerging Technologies in Electronics and Green Energy (ICETEG) in association with MathWorks and Hub Energy, exploring AI in energy systems, digital twins, battery life prediction, and automated HDL code generation.",
+      },
+      {
+        title: "TUXEDO",
+        desc: "IEEE-SJCE's signature odd-semester technical fest spanning a full week of multidisciplinary workshops, tech competitions, paper presentations, and hackathons.",
+      },
+    ],
   },
   {
     id: "eds",
@@ -33,24 +71,33 @@ const SOCIETIES = [
     icon: Cpu,
     accent: "#00E5FF",
     animation: "",
+    tagline: "Semiconductor devices, circuits & hardware innovation.",
     about:
       "IEEE-SJCE EDS bridges the gap between classroom semiconductor theory and real-world hardware. We host hands-on workshops covering fundamental circuit design, PCB fabrication, VLSI design using Cadence, and embedded robotics—giving students practical exposure to modern electronic systems.",
     events: [
       {
         title: "SNAP CIRCUITS",
-        desc: "A beginner-friendly introduction to electronics. Learn core circuit concepts through hands-on assembly using snap-together components, switches, and LEDs to build working hardware logic.",
+        desc: "EDS's annual flagship hands-on electronics workshop conducted across multiple editions (2023, 2024, 2025, 2026). Freshers gain practical experience with breadboard connections, transistors as switches, logic gates, 7-segment displays, and capacitor circuits using Snap Circuits modular kits without requiring prior electronics knowledge.",
       },
       {
-        title: "SOLDERING & ETCHING",
-        desc: "Move from schematics to physical boards. Master hands-on soldering, component mounting, and chemical PCB etching techniques in an intensive workshop environment.",
+        title: "SOLDERING & ETCHING WORKSHOP",
+        desc: "Flagship multi-day hardware fabrication workshop moving students from schematics to physical printed circuit boards through 3 structured phases: breadboarding & LED blinking, 555 timer circuits & perfboard soldering, and KiCad PCB design with chemical etching, ironing, and drilling.",
       },
       {
         title: "CADENCE WORKSHOP",
-        desc: "Explore analog circuit design and simulation using industry-standard Cadence EDA tools. Practical sessions cover schematic capture, layout design, and IC simulation workflows.",
+        desc: "Explore analog circuit design and simulation using industry-standard Cadence EDA tools. Practical sessions cover schematic capture, layout verification (DRC/LVS), and IC simulation workflows.",
       },
       {
         title: "ROBOTICS WORKSHOP",
-        desc: "A 3-day hardware sprint covering microcontrollers, sensor integration, and firmware programming. Build functional autonomous robots from scratch.",
+        desc: "Organized in collaboration with the Robotics & Automation Society (RAS), including flagship editions like Robotics'16 with the innovative 'Two-Bot Concept' and Robotics'17, covering microcontroller architectures, sensor integration, and firmware programming to engineer functional autonomous robots.",
+      },
+      {
+        title: "SPICELAB (CIRCUIT SIMULATION)",
+        desc: "Hands-on circuit simulation workshop organized in collaboration with RAS and WIE under the IEEE Illuminate series for IEEE Day, utilizing LTspice software to design, test, probe, and simulate analog rectifiers and digital logic gates and adders.",
+      },
+      {
+        title: "QUIZ QUAKE",
+        desc: "A four-round technical and aptitude quiz competition organized jointly with RAS and WIE for first- and second-year students, featuring aptitude tests, riddles, logo identification, and engineering puzzles.",
       },
     ],
   },
@@ -67,16 +114,36 @@ const SOCIETIES = [
       "IEEE Women in Engineering (WIE) is a global network of IEEE members and volunteers dedicated to promoting women engineers and scientists and inspiring girls around the world to follow their academic interests in a career in engineering and science. It is the world’s largest technical professional organization dedicated to advancing technology for the benefit of humanity. Its goal is to facilitate the recruitment and retention of women in technical disciplines globally. IEEE WIE envisions a vibrant community of IEEE women and men collectively using their diverse talents to innovate the benefit of humanity.",
     events: [
       {
-        title: "PRAYAS",
-        desc: "A hands-on STEM outreach program providing structured educational support, practical science modules, and technical exposure to young students from underprivileged backgrounds.",
+        title: "KALPANA CHAWLA MEMORIAL LECTURE",
+        desc: "A prestigious flagship memorial lecture organized by IEEE WIE exploring the evolution, achievements, and future horizons of the Indian Space Programme and honoring women leaders in STEM.",
       },
       {
         title: "TCL WORKSHOP: PRINCIPLES & APPLICATIONS",
-        desc: "An intensive hands-on session introducing Tool Command Language (TCL) fundamentals, syntax, and automation scripting, featuring practical demonstrations covering concepts such as implementing loops, developing simple TCL scripts, and handling file operations.",
+        desc: "An intensive hands-on session introducing Tool Command Language (TCL) fundamentals, syntax, loops, and file operations for Electronic Design Automation (EDA) scripting.",
       },
       {
-        title: "KALPANA CHAWLA MEMORIAL LECTURE",
-        desc: "A flagship keynote address featuring pioneering women scientists and industry leaders sharing key developments in aerospace, deep tech, and advanced engineering research.",
+        title: "PRAYAS",
+        desc: "Signature philanthropic and STEM outreach initiative ('Platform for Rendering Aid to Young Kids and Aiming to Spread Smiles') conducted across multiple school and hostel visits (Visits 4–8), delivering science modules, national flag tricolour awareness, menstrual health seminars, and physics/chemistry demonstrations to underprivileged children across Mysuru.",
+      },
+      {
+        title: "AI EXPERT TALK AND IDEATHON",
+        desc: "Organized under STRONG (Scientific Research for NextGen GirlGeeks) in collaboration with the Marie Curie Alumni Association (MCAA) India Chapter, funded by the European Union, and supported by IEEE Mysore Subsection and IEEE-SJCE, inspiring young women in STEM through research talks and an interactive Ideathon with awards.",
+      },
+      {
+        title: "SQL BOOTCAMP",
+        desc: "A hands-on two-day online database bootcamp organized by WIE in association with IEEE Bangalore Section & IEEE Mysore Subsection, introducing DBMS fundamentals, complex SQL queries, multi-table joins, Slido quizzes, and mini-projects.",
+      },
+      {
+        title: "SPICELAB (CIRCUIT SIMULATION)",
+        desc: "Circuit simulation workshop organized in collaboration with EDS and RAS under the IEEE Illuminate series for IEEE Day, utilizing LTspice to draft, probe, and analyze analog and digital circuit architectures.",
+      },
+      {
+        title: "QUIZ QUAKE",
+        desc: "A four-round technical and aptitude quiz competition organized in collaboration with EDS and RAS, testing aptitude, logic, and engineering fundamentals for 1st- and 2nd-year students.",
+      },
+      {
+        title: "WEB DEV BOOTCAMP",
+        desc: "Hands-on web development bootcamp organized in collaboration with the Robotics & Automation Society (RAS), covering responsive web architecture, JavaScript, and site deployment.",
       },
     ],
   },
@@ -93,20 +160,40 @@ const SOCIETIES = [
       "IEEE-SJCE RAS aims to keep the students up to date on the latest automation technology. Robotics focuses on systems incorporating sensors and actuators that operate autonomously or semi-autonomously in cooperation with humans. Robotics research emphasises intelligence and adaptability to cope with unstructured environments. Automation research emphasises efficiency, quality, and reliability, focusing on systems that operate autonomously.The IEEE Robotics and Automation Society's objectives are scientific, literary, and educational in character. The Society strives for the advancement of the theory and practice of robotics and automation engineering, along with allied arts and sciences, and for the maintenance of high professional standards among its members.",
     events: [
       {
-        title: "IoT 4.0",
-        desc: "A three-day workshop giving participants hands-on exposure to building smart, connected systems. Using Raspberry Pi as the core platform, participants explore IoT concepts and develop practical applications for real-world problems.",
+        title: "IoT WORKSHOP SERIES",
+        desc: "Flagship multi-day workshop series (covering editions like IoT 3.0 and IoT 4.0) giving participants practical exposure to smart connected devices, MicroPython, sensor interfacing, MQTT/cloud protocols, RGB LED server booting, and NodeMCU/Raspberry Pi microcontrollers.",
       },
       {
         title: "TECHKSHETRA",
-        desc: "Organized in collaboration with the Signal Processing Society, Techkshetra is a flagship project expo where participants showcase working prototypes, technical know-how, and innovative engineering ideas.",
+        desc: "Premier inter-college project exposition organized in collaboration with IEEE Mysuru Subsection and SPS. Features Category I (1st/2nd years) and Category II (3rd/4th years) competitive showcases across AI, robotics, IoT, drones, and integrated hardware-software systems.",
       },
       {
-        title: "ROBOTICS",
-        desc: "Conducted in collaboration with the Electron Devices Society, focusing on sensor integration, microcontroller programming, and hardware-software interfacing to build fully functional, working autonomous robots.",
+        title: "ROBOTICS WORKSHOP",
+        desc: "Conducted in collaboration with the Electron Devices Society (EDS), featuring annual flagships such as Robotics'16 with its unique 'Two-Bot Concept' and Robotics'17, focusing on mechanical fabrication, sensor interfacing, and motion algorithms for autonomous robots.",
+      },
+      {
+        title: "TECH TALK: CONTROL AND GUIDANCE SYSTEMS IN SPACE",
+        desc: "A distinguished technical lecture organized by RAS featuring Dr. Ravikumar Lagisetty (Group Director, Mission Simulation Group, URSC, ISRO) exploring satellite orbit maintenance, control and guidance architectures, and Chandrayaan-3 and space docking mission case studies.",
       },
       {
         title: "TECH TALK ON MOTION PLANNING IN ROBOTICS",
-        desc: "Expert session covering classical search-based, sampling-based, and learning-based motion planning algorithms for autonomous vehicles, drones, and robotic arms, featuring open-source tools like ROS 2, Nav2, and MoveIt.",
+        desc: "Joint technical session conducted in collaboration with the Signal Processing Society (SPS), exploring classical search-based, sampling-based, and visual motion planning algorithms using ROS 2, Nav2, and MoveIt for autonomous mobile robots.",
+      },
+      {
+        title: "HANDS-ON MATLAB WORKSHOP: SIGNAL PROCESSING AND CONTROL SYSTEMS",
+        desc: "A two-day hands-on workshop organized collaboratively by RAS, SPS, and AESS in association with the ECE Department, conducted by Dr. Riyaz A. Rahiman (CoreEL Technologies), introducing MATLAB, Simulink, and Simscape for control systems and signal workflows.",
+      },
+      {
+        title: "SPICELAB (CIRCUIT SIMULATION)",
+        desc: "Hands-on circuit simulation workshop organized in collaboration with EDS and WIE under the IEEE Illuminate series for IEEE Day, utilizing LTspice for circuit analysis across analog and digital systems.",
+      },
+      {
+        title: "QUIZ QUAKE",
+        desc: "A four-round technical and aptitude quiz competition organized in collaboration with EDS and WIE, featuring aptitude challenges, riddles, logo identification, and engineering puzzles.",
+      },
+      {
+        title: "WEB DEV BOOTCAMP",
+        desc: "Hands-on web development bootcamp organized in collaboration with Women in Engineering (WIE), introducing modern web technologies, responsive UI design, and website deployment.",
       },
     ],
   },
@@ -122,20 +209,32 @@ const SOCIETIES = [
       "IEEE-SJCE SPS aims to keep students up to date with the latest developments in signal processing technology. Signal processing focuses on the generation, transformation, analysis, and interpretation of information carried by signals such as audio, speech, images, and other forms of data. Signal processing research emphasises the development of mathematical models, computational algorithms, and machine learning techniques to extract meaningful information from signals and apply them across diverse real-world applications. The IEEE Signal Processing Society's objectives are scientific, literary, and educational in character. The Society strives for the advancement and dissemination of knowledge in signal processing engineering, along with allied arts and sciences, and for the education of students and professionals through the exchange of technical knowledge and ideas.",
     events: [
       {
-        title: "AUDIO SIGNAL PROCESSING TECH TALK",
-        desc: 'Formal wing inauguration featuring a technical session by Dr. Jayasudha BSK on "Deep Dive into Audio Signal Processing," exploring real-world DSP techniques used in automotive products at Harman International.',
+        title: "THE WAVE: SPEECH AS A WINDOW TO THE BRAIN",
+        desc: "Distinguished lecture series organized in association with IEEE SPS Bangalore Section, IEEE Bangalore Section, and IEEE Mysore Subsection, featuring Dr. Radha Kodali (Univ. of Tennessee & Le Bonheur Children's Hospital, USA) exploring speech biomarkers and healthcare AI in neuroscience.",
+      },
+      {
+        title: "SPS WING INAUGURATION & AUDIO DSP TECH TALK",
+        desc: 'Formal wing launch in association with IEEE SPS Bangalore Section, featuring a technical keynote by Dr. Jayasudha BSK (Harman International / Vice Chair, IEEE SPS Bangalore Section) on "Deep Dive into Audio Signal Processing" and automotive audio DSP.',
       },
       {
         title: "ML WORKSHOP",
-        desc: "A 3-day flagship workshop covering Machine Learning fundamentals, basic modeling in Python, and building a local edge-AI inference system using ESP32, MPU6050, and motion inputs.",
+        desc: "A 3-day flagship workshop covering Machine Learning fundamentals, algorithmic modeling in Python, and building local edge-AI inference systems using ESP32, MPU6050, and motion inputs.",
       },
       {
         title: "MOTION PLANNING IN ROBOTICS",
-        desc: "Online technical talk conducted with the RAS Wing, where Sujeendra Ramesh demonstrated navigation tradeoffs, visual motion planning algorithms, and future robotics opportunities.",
+        desc: "Technical session conducted in collaboration with the Robotics & Automation Society (RAS), exploring path navigation algorithms, visual motion planning, and ROS 2 autonomous robotics.",
       },
       {
         title: "WAVE LAB",
-        desc: "A hands-on workshop utilizing MATLAB to explore fundamental digital signal processing concepts and practical real-world signal analysis.",
+        desc: "The debut hands-on workshop of the SPS Wing utilizing MATLAB to explore fundamental digital signal processing concepts, audio transformations, and practical filter design.",
+      },
+      {
+        title: "HANDS-ON MATLAB WORKSHOP: SIGNAL PROCESSING AND CONTROL SYSTEMS",
+        desc: "A two-day hands-on workshop organized collaboratively by SPS, RAS, and AESS in association with the ECE Department, conducted by Dr. Riyaz A. Rahiman (CoreEL Technologies), introducing MATLAB, Simulink, and Simscape for signal processing workflows.",
+      },
+      {
+        title: "TECHKSHETRA",
+        desc: "Flagship project exposition organized in collaboration with the Robotics & Automation Society (RAS), where participants showcase working prototypes, signal processing implementations, and technical innovations.",
       },
     ],
   },
@@ -151,18 +250,144 @@ const SOCIETIES = [
       "IEEE-SJCE AESS aims to keep students up to date with the latest developments in aerospace and electronic systems technology. Aerospace and electronic systems encompass the design, development, and integration of complex systems operating across air, space, ocean, and ground environments. The field incorporates technologies such as radar, avionics, satellite systems, navigation, communication, and guidance and control, with research emphasising system integration, precision, reliability, and operational efficiency. The IEEE Aerospace and Electronic Systems Society's objectives are technical, scientific, literary, professional, and educational in character. The Society strives for the advancement of the theory and practice of aerospace and electronic systems engineering, along with allied arts and sciences, and for the promotion of technical knowledge and professional development among its members.",
     events: [
       {
-        title:
-          "AESS STUDENT CHAPTER INAUGURATION & TECHNICAL TALK ON SPACE TECHNOLOGY",
-        desc: "Formal inauguration of the IEEE AESS student chapter on 23rd July 2026, featuring chief guest Dr. Braham Himed (President, IEEE AESS & Senior Research Head, AFRL USA) and Sri Puneeth Kumar Mishra (BoG Member AESS, ISRO), accompanied by an insightful technical session on radar systems, satellite tech, and IEEE professional opportunities.",
+        title: "AESS STUDENT CHAPTER INAUGURATION & TECHNICAL TALK ON SPACE TECHNOLOGY",
+        desc: "Formal inauguration of the IEEE AESS student chapter on 23rd July 2026 organized in association with IEEE AESS and ISRO, featuring chief guest Dr. Braham Himed (President, IEEE AESS & AFRL USA) and Sri Puneeth Kumar Mishra (ISRO), with technical sessions on radar and satellite tech.",
       },
       {
-        title:
-          "HANDS-ON MATLAB WORKSHOP: SIGNAL PROCESSING AND CONTROL SYSTEMS",
-        desc: "A two-day hands-on workshop organized by AESS, SPS, and RAS in association with the ECE Department, conducted by Dr. Riyaz A. Rahiman (CoreEL Technologies). Sessions introduce MATLAB fundamentals, model development, and system simulation using MATLAB, Simulink, and Simscape, focusing on practical signal processing and control system applications.",
+        title: "HANDS-ON MATLAB WORKSHOP: SIGNAL PROCESSING AND CONTROL SYSTEMS",
+        desc: "A two-day hands-on workshop organized collaboratively by AESS, SPS, and RAS in association with the ECE Department, conducted by Dr. Riyaz A. Rahiman (CoreEL Technologies), introducing system modeling, simulation, and aerospace control systems using MATLAB and Simulink.",
+      },
+    ],
+  },
+  {
+    id: "cs",
+    short: "CS",
+    name: "COMPUTER SOCIETY",
+    icon: Terminal,
+    accent: "#2563EB",
+    animation: "",
+    tagline: "COMPUTING, ALGORITHMIC SYSTEMS & SOFTWARE INNOVATION.",
+    about:
+      "IEEE-SJCE Computer Society (CS) is dedicated to advancing the theory, design, practice, and application of computer science and information technology. Inaugurated alongside the Orientation Program of 2026, the chapter bridges academic computer science with high-impact software engineering. IEEE CS empowers students across key frontiers including Artificial Intelligence, Machine Learning, Cloud Systems, Cybersecurity, Distributed Architecture, and Competitive Programming through intensive bootcamps, technical hackathons, open-source initiatives, and direct industry mentorship.",
+    events: [
+      {
+        title: "IEEE COMPUTER SOCIETY CHAPTER INAUGURATION",
+        desc: "Official chapter launch formally inaugurated alongside the IEEE-SJCE Orientation Day 2026, establishing a dedicated society for computing, algorithmic systems, and software engineering.",
       },
     ],
   },
 ];
+
+/* ─── Animated CS Terminal / Code Visual ─── */
+function CsTerminalVisual() {
+  return (
+    <div
+      className="cs-terminal-wrap"
+      style={{
+        width: "100%",
+        maxWidth: "340px",
+        background: "#080D1A",
+        border: "2px solid #2563EB",
+        boxShadow: "6px 6px 0 0 #2563EB",
+        padding: "16px",
+        fontFamily: "var(--font-mono, monospace)",
+        fontSize: "12px",
+        color: "#93C5FD",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          marginBottom: "14px",
+          borderBottom: "1px solid rgba(37,99,235,0.3)",
+          paddingBottom: "8px",
+        }}
+      >
+        <span
+          style={{
+            width: "10px",
+            height: "10px",
+            borderRadius: "50%",
+            background: "#EF4444",
+            display: "inline-block",
+          }}
+        />
+        <span
+          style={{
+            width: "10px",
+            height: "10px",
+            borderRadius: "50%",
+            background: "#F59E0B",
+            display: "inline-block",
+          }}
+        />
+        <span
+          style={{
+            width: "10px",
+            height: "10px",
+            borderRadius: "50%",
+            background: "#10B981",
+            display: "inline-block",
+          }}
+        />
+        <span
+          style={{
+            marginLeft: "8px",
+            fontSize: "10px",
+            letterSpacing: "1px",
+            textTransform: "uppercase",
+            color: "#60A5FA",
+          }}
+        >
+          ieee_cs_wing.sh
+        </span>
+      </div>
+      <div style={{ lineHeight: "1.8", color: "#E2E8F0" }}>
+        <div>
+          <span style={{ color: "#3B82F6" }}>const</span>{" "}
+          <span style={{ color: "#00E5FF" }}>chapter</span> ={" "}
+          <span style={{ color: "#F59E0B" }}>"IEEE-SJCE CS"</span>;
+        </div>
+        <div>
+          <span style={{ color: "#3B82F6" }}>const</span>{" "}
+          <span style={{ color: "#00E5FF" }}>status</span> ={" "}
+          <span style={{ color: "#10B981" }}>"ACTIVE · 2026"</span>;
+        </div>
+        <div>
+          <span style={{ color: "#A855F7" }}>function</span>{" "}
+          <span style={{ color: "#60A5FA" }}>innovate</span>() &#123;
+        </div>
+        <div style={{ paddingLeft: "14px" }}>
+          <span style={{ color: "#3B82F6" }}>return</span> [
+          <span style={{ color: "#F59E0B" }}>"AI"</span>,{" "}
+          <span style={{ color: "#F59E0B" }}>"Cloud"</span>,{" "}
+          <span style={{ color: "#F59E0B" }}>"Cyber"</span>];
+        </div>
+        <div>&#125;</div>
+        <div style={{ marginTop: "6px", color: "#00E5FF" }}>
+          &gt; chapter.launch()
+          <span
+            className="cs-cursor"
+            style={{
+              display: "inline-block",
+              width: "8px",
+              height: "14px",
+              background: "#00E5FF",
+              verticalAlign: "middle",
+              marginLeft: "4px",
+            }}
+          >
+            _
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 /* ─── Minimal EDS Chip Visual (Matching Reference Image) ─── */
 function EdsMinimalVisual() {
@@ -1149,6 +1374,8 @@ export default function SocietiesPage() {
                   <SpsWaveVisual />
                 ) : active.id === "aess" ? (
                   <AessAerospaceVisual />
+                ) : active.id === "cs" ? (
+                  <CsTerminalVisual />
                 ) : (
                   <div className="soc-visual-empty">
                     <Icon size={48} />
