@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -26,7 +26,7 @@ ScrollTrigger.config({ ignoreMobileResize: true })
    Marquee Strip (truly infinite — 4x repeat)
    ───────────────────────────────────────────── */
 function MarqueeStrip() {
-  const items = ['INNOVATE', '◆', 'ENGINEER', '◆', 'INSPIRE', '◆', 'BUILD', '◆', 'IEEE SJCE', '◆']
+  const items = ['INNOVATE', '◆', 'ENGINEER', '◆', 'INSPIRE', '◆', 'BUILD', '◆', 'IEEE-SJCE', '◆']
   const repeated = [...items, ...items, ...items, ...items]
   return (
     <div className="nb-marquee-wrapper">
@@ -142,7 +142,9 @@ export default function HomePage() {
           scrollTrigger: {
             trigger: panel,
             start: 'top top',
-            end: () => fakeScrollRatio ? `+=${innerPanel.offsetHeight}` : `+=${overflow + fadeDistance}`,
+            end: () => fakeScrollRatio
+              ? `+=${innerPanel.offsetHeight}`
+              : `+=${isDesktop ? overflow + fadeDistance : Math.max(panel.offsetHeight, overflow + fadeDistance)}`,
             pin: true,
             pinSpacing: false,
             scrub: isDesktop ? true : 0.6,
@@ -168,7 +170,13 @@ export default function HomePage() {
 
         tl.fromTo(panel,
           { scale: 1, opacity: 1, y: 0 },
-          { scale: isLanding ? 1 : 0.85, opacity: 0, y: isDesktop ? -40 : -20, duration: isLanding ? 1 : fadeDistance, ease: 'power2.in' }
+          {
+            scale: isLanding ? 1 : 0.85,
+            opacity: isLanding ? 0 : (isDesktop ? 0 : 0.35),
+            y: isDesktop ? -40 : -20,
+            duration: isLanding ? 1 : fadeDistance,
+            ease: 'power2.in'
+          }
         )
       })
 
@@ -207,7 +215,7 @@ export default function HomePage() {
 
               <div className="nb-hero-wrapper">
                 <div ref={heroRef} className="nb-hero-content nb-hero-centered">
-                  <h1 className="gsap-hero nb-hero-title">IEEE SJCE</h1>
+                  <h1 className="gsap-hero nb-hero-title">IEEE-SJCE</h1>
                   <h2 className="gsap-hero nb-hero-tagline-big">
                     <span className="tagline-row">
                       <span className="tagline-cyan">INNOVATE</span>
@@ -220,11 +228,13 @@ export default function HomePage() {
                   <p className="gsap-hero nb-hero-subtitle">Advancing Technology for Humanity</p>
                   <p className="gsap-hero nb-hero-tagline">Building tomorrow's engineers, today.</p>
                   <div className="gsap-hero nb-hero-buttons">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScyUvp_2L7Mw3ENLSANaXTQiZmqJJFhxETfKFOXWl9o8wn3Uw/viewform" target='_blank' rel="noopener noreferrer">
-                      <button className="nb-btn nb-btn-accent">
-                        GET STARTED <ArrowRight size={14} />
-                      </button>
-                    </a>
+                    <Link
+                      to="/join_us"
+                      className="nb-btn nb-btn-accent"
+                      aria-label="Join IEEE-SJCE (Membership Drive 2027)"
+                    >
+                      JOIN US <ArrowRight size={14} />
+                    </Link>
                     <button className="nb-btn nb-btn-blue"
                       onClick={() => document.getElementById('events-section')?.scrollIntoView({ behavior: 'smooth' })}>
                       EXPLORE EVENTS

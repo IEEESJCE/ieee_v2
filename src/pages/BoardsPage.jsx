@@ -10,9 +10,12 @@ const BOARDS = [
     icon: Code2,
     accent: '#3B82F6',
     animation: 'https://lottie.host/?file=dc229b20-4a86-4c49-b454-7a5023d86ab8/o7qpAuynA7.json',
-    about: 'Designing and maintaining the IEEE-SJCE website. Students collaborate on secure, creative web solutions while learning industry-standard technologies.',
+    about: 'Designing, building, and maintaining the digital infrastructure for IEEE-SJCE. Members collaborate on modern, responsive, high-performance web systems while mastering industry-standard frameworks and engineering practices.',
     initiatives: [
-      { name: 'Web Hosting & Deployment', description: 'Deploying, maintaining and updating IEEE-SJCE on secure cloud platforms.' },
+      { name: 'Portal Architecture & Deployment', description: 'Designing, deploying, and maintaining the official IEEE-SJCE platform on secure, modern cloud infrastructure.' },
+      { name: 'UI/UX & Interactive Design Systems', description: 'Crafting responsive, accessible, and high-performance neo-brutalist interfaces for students and members.' },
+      { name: 'Technical Sessions & Bootcamps', description: 'Mentoring students in full-stack web development, modern frontend frameworks, and Git collaboration workflows.' },
+      { name: 'Digital Operations & Infrastructure', description: 'Managing domain routing, event registration pipelines, and continuous deployment systems across branch activities.' },
     ],
   },
   {
@@ -21,12 +24,19 @@ const BOARDS = [
     icon: PenLine,
     accent: '#8B5CF6',
     animation: 'https://lottie.host/?file=9d286e82-2e6b-4c8c-b925-b1b8ee052744/dBXmGwKKCY.json',
-    about: 'Compelling articles on technology trends while amplifying IEEE-SJCE voices through publications that inspire innovation.',
+    about: 'Curating compelling articles on emerging technology trends while amplifying IEEE-SJCE voices through flagship publications, student showcases, and thoughtful technical journalism.',
     initiatives: [
-      { name: 'IEEE Interface Magazine', description: 'Annual magazine — Orientation, Tuxedo, and Cyberia editions.' },
-      { name: 'Technical Article Curation', description: 'In-depth articles on emerging technologies.' },
-      { name: 'Student Spotlights', description: 'Member achievements and innovative projects.' },
-      { name: 'Content Strategy', description: 'Narratives for IEEE events and initiatives.' },
+      {
+        name: 'IEEE Interface Magazine',
+        description: 'Our signature annual publication featuring Orientation, Tuxedo, and Cyberia editions showcasing student innovation, research, and technical achievements.',
+        action: {
+          label: 'Read Magazine',
+          href: 'https://drive.google.com/file/d/1LCHJoy6sXg5IC3mZTSvX1WoSFKEJURc9/view?usp=sharing',
+        },
+      },
+      { name: 'Technical Article Curation', description: 'In-depth articles covering emerging technologies, artificial intelligence developments, and engineering breakthroughs.' },
+      { name: 'Student & Member Spotlights', description: 'Celebrating student achievements, project milestones, and leadership journeys across IEEE-SJCE.' },
+      { name: 'Content & Narrative Strategy', description: 'Crafting narratives, editorial coverage, and documentation for IEEE-SJCE flagship events and community initiatives.' },
     ],
   },
 ]
@@ -80,6 +90,20 @@ export default function BoardsPage() {
                       <li key={i}>
                         <strong>{item.name}</strong>
                         <span>{item.description}</span>
+                        {item.action && (
+                          <div className="brd-init-action-wrap">
+                            <a
+                              href={item.action.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="brd-init-action-btn"
+                            >
+                              <BookOpen size={14} className="brd-init-action-icon" />
+                              <span className="brd-init-action-label">{item.action.label}</span>
+                              <ExternalLink size={13} className="brd-init-action-icon" />
+                            </a>
+                          </div>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -88,25 +112,6 @@ export default function BoardsPage() {
             )
           })}
         </div>
-
-        <article className="brd-mag-card">
-          <div className="brd-mag-cover">
-            <img src="/photos/events/magazine.png" alt="IEEE Interface Magazine" loading="lazy" />
-          </div>
-          <div className="brd-mag-body">
-            <BookOpen size={22} />
-            <h2>IEEE Interface Magazine</h2>
-            <p>Our signature annual publication showcasing innovation, research, and the IEEE-SJCE community.</p>
-            <a
-              href="https://drive.google.com/file/d/1LCHJoy6sXg5IC3mZTSvX1WoSFKEJURc9/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="brd-mag-btn"
-            >
-              View Magazine <ExternalLink size={15} />
-            </a>
-          </div>
-        </article>
       </div>
     </>
   )

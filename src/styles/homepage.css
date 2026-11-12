@@ -600,12 +600,19 @@
 .nb-bangalore-wrapper,
 .nb-flagship-wrapper,
 .nb-prayas-wrapper,
-.nb-mentors-wrapper,
-.nb-sponsors-wrapper {
+.nb-mentors-wrapper {
   position: relative;
   width: 100%;
   min-height: 100vh;
   background: var(--bg);
+}
+
+.nb-sponsors-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: auto !important;
+  background: var(--bg-surface);
+  z-index: 100;
 }
 
 .nb-events-wrapper      { z-index: 20; }

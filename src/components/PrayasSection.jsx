@@ -16,7 +16,7 @@ const TABS = [
       <>
         <p>An effort by our team to provide underprivileged students with a positive learning environment that helps them unleash their potential.</p>
         <ul>
-          <li>Frequent visits to Divya Deepa and Vijaya Educational Institution.</li>
+          <li>Frequent visits to Divya Deepa, Vijaya Educational Institution, and Pejawara Hostel.</li>
           <li>Helping kids with functional English and extracurricular activities.</li>
         </ul>
       </>
@@ -115,6 +115,7 @@ export default function PrayasSection() {
           <div className="pry-pills">
             <span><MapPin size={14} /> Divya Deepa</span>
             <span><MapPin size={14} /> Vijaya Educational Institution</span>
+            <span><MapPin size={14} /> Pejawara Hostel</span>
           </div>
         </div>
 

@@ -10,17 +10,19 @@ const EVENTS = [
   {
     id: 1,
     title: 'International IEEE Conferences',
-    content: 'Premier global summits hosted by IEEE SJCE, notably ICETEG 2025 (International Conference on Emerging Technologies in Electronics and Green Energy, 10–11 Oct 2025) and IEEE MysuruCon 2022 (16–17 Oct 2022).',
+    content: 'Premier global summits hosted by IEEE-SJCE, notably ICETEG 2025 (International Conference on Emerging Technologies in Electronics and Green Energy, 10–11 Oct 2025) and IEEE MysuruCon 2022 (16–17 Oct 2022).',
     img: '/photos/events/iceteg.png',
     icon: <Globe size={18} />,
     accent: '#F59E0B',
     tag: 'Conference',
+    imgPosition: 'center top',
   },
   {
     id: 2,
     title: 'Robotics Workshop',
-    content: 'Our premier annual hands-on robotics bootcamp, guiding students through microcontroller architecture, sensor arrays, motor control, and autonomous navigation.',
-    img: '/photos/events/robotics_13.jpeg',
+    content: "Our premier annual flagship robotics workshop organized jointly by RAS & EDS ('Beyond circuits – building robots that matter'), guiding students through microcontroller architecture, sensor arrays, motor control, and autonomous navigation.",
+    img: '/photos/events/robotics_17_flagship_2026.jpg',
+    imgPosition: 'center 25%',
     icon: <Bot size={18} />,
     accent: '#EC4899',
     tag: 'Robotics',
@@ -91,8 +93,9 @@ const EVENTS = [
   {
     id: 10,
     title: 'SQL Bootcamp',
-    content: 'Foundational relational database workshop covering SQL syntax, table schemas, multi-table joins, subqueries, and query performance optimization.',
-    img: '/photos/events/sql.jpg',
+    content: 'Hands-on relational database bootcamp organized by WIE, covering DBMS fundamentals, complex SQL queries, multi-table joins, subqueries, and optimization.',
+    img: '/photos/events/sql_bootcamp_2025.jpg',
+    imgPosition: 'center 20%',
     icon: <Database size={18} />,
     accent: '#22D3EE',
     tag: 'Bootcamp',
@@ -159,7 +162,7 @@ export default function MilestoneEventsSection() {
               <em>Events</em>
             </h2>
             <p className="ms-intro-text">
-              Iconic workshops and premier competitions that define IEEE SJCE&apos;s flagship legacy — scroll the filmstrip to explore each edition.
+              Iconic workshops and premier competitions that define IEEE-SJCE&apos;s flagship legacy — scroll the filmstrip to explore each edition.
             </p>
             <div className="ms-intro-stat">
               <span className="ms-stat-num">{EVENTS.length}</span>
@@ -183,6 +186,7 @@ export default function MilestoneEventsSection() {
                           src={event.img}
                           alt={event.title}
                           loading="lazy"
+                          style={event.imgPosition ? { objectPosition: event.imgPosition } : undefined}
                           onError={(e) => {
                             e.currentTarget.style.display = 'none'
                             e.currentTarget.parentElement.classList.add('ms-poster-fallback')

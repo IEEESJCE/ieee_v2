@@ -554,7 +554,7 @@
   font-weight: 900;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: var(--primary-strong);
   margin: 0 0 22px;
   padding-bottom: 6px;
   border-bottom: 3.5px solid var(--stage-accent);
@@ -610,7 +610,7 @@
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #FFFFFF;
+  color: var(--primary-strong);
   margin: 0 0 12px;
   line-height: 1.35;
 }
@@ -830,29 +830,41 @@
   box-shadow: 5px 5px 0 0 #0F172A !important;
 }
 
-:root.light .soc-rail-btn.active {
+:root.light .soc-rail-btn.soc-rail-active,
+.light .soc-rail-btn.soc-rail-active,
+:root.light .soc-rail-active,
+.light .soc-rail-active {
   background: #0F172A !important;
   color: #FFFFFF !important;
   border-color: #0F172A !important;
   box-shadow: 4px 4px 0 0 var(--stage-accent, #2563EB) !important;
 }
 
-:root.light .soc-event-tile {
+:root.light .soc-events-block h3,
+.light .soc-events-block h3 {
+  color: #0F172A !important;
+}
+
+:root.light .soc-event-tile,
+.light .soc-event-tile {
   background: #FFFFFF !important;
   border: 2px solid #0F172A !important;
   box-shadow: 4px 4px 0 0 var(--stage-accent) !important;
   border-radius: 0 !important;
 }
 
-:root.light .soc-event-tile:hover {
+:root.light .soc-event-tile:hover,
+.light .soc-event-tile:hover {
   transform: translate(-2px, -2px) !important;
   box-shadow: 6px 6px 0 0 var(--stage-accent) !important;
 }
 
-:root.light .soc-event-tile h4 {
+:root.light .soc-event-tile h4,
+.light .soc-event-tile h4 {
   color: #0F172A !important;
 }
 
-:root.light .soc-event-tile p {
-  color: #64748B !important;
+:root.light .soc-event-tile p,
+.light .soc-event-tile p {
+  color: #334155 !important;
 }

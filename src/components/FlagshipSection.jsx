@@ -13,7 +13,7 @@ const PROGRAMS = [
     accent: '#8B5CF6',
     description:
       'A simulation of a political scenario with real world problems. As citizens, we all have voices — we give you the stage to speak about these problems, voice your opinion, ideas and question the happenings around you.',
-    href: 'https://docs.google.com/forms/d/e/1FAIpQLSdstCW-NPK_sd3n7chovldbZDkAjZFc6d2rtTO8y_VAGluPjQ/viewform',
+    href: null,
   },
   {
     id: 'ieeextreme',
@@ -112,14 +112,16 @@ export default function FlagshipSection() {
             <span className="flg-panel-label">Featured Program</span>
             <h3>{program.title}</h3>
             <p>{program.description}</p>
-            <a
-              href={program.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flg-register"
-            >
-              Register Now <ExternalLink size={16} />
-            </a>
+            {program.href && (
+              <a
+                href={program.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flg-register"
+              >
+                Register Now <ExternalLink size={16} />
+              </a>
+            )}
             <div className="flg-nav-hint">
               {PROGRAMS.map((_, i) => (
                 <button
