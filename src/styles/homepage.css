@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════════ */
 
 .nb-landing {
-  min-height: calc(100vh - 71px);
+  min-height: calc(100dvh - 71px);
   height: auto;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@
   flex-direction: column;
   background-color: #060B18;
   transition: background 0.3s;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* ─── Glowing Circuit Wallpaper with Central Bulb Diamond ─── */
@@ -576,15 +576,15 @@
 
 .nb-section {
   width: 100%;
-  height: calc(100vh - 71px);
+  min-height: calc(100dvh - 71px);
   position: relative;
-  overflow: hidden; /* Important for scaling effect */
+  overflow: visible;
 }
 
 /* Make section inner strictly fit fullscreen below navbar */
 .nb-section-inner {
   width: 100%;
-  height: calc(100vh - 71px);
+  min-height: calc(100dvh - 71px);
   position: relative;
 }
 
@@ -603,7 +603,7 @@
 .nb-mentors-wrapper {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   background: var(--bg);
 }
 
