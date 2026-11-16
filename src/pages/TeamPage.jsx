@@ -10,6 +10,7 @@ const DIVISION_ORDER = [
   "robotics_and_automation_society",
   "signal_processing_society",
   "aerospace_and_electronic_systems_society",
+  "computer_society",
   "women_in_engineering",
   "editorial_board",
   "web_development_board",
@@ -43,6 +44,11 @@ const CATEGORIES = [
     label: "AESS",
     color: "#6366F1",
   },
+  {
+    key: "computer_society",
+    label: "CS",
+    color: "#2563EB",
+  },
   { key: "women_in_engineering", label: "WIE", color: "#4F46E5" },
   { key: "editorial_board", label: "Editorial", color: "#1E3A8A" },
   { key: "web_development_board", label: "Web Dev Board", color: "#1E3A8A" },
@@ -56,6 +62,7 @@ const CAT_DISPLAY = {
   electron_devices_society: "Electron Devices Society",
   aerospace_and_electronic_systems_society:
     "Aerospace & Electronic Systems Society",
+  computer_society: "Computer Society",
   women_in_engineering: "Women in Engineering",
   editorial_board: "Editorial Board",
   web_development_board: "Web Development Board",
@@ -231,7 +238,7 @@ const MEMBERSHIP_DEVELOPMENT_COMMITTEE = [
     type: "membership_development_committee",
     src: "/photos/members25-26/Varsha Lakshmi K.jpg",
     linkedin: "https://www.linkedin.com/in/varsha-lakshmi-k-7159b22ab",
-    gmail: "varshalakshmik@gmail.com",
+    gmail: "lkvarsha16@gmail.com",
   },
   {
     name: "Sukruthi Rao",
@@ -333,6 +340,18 @@ const SIGNAL_PROCESSING_SOCIETY = [
       transformOrigin: "center 32%",
     },
   },
+  {
+    name: "Deekshith S Kumar",
+    post: "WEBMASTER",
+    type: "signal_processing_society",
+    src: "/photos/members26-27/Deekshith_S_Kumar.jpg",
+    linkedin: "https://www.linkedin.com/in/deekshith-s-kumar-a9062a245/",
+    gmail: "deekshithskumar2005@gmail.com",
+    imageStyle: {
+      transform: "scale(1.7) translateZ(0)",
+      transformOrigin: "center 38%",
+    },
+  },
 ];
 
 /* ─── Robotics and Automation Society (Updated Roster) ─── */
@@ -382,7 +401,7 @@ const ROBOTICS_AND_AUTOMATION_SOCIETY = [
     post: "JOINT SECRETARY",
     type: "robotics_and_automation_society",
     src: "/photos/members26-27/Diya_Y_Bhandarkar.jpg",
-    linkedin: "https://www.linkedin.com/in/diya-y-bhandarkar-80576b362",
+    linkedin: "https://www.linkedin.com/in/diya-y-bhandarkar-80576b362/",
     gmail: "diyaybhandarkar@gmail.com",
     imageStyle: {
       transform: "scale(1.9) translateZ(0)",
@@ -685,6 +704,83 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
       transformOrigin: "center -3%",
     },
   },
+  {
+    name: "Amruth",
+    post: "TECHNICAL LEAD / WEBMASTER",
+    type: "aerospace_and_electronic_systems_society",
+    src: "/photos/members26-27/Amruth.jpg",
+    linkedin:
+      "https://www.linkedin.com/in/amruth-s-798090126?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+    gmail: "amruthshivu@gmail.com",
+  },
+];
+
+/* ─── Computer Society (Newly Inaugurated Roster) ─── */
+const COMPUTER_SOCIETY = [
+  {
+    name: "Mansoor",
+    post: "CHAIRMAN",
+    type: "computer_society",
+    src: "",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Chandana Prakash",
+    post: "VICE CHAIR / PR LEAD",
+    type: "computer_society",
+    src: "",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Vansh Rathore",
+    post: "SECRETARY",
+    type: "computer_society",
+    src: "",
+    linkedin: "https://www.linkedin.com/in/vansh-r-918b15275/",
+    gmail: "vanshrathore68@gmail.com",
+  },
+  {
+    name: "Enosh S Borges",
+    post: "EDITOR-IN-CHIEF / TREASURER",
+    type: "computer_society",
+    src: "",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "H K Puneet",
+    post: "TECH LEAD",
+    type: "computer_society",
+    src: "",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Ishit Barman",
+    post: "TECH LEAD",
+    type: "computer_society",
+    src: "",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Ruchita",
+    post: "CREATIVE LEAD",
+    type: "computer_society",
+    src: "",
+    linkedin: "",
+    gmail: "",
+  },
+  {
+    name: "Binita",
+    post: "EVENT LEAD",
+    type: "computer_society",
+    src: "",
+    linkedin: "",
+    gmail: "",
+  },
 ];
 
 /* ─── Web Development Board ─── */
@@ -729,6 +825,7 @@ const CURRENT_TEAM = [
   ...ROBOTICS_AND_AUTOMATION_SOCIETY,
   ...SIGNAL_PROCESSING_SOCIETY,
   ...AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY,
+  ...COMPUTER_SOCIETY,
   ...WOMEN_IN_ENGINEERING,
   ...EDITORIAL_BOARD,
   ...WEB_DEVELOPMENT_BOARD,
@@ -991,21 +1088,24 @@ export default function TeamPage() {
     grouped[m.type].push(m);
   });
   const archivedRenderKeys = sortedRenderKeys(Object.keys(grouped));
+  const uniqueMemberCount = new Set(
+    CURRENT_TEAM.map((m) => m.name.toLowerCase().trim())
+  ).size;
 
   return (
     <div className="team-page palette-blueprint">
       <header className="team-hero">
-        <div className="team-hero-badge">⚡ IEEE SJCE · 2025–26</div>
+        <div className="team-hero-badge">⚡ IEEE-SJCE · 2026–27</div>
         <h1>
           Our <em>Team</em>
         </h1>
         <p>
-          The dedicated minds driving innovation at IEEE SJCE — students leading
+          The dedicated minds driving innovation at IEEE-SJCE — students leading
           change, one project at a time.
         </p>
 
         <span className="team-hero-count">
-          ✦ {CURRENT_TEAM.length} members · {Object.keys(currentGrouped).length}{" "}
+          ✦ {uniqueMemberCount} members · {Object.keys(currentGrouped).length}{" "}
           divisions
         </span>
       </header>

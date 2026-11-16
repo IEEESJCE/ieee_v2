@@ -216,6 +216,69 @@
   line-height: 1.6;
 }
 
+.brd-init-action-wrap {
+  margin-top: 10px;
+}
+
+.brd-init-action-btn,
+.brd-init-action-btn:link,
+.brd-init-action-btn:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display, sans-serif);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  color: #FFFFFF !important;
+  background: #7C3AED;
+  padding: 9px 18px;
+  border: 2px solid #000000;
+  border-radius: 0;
+  box-shadow: 3.5px 3.5px 0 0 #00F5D4;
+  transition: all 0.18s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: fit-content;
+}
+
+.brd-init-action-btn .brd-init-action-label,
+.brd-init-action-btn span {
+  color: #FFFFFF !important;
+  font-family: var(--font-display, sans-serif) !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.9px !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  display: inline-block;
+}
+
+.brd-init-action-btn svg,
+.brd-init-action-btn .brd-init-action-icon {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+  flex-shrink: 0;
+}
+
+.brd-init-action-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1.5px 1.5px 0 0 #00F5D4;
+  background: #6D28D9 !important;
+  color: #FFFFFF !important;
+}
+
+.brd-init-action-btn:hover .brd-init-action-label,
+.brd-init-action-btn:hover span {
+  color: #FFFFFF !important;
+}
+
+.brd-init-action-btn:hover svg,
+.brd-init-action-btn:hover .brd-init-action-icon {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
 /* ─── Magazine card ─── */
 .brd-mag-card {
   position: relative;
@@ -441,4 +504,28 @@
   color: #FFFFFF !important;
   border: 2px solid #0F172A !important;
   box-shadow: 4px 4px 0 0 #0F172A !important;
+}
+
+:root.light .brd-init-action-btn,
+.light .brd-init-action-btn {
+  background: #7C3AED !important;
+  color: #FFFFFF !important;
+  border: 2px solid #0F172A !important;
+  box-shadow: 3.5px 3.5px 0 0 #0F172A !important;
+}
+
+:root.light .brd-init-action-btn .brd-init-action-label,
+:root.light .brd-init-action-btn span,
+:root.light .brd-init-action-btn svg,
+.light .brd-init-action-btn .brd-init-action-label,
+.light .brd-init-action-btn span,
+.light .brd-init-action-btn svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+:root.light .brd-init-action-btn:hover,
+.light .brd-init-action-btn:hover {
+  box-shadow: 1.5px 1.5px 0 0 #0F172A !important;
+  background: #6D28D9 !important;
 }

@@ -62,15 +62,14 @@ export default function BangaloreSection() {
           <h2 className="blr-title">Bangalore Section</h2>
           <p className="blr-lead">
             IEEE-SJCE has been successfully recognized by IEEE Bangalore Section for completing
-            its Silver Jubilee in flying colours. We have also been able to bag the Best Website
-            Award two times in a row.
+            its 35 years of excellence in flying colours. The club was established in the year 1991. We have also been able to bag the Best Website Award two times in a row.
           </p>
         </div>
 
         <div className="blr-stats">
           <div className="blr-stat">
             <Award size={28} />
-            <span className="blr-stat-num">25+</span>
+            <span className="blr-stat-num">35+</span>
             <span className="blr-stat-label">Years of Excellence</span>
           </div>
           <div className="blr-stat">

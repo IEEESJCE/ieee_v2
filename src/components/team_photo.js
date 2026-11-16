@@ -456,7 +456,7 @@ export const current_team_photo = [
     "name": "Varsha Lakshmi K",
     "post": "SECRETARY",
     "linkedin": "https://www.linkedin.com/in/varsha-lakshmi-k-7159b22ab?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    "gmail": "varshalakshmik@gmail.com"
+    "gmail": "lkvarsha16@gmail.com"
   },
   {
     "id": 17,
@@ -472,7 +472,7 @@ export const current_team_photo = [
     type: 'web_development_board',
     src: '/photos/members25-26/Aditya shekhar.jpg',
     name: 'Aditya Shekhar',
-    post: 'CHAIRPERSON',
+    post: 'CO-ORDINATOR',
     linkedin: 'https://www.linkedin.com/in/aditya-shekhar-662a55311/',
     gmail: 'adityashekhar0009@gmail.com',
   },
@@ -481,7 +481,7 @@ export const current_team_photo = [
     "type": "web_development_board",
     "src": "/photos/members25-26/RajathRP.jpg",
     "name": "Rajath R Prasad",
-    "post": "CO-ORDINATOR",
+    "post": "CHAIRPERSON",
     "linkedin": "https://www.linkedin.com/in/rajath-r-prasad",
     "gmail": "rajath2010rrp@gmail.com"
   },

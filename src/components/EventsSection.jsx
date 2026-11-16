@@ -15,7 +15,12 @@ import {
   Bot,
   Rocket,
   Search,
+  Users,
   Image as ImageIcon,
+  AudioWaveform,
+  PartyPopper,
+  Microscope,
+  Database,
 } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -35,20 +40,18 @@ const EVENTS = [
     accent: '#00F5D4',
     image: '/photos/events/anap_circuits_2026.jpeg',
     imageAlt: 'Snap Circuits November 2026 poster',
-    featured: true,
   },
   {
     title: 'MATLAB Workshop',
     date: '4–5 NOV 2026',
-    wing: 'SPS',
+    wing: 'SPS · RAS · AESS',
     description:
-      'The Signal Processing Society conducted an intensive hands-on workshop on MATLAB, covering computational mathematics, matrix manipulation, algorithm development, and practical signal processing workflows.',
+      'A joint initiative organized collaboratively by SPS, RAS, and AESS in association with the ECE Department. An intensive two-day hands-on workshop covering computational mathematics, matrix manipulation, algorithm development, and practical signal processing and control systems workflows.',
     icon: <Code size={22} />,
     accent: '#8B5CF6',
     image: '/photos/events/matlab.png',
     imageAlt: 'MATLAB Workshop session, November 2026',
     imagePosition: 'center 40%',
-    featured: true,
   },
   {
     title: 'Tech Detective',
@@ -64,13 +67,37 @@ const EVENTS = [
   {
     title: 'Radioverse',
     date: '8–9 OCT 2026',
-    wing: 'IEEE SJCE',
+    wing: 'IEEE-SJCE',
     description:
       'A two-day immersive exploration into radio frequency engineering, wireless telemetry, antenna design, and radar applications with live demonstrations and simulation sessions.',
     icon: <Radio size={22} />,
     accent: '#3B82F6',
     image: '/photos/events/radio.jpeg',
     imageAlt: 'Radioverse event poster',
+  },
+  {
+    title: 'Orientation Day',
+    date: '26 SEP 2026',
+    wing: 'IEEE-SJCE',
+    description:
+      'The premier induction welcoming new engineering students to IEEE-SJCE. Freshers explored our societies, interacted with seniors and Execom members, and discovered the technical, leadership, and professional opportunities ahead.',
+    icon: <Users size={22} />,
+    accent: '#10B981',
+    image: '/photos/events/orientation_day_2026.jpg',
+    imageAlt: 'IEEE-SJCE Orientation Day 2026 poster',
+    imagePosition: 'center 28%',
+  },
+  {
+    title: 'FUNsane',
+    date: '25 SEP 2026',
+    wing: 'IEEE-SJCE',
+    description:
+      'An unforgettable evening dedicated to breaking away from routine, unwinding, and celebrating community spirit. Students immersed themselves in energetic team challenges, interactive games, lively music, and memorable moments filled with laughter and camaraderie.',
+    icon: <PartyPopper size={22} />,
+    accent: '#A855F7',
+    image: '/photos/events/funsane_2026.jpg',
+    imageAlt: 'FUNsane event poster, September 2026',
+    imagePosition: 'center 32%',
   },
   {
     title: 'AESS Chapter Inauguration & Space Tech Talk',
@@ -82,6 +109,30 @@ const EVENTS = [
     accent: '#F59E0B',
     image: '/photos/events/aess inaugaration.jpeg',
     imageAlt: 'AESS Chapter Inauguration event poster',
+  },
+  {
+    title: 'THE WAVE: Speech as a Window to the Brain',
+    date: '4 JUL 2026',
+    wing: 'SPS',
+    description:
+      'Lecture series session with Dr. Radha Kodali (Univ. of Tennessee & Le Bonheur Children\'s Hospital, USA) exploring speech signal biomarkers, AI in neurological diagnosis, pediatric epilepsy, and clinical brain data analysis.',
+    icon: <Brain size={22} />,
+    accent: '#8B5CF6',
+    image: '/photos/events/the_wave_2026.jpg',
+    imageAlt: 'THE WAVE Lecture Series: Speech as a Window to the Brain poster',
+    imagePosition: 'center 24%',
+  },
+  {
+    title: 'Techtour',
+    date: '3 JUL 2026',
+    wing: 'IEEE-SJCE',
+    description:
+      'An educational industrial visit to the Centre for Nanoscience and Engineering (CeNSE), IISc Bengaluru. Students explored cutting-edge semiconductor fabrication facilities, advanced molecular laboratories, and networked with leading nanotechnology researchers.',
+    icon: <Microscope size={22} />,
+    accent: '#06B6D4',
+    image: '/photos/events/techtour_2026.jpg',
+    imageAlt: 'IEEE-SJCE Techtour industrial visit to CeNSE, IISc Bengaluru',
+    imagePosition: 'center 56%',
   },
   {
     title: 'Kalpana Chawla Memorial Lecture',
@@ -162,6 +213,18 @@ const EVENTS = [
     imagePosition: 'center 28%',
   },
   {
+    title: 'SPS Wing Inauguration & Tech Talk',
+    date: '8 DEC 2025',
+    wing: 'SPS',
+    description:
+      'Formal inauguration welcoming the newly introduced Signal Processing Society (SPS) wing to IEEE-SJCE. Chief Guest Dr. Jayasudha BSK (Vice Chairperson, IEEE SPS Bangalore Section & Senior DSP Engineer, Harman) delivered an insightful technical talk on "Deep Dive into Audio Signal Processing" and real-world automotive DSP applications.',
+    icon: <AudioWaveform size={22} />,
+    accent: '#8B5CF6',
+    image: '/photos/events/sps_inauguration_2025.jpg',
+    imageAlt: 'SPS Wing Inauguration and Technical Talk poster, December 2025',
+    imagePosition: 'center center',
+  },
+  {
     title: 'Wave Lab',
     date: '6 DEC 2025',
     wing: 'SPS',
@@ -199,13 +262,80 @@ const EVENTS = [
   {
     title: 'Circuitrix',
     date: '25 OCT 2025',
-    wing: 'IEEE SJCE',
+    wing: 'IEEE-SJCE',
     description:
       'A hands-on session designed to help students explore, create and simulate both analog and digital circuits using powerful circuit simulation tools.',
     icon: <CircuitBoard size={22} />,
     accent: '#3B82F6',
     image: '/photos/events/circuitrix_2025.jpg',
     imageAlt: 'Circuitrix circuit simulation event poster',
+  },
+  {
+    title: 'Electroclues',
+    date: '13 OCT 2025',
+    wing: 'IEEE-SJCE',
+    description:
+      'Organized under the IEEE Illuminate series for IEEE Day 2025, Electroclues featured "Wire and Win" rapid-fire circuit debugging with a 90-second buzzer round, followed by deductive electronics riddles and technical problem-solving challenges at NPS-001.',
+    icon: <Zap size={22} />,
+    accent: '#EC4899',
+    image: '/photos/events/electroclues_2025.jpg',
+    imageAlt: 'Electroclues IEEE Illuminate event poster, October 2025',
+  },
+  {
+    title: 'Pre-Conference Workshop (AI & Digital Twins - ICETEG 2025)',
+    date: '9 OCT 2025',
+    wing: 'IEEE-SJCE',
+    description:
+      'Pre-conference workshop for ICETEG 2025 in association with MathWorks and Hub Energy. Explored AI and digital twins in energy systems, battery life prediction, and automated VLSI design with Dr. Puneeth S.B. and Anand Mukhopadhyay at IS Seminar Hall.',
+    icon: <Brain size={22} />,
+    accent: '#3B82F6',
+    image: '/photos/events/pre_conference_iceteg_2025.jpg',
+    imageAlt: 'Pre-Conference Workshop AI & Digital Twins ICETEG 2025 poster',
+  },
+  {
+    title: "Robotics'16",
+    date: '26–29 JUN 2025',
+    wing: 'RAS · EDS',
+    description:
+      'The four-day annual flagship robotics event introducing the innovative "Two-Bot Concept", where participants engineered dual distinct robot architectures and tackled advanced autonomous navigation arenas with hands-on mentoring.',
+    icon: <Bot size={22} />,
+    accent: '#8B5CF6',
+    image: '/photos/events/robotics_16_2025.jpg',
+    imageAlt: 'Robotics 16 annual flagship event poster, June 2025',
+  },
+  {
+    title: 'Tech Tour 2025 (ISRO ISTRAC & CeNSE IISc)',
+    date: '20 JUN 2025',
+    wing: 'IEEE-SJCE',
+    description:
+      'An exclusive technical tour for IEEE-SJCE members visiting ISRO’s Telemetry, Tracking and Command Network (ISTRAC) and the Centre for Nano Science and Engineering (CeNSE) at IISc Bangalore, gaining firsthand exposure to mission control and semiconductor cleanrooms.',
+    icon: <Rocket size={22} />,
+    accent: '#00F5D4',
+    image: '/photos/events/techtour_2026.jpg',
+    imageAlt: 'Tech Tour to ISRO ISTRAC and CeNSE IISc, June 2025',
+  },
+  {
+    title: 'SQL Bootcamp',
+    date: '10–11 MAY 2025',
+    wing: 'WIE',
+    description:
+      'The Women in Engineering wing conducted an intensive two-day online SQL Bootcamp on Google Meet. Students explored relational DBMS concepts, mastered queries from basic SELECT filters to multi-table joins and aggregation, and tackled interactive Slido quizzes and mini-projects.',
+    icon: <Database size={22} />,
+    accent: '#EC4899',
+    image: '/photos/events/sql_bootcamp_2025.jpg',
+    imageAlt: 'WIE SQL Bootcamp May 2025 event poster',
+    imagePosition: 'center 20%',
+  },
+  {
+    title: 'Techkshetra 2025',
+    date: '3 MAY 2025',
+    wing: 'RAS',
+    description:
+      'State-level inter-college technical project exposition organized by RAS in association with IEEE Mysuru Subsection. Showcased hardware and software innovations across Category I (1st/2nd years) and Category II (3rd/4th years) spanning AI, robotics, IoT, and drones.',
+    icon: <Trophy size={22} />,
+    accent: '#00E5FF',
+    image: '/photos/events/techkshetra_2025.jpg',
+    imageAlt: 'Techkshetra 2025 project exposition poster',
   },
   {
     title: 'AI Expert Talk and Ideathon',
@@ -215,7 +345,7 @@ const EVENTS = [
       'STRONG – Scientific Research for NextGen GirlGeeks was organised by the MCAA India Chapter, funded by the European Union, and supported by the MCAA-Mednight Project, IEEE Mysore Subsection and IEEE-SJCE. The event aimed to inspire young women to pursue careers in science and research.',
     icon: <Brain size={22} />,
     accent: '#F59E0B',
-    image: '/photos/events/ai_expert_talk_ideathon_2025.png',
+    image: '/photos/events/ai_expert_talk_2025.png',
     imageAlt: 'AI Expert Talk and Ideathon event poster, February 2025',
   },
   {
@@ -226,9 +356,20 @@ const EVENTS = [
       'The Electron Devices Society conducted the Soldering and Etching Workshop, a three-day flagship event giving students practical exposure to soldering and etching.',
     icon: <Wrench size={22} />,
     accent: '#22D3EE',
-    image: '/photos/events/soldering_etching_jan_2025.jpeg',
+    image: '/photos/events/soldering_etching_jan_2025.png',
     imageAlt: 'Soldering and Etching workshop poster, January 2025',
     imagePosition: 'center 28%',
+  },
+  {
+    title: 'Tech Talk: Control and Guidance Systems in Space',
+    date: '16 DEC 2024',
+    wing: 'RAS',
+    description:
+      'Distinguished lecture by Dr. Ravikumar Lagisetty, Group Director of Mission Simulation Group at URSC (ISRO), exploring satellite orbit mechanics, control and guidance architectures, and Chandrayaan-3 and space docking mission case studies at CMS Seminar Hall.',
+    icon: <Rocket size={22} />,
+    accent: '#3B82F6',
+    image: '/photos/events/control_guidance_space_2024.png',
+    imageAlt: 'Tech Talk Control and Guidance Systems in Space poster, December 2024',
   },
   {
     title: 'IoT-3.0 Workshop',
@@ -238,13 +379,57 @@ const EVENTS = [
       'A three-day workshop covering IoT protocols and core theory before moving on to hands-on simulations with Raspberry Pi and NodeMCU.',
     icon: <Wifi size={22} />,
     accent: '#60A5FA',
-    image: '/photos/events/iot_workshop_2024.jpeg',
+    image: '/photos/events/iot_3_0_poster_2024.png',
     imageAlt: 'IoT 3.0 workshop session, 2024',
+  },
+  {
+    title: 'Snap Circuits',
+    date: '13–14 NOV 2024',
+    wing: 'EDS',
+    description:
+      'Hands-on electronics workshop at NPS-001 Polymer Science Block. Participants explored breadboard fundamentals, transistors as switches, logic gates, 7-segment displays, capacitor charging/discharging, and photoelectric circuits using modular Snap Circuits kits.',
+    icon: <Zap size={22} />,
+    accent: '#EC4899',
+    image: '/photos/events/snap_circuits_2024.png',
+    imageAlt: 'Snap Circuits event poster, November 2024',
+  },
+  {
+    title: 'Fun-Finity',
+    date: '24 OCT 2024',
+    wing: 'IEEE-SJCE',
+    description:
+      'A vibrant freshers welcome social gathering in IS Seminar Hall designed for newcomers to bond with Executive Committee members through icebreakers, team building games, and insights into technical initiatives.',
+    icon: <PartyPopper size={22} />,
+    accent: '#F59E0B',
+    image: '/photos/events/fun_finity_2024.jpg',
+    imageAlt: 'Fun-Finity freshers social gathering poster, October 2024',
+  },
+  {
+    title: 'SpiceLab',
+    date: '5 OCT 2024',
+    wing: 'EDS · RAS · WIE',
+    description:
+      'A hands-on circuit simulation workshop under the IEEE Illuminate series for IEEE Day 2024. Covered LTspice circuit design, simulation, and analysis across analog rectifiers and digital logic gates and adders in IS Seminar Hall.',
+    icon: <CircuitBoard size={22} />,
+    accent: '#10B981',
+    image: '/photos/events/spicelab_2024.jpg',
+    imageAlt: 'SpiceLab LTspice simulation workshop poster, October 2024',
+  },
+  {
+    title: 'Quiz Quake',
+    date: '10 AUG 2024',
+    wing: 'EDS · RAS · WIE',
+    description:
+      'A four-round technical and aptitude quiz competition for first- and second-year students organized jointly by EDS, RAS, and WIE. Featured aptitude challenges, riddles, logo identification, and engineering puzzles at NPS-001.',
+    icon: <Trophy size={22} />,
+    accent: '#F97316',
+    image: '/photos/events/quiz_quake_2024.jpg',
+    imageAlt: 'Quiz Quake competition poster, August 2024',
   },
   {
     title: "TUXEDO'23",
     date: '28 NOV – 4 DEC 2023',
-    wing: 'IEEE SJCE',
+    wing: 'IEEE-SJCE',
     description:
       "IEEE-SJCE's odd-semester technical fest brought a week of workshops, contests and events, including Snap Circuits, Web Dev Bootcamp and Scribble.",
     icon: <Trophy size={22} />,
@@ -419,6 +604,7 @@ export default function EventsSection() {
         <div className="evt-timeline-wrapper">
           {/* Nav arrows */}
           <button
+            type="button"
             className={`evt-nav evt-nav-left ${activeIndex === 0 ? 'evt-nav-disabled' : ''}`}
             onClick={() => scrollToCard(-1)}
             aria-label="Previous event"
@@ -426,6 +612,7 @@ export default function EventsSection() {
             <ChevronLeft size={28} />
           </button>
           <button
+            type="button"
             className={`evt-nav evt-nav-right ${activeIndex === EVENTS.length - 1 ? 'evt-nav-disabled' : ''}`}
             onClick={() => scrollToCard(1)}
             aria-label="Next event"
@@ -510,6 +697,8 @@ export default function EventsSection() {
             </div>
           </div>
         </div>
+
+        <p className="evt-scroll-hint">← Click arrows or swipe to explore all events →</p>
 
         {/* ─── Footer CTA ─── */}
         <div className="evt-footer">

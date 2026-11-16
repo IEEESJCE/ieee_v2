@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Menu, X, ArrowRight, Moon, Sun } from "lucide-react";
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import gsap from "gsap";
+import RecruitmentModal from "./RecruitmentModal";
 import "../styles/layout.css";
 
 /* ─────────────────────────────────────────────
@@ -43,7 +44,10 @@ function scrollToSection(hash) {
     ?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function Navbar({ isDark, toggleTheme }) {
+export const MEMBERSHIP_DRIVE_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdScMuuAzvbgfTRzSE0j7EjLkqhjnf7Xs4sJnImyoaTbibp7w/viewform";
+
+function Navbar({ isDark, toggleTheme, onOpenRecruitment }) {
   const navigate = useNavigate();
   const location = useLocation();
   const logoRef = useRef(null);
@@ -110,8 +114,8 @@ function Navbar({ isDark, toggleTheme }) {
             tabIndex={0}
             onKeyDown={(e) => e.key === "Enter" && navigate("/home")}
           >
-            <img src="/logo.png" alt="IEEE SJCE" className="nb-logo-img" />
-            <span className="nb-logo-text">IEEE SJCE</span>
+            <img src="/logo.png" alt="IEEE-SJCE" className="nb-logo-img" />
+            <span className="nb-logo-text">IEEE-SJCE</span>
           </div>
 
           <div ref={linksRef} className="nb-nav-links">
@@ -137,10 +141,13 @@ function Navbar({ isDark, toggleTheme }) {
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdScMuuAzvbgfTRzSE0j7EjLkqhjnf7Xs4sJnImyoaTbibp7w/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/join_us"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/join_us");
+              }}
               className="nb-btn nb-btn-accent"
+              aria-label="Join IEEE-SJCE (Membership Drive 2027)"
             >
               JOIN US <ArrowRight size={14} />
             </a>
@@ -184,11 +191,15 @@ function Navbar({ isDark, toggleTheme }) {
           </a>
         ))}
         <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLScyUvp_2L7Mw3ENLSANaXTQiZmqJJFhxETfKFOXWl9o8wn3Uw/viewform"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/join_us"
+          onClick={(e) => {
+            e.preventDefault();
+            setMobileOpen(false);
+            navigate("/join_us");
+          }}
           className="nb-btn nb-btn-accent"
           style={{ marginTop: "8px" }}
+          aria-label="Join IEEE-SJCE (Membership Drive 2027)"
         >
           JOIN US <ArrowRight size={14} />
         </a>
@@ -199,12 +210,27 @@ function Navbar({ isDark, toggleTheme }) {
 
 export default function Layout() {
   const [isDark, setIsDark] = useDarkMode();
+  const [recruitmentOpen, setRecruitmentOpen] = useState(false);
   const toggleTheme = () => setIsDark((prev) => !prev);
+
+  useEffect(() => {
+    const handleOpen = () => setRecruitmentOpen(true);
+    window.addEventListener("open-recruitment-modal", handleOpen);
+    return () => window.removeEventListener("open-recruitment-modal", handleOpen);
+  }, []);
 
   return (
     <div className="nb-layout">
-      <Navbar isDark={isDark} toggleTheme={toggleTheme} />
+      <Navbar
+        isDark={isDark}
+        toggleTheme={toggleTheme}
+        onOpenRecruitment={() => setRecruitmentOpen(true)}
+      />
       <Outlet />
+      <RecruitmentModal
+        isOpen={recruitmentOpen}
+        onClose={() => setRecruitmentOpen(false)}
+      />
     </div>
   );
 }

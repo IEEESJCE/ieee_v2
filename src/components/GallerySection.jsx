@@ -10,56 +10,56 @@ const GALLERY_IMAGES = [
   {
     id: 1,
     src: '/photos/gallery/gall11.jpg',
-    alt: 'IEEE SJCE Flagship Gathering',
+    alt: 'IEEE-SJCE Flagship Gathering',
     caption: 'Flagship Assembly & Keynote Session',
     span: 'gal-slot-wide',
   },
   {
     id: 2,
     src: '/photos/gallery/gall2.jpg',
-    alt: 'IEEE SJCE Workshop Moment',
+    alt: 'IEEE-SJCE Workshop Moment',
     caption: 'Hands-on Technical Workshop',
     span: '',
   },
   {
     id: 3,
     src: '/photos/gallery/gall3.jpg',
-    alt: 'IEEE SJCE Team Celebration',
+    alt: 'IEEE-SJCE Team Celebration',
     caption: 'Student Community & Event Day',
     span: '',
   },
   {
     id: 4,
     src: '/photos/gallery/gall4.jpg',
-    alt: 'IEEE SJCE Prototyping & Project Building',
+    alt: 'IEEE-SJCE Prototyping & Project Building',
     caption: 'Prototyping & Hardware Debugging',
     span: '',
   },
   {
     id: 5,
     src: '/photos/gallery/gall5.jpg',
-    alt: 'IEEE SJCE Core Members',
+    alt: 'IEEE-SJCE Core Members',
     caption: 'Executive Committee & Student Leaders',
     span: '',
   },
   {
     id: 6,
     src: '/photos/gallery/gall6.jpg',
-    alt: 'IEEE SJCE Event Stage Celebration',
+    alt: 'IEEE-SJCE Event Stage Celebration',
     caption: 'Annual Festivities & Cultural Evening',
     span: 'gal-slot-wide',
   },
   {
     id: 7,
     src: '/photos/gallery/gall8.jpg',
-    alt: 'IEEE SJCE Interactive Mentorship',
+    alt: 'IEEE-SJCE Interactive Mentorship',
     caption: 'Interactive Discussion & Mentorship',
     span: '',
   },
   {
     id: 8,
     src: '/photos/gallery/gall9.jpg',
-    alt: 'IEEE SJCE Project Showcase',
+    alt: 'IEEE-SJCE Project Showcase',
     caption: 'Hardware Demonstrations & Project Expo',
     span: '',
   },
@@ -148,7 +148,7 @@ export default function GallerySection() {
             Our <span className="gal-title-accent">Gallery</span>
           </h2>
           <p className="gal-subtitle">
-            Glimpses of innovation, hands-on workshops, celebrations, and life at IEEE SJCE.
+            Glimpses of innovation, hands-on workshops, celebrations, and life at IEEE-SJCE.
           </p>
         </div>
 

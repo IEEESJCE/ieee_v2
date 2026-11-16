@@ -4,7 +4,7 @@ import gsap from 'gsap'
 import '../styles/intro-animation.css'
 
 /* ═══════════════════════════════════════════════
-   IEEE SJCE — FUTURISTIC INTRO ANIMATION
+   IEEE-SJCE — FUTURISTIC INTRO ANIMATION
    5-Phase Cinematic System Power-On Sequence
    Total duration: ~5.5 seconds
    ═══════════════════════════════════════════════ */
@@ -370,7 +370,7 @@ export default function EntryPage() {
         <div ref={logoBloomRef} className="intro-logo-bloom" />
 
         <div className="intro-logo-container">
-          <img ref={logoRef} src="/logo.png" alt="IEEE SJCE" className="intro-logo" />
+          <img ref={logoRef} src="/logo.png" alt="IEEE-SJCE" className="intro-logo" />
         </div>
 
         <div ref={energyPulseRef} className="intro-energy-pulse" />

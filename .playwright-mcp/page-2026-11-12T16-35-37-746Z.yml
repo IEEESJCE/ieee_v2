@@ -1,0 +1,99 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - button "IEEE-SJCE IEEE-SJCE" [ref=e6] [cursor=pointer]:
+        - img "IEEE-SJCE" [ref=e7]
+        - generic [ref=e8]: IEEE-SJCE
+      - generic [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: /home
+        - link "Events" [ref=e11] [cursor=pointer]:
+          - /url: /home#events-section
+        - link "Gallery" [ref=e12] [cursor=pointer]:
+          - /url: /gallery
+        - link "Societies" [ref=e13] [cursor=pointer]:
+          - /url: /societies
+        - link "Boards" [ref=e14] [cursor=pointer]:
+          - /url: /boards
+        - link "Team" [ref=e15] [cursor=pointer]:
+          - /url: /team
+        - link "Contact" [ref=e16] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=e17]:
+        - button "Switch to light theme" [ref=e18] [cursor=pointer]
+        - link "Join IEEE-SJCE (Membership Drive 2027)" [ref=e25] [cursor=pointer]:
+          - /url: /join_us
+          - text: JOIN US
+  - generic [ref=e28]:
+    - banner [ref=e29]:
+      - generic [ref=e33]: Membership Drive 2027
+      - heading "Join IEEE-SJCE" [level=1] [ref=e34]
+      - paragraph [ref=e35]: Become part of a community that innovates, inspires and engineers. Learn, build and lead with the world's largest technical professional organisation.
+      - generic [ref=e36]:
+        - link "REGISTER NOW" [ref=e37] [cursor=pointer]:
+          - /url: https://docs.google.com/forms/d/e/1FAIpQLSdScMuuAzvbgfTRzSE0j7EjLkqhjnf7Xs4sJnImyoaTbibp7w/viewform
+        - link "EXPLORE SOCIETIES" [ref=e41] [cursor=pointer]:
+          - /url: /societies
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - heading "Why Join?" [level=2] [ref=e44]
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - heading "Global Network" [level=3] [ref=e51]
+            - paragraph [ref=e52]: Connect with 400,000+ IEEE members, professionals and researchers across 160+ countries.
+          - generic [ref=e53]:
+            - heading "Hands-on Workshops" [level=3] [ref=e57]
+            - paragraph [ref=e58]: Build real projects in robotics, IoT, signal processing, embedded systems and more.
+          - generic [ref=e59]:
+            - heading "Competitions" [level=3] [ref=e67]
+            - paragraph [ref=e68]: Take part in hackathons, quizzes and flagship events — and compete at the national level.
+          - generic [ref=e69]:
+            - heading "IEEE Xplore & Resources" [level=3] [ref=e73]
+            - paragraph [ref=e74]: Access research papers, magazines, standards and member-only learning resources.
+          - generic [ref=e75]:
+            - heading "Leadership" [level=3] [ref=e82]
+            - paragraph [ref=e83]: Lead societies, organise events and grow as a team player and communicator.
+          - generic [ref=e84]:
+            - heading "Career Edge" [level=3] [ref=e89]
+            - paragraph [ref=e90]: Mentorship, industry talks, internships and a résumé that stands out.
+      - generic [ref=e91]:
+        - heading "Our Societies" [level=2] [ref=e92]
+        - generic [ref=e93]:
+          - link "Student Branch" [ref=e94] [cursor=pointer]:
+            - /url: /societies
+          - link "CS" [ref=e95] [cursor=pointer]:
+            - /url: /societies
+          - link "EDS" [ref=e96] [cursor=pointer]:
+            - /url: /societies
+          - link "RAS" [ref=e97] [cursor=pointer]:
+            - /url: /societies
+          - link "SPS" [ref=e98] [cursor=pointer]:
+            - /url: /societies
+          - link "AESS" [ref=e99] [cursor=pointer]:
+            - /url: /societies
+          - link "WIE" [ref=e100] [cursor=pointer]:
+            - /url: /societies
+      - generic [ref=e101]:
+        - heading "How to Join" [level=2] [ref=e102]
+        - generic [ref=e103]:
+          - generic [ref=e104]:
+            - generic [ref=e105]: "01"
+            - heading "Fill the Form" [level=3] [ref=e106]
+            - paragraph [ref=e107]: Register through the Membership Drive form with your details.
+          - generic [ref=e108]:
+            - generic [ref=e109]: "02"
+            - heading "Pick Societies" [level=3] [ref=e110]
+            - paragraph [ref=e111]: Choose the technical societies that match your interests.
+          - generic [ref=e112]:
+            - generic [ref=e113]: "03"
+            - heading "Get Onboarded" [level=3] [ref=e114]
+            - paragraph [ref=e115]: Our team reaches out with next steps and membership details.
+          - generic [ref=e116]:
+            - generic [ref=e117]: "04"
+            - heading "Start Building" [level=3] [ref=e118]
+            - paragraph [ref=e119]: Join events, workshops and projects from day one.
+      - generic [ref=e120]:
+        - heading "Ready to get started?" [level=2] [ref=e121]
+        - paragraph [ref=e122]: Registrations for the Membership Drive 2027 are open. Secure your spot today.
+        - link "OPEN REGISTRATION FORM" [ref=e123] [cursor=pointer]:
+          - /url: https://docs.google.com/forms/d/e/1FAIpQLSdScMuuAzvbgfTRzSE0j7EjLkqhjnf7Xs4sJnImyoaTbibp7w/viewform
