@@ -48,7 +48,7 @@ export default function MagazineCover() {
 
       <div className="relative z-10 mt-5 shrink-0">
         <p className="mag-mono text-[8px] font-bold uppercase tracking-[0.5em]">The</p>
-        <h1 className="mag-display text-[36px] leading-[0.85] tracking-[-0.04em] sm:text-[40px]">
+        <h1 className="mag-display text-[26px] leading-[0.85] tracking-[-0.04em] sm:text-[36px]">
           IEEE
           <br />
           CHRONICLE
@@ -94,7 +94,7 @@ export default function MagazineCover() {
             {MAGAZINE_META.span}
           </div>
         </div>
-        <div className="mag-display shrink-0 text-[22px] leading-none">2026</div>
+        <div className="mag-display shrink-0 text-[16px] leading-none sm:text-[22px]">2026</div>
       </footer>
     </article>
   )

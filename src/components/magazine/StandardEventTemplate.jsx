@@ -31,7 +31,7 @@ function BriefPage({ event, pageNumber, companion }) {
           </span>
         </div>
 
-        <h2 className="mag-display mt-1.5 text-[18px] uppercase leading-[0.94] tracking-[-0.03em]">
+        <h2 className="mag-display mt-1.5 text-[15px] uppercase leading-[0.94] tracking-[-0.03em] sm:text-[18px]">
           {event.title}
         </h2>
 
@@ -59,7 +59,7 @@ function BriefPage({ event, pageNumber, companion }) {
               </div>
               <div className="min-w-0 flex-1">
                 <p className="line-clamp-6 text-[9px] leading-[1.45] text-[var(--mag-ink-soft)]">
-                  <span className="mag-display float-left mr-1.5 text-[24px] leading-none text-[var(--mag-ink)]">
+                  <span className="mag-display float-left mr-1.5 text-[16px] leading-none text-[var(--mag-ink)] sm:text-[24px]">
                     {event.description.charAt(0)}
                   </span>
                   {event.description.slice(1)}
@@ -68,7 +68,7 @@ function BriefPage({ event, pageNumber, companion }) {
             </div>
           ) : (
             <p className="line-clamp-6 text-[9.5px] leading-[1.5] text-[var(--mag-ink-soft)]">
-              <span className="mag-display float-left mr-1.5 text-[26px] leading-none text-[var(--mag-ink)]">
+              <span className="mag-display float-left mr-1.5 text-[16px] leading-none text-[var(--mag-ink)] sm:text-[26px]">
                 {event.description.charAt(0)}
               </span>
               {event.description.slice(1)}

@@ -233,7 +233,7 @@ export default function MagazineSection() {
           ) : (
             <div className="mag-open-enter flex w-full flex-col items-center overflow-x-hidden">
               <div className="flex w-full min-w-0 items-center justify-center overflow-x-hidden">
-                <div className="mx-auto w-full min-w-0 max-w-[min(860px,calc((100svh_-_315px)*1.43))] max-md:max-w-[min(360px,calc((100svh_-_300px)*0.714))]">
+                <div className="mx-auto w-full min-w-0 max-w-[min(340px,calc(100svh_-_300px)*0.714)] md:max-w-[min(860px,calc((100svh_-_315px)*1.43))]">
                   <MagazineBook
                     ref={bookRef}
                     onGoto={gotoPage}
@@ -245,7 +245,7 @@ export default function MagazineSection() {
                 </div>
               </div>
 
-              <div className="mt-2 w-full max-w-[min(860px,calc((100svh_-_315px)*1.43))] border-2 border-[var(--mag-ink)] bg-[var(--mag-paper)] px-2 py-1.5 text-[var(--mag-ink)] shadow-[4px_4px_0_rgba(17,17,17,0.2)] max-md:max-w-[min(370px,calc((100svh_-_320px)*0.714))]">
+              <div className="mt-2 w-full max-w-[min(370px,calc(100svh_-_320px)*0.714)] md:max-w-[min(860px,calc((100svh_-_315px)*1.43))] border-2 border-[var(--mag-ink)] bg-[var(--mag-paper)] px-2 py-1.5 text-[var(--mag-ink)] shadow-[4px_4px_0_rgba(17,17,17,0.2)]">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-1.5">
                     <BookControl
@@ -271,7 +271,7 @@ export default function MagazineSection() {
                   <div className="flex items-center gap-1.5">
                     <button
                       type="button"
-                      onClick={() => gotoPage(2)}
+                      onClick={() => gotoPage(3)}
                       className="mag-mono inline-flex items-center gap-1 border border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] px-2 py-1 text-[7px] font-bold uppercase tracking-[0.14em] transition-colors hover:bg-[var(--mag-yellow)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--mag-blue)]"
                     >
                       <BookOpen size={11} />

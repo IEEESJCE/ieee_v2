@@ -259,7 +259,7 @@ export function StatBox({ value, label, accent = false }) {
         accent ? 'bg-[var(--mag-yellow)]' : 'bg-[var(--mag-paper-deep)]'
       )}
     >
-      <div className="mag-display text-[24px] leading-none">{value}</div>
+      <div className="mag-display text-[16px] leading-none sm:text-[24px]">{value}</div>
       <div className="mag-mono mt-1 text-[6px] font-bold uppercase tracking-[0.14em]">
         {label}
       </div>

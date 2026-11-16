@@ -33,7 +33,7 @@ export default function MagazineBackCover() {
         <p className="mag-mono text-[7px] font-bold uppercase tracking-[0.3em] text-[var(--mag-paper)]">
           IEEE-SJCE
         </p>
-        <h2 className="mag-display mt-2 text-[38px] uppercase leading-[0.84] tracking-[-0.04em]">
+        <h2 className="mag-display mt-2 text-[28px] uppercase leading-[0.84] tracking-[-0.04em] sm:text-[38px]">
           The
           <br />
           IEEE

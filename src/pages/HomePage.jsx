@@ -207,7 +207,7 @@ export default function HomePage() {
 
               <div className="nb-hero-wrapper">
                 <div ref={heroRef} className="nb-hero-content nb-hero-centered">
-                  <h1 className="gsap-hero nb-hero-title">IEEE SJCE</h1>
+                  <h1 className="gsap-hero nb-hero-title">IEEE-SJCE</h1>
                   <h2 className="gsap-hero nb-hero-tagline-big">
                     <span className="tagline-row">
                       <span className="tagline-cyan">INNOVATE</span>

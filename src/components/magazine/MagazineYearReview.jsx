@@ -22,12 +22,12 @@ export function YearReviewLeft({ pageNumber }) {
 
       <div className="mt-3 flex min-h-0 flex-1 flex-col">
         <Kicker>The year in numbers</Kicker>
-        <h2 className="mag-display mt-1.5 text-[28px] uppercase leading-[0.9] tracking-[-0.03em]">
+        <h2 className="mag-display mt-1.5 text-[22px] uppercase leading-[0.9] tracking-[-0.03em] sm:text-[28px]">
           A year worth turning pages for.
         </h2>
         <Rule className="mt-2 w-16" />
 
-        <div className="mt-3 grid grid-cols-2 gap-1.5">
+        <div className="mt-3 grid grid-cols-1 gap-y-1 sm:grid-cols-2 sm:gap-1.5">
           <StatBox value={MAGAZINE_SUMMARY.stories} label="Stories" accent />
           <StatBox value={MAGAZINE_SUMMARY.features} label="Feature spreads" />
           <StatBox value={MAGAZINE_SUMMARY.years} label="Years covered" />
@@ -84,7 +84,7 @@ export function YearReviewRight({ pageNumber }) {
 
       <div className="mt-3 flex min-h-0 flex-1 flex-col">
         <div className="flex items-end justify-between gap-2">
-          <h2 className="mag-display text-[23px] uppercase leading-none tracking-[-0.03em]">
+          <h2 className="mag-display text-[18px] uppercase leading-none tracking-[-0.03em] sm:text-[23px]">
             The archive
           </h2>
           <Kicker className="text-right">IEEE-SJCE photographs</Kicker>

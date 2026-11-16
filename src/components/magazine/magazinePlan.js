@@ -1,6 +1,6 @@
 import { MAGAZINE_EVENTS } from '../../data/magazineEvents.js'
 
-export const EVENT_START_PAGE = 3
+export const EVENT_START_PAGE = 5
 export const YEAR_REVIEW_PAGES = 2
 
 export function buildMagazinePlan(events = MAGAZINE_EVENTS) {
@@ -65,9 +65,6 @@ export function buildMagazinePlan(events = MAGAZINE_EVENTS) {
       })
       plannedEvents.push({ ...second, pageIndex })
       pageIndex += 1
-    } else {
-      pages.push({ type: 'filler', pageIndex })
-      pageIndex += 1
     }
   })
 
@@ -97,6 +94,9 @@ export function validateMagazinePlan(plan) {
 
   for (const page of plan.pages) {
     const size = page.type === 'detailed' ? 2 : page.type === 'brief' ? 1 : 1
+    if (page.type === 'detailed' && page.pageIndex % 2 === 0) {
+      errors.push(`Feature spread ${page.event?.id ?? ''} must start on a left-hand page`)
+    }
     if (page.pageIndex !== expectedIndex) {
       errors.push(
         `Page sequence mismatch: expected physical index ${expectedIndex}, got ${page.pageIndex} (${page.type} ${page.event?.id ?? ''})`

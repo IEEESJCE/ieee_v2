@@ -1,41 +1,14 @@
 import { forwardRef, useMemo } from 'react'
 import HTMLFlipBook from 'react-pageflip'
 
-import {
-  BookPage,
-  Kicker,
-  PageFooter,
-  PageHeader,
-} from './MagazinePrimitives'
+import { BookPage } from './MagazinePrimitives'
 import MagazineBackCover from './MagazineBackCover'
-import MagazineContents from './MagazineContents'
+import MagazineContents, { MagazineContentsIntro } from './MagazineContents'
 import MagazineCover from './MagazineCover'
 import MagazineEditorial from './MagazineEditorial'
 import { YearReviewLeft, YearReviewRight } from './MagazineYearReview'
 import { eventPages } from './EventSpread'
 import { MAGAZINE_PLAN } from './magazinePlan'
-
-function NotesPage({ pageNumber }) {
-  return (
-    <>
-      <PageHeader section="Notes" />
-
-      <div className="mt-3 flex min-h-0 flex-1 flex-col">
-        <Kicker>Appendix</Kicker>
-        <h2 className="mag-display mt-1.5 text-[28px] uppercase leading-none tracking-[-0.03em]">
-          Notes
-        </h2>
-        <div className="mt-4 grid flex-1 content-start gap-3">
-          {Array.from({ length: 8 }).map((_, index) => (
-            <div key={index} className="h-px bg-[var(--mag-line)]" />
-          ))}
-        </div>
-      </div>
-
-      <PageFooter page={pageNumber} />
-    </>
-  )
-}
 
 const MagazineBook = forwardRef(function MagazineBook(
   {
@@ -62,28 +35,45 @@ const MagazineBook = forwardRef(function MagazineBook(
       </BookPage>
     )
 
+    const entries = MAGAZINE_PLAN.plannedEvents
+    const splitAt = Math.ceil(entries.length / 2)
+
     children.push(
-      <BookPage key="magazine-contents" side="right">
+      <BookPage key="magazine-contents-intro" side="right">
+        <MagazineContentsIntro pageNumber={3} />
+      </BookPage>
+    )
+
+    children.push(
+      <BookPage key="magazine-contents-left" side="left">
         <MagazineContents
-          entries={MAGAZINE_PLAN.plannedEvents}
+          entries={entries.slice(0, splitAt)}
           onGoto={onGoto}
-          pageNumber={3}
+          pageNumber={4}
+          startIndex={0}
+          part={1}
+          totalStories={entries.length}
           yearReviewPage={MAGAZINE_PLAN.yearReviewPage}
         />
       </BookPage>
     )
 
-    MAGAZINE_PLAN.pages.forEach((entry) => {
-      if (entry.type === 'filler') {
-        const side = entry.pageIndex % 2 === 0 ? 'right' : 'left'
-        children.push(
-          <BookPage key={`magazine-notes-${entry.pageIndex}`} side={side}>
-            <NotesPage pageNumber={entry.pageIndex + 1} />
-          </BookPage>
-        )
-        return
-      }
+    children.push(
+      <BookPage key="magazine-contents-right" side="right">
+        <MagazineContents
+          entries={entries.slice(splitAt)}
+          onGoto={onGoto}
+          pageNumber={5}
+          startIndex={splitAt}
+          part={2}
+          totalStories={entries.length}
+          yearReviewPage={MAGAZINE_PLAN.yearReviewPage}
+          showYearReview
+        />
+      </BookPage>
+    )
 
+    MAGAZINE_PLAN.pages.forEach((entry) => {
       children.push(...eventPages(entry))
     })
 

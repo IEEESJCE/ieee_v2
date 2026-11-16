@@ -14,7 +14,7 @@ export default function MagazineEditorial({ pageNumber }) {
 
       <div className="mt-2.5 flex min-h-0 flex-1 flex-col">
         <Kicker>From the editors</Kicker>
-        <h2 className="mag-display mt-1 text-[23px] uppercase leading-[0.92] tracking-[-0.03em]">
+        <h2 className="mag-display mt-1 text-[18px] uppercase leading-[0.92] tracking-[-0.03em] sm:text-[23px]">
           A year in circuits, code &amp; community.
         </h2>
         <Rule className="mt-1.5 w-14" />
@@ -22,7 +22,7 @@ export default function MagazineEditorial({ pageNumber }) {
         <div className="mt-2.5 flex min-h-0 flex-1 gap-3">
           <div className="min-w-0 flex-1 space-y-1.5">
             <p className="text-[9px] leading-[1.45] text-[var(--mag-ink-soft)]">
-              <span className="mag-display float-left mr-1.5 text-[24px] leading-none text-[var(--mag-ink)]">
+              <span className="mag-display float-left mr-1.5 text-[18px] leading-none text-[var(--mag-ink)] sm:text-[24px]">
                 B
               </span>
               etween the first breadboard and the final keynote, IEEE-SJCE spent the
@@ -47,7 +47,7 @@ export default function MagazineEditorial({ pageNumber }) {
               className="h-[92px] w-full"
             />
             <div className="border border-[var(--mag-ink)] bg-[var(--mag-yellow)] px-1.5 py-1 text-center">
-              <div className="mag-display text-[15px] leading-none">
+              <div className="mag-display text-[12px] leading-none sm:text-[15px]">
                 {MAGAZINE_SUMMARY.stories}
               </div>
               <div className="mag-mono text-[5px] font-bold uppercase tracking-[0.12em]">
