@@ -27,7 +27,7 @@ export function YearReviewLeft({ pageNumber }) {
         </h2>
         <Rule className="mt-2 w-16" />
 
-        <div className="mt-3 grid grid-cols-1 gap-y-1 sm:grid-cols-2 sm:gap-1.5">
+        <div className="mt-3 grid grid-cols-2 gap-1.5">
           <StatBox value={MAGAZINE_SUMMARY.stories} label="Stories" accent />
           <StatBox value={MAGAZINE_SUMMARY.features} label="Feature spreads" />
           <StatBox value={MAGAZINE_SUMMARY.years} label="Years covered" />
