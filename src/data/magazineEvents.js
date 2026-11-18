@@ -77,8 +77,8 @@ export const MAGAZINE_EVENTS = [
       "Hardware debugging basics",
     ],
     photos: [
-      "/photos/gallery/gall2.jpg",
-      "/photos/gallery/gall4.jpg",
+      "/photos/events/snap_circuits_2025_recap_1.jpg",
+      "/photos/events/snap_circuits_2025_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "EDS" },
@@ -107,8 +107,8 @@ export const MAGAZINE_EVENTS = [
       "Signal processing & control workflows",
     ],
     photos: [
-      "/photos/gallery/gall11.jpg",
-      "/photos/gallery/gall8.jpg",
+      "/photos/events/matlab_workshop_recap_1.jpg",
+      "/photos/events/matlab_workshop_recap_2.jpg",
     ],
     stats: [
       { label: "Wings", value: "SPS · RAS · AESS" },
