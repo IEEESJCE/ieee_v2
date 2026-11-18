@@ -167,8 +167,8 @@ export const MAGAZINE_EVENTS = [
       "Live demonstrations & simulations",
     ],
     photos: [
-      "/photos/gallery/gall9.jpg",
-      "/photos/standfor/seminars.jpeg",
+      "/photos/events/radioverse_recap_1.jpg",
+      "/photos/events/radioverse_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "IEEE-SJCE" },
