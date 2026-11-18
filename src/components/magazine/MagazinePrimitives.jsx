@@ -139,7 +139,11 @@ export function MagazineImage({
           loading={loading}
           decoding="async"
           onError={() => setFailed(true)}
-          className={cx('h-full w-full object-cover', imgClassName)}
+          className={cx(
+            'h-full w-full',
+            !/\bobject-(contain|cover|fill|none|scale-down)\b/.test(imgClassName) && 'object-cover',
+            imgClassName
+          )}
         />
       )}
     </div>
@@ -225,28 +229,25 @@ export function HighlightList({ items = [], limit = 3, className = '' }) {
 export function StatStrip({ stats = [], className = '' }) {
   if (!stats.length) return null
   return (
-    <div
-      className={cx(
-        'grid grid-cols-3 border-y border-[var(--mag-line)]',
-        className
-      )}
-    >
-      {stats.map((stat, index) => (
-        <div
-          key={stat.label}
-          className={cx(
-            'px-1 py-1 text-center',
-            index > 0 && 'border-l border-[var(--mag-line)]'
-          )}
-        >
-          <div className="mag-mono text-[4.5px] font-bold uppercase tracking-[0.1em] text-[var(--mag-ink-soft)]">
-            {stat.label}
+    <div className={className}>
+      <dl className="border-y border-[var(--mag-line)]">
+        {stats.map((stat, index) => (
+          <div
+            key={stat.label}
+            className={cx(
+              'flex items-baseline justify-between gap-2 px-0.5 py-[3px]',
+              index > 0 && 'border-t border-[var(--mag-line)]'
+            )}
+          >
+            <dt className="mag-mono shrink-0 text-[5px] font-bold uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
+              {stat.label}
+            </dt>
+            <dd className="mag-display min-w-0 text-right text-[6.5px] uppercase leading-tight">
+              {stat.value}
+            </dd>
           </div>
-          <div className="mag-display mt-0.5 text-[6px] uppercase leading-none">
-            {stat.value}
-          </div>
-        </div>
-      ))}
+        ))}
+      </dl>
     </div>
   )
 }
