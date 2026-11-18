@@ -197,7 +197,7 @@ export const MAGAZINE_EVENTS = [
       "Technical and leadership pathways",
     ],
     photos: [
-      "/photos/gallery/gall5.jpg",
+      "/photos/events/orientation_day_recap_1.jpg",
       "/photos/gallery/gall3.jpg",
     ],
     stats: [
@@ -227,8 +227,8 @@ export const MAGAZINE_EVENTS = [
       "Community bonding",
     ],
     photos: [
-      "/photos/gallery/gall6.jpg",
-      "/photos/gallery/gall11.jpg",
+      "/photos/events/funsane_recap_1.jpg",
+      "/photos/events/funsane_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "IEEE-SJCE" },
