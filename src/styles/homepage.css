@@ -602,8 +602,7 @@
 .nb-bangalore-wrapper,
 .nb-flagship-wrapper,
 .nb-prayas-wrapper,
-.nb-mentors-wrapper,
-.nb-sponsors-wrapper {
+.nb-mentors-wrapper {
   position: relative;
   width: 100%;
   min-height: 100dvh;
@@ -618,7 +617,12 @@
 .nb-flagship-wrapper    { z-index: 70; background: var(--bg); }
 .nb-prayas-wrapper      { z-index: 80; background: var(--bg-surface); }
 .nb-mentors-wrapper     { z-index: 90; background: var(--bg); }
-.nb-sponsors-wrapper    { z-index: 100; background: var(--bg-surface); }
+.nb-sponsors-wrapper    {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  background: var(--bg-surface);
+}
 
 
 

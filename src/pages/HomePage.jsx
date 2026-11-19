@@ -116,12 +116,10 @@ export default function HomePage() {
           document.querySelector('.nb-flagship-wrapper'),
           document.querySelector('.nb-prayas-wrapper'),
           document.querySelector('.nb-mentors-wrapper'),
-          document.querySelector('.nb-sponsors-wrapper'),
         ].filter(Boolean)
 
         allPanels.forEach((panel, i) => {
-          // Mentors and sponsors scroll normally into the footer (no pin/shrink).
-          if (i >= allPanels.length - 2) return
+          if (i >= allPanels.length - 1) return
 
           const isLanding = panel.classList.contains('nb-section-landing')
           const innerPanel = isLanding ? panel.querySelector('.nb-section-inner') : panel.firstElementChild
