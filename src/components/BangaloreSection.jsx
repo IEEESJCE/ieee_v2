@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { MapPin, Award, Sparkles } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { prefersReducedMotion } from '../lib/motion'
 import '../styles/bangalore.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -10,6 +11,8 @@ export default function BangaloreSection() {
   const sectionRef = useRef(null)
 
   useEffect(() => {
+    if (prefersReducedMotion()) return undefined
+
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.blr-intro > *',

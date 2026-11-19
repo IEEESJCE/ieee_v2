@@ -20,7 +20,10 @@ export default function MagazineBackCover() {
         <img
           src="/logo.png"
           alt="IEEE-SJCE logo"
+          width={40}
+          height={40}
           loading="lazy"
+          decoding="async"
           className="h-10 w-10 rounded-full border-2 border-[var(--mag-paper)] bg-white object-contain"
         />
         <div className="mag-mono text-[7px] font-bold uppercase leading-tight tracking-[0.16em]">

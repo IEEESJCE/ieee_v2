@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Rocket, ExternalLink, ChevronRight } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { prefersReducedMotion } from '../lib/motion'
 import '../styles/flagship.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -39,6 +40,8 @@ export default function FlagshipSection() {
   const program = PROGRAMS[active]
 
   useEffect(() => {
+    if (prefersReducedMotion()) return undefined
+
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.flg-header > *',

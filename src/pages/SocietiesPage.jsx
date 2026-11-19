@@ -10,6 +10,7 @@ import {
   Rocket,
 } from "lucide-react";
 import gsap from "gsap";
+import { prefersReducedMotion } from "../lib/motion";
 import "../styles/societies.css";
 
 const SOCIETIES = [
@@ -1024,6 +1025,7 @@ function AessAerospaceVisual() {
 
 export default function SocietiesPage() {
   const [activeId, setActiveId] = useState("student-branch");
+  const containerRef = useRef(null);
   const headerRef = useRef(null);
   const scrollRef = useRef(null);
   const active = SOCIETIES.find((s) => s.id === activeId);
@@ -1031,49 +1033,60 @@ export default function SocietiesPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    gsap.fromTo(
-      headerRef.current?.children,
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
-        delay: 0.15,
-      },
-    );
+    if (prefersReducedMotion()) return undefined;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        headerRef.current?.children,
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power3.out",
+          delay: 0.15,
+        },
+      );
+    }, containerRef);
+    return () => ctx.revert();
   }, []);
 
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollLeft = 0;
     }
-    gsap.fromTo(
-      ".soc-event-tile",
-      { y: 22, opacity: 0, scale: 0.98 },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 0.45,
-        stagger: 0.08,
-        ease: "power2.out",
-        delay: 0.08,
-      },
-    );
+    if (prefersReducedMotion()) return undefined;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".soc-event-tile",
+        { y: 22, opacity: 0, scale: 0.98 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.45,
+          stagger: 0.08,
+          ease: "power2.out",
+          delay: 0.08,
+        },
+      );
+    }, containerRef);
+    return () => ctx.revert();
   }, [activeId]);
 
   const scrollEvents = (direction) => {
     if (scrollRef.current) {
       const scrollAmount = direction === "left" ? -330 : 330;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      scrollRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: prefersReducedMotion() ? "auto" : "smooth",
+      });
     }
   };
 
   return (
     <>
-      <div className="soc-page">
+      <div ref={containerRef} className="soc-page">
         <header ref={headerRef} className="soc-hero">
           <p className="soc-hero-eyebrow">Explore Chapters</p>
           <h1>Societies</h1>
@@ -1139,9 +1152,10 @@ export default function SocietiesPage() {
               <div className="soc-stage-visual">
                 {active.animation ? (
                   <iframe
-                    title={active.name}
+                    title={`${active.name} interactive visual animation`}
                     className="soc-lottie"
                     src={active.animation}
+                    loading="lazy"
                   />
                 ) : active.id === "eds" ? (
                   <EdsMinimalVisual />

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Code2, PenLine, ExternalLink, BookOpen } from 'lucide-react'
 import gsap from 'gsap'
+import { prefersReducedMotion } from '../lib/motion'
 import '../styles/boards.css'
 
 const BOARDS = [
@@ -32,25 +33,30 @@ const BOARDS = [
 ]
 
 export default function BoardsPage() {
+  const containerRef = useRef(null)
   const headerRef = useRef(null)
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    gsap.fromTo(
-      headerRef.current?.children,
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7, stagger: 0.08, ease: 'power3.out', delay: 0.1 }
-    )
-    gsap.fromTo(
-      '.brd-card',
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.65, stagger: 0.12, ease: 'power3.out', delay: 0.3 }
-    )
+    if (prefersReducedMotion()) return undefined
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        headerRef.current?.children,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, stagger: 0.08, ease: 'power3.out', delay: 0.1 }
+      )
+      gsap.fromTo(
+        '.brd-card',
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.65, stagger: 0.12, ease: 'power3.out', delay: 0.3 }
+      )
+    }, containerRef)
+    return () => ctx.revert()
   }, [])
 
   return (
     <>
-      <div className="brd-page">
+      <div ref={containerRef} className="brd-page">
         <header ref={headerRef} className="brd-hero">
           <p className="brd-hero-eyebrow">Creative Teams</p>
           <h1>Boards</h1>
@@ -68,7 +74,11 @@ export default function BoardsPage() {
                 </div>
 
                 <div className="brd-card-lottie">
-                  <iframe title="" src={board.animation} />
+                  <iframe
+                    title={`${board.title} interactive visual animation`}
+                    src={board.animation}
+                    loading="lazy"
+                  />
                 </div>
 
                 <p className="brd-card-about">{board.about}</p>
@@ -91,7 +101,14 @@ export default function BoardsPage() {
 
         <article className="brd-mag-card">
           <div className="brd-mag-cover">
-            <img src="/photos/events/magazine.png" alt="IEEE Interface Magazine" loading="lazy" />
+            <img
+              src="/photos/standfor/magazine_launch.webp"
+              alt="IEEE Interface Magazine"
+              width={1080}
+              height={717}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div className="brd-mag-body">
             <BookOpen size={22} />

@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Mail, Linkedin, GraduationCap } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "../lib/motion";
 import "../styles/mentors.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -63,10 +64,21 @@ const MENTORS = [
   },
 ];
 
+const MENTOR_DIMENSIONS = {
+  "/photos/advisors/MG Veena.jpg": [800, 759],
+  "/photos/advisors/Sudarshan PK.jpeg": [800, 759],
+  "/photos/advisors/SB Rudraswamy.jpg": [800, 759],
+  "/photos/advisors/Supreetha M.jpg": [800, 759],
+  "/photos/advisors/Dr. SHASHIDHAR R.jpg": [315, 315],
+  "/photos/advisors/anitha_prasad.jpg": [585, 576],
+};
+
 export default function MentorsSection() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    if (prefersReducedMotion()) return undefined;
+
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".mnt-header > *",
@@ -132,7 +144,10 @@ export default function MentorsSection() {
                     <img
                       src={mentor.src}
                       alt={mentor.name}
+                      width={MENTOR_DIMENSIONS[mentor.src]?.[0]}
+                      height={MENTOR_DIMENSIONS[mentor.src]?.[1]}
                       loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                         e.currentTarget.style.display = "none";
                         e.currentTarget.parentElement.classList.add(

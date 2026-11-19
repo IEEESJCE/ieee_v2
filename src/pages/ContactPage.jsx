@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Mail, Phone, Instagram, Linkedin, Send, MessageCircle } from 'lucide-react'
 import gsap from 'gsap'
+import { prefersReducedMotion } from '../lib/motion'
 import '../styles/contact.css'
 
 const CONTACT_EMAIL = 'kumarsubrato1103@gmail.com'
@@ -13,6 +14,7 @@ const CHANNELS = [
 ]
 
 export default function ContactPage() {
+  const containerRef = useRef(null)
   const headerRef = useRef(null)
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -20,16 +22,20 @@ export default function ContactPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    gsap.fromTo(
-      '.cnt-hero > *',
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.15 }
-    )
-    gsap.fromTo(
-      '.cnt-bento > *',
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7, stagger: 0.12, ease: 'power3.out', delay: 0.4 }
-    )
+    if (prefersReducedMotion()) return undefined
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        '.cnt-hero > *',
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.15 }
+      )
+      gsap.fromTo(
+        '.cnt-bento > *',
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, stagger: 0.12, ease: 'power3.out', delay: 0.4 }
+      )
+    }, containerRef)
+    return () => ctx.revert()
   }, [])
 
   const handleSubmit = (e) => {
@@ -40,7 +46,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <div className="cnt-page">
+      <div ref={containerRef} className="cnt-page">
         <header ref={headerRef} className="cnt-hero">
           <MessageCircle size={28} className="cnt-hero-icon" />
           <h1>Let&apos;s Connect</h1>
@@ -50,9 +56,34 @@ export default function ContactPage() {
         <div className="cnt-bento">
           <form className="cnt-form-card" onSubmit={handleSubmit}>
             <h2>Send a Message</h2>
-            <input type="text" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} required />
-            <input type="tel" placeholder="Phone number" value={phone} onChange={(e) => setPhone(e.target.value)} />
-            <textarea placeholder="Your message..." rows={4} value={message} onChange={(e) => setMessage(e.target.value)} required />
+            <input
+              type="text"
+              name="name"
+              aria-label="Your name"
+              autoComplete="name"
+              placeholder="Your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+            <input
+              type="tel"
+              name="phone"
+              aria-label="Phone number"
+              autoComplete="tel"
+              placeholder="Phone number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+            <textarea
+              name="message"
+              aria-label="Your message"
+              placeholder="Your message..."
+              rows={4}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
+            />
             <button type="submit" className="nb-btn nb-btn-accent">
               Send <Send size={14} />
             </button>

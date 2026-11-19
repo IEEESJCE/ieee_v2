@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Heart, BookOpen, Sparkles, MapPin, Users } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { prefersReducedMotion } from '../lib/motion'
 import '../styles/prayas.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -57,6 +58,8 @@ export default function PrayasSection() {
   const active = TABS.find((t) => t.id === activeTab)
 
   useEffect(() => {
+    if (prefersReducedMotion()) return undefined
+
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.pry-header > *',
