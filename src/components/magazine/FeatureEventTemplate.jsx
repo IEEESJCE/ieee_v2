@@ -19,8 +19,8 @@ function FeatureLeftPage({ event, pageNumber }) {
     <>
       <PageHeader section={event.category} />
 
-      <div className="mt-2.5 flex flex-col min-h-0 flex-1 gap-3 sm:flex-row">
-        <div className="flex w-full shrink-0 flex-col min-h-0 justify-center items-center h-full sm:w-[46%]">
+      <div className="mt-2.5 flex min-h-0 flex-1 flex-row gap-3 overflow-hidden">
+        <div className="flex w-[46%] shrink-0 flex-col min-h-0 justify-center items-center h-full">
           <div className="relative aspect-[3/4] w-full overflow-hidden border-2 border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] shadow-[4px_4px_0_rgba(17,17,17,0.18)]">
             <span
               className="mag-tape absolute -top-1.5 left-1/2 z-20 h-3.5 w-12 -translate-x-1/2 -rotate-2"
@@ -60,7 +60,7 @@ function FeatureLeftPage({ event, pageNumber }) {
             </span>
           </div>
 
-          <h2 className="mag-display mt-1.5 text-[14px] uppercase leading-[0.95] tracking-[-0.025em] sm:text-[17px]">
+          <h2 className="mag-display mt-1.5 text-[13.5px] uppercase leading-[0.95] tracking-[-0.03em] [overflow-wrap:anywhere]">
             {event.title}
           </h2>
 

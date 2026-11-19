@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   BookPage,
   EventTag,
@@ -10,6 +11,32 @@ import {
 } from './MagazinePrimitives'
 
 const pad = (value) => String(value).padStart(2, '0')
+
+// Large centred poster that grows to fill the free height of the page.
+function BriefPoster({ src, title }) {
+  const [failed, setFailed] = useState(false)
+
+  return (
+    <div className="relative min-h-[90px] flex-1">
+      <div className="absolute inset-0 flex items-center justify-center py-1">
+        {failed ? (
+          <div className="h-full w-[60%]">
+            <MagazineImage src={null} alt={`${title} poster`} />
+          </div>
+        ) : (
+          <img
+            src={src}
+            alt={`${title} poster`}
+            loading="lazy"
+            decoding="async"
+            onError={() => setFailed(true)}
+            className="block max-h-full max-w-[92%] border-2 border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] object-contain p-0.5 shadow-[3px_3px_0_rgba(17,17,17,0.16)]"
+          />
+        )}
+      </div>
+    </div>
+  )
+}
 
 function BriefPage({ event, pageNumber, companion }) {
   return (
@@ -42,38 +69,20 @@ function BriefPage({ event, pageNumber, companion }) {
         <Rule className="mt-1.5 w-12" />
 
         <div className="mt-2 flex min-h-0 flex-1 flex-col gap-2 overflow-hidden">
-          {event.poster ? (
-            <div className="flex min-h-0 gap-2.5">
-              <div className="w-[33%] shrink-0">
-                <div className="relative aspect-[3/4] w-full overflow-hidden border-2 border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] shadow-[3px_3px_0_rgba(17,17,17,0.16)]">
-                  <span
-                    className="mag-tape absolute -top-1 left-1/2 z-20 h-3 w-10 -translate-x-1/2 -rotate-2"
-                    aria-hidden="true"
-                  />
-                  <MagazineImage
-                    src={event.poster}
-                    alt={`${event.title} poster`}
-                    imgClassName="h-full w-full object-contain p-0.5"
-                  />
-                </div>
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="line-clamp-6 text-[9px] leading-[1.45] text-[var(--mag-ink-soft)]">
-                  <span className="mag-display float-left mr-1.5 text-[16px] leading-none text-[var(--mag-ink)] sm:text-[24px]">
-                    {event.description.charAt(0)}
-                  </span>
-                  {event.description.slice(1)}
-                </p>
-              </div>
-            </div>
-          ) : (
-            <p className="line-clamp-6 text-[9.5px] leading-[1.5] text-[var(--mag-ink-soft)]">
-              <span className="mag-display float-left mr-1.5 text-[16px] leading-none text-[var(--mag-ink)] sm:text-[26px]">
-                {event.description.charAt(0)}
-              </span>
-              {event.description.slice(1)}
-            </p>
-          )}
+          {event.poster && <BriefPoster src={event.poster} title={event.title} />}
+
+          <p
+            className={
+              event.poster
+                ? 'shrink-0 line-clamp-4 text-[9px] leading-[1.45] text-[var(--mag-ink-soft)]'
+                : 'line-clamp-6 text-[9.5px] leading-[1.5] text-[var(--mag-ink-soft)]'
+            }
+          >
+            <span className="mag-display float-left mr-1.5 text-[16px] leading-none text-[var(--mag-ink)] sm:text-[24px]">
+              {event.description.charAt(0)}
+            </span>
+            {event.description.slice(1)}
+          </p>
 
           {event.highlights && event.highlights.length > 0 && (
             <div className="shrink-0">

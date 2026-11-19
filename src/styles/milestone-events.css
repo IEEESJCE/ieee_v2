@@ -299,6 +299,28 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  max-height: calc(1.55em * 3);
+}
+
+/* On hover, drop the ellipsis and let the full description scroll
+   inside the same 3-line box so the card height does not change. */
+.ms-poster:hover .ms-poster-content p {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding-right: 4px;
+}
+
+/* Touch devices have no hover: keep the description scrollable always. */
+@media (hover: none) {
+  .ms-poster-content p {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
 }
 
 .ms-poster-perforation {

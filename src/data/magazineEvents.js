@@ -59,8 +59,8 @@ export const MAGAZINE_EVENTS = [
       "Hardware debugging basics",
     ],
     photos: [
-      "/photos/gallery/gall2.webp",
-      "/photos/gallery/gall4.webp",
+      "/photos/events/snap_circuits_2025_recap_1.webp",
+      "/photos/events/snap_circuits_2025_recap_2.webp",
     ],
     stats: [
       { label: "Wing", value: "EDS" },
@@ -89,8 +89,8 @@ export const MAGAZINE_EVENTS = [
       "Signal processing & control workflows",
     ],
     photos: [
-      "/photos/gallery/gall11.webp",
-      "/photos/gallery/gall8.webp",
+      "/photos/events/matlab_workshop_recap_1.webp",
+      "/photos/events/matlab_workshop_recap_2.webp",
     ],
     stats: [
       { label: "Wings", value: "SPS · RAS · AESS" },
@@ -149,8 +149,8 @@ export const MAGAZINE_EVENTS = [
       "Live demonstrations & simulations",
     ],
     photos: [
-      "/photos/gallery/gall9.webp",
-      "/photos/standfor/seminars.jpeg",
+      "/photos/events/radioverse_recap_1.webp",
+      "/photos/events/radioverse_recap_2.webp",
     ],
     stats: [
       { label: "Wing", value: "IEEE-SJCE" },
@@ -179,7 +179,7 @@ export const MAGAZINE_EVENTS = [
       "Technical and leadership pathways",
     ],
     photos: [
-      "/photos/gallery/gall5.webp",
+      "/photos/events/orientation_day_recap_1.webp",
       "/photos/gallery/gall3.webp",
     ],
     stats: [
@@ -209,8 +209,8 @@ export const MAGAZINE_EVENTS = [
       "Community bonding",
     ],
     photos: [
-      "/photos/gallery/gall6.webp",
-      "/photos/gallery/gall11.webp",
+      "/photos/events/funsane_recap_1.webp",
+      "/photos/events/funsane_recap_2.webp",
     ],
     stats: [
       { label: "Wing", value: "IEEE-SJCE" },
