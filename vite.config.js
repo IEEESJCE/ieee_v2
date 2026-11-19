@@ -7,8 +7,26 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  server: {
-    host: true, // Exposes the server to the local network (0.0.0.0)
-    port: 5173,
+  build: {
+    manifest: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return undefined
+          if (id.includes('react-pageflip')) return 'vendor-pageflip'
+          if (id.includes('gsap')) return 'vendor-gsap'
+          if (
+            id.includes('/react/') ||
+            id.includes('/react-dom/') ||
+            id.includes('/scheduler/') ||
+            id.includes('react-router') ||
+            id.includes('@remix-run')
+          ) {
+            return 'vendor-react'
+          }
+          return undefined
+        },
+      },
+    },
   },
 })

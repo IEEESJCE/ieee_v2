@@ -24,6 +24,9 @@ function SponsorGroup({ hidden = false }) {
           <img
             src={sponsor.src}
             alt={hidden ? '' : sponsor.alt}
+            width={131}
+            height={105}
+            loading="lazy"
             decoding="async"
           />
         </div>

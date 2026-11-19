@@ -218,7 +218,7 @@
   justify-content: center;
   cursor: pointer;
   z-index: 10;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   box-shadow: 4px 4px 0 0 var(--border-color);
 }
 
@@ -571,4 +571,10 @@
   color: #FFFFFF !important;
   border-color: #0F172A !important;
   box-shadow: 4px 4px 0 0 #0F172A !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ach-rays {
+    animation: none !important;
+  }
 }

@@ -391,7 +391,7 @@
   border-radius: 0;
   box-shadow: 3px 3px 0 0 var(--mnt-accent);
   color: #0F172A;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .mnt-social-btn:not(.mnt-social-disabled):hover {
@@ -455,13 +455,6 @@
   .mnt-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
-  }
-}
-
-@media (max-width: 767px) {
-  .mnt-card {
-    opacity: 1 !important;
-    visibility: visible !important;
   }
 }
 

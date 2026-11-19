@@ -8,7 +8,7 @@ import MagazineCover from './MagazineCover'
 import MagazineEditorial from './MagazineEditorial'
 import { YearReviewLeft, YearReviewRight } from './MagazineYearReview'
 import { eventPages } from './EventSpread'
-import { MAGAZINE_PLAN } from './magazinePlan'
+import { MAGAZINE_PLAN } from './magazinePlanData.js'
 
 const MagazineBook = forwardRef(function MagazineBook(
   {

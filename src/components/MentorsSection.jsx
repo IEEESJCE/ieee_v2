@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Mail, Linkedin, GraduationCap } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "../lib/motion";
 import "../styles/mentors.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -21,7 +22,7 @@ const MENTORS = [
     type: "RAS & AESS Advisor",
     src: "/photos/advisors/Sudarshan PK.jpeg",
     name: "Dr. Sudarshan P K",
-    linkedin: "https://www.linkedin.com/in/sudarshan-patil-kulkarni-86178447/",
+    linkedin: "https://www.linkedin.com/in/sudarshan-patilkulkarni-86178447/",
     gmail: "sudarshan_pk@sjce.ac.in",
     accent: "#3B82F6",
   },
@@ -30,7 +31,7 @@ const MENTORS = [
     type: "EDS Advisor",
     src: "/photos/advisors/SB Rudraswamy.jpg",
     name: "Dr. S B Rudraswamy",
-    linkedin: "https://www.linkedin.com/in/rudraswamy-s-b-291aaa350/",
+    linkedin: "",
     gmail: "rudra.swamy@gmail.com",
     accent: "#8B5CF6",
   },
@@ -63,17 +64,22 @@ const MENTORS = [
   },
 ];
 
+const MENTOR_DIMENSIONS = {
+  "/photos/advisors/MG Veena.jpg": [800, 759],
+  "/photos/advisors/Sudarshan PK.jpeg": [800, 759],
+  "/photos/advisors/SB Rudraswamy.jpg": [800, 759],
+  "/photos/advisors/Supreetha M.jpg": [800, 759],
+  "/photos/advisors/Dr. SHASHIDHAR R.jpg": [315, 315],
+  "/photos/advisors/anitha_prasad.jpg": [585, 576],
+};
+
 export default function MentorsSection() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // On mobile viewports, show mentors immediately without waiting for ScrollTrigger
-      if (window.innerWidth <= 767) {
-        gsap.set(".mnt-header > *, .mnt-card", { opacity: 1, y: 0 });
-        return;
-      }
+    if (prefersReducedMotion()) return undefined;
 
+    const ctx = gsap.context(() => {
       gsap.fromTo(
         ".mnt-header > *",
         { y: 40, opacity: 0 },
@@ -119,7 +125,7 @@ export default function MentorsSection() {
           <GraduationCap size={22} className="mnt-header-icon" />
           <h2 className="mnt-title">Our Mentors</h2>
           <p className="mnt-subtitle">
-            The faculty advisors guiding IEEE-SJCE — hover a card to connect.
+            The faculty advisors guiding IEEE SJCE — hover a card to connect.
           </p>
         </div>
 
@@ -138,7 +144,10 @@ export default function MentorsSection() {
                     <img
                       src={mentor.src}
                       alt={mentor.name}
+                      width={MENTOR_DIMENSIONS[mentor.src]?.[0]}
+                      height={MENTOR_DIMENSIONS[mentor.src]?.[1]}
                       loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                         e.currentTarget.style.display = "none";
                         e.currentTarget.parentElement.classList.add(

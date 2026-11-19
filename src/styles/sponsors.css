@@ -7,7 +7,7 @@
   width: 100%;
   background: var(--bg-surface);
   border-top: var(--border);
-  padding: 48px 0 36px;
+  padding: 64px 0 28px;
   overflow: hidden;
 }
 
@@ -143,7 +143,7 @@
 
 @media (max-width: 767px) {
   .spn-section {
-    padding: 32px 0 24px;
+    padding: 44px 0 20px;
   }
 
   .spn-inner {

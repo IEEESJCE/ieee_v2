@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Award, Globe, Trophy, Medal, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "../lib/motion";
 import "../styles/achievements.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -83,6 +84,8 @@ export default function AchievementsSection() {
   };
 
   useEffect(() => {
+    if (prefersReducedMotion()) return undefined;
+
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".ach-hero-block > *",
@@ -166,9 +169,10 @@ export default function AchievementsSection() {
             </div>
             <div className="ach-orb">
               <iframe
-                title="Achievement animation"
+                title="IEEE SJCE Achievements and Hall of Fame visual animation"
                 className="ach-orb-lottie"
                 src="https://lottie.host/?file=f399cd9d-eb80-432b-b0da-04e11035a8e4/RKEVGpvACW.json"
+                loading="lazy"
               />
             </div>
           </div>

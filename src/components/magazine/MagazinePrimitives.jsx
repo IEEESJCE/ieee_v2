@@ -46,7 +46,10 @@ export function PageHeader({ section = 'The Chronicle', className = '' }) {
         <img
           src="/logo.png"
           alt=""
+          width={16}
+          height={16}
           loading="lazy"
+          decoding="async"
           className="h-4 w-4 shrink-0 rounded-full border border-[var(--mag-ink)] bg-white object-contain"
         />
         <span className="mag-mono truncate text-[6.5px] font-bold uppercase tracking-[0.18em]">

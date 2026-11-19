@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import gsap from 'gsap'
+import { prefersReducedMotion } from '../lib/motion'
 import '../styles/intro-animation.css'
 
 /* ═══════════════════════════════════════════════
-   IEEE-SJCE — FUTURISTIC INTRO ANIMATION
+   IEEE SJCE — FUTURISTIC INTRO ANIMATION
    5-Phase Cinematic System Power-On Sequence
    Total duration: ~5.5 seconds
    ═══════════════════════════════════════════════ */
@@ -74,6 +75,20 @@ export default function EntryPage() {
   const pcbBgRef = useRef(null)
 
   useEffect(() => {
+    if (prefersReducedMotion()) {
+      navigate('/home', { replace: true })
+      return undefined
+    }
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault()
+        navigate('/home')
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+
+    const ambientTweens = []
     const tl = gsap.timeline({
       onComplete: () => {
         navigate('/home')
@@ -103,12 +118,12 @@ export default function EntryPage() {
       }, 0)
 
       particles.forEach((p) => {
-        gsap.to(p, {
+        ambientTweens.push(gsap.to(p, {
           x: `+=${(Math.random() - 0.5) * 40}`,
           y: `+=${(Math.random() - 0.5) * 30}`,
           duration: 3 + Math.random() * 2,
           repeat: -1, yoyo: true, ease: 'sine.inOut'
-        })
+        }))
       })
     }
 
@@ -244,11 +259,11 @@ export default function EntryPage() {
       }, 3.8)
 
       hudRings.forEach((ring, i) => {
-        gsap.to(ring, {
+        ambientTweens.push(gsap.to(ring, {
           rotation: i % 2 === 0 ? 360 : -360,
           duration: 20 + i * 5, repeat: -1, ease: 'none',
           transformOrigin: 'center center'
-        })
+        }))
       })
     }
 
@@ -287,11 +302,24 @@ export default function EntryPage() {
       opacity: 0, duration: 0.7, ease: 'power2.inOut'
     }, 4.9)
 
-    return () => { tl.kill() }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      ambientTweens.forEach((tween) => tween.kill())
+      tl.kill()
+    }
   }, [navigate])
 
   return (
-    <div ref={overlayRef} className="intro-overlay">
+    <div
+      ref={overlayRef}
+      className="intro-overlay"
+      onClick={() => navigate('/home')}
+      role="button"
+      tabIndex={0}
+      aria-label="Skip intro animation and enter IEEE SJCE website"
+    >
+      <h1 className="sr-only">IEEE SJCE Student Branch</h1>
+      <span className="intro-skip-hint">Click or press Esc to enter</span>
       {/* Background PCB traces */}
       <div ref={pcbBgRef} className="intro-pcb-traces">
         <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
@@ -370,7 +398,16 @@ export default function EntryPage() {
         <div ref={logoBloomRef} className="intro-logo-bloom" />
 
         <div className="intro-logo-container">
-          <img ref={logoRef} src="/logo.png" alt="IEEE-SJCE" className="intro-logo" />
+          <img
+            ref={logoRef}
+            src="/logo.png"
+            alt="IEEE SJCE"
+            className="intro-logo"
+            width={140}
+            height={140}
+            loading="eager"
+            decoding="async"
+          />
         </div>
 
         <div ref={energyPulseRef} className="intro-energy-pulse" />
