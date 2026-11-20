@@ -240,23 +240,30 @@
   z-index: 2;
 }
 
+/* Tag and number sit on top of bright poster art, so both use a solid dark
+   chip with white text; the event accent shows as border and offset shadow. */
 .ms-poster-tag {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
+  line-height: 1.2;
   text-transform: none;
   padding: 5px 10px;
   border: 2px solid;
   border-radius: var(--radius);
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(4px);
+  background: rgba(2, 6, 23, 0.92);
+  color: #FFFFFF;
+  box-shadow: 2px 2px 0 0 var(--poster-accent, #2563EB);
 }
 
 .ms-poster-num {
   font-family: var(--font-display);
-  font-size: 22px;
-  color: rgba(255, 255, 255, 0.25);
+  font-size: 16px;
+  color: #FFFFFF;
   line-height: 1;
+  padding: 5px 8px;
+  border-radius: var(--radius);
+  background: rgba(2, 6, 23, 0.85);
 }
 
 .ms-poster-content {

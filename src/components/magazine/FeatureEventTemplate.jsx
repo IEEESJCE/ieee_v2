@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef } from 'react'
 import { ARCHIVE_PHOTOS } from '../../data/magazineEvents'
 import {
   BookPage,
@@ -14,7 +15,40 @@ import {
 
 const pad = (value) => String(value).padStart(2, '0')
 
+const FIT_MAX_PX = 9
+const FIT_MIN_PX = 5
+const FIT_STEP_PX = 0.25
+
+// The book scales with the viewport but the type is set in fixed px, so long
+// copy (description + highlights) can overflow the column and push the stat
+// strip under the footer. Shrink the box's font size until its content fits.
+function useFitText(ref, deps) {
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (!el) return undefined
+
+    const fit = () => {
+      if (!el.clientHeight) return // page hidden; refit when it is shown
+      let size = FIT_MAX_PX
+      el.style.fontSize = `${size}px`
+      while (el.scrollHeight > el.clientHeight + 1 && size > FIT_MIN_PX) {
+        size -= FIT_STEP_PX
+        el.style.fontSize = `${size}px`
+      }
+    }
+
+    fit()
+    const observer = new ResizeObserver(fit)
+    observer.observe(el)
+    return () => observer.disconnect()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps)
+}
+
 function FeatureLeftPage({ event, pageNumber }) {
+  const copyRef = useRef(null)
+  useFitText(copyRef, [event.description, event.highlights])
+
   return (
     <>
       <PageHeader section={event.category} />
@@ -52,7 +86,7 @@ function FeatureLeftPage({ event, pageNumber }) {
           </div>
         </div>
 
-        <div className="flex min-w-0 flex-1 flex-col">
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col">
           <div className="flex shrink-0 items-center justify-between gap-1.5">
             <EventTag>{event.category}</EventTag>
             <span className="mag-mono shrink-0 border border-[var(--mag-ink)] px-1.5 py-0.5 text-[6px] font-bold uppercase tracking-[0.12em]">
@@ -70,16 +104,23 @@ function FeatureLeftPage({ event, pageNumber }) {
 
           <Rule className="mt-1.5 w-12" />
 
-          <p className="mt-1.5 line-clamp-6 shrink-0 text-[9px] leading-[1.45] text-[var(--mag-ink-soft)]">
-            {event.description}
-          </p>
+          <div ref={copyRef} className="mt-1.5 min-h-0 flex-1 overflow-hidden" style={{ fontSize: FIT_MAX_PX }}>
+            <p className="text-[1em] leading-[1.45] text-[var(--mag-ink-soft)]">
+              {event.description}
+            </p>
 
-          <div className="mt-2 shrink-0">
-            <Kicker>Highlights</Kicker>
-            <HighlightList items={event.highlights} limit={3} className="mt-1" />
+            <div className="mt-2">
+              <Kicker>Highlights</Kicker>
+              <HighlightList
+                items={event.highlights}
+                limit={3}
+                className="mt-1"
+                itemClassName="text-[1em] leading-tight"
+              />
+            </div>
           </div>
 
-          <StatStrip stats={event.stats} className="mt-auto shrink-0 pt-2" />
+          <StatStrip stats={event.stats} className="shrink-0 pt-2" />
         </div>
       </div>
 

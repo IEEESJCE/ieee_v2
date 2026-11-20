@@ -734,13 +734,13 @@ export const MAGAZINE_EVENTS = [
     venue: "SJCE, Mysuru",
     poster: "/photos/events/robotics_16_2025.jpg",
     description:
-      'The four-day annual flagship robotics event introducing the innovative "Two-Bot Concept", where participants engineered dual distinct robot architectures and tackled advanced autonomous navigation arenas with hands-on mentoring.',
+      "A four-day flagship robotics event featuring hands-on builds that introduced participants to wireless robot control and autonomous navigation. From Bluetooth-controlled bots to IR-based and PID-controlled line followers, participants explored robotics through practical implementation.",
     recap:
-      "Four days of robotics building around the Two-Bot Concept, with teams designing distinct architectures and testing them in autonomous navigation arenas.",
+      "A four-day flagship robotics event featuring hands-on builds that introduced participants to wireless robot control and autonomous navigation. From Bluetooth-controlled bots to IR-based and PID-controlled line followers, participants explored robotics through practical implementation.",
     highlights: [
-      "Two-Bot Concept",
-      "Dual robot architectures",
-      "Autonomous navigation arenas",
+      "Bluetooth App-Controlled Bot: Built using an HC-05 Bluetooth module and MIT App Inventor for wireless control.",
+      "Dual-IR Line Follower: Uses two IR sensors positioned on either side of the front wheel to detect and follow a line.",
+      "PID Line Follower: Implements PID control for improved accuracy and smoother path tracking.",
     ],
     photos: [
       "/photos/standfor/robotics_workshop.jpeg",
@@ -751,7 +751,7 @@ export const MAGAZINE_EVENTS = [
       { label: "Format", value: "Flagship event" },
       { label: "Duration", value: "4 days" },
     ],
-    pullQuote: "Two bots, one bold idea.",
+    pullQuote: "From wireless app control to PID precision—building smart bots, step by step.",
   },
   {
     id: 'tech-tour-2025',

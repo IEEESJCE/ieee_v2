@@ -209,14 +209,14 @@ export function PhotoPlate({
   )
 }
 
-export function HighlightList({ items = [], limit = 3, className = '' }) {
+export function HighlightList({ items = [], limit = 3, className = '', itemClassName = 'text-[9px] leading-tight' }) {
   if (!items.length) return null
   return (
     <ul className={cx('space-y-0.5', className)}>
       {items.slice(0, limit).map((item) => (
         <li
           key={item}
-          className="flex items-start gap-1.5 text-[9px] leading-tight text-[var(--mag-ink-soft)]"
+          className={cx('flex items-start gap-1.5 text-[var(--mag-ink-soft)]', itemClassName)}
         >
           <span className="mt-1 h-1 w-1 shrink-0 bg-[var(--mag-blue)]" aria-hidden="true" />
           <span>{item}</span>

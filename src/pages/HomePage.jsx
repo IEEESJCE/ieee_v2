@@ -14,7 +14,6 @@ import BangaloreSection from '../components/BangaloreSection'
 import FlagshipSection from '../components/FlagshipSection'
 import PrayasSection from '../components/PrayasSection'
 import MentorsSection from '../components/MentorsSection'
-import SponsorSection from '../components/SponsorSection'
 import Footer from '../components/Footer'
 
 import '../styles/homepage.css'
@@ -109,12 +108,11 @@ export default function HomePage() {
         document.querySelector('.nb-flagship-wrapper'),
         document.querySelector('.nb-prayas-wrapper'),
         document.querySelector('.nb-mentors-wrapper'),
-        document.querySelector('.nb-sponsors-wrapper'),
       ].filter(Boolean)
 
       allPanels.forEach((panel, i) => {
-        // Mentors and sponsors scroll normally into the footer (no pin/shrink).
-        if (i >= allPanels.length - 2) return
+        // Mentors scroll normally into the footer (no pin/shrink).
+        if (i >= allPanels.length - 1) return
 
         const isLanding = panel.classList.contains('nb-section-landing')
         const innerPanel = isLanding ? panel.querySelector('.nb-section-inner') : panel.firstElementChild
@@ -299,12 +297,7 @@ export default function HomePage() {
         <MentorsSection />
       </div>
 
-      {/* ════════ PANEL 10: Sponsors ════════ */}
-      <div className="nb-sponsors-wrapper">
-        <SponsorSection />
-      </div>
-
-      {/* ════════ PANEL 11: Footer ════════ */}
+      {/* ════════ PANEL 10: Footer ════════ */}
       <Footer />
     </div>
   )

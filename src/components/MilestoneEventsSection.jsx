@@ -196,7 +196,7 @@ export default function MilestoneEventsSection() {
                       </div>
 
                       <div className="ms-poster-meta">
-                        <span className="ms-poster-tag" style={{ borderColor: event.accent, color: event.accent }}>
+                        <span className="ms-poster-tag" style={{ borderColor: event.accent }}>
                           {event.tag}
                         </span>
                         <span className="ms-poster-num">{String(index + 1).padStart(2, '0')}</span>

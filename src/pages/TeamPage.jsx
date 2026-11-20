@@ -693,7 +693,7 @@ const AEROSPACE_AND_ELECTRONIC_SYSTEMS_SOCIETY = [
     },
   },
   {
-    name: "Tejas S",
+    name: "Thejas S",
     post: "TECHNICAL COORDINATOR",
     type: "aerospace_and_electronic_systems_society",
     src: "/photos/members26-27/Thejas_S.jpg",

@@ -77,7 +77,7 @@ export default function Footer() {
       </div>
 
       <div className="ft-bottom">
-        <p>© 2026 IEEE-SJCE · Developed by the WBD Board at IEEE-SJCE</p>
+        <p>© 2026 IEEE-SJCE · Developed by the Web-Dev Board at IEEE-SJCE</p>
       </div>
     </footer>
   )

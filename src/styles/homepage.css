@@ -607,14 +607,6 @@
   background: var(--bg);
 }
 
-.nb-sponsors-wrapper {
-  position: relative;
-  width: 100%;
-  min-height: auto !important;
-  background: var(--bg-surface);
-  z-index: 100;
-}
-
 .nb-events-wrapper      { z-index: 20; }
 .nb-milestones-wrapper  { z-index: 30; background: var(--bg-surface); }
 .nb-achievements-wrapper { z-index: 40; background: var(--bg); }
@@ -623,7 +615,6 @@
 .nb-flagship-wrapper    { z-index: 70; background: var(--bg); }
 .nb-prayas-wrapper      { z-index: 80; background: var(--bg-surface); }
 .nb-mentors-wrapper     { z-index: 90; background: var(--bg); }
-.nb-sponsors-wrapper    { z-index: 100; background: var(--bg-surface); }
 
 
 
