@@ -401,8 +401,8 @@ export const MAGAZINE_EVENTS = [
       "Physical semiconductor design",
     ],
     photos: [
-      "/photos/standfor/robotics_workshop.jpeg",
-      "/photos/gallery/gall6.jpg",
+      "/photos/events/cadence_recap_1.jpg",
+      "/photos/events/cadence_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "EDS" },

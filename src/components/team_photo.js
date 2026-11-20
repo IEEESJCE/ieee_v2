@@ -163,6 +163,15 @@ export const current_team_photo = [
     "gmail": "deekshithr2204@gmail.com"
   },
   {
+    "id": 6,
+    "type": "signal_processing_society",
+    "src": "/photos/members25-26/Nischal G Nayaka.png",
+    "name": "Nischal G Nayaka",
+    "post": "VICE CHAIRPERSON",
+    "linkedin": "https://www.linkedin.com/in/nischal-g-nayaka-116408291/",
+    "gmail": ""
+  },
+  {
     "id": 7,
     "type": "signal_processing_society",
     "src": "/photos/members25-26/Rahul Murali.jpg",
@@ -472,7 +481,7 @@ export const current_team_photo = [
     type: 'web_development_board',
     src: '/photos/members25-26/Aditya shekhar.jpg',
     name: 'Aditya Shekhar',
-    post: 'CO-ORDINATOR',
+    post: 'CHAIRPERSON',
     linkedin: 'https://www.linkedin.com/in/aditya-shekhar-662a55311/',
     gmail: 'adityashekhar0009@gmail.com',
   },
@@ -481,7 +490,7 @@ export const current_team_photo = [
     "type": "web_development_board",
     "src": "/photos/members25-26/RajathRP.jpg",
     "name": "Rajath R Prasad",
-    "post": "CHAIRPERSON",
+    "post": "CO-ORDINATOR",
     "linkedin": "https://www.linkedin.com/in/rajath-r-prasad",
     "gmail": "rajath2010rrp@gmail.com"
   },

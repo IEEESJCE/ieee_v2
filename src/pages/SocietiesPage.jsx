@@ -28,14 +28,14 @@ const SOCIETIES = [
     events: [
       {
         title: "ORIENTATION DAY",
-        desc: "The premier annual induction event welcoming new members to IEEE-SJCE. Students meet the Execom, discover technical societies, connect with mentors and seniors, and embark on an enriching engineering journey.",
+        desc: "The premier annual induction event welcoming new members to IEEE-SJCE. Students meet the Executive Committee, discover technical societies, connect with mentors and seniors, and embark on an enriching engineering journey.",
       },
       {
-        title: "TECHTOUR (INDUSTRIAL VISIT)",
+        title: "TECH TOUR (INDUSTRIAL VISIT)",
         desc: "Educational industrial study visits to ISRO Telemetry, Tracking and Command Network (ISTRAC) and the Centre for Nanoscience and Engineering (CeNSE) at IISc Bengaluru, providing firsthand exposure to satellite mission telemetry, cleanroom semiconductor fabrication, and molecular characterization labs.",
       },
       {
-        title: "FUN-FINITY / FUNsane",
+        title: "FUNDAY",
         desc: "Signature freshers welcome and social gathering evenings dedicated to breaking away from routine, unwinding, and celebrating community spirit through interactive team challenges, icebreakers, music, and laughter.",
       },
       {
@@ -77,7 +77,7 @@ const SOCIETIES = [
     events: [
       {
         title: "SNAP CIRCUITS",
-        desc: "EDS's annual flagship hands-on electronics workshop conducted across multiple editions (2023, 2024, 2025, 2026). Freshers gain practical experience with breadboard connections, transistors as switches, logic gates, 7-segment displays, and capacitor circuits using Snap Circuits modular kits without requiring prior electronics knowledge.",
+        desc: "EDS's flagship hands-on electronics workshop, conducted every year from 2023 to 2026. Freshers gain practical experience with breadboard connections, transistors as switches, logic gates, 7-segment displays, and capacitor circuits using Snap Circuits modular kits without requiring prior electronics knowledge.",
       },
       {
         title: "SOLDERING & ETCHING WORKSHOP",
@@ -118,12 +118,12 @@ const SOCIETIES = [
         desc: "A prestigious flagship memorial lecture organized by IEEE WIE exploring the evolution, achievements, and future horizons of the Indian Space Programme and honoring women leaders in STEM.",
       },
       {
-        title: "TCL WORKSHOP: PRINCIPLES & APPLICATIONS",
+        title: "TCL WORKSHOP",
         desc: "An intensive hands-on session introducing Tool Command Language (TCL) fundamentals, syntax, loops, and file operations for Electronic Design Automation (EDA) scripting.",
       },
       {
         title: "PRAYAS",
-        desc: "Signature philanthropic and STEM outreach initiative ('Platform for Rendering Aid to Young Kids and Aiming to Spread Smiles') conducted across multiple school and hostel visits (Visits 4–8), delivering science modules, national flag tricolour awareness, menstrual health seminars, and physics/chemistry demonstrations to underprivileged children across Mysuru.",
+        desc: "Signature philanthropic and STEM outreach initiative ('Platform for Rendering Aids to Young minds And Spreading smiles') bringing learning to underprivileged children across Mysuru through regular visits to schools and hostels. Sessions include hands-on science modules, physics and chemistry demonstrations, menstrual health awareness and civic awareness on the national flag.",
       },
       {
         title: "AI EXPERT TALK AND IDEATHON",
@@ -139,7 +139,7 @@ const SOCIETIES = [
       },
       {
         title: "QUIZ QUAKE",
-        desc: "A four-round technical and aptitude quiz competition organized in collaboration with EDS and RAS, testing aptitude, logic, and engineering fundamentals for 1st- and 2nd-year students.",
+        desc: "A four-round technical and aptitude quiz competition organized in collaboration with EDS and RAS, testing aptitude, logic, and engineering fundamentals for 1st and 2nd-year students.",
       },
       {
         title: "WEB DEV BOOTCAMP",
@@ -157,15 +157,15 @@ const SOCIETIES = [
       "https://lottie.host/?file=2761ce9c-5f1d-49bd-9db8-b7b3bd572353/UrP5jahB6E.json",
     tagline: "Robotics, automation & intelligent systems.",
     about:
-      "IEEE-SJCE RAS aims to keep the students up to date on the latest automation technology. Robotics focuses on systems incorporating sensors and actuators that operate autonomously or semi-autonomously in cooperation with humans. Robotics research emphasises intelligence and adaptability to cope with unstructured environments. Automation research emphasises efficiency, quality, and reliability, focusing on systems that operate autonomously.The IEEE Robotics and Automation Society's objectives are scientific, literary, and educational in character. The Society strives for the advancement of the theory and practice of robotics and automation engineering, along with allied arts and sciences, and for the maintenance of high professional standards among its members.",
+      "IEEE-SJCE RAS aims to keep the students up to date on the latest automation technology. Robotics focuses on systems incorporating sensors and actuators that operate autonomously or semi-autonomously in cooperation with humans. Robotics research emphasises intelligence and adaptability to cope with unstructured environments. Automation research emphasises efficiency, quality, and reliability, focusing on systems that operate autonomously. The IEEE Robotics and Automation Society's objectives are scientific, literary, and educational in character. The Society works to advance both the theory and practice of robotics and automation engineering while upholding high professional standards among its members.",
     events: [
       {
         title: "IoT WORKSHOP SERIES",
-        desc: "Flagship multi-day workshop series (covering editions like IoT 3.0 and IoT 4.0) giving participants practical exposure to smart connected devices, MicroPython, sensor interfacing, MQTT/cloud protocols, RGB LED server booting, and NodeMCU/Raspberry Pi microcontrollers.",
+        desc: "Flagship multi-day workshop series (covering editions like IoT 3.0 and IoT 4.0) giving participants practical exposure to smart connected devices, MicroPython, sensor interfacing, MQTT/cloud protocols, and NodeMCU/Raspberry Pi microcontrollers.",
       },
       {
         title: "TECHKSHETRA",
-        desc: "Premier inter-college project exposition organized in collaboration with IEEE Mysuru Subsection and SPS. Features Category I (1st/2nd years) and Category II (3rd/4th years) competitive showcases across AI, robotics, IoT, drones, and integrated hardware-software systems.",
+        desc: "Premier inter-college project exposition organized in collaboration with IEEE Mysuru Subsection and the IEEE-SJCE Signal Processing Society (SPS) chapter. Features Category I (1st/2nd years) and Category II (3rd/4th years) competitive showcases across AI, robotics, IoT, drones, and integrated hardware-software systems.",
       },
       {
         title: "ROBOTICS WORKSHOP",
@@ -1393,7 +1393,18 @@ export default function SocietiesPage() {
                       <span className="soc-event-idx">
                         {evt.num || String(i + 1).padStart(2, "0")}
                       </span>
-                      <h4>{evt.title}</h4>
+                      <h4>
+                        {/* Keep "IoT" mixed-case despite the uppercase heading style */}
+                        {evt.title.split(/(IoT)/).map((part, j) =>
+                          part === "IoT" ? (
+                            <span key={j} style={{ textTransform: "none" }}>
+                              IoT
+                            </span>
+                          ) : (
+                            part
+                          )
+                        )}
+                      </h4>
                       <p>{evt.desc}</p>
                     </div>
                   ))}

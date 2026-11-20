@@ -262,7 +262,7 @@ const MEMBERSHIP_DEVELOPMENT_COMMITTEE = [
   },
   {
     name: "Adithi BS",
-    post: "SBMDC Ambassador",
+    post: "Ambassador",
     type: "membership_development_committee",
     src: "/photos/members26-27/Adithi_BS.jpg",
     linkedin: "https://www.linkedin.com/in/adithi-bs-78270039a",

@@ -16,8 +16,8 @@ const TABS = [
       <>
         <p>An effort by our team to provide underprivileged students with a positive learning environment that helps them unleash their potential.</p>
         <ul>
-          <li>Frequent visits to Divya Deepa, Vijaya Educational Institution, and Pejawara Hostel.</li>
-          <li>Helping kids with functional English and extracurricular activities.</li>
+          <li>Regular visits to government schools and orphanages across Mysuru.</li>
+          <li>Engaging kids through hands-on, STEM-based learning activities.</li>
         </ul>
       </>
     ),
@@ -109,8 +109,9 @@ export default function PrayasSection() {
           <h2 className="pry-title">Prayas</h2>
           <p className="pry-lead">
             PRAYAS is an outreach program by IEEE-SJCE WIE that provides equitable education
-            outcomes to underprivileged children. Volunteers visit an orphanage every week to
-            interact with students and support their academic activities.
+            outcomes to underprivileged children. Volunteers visit educational institutions and
+            teach students from the underprivileged sections of society frequently, in support of
+            their academic activities.
           </p>
           <div className="pry-pills">
             <span><MapPin size={14} /> Divya Deepa</span>

@@ -22,10 +22,10 @@ import '../styles/joinus.css'
 const PERKS = [
   { icon: Globe, title: 'Global Network', text: 'Connect with 400,000+ IEEE members, professionals and researchers across 160+ countries.', accent: '#00E5FF' },
   { icon: Wrench, title: 'Hands-on Workshops', text: 'Build real projects in robotics, IoT, signal processing, embedded systems and more.', accent: '#3B82F6' },
-  { icon: Trophy, title: 'Competitions', text: 'Take part in hackathons, quizzes and flagship events — and compete at the national level.', accent: '#EC4899' },
+  { icon: Trophy, title: 'Competitions', text: 'Take part in hackathons, quizzes, flagship events and national-level competitions.', accent: '#EC4899' },
   { icon: BookOpen, title: 'IEEE Xplore & Resources', text: 'Access research papers, magazines, standards and member-only learning resources.', accent: '#00F5D4' },
   { icon: Users, title: 'Leadership', text: 'Lead societies, organise events and grow as a team player and communicator.', accent: '#60A5FA' },
-  { icon: Briefcase, title: 'Career Edge', text: 'Mentorship, industry talks, internships and a résumé that stands out.', accent: '#F59E0B' },
+  { icon: Briefcase, title: 'Career Edge', text: 'Gain mentorship, industry exposure and internship opportunities that strengthen your professional profile.', accent: '#F59E0B' },
 ]
 
 const SOCIETIES = ['Student Branch', 'EDS', 'RAS', 'SPS', 'AESS', 'WIE', 'CS']
