@@ -24,9 +24,27 @@
  * @property {string} [takeaway]
  */
 
-import { ARCHIVE_PHOTOS, MAGAZINE_META, MAGAZINE_SUMMARY } from './magazineMeta.js'
+export const MAGAZINE_META = {
+  title: 'THE IEEE CHRONICLE',
+  edition: 'IEEE-SJCE',
+  tagline: 'WHERE IDEAS BECOME STORIES.',
+  volume: 'VOL. 01',
+  issue: 'ISSUE 01',
+  year: 'ACADEMIC YEAR 2025–26',
+  span: 'A COLLECTION OF IEEE-SJCE EVENTS · 2023–2026',
+  website: 'ieeesjce.com',
+}
 
-export { ARCHIVE_PHOTOS, MAGAZINE_META, MAGAZINE_SUMMARY }
+export const ARCHIVE_PHOTOS = [
+  { src: '/photos/gallery/gall11.jpg', alt: 'IEEE-SJCE flagship gathering in the auditorium' },
+  { src: '/photos/gallery/gall2.jpg', alt: 'IEEE-SJCE technical workshop in progress' },
+  { src: '/photos/gallery/gall3.jpg', alt: 'IEEE-SJCE student community group photograph' },
+  { src: '/photos/gallery/gall4.jpg', alt: 'IEEE-SJCE prototyping and hardware session' },
+  { src: '/photos/gallery/gall5.jpg', alt: 'IEEE-SJCE student leaders and members' },
+  { src: '/photos/gallery/gall6.jpg', alt: 'IEEE-SJCE event evening and celebration' },
+  { src: '/photos/gallery/gall8.jpg', alt: 'IEEE-SJCE interactive discussion and mentorship' },
+  { src: '/photos/gallery/gall9.jpg', alt: 'IEEE-SJCE project showcase and demonstrations' },
+]
 
 const archiveSet = (start) =>
   [0, 1, 2].map((offset) => ARCHIVE_PHOTOS[(start + offset) % ARCHIVE_PHOTOS.length].src)
@@ -48,7 +66,7 @@ export const MAGAZINE_EVENTS = [
     wing: "EDS",
     date: "5–6 November 2026",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/anap_circuits_2026.webp",
+    poster: "/photos/events/anap_circuits_2026.jpeg",
     description:
       "The Electron Devices Society conducted Snap Circuits, giving freshers a hands-on experience with electronic components, circuit prototyping, and basic hardware debugging.",
     recap:
@@ -59,8 +77,8 @@ export const MAGAZINE_EVENTS = [
       "Hardware debugging basics",
     ],
     photos: [
-      "/photos/events/snap_circuits_2025_recap_1.webp",
-      "/photos/events/snap_circuits_2025_recap_2.webp",
+      "/photos/events/snap_circuits_2025_recap_1.jpg",
+      "/photos/events/snap_circuits_2025_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "EDS" },
@@ -78,7 +96,7 @@ export const MAGAZINE_EVENTS = [
     wing: "SPS · RAS · AESS",
     date: "4–5 November 2026",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/matlab.webp",
+    poster: "/photos/events/matlab.png",
     description:
       "A joint initiative organized collaboratively by SPS, RAS, and AESS in association with the ECE Department. An intensive two-day hands-on workshop covering computational mathematics, matrix manipulation, algorithm development, and practical signal processing and control systems workflows.",
     recap:
@@ -89,8 +107,8 @@ export const MAGAZINE_EVENTS = [
       "Signal processing & control workflows",
     ],
     photos: [
-      "/photos/events/matlab_workshop_recap_1.webp",
-      "/photos/events/matlab_workshop_recap_2.webp",
+      "/photos/events/matlab_workshop_recap_1.jpg",
+      "/photos/events/matlab_workshop_recap_2.jpg",
     ],
     stats: [
       { label: "Wings", value: "SPS · RAS · AESS" },
@@ -108,7 +126,7 @@ export const MAGAZINE_EVENTS = [
     wing: "IEEE Day",
     date: "16 October 2026",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/tech_detective.webp",
+    poster: "/photos/events/tech_detective.jpeg",
     description:
       "Celebrated as part of IEEE Day, an exhilarating technical deduction contest challenging participants to crack cryptic hardware puzzles, decipher signals, and solve engineering mysteries.",
     recap:
@@ -119,8 +137,8 @@ export const MAGAZINE_EVENTS = [
       "Engineering mystery-solving",
     ],
     photos: [
-      "/photos/gallery/gall8.webp",
-      "/photos/gallery/gall2.webp",
+      "/photos/gallery/gall8.jpg",
+      "/photos/gallery/gall2.jpg",
     ],
     stats: [
       { label: "Wing", value: "IEEE Day" },
@@ -138,7 +156,7 @@ export const MAGAZINE_EVENTS = [
     wing: "IEEE-SJCE",
     date: "8–9 October 2026",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/radio.webp",
+    poster: "/photos/events/radio.jpeg",
     description:
       "A two-day immersive exploration into radio frequency engineering, wireless telemetry, antenna design, and radar applications with live demonstrations and simulation sessions.",
     recap:
@@ -149,8 +167,8 @@ export const MAGAZINE_EVENTS = [
       "Live demonstrations & simulations",
     ],
     photos: [
-      "/photos/events/radioverse_recap_1.webp",
-      "/photos/events/radioverse_recap_2.webp",
+      "/photos/events/radioverse_recap_1.jpg",
+      "/photos/events/radioverse_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "IEEE-SJCE" },
@@ -168,7 +186,7 @@ export const MAGAZINE_EVENTS = [
     wing: "IEEE-SJCE",
     date: "26 September 2026",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/orientation_day_2026.webp",
+    poster: "/photos/events/orientation_day_2026.jpg",
     description:
       "The premier induction welcoming new engineering students to IEEE-SJCE. Freshers explored our societies, interacted with seniors and Execom members, and discovered the technical, leadership, and professional opportunities ahead.",
     recap:
@@ -179,8 +197,8 @@ export const MAGAZINE_EVENTS = [
       "Technical and leadership pathways",
     ],
     photos: [
-      "/photos/events/orientation_day_recap_1.webp",
-      "/photos/gallery/gall3.webp",
+      "/photos/events/orientation_day_recap_1.jpg",
+      "/photos/gallery/gall3.jpg",
     ],
     stats: [
       { label: "Wing", value: "IEEE-SJCE" },
@@ -198,7 +216,7 @@ export const MAGAZINE_EVENTS = [
     wing: "IEEE-SJCE",
     date: "25 September 2026",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/funsane_2026.webp",
+    poster: "/photos/events/funsane_2026.jpg",
     description:
       "An unforgettable evening dedicated to breaking away from routine, unwinding, and celebrating community spirit. Students immersed themselves in energetic team challenges, interactive games, lively music, and memorable moments filled with laughter and camaraderie.",
     recap:
@@ -209,8 +227,8 @@ export const MAGAZINE_EVENTS = [
       "Community bonding",
     ],
     photos: [
-      "/photos/events/funsane_recap_1.webp",
-      "/photos/events/funsane_recap_2.webp",
+      "/photos/events/funsane_recap_1.jpg",
+      "/photos/events/funsane_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "IEEE-SJCE" },
@@ -228,7 +246,7 @@ export const MAGAZINE_EVENTS = [
     wing: "AESS",
     date: "23 July 2026",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/aess inaugaration.webp",
+    poster: "/photos/events/aess inaugaration.jpeg",
     description:
       "Formal inauguration of the IEEE AESS student chapter featuring chief guest Dr. Braham Himed (President, IEEE AESS) and Sri Puneeth Kumar Mishra (ISRO), accompanied by an insightful technical session on radar systems and satellite technology.",
     recap:
@@ -239,8 +257,8 @@ export const MAGAZINE_EVENTS = [
       "Radar & satellite technology talk",
     ],
     photos: [
-      "/photos/gallery/gall3.webp",
-      "/photos/gallery/gall5.webp",
+      "/photos/gallery/gall3.jpg",
+      "/photos/gallery/gall5.jpg",
     ],
     stats: [
       { label: "Wing", value: "AESS" },
@@ -258,7 +276,7 @@ export const MAGAZINE_EVENTS = [
     wing: "SPS",
     date: "4 July 2026",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/the_wave_2026.webp",
+    poster: "/photos/events/the_wave_2026.jpg",
     description:
       "Lecture series session with Dr. Radha Kodali (Univ. of Tennessee & Le Bonheur Children's Hospital, USA) exploring speech signal biomarkers, AI in neurological diagnosis, pediatric epilepsy, and clinical brain data analysis.",
     recap:
@@ -269,8 +287,8 @@ export const MAGAZINE_EVENTS = [
       "Clinical brain data analysis",
     ],
     photos: [
-      "/photos/gallery/gall8.webp",
-      "/photos/gallery/gall11.webp",
+      "/photos/gallery/gall8.jpg",
+      "/photos/gallery/gall11.jpg",
     ],
     stats: [
       { label: "Wing", value: "SPS" },
@@ -288,7 +306,7 @@ export const MAGAZINE_EVENTS = [
     wing: "IEEE-SJCE",
     date: "3 July 2026",
     venue: "CeNSE, IISc Bengaluru",
-    poster: "/photos/events/techtour_2026.webp",
+    poster: "/photos/events/techtour_2026.jpg",
     description:
       "An educational industrial visit to the Centre for Nanoscience and Engineering (CeNSE), IISc Bengaluru. Students explored cutting-edge semiconductor fabrication facilities, advanced molecular laboratories, and networked with leading nanotechnology researchers.",
     recap:
@@ -299,7 +317,7 @@ export const MAGAZINE_EVENTS = [
       "Nanotechnology research",
     ],
     photos: [
-      "/photos/gallery/gall9.webp",
+      "/photos/gallery/gall9.jpg",
       "/photos/standfor/seminars.jpeg",
     ],
     stats: [
@@ -318,7 +336,7 @@ export const MAGAZINE_EVENTS = [
     wing: "WIE",
     date: "15 June 2026",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/kalpana_chawla_2026.webp",
+    poster: "/photos/events/kalpana_chawla_2026.jpeg",
     description:
       "A prestigious memorial lecture organized by IEEE WIE exploring the evolution, achievements, and future horizons of the Indian Space Programme and its transformative role in national progress.",
     recap:
@@ -345,7 +363,7 @@ export const MAGAZINE_EVENTS = [
     wing: "SPS & RAS",
     date: "4 June 2026",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/motion_planning.webp",
+    poster: "/photos/events/motion_planning.jpeg",
     description:
       "Joint technical session by SPS and RAS exploring search-based, sampling-based, and visual motion planning algorithms for mobile robotics and autonomous navigation using ROS 2.",
     recap:
@@ -372,7 +390,7 @@ export const MAGAZINE_EVENTS = [
     wing: "EDS",
     date: "28 May 2026",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/cadence.webp",
+    poster: "/photos/events/cadence.jpeg",
     description:
       "An intensive hands-on workshop by the Electron Devices Society delving into industry-standard Cadence EDA tools, schematic entry, layout verification, and physical semiconductor design.",
     recap:
@@ -383,8 +401,8 @@ export const MAGAZINE_EVENTS = [
       "Physical semiconductor design",
     ],
     photos: [
-      "/photos/standfor/robotics_workshop.jpeg",
-      "/photos/gallery/gall6.webp",
+      "/photos/events/cadence_recap_1.jpg",
+      "/photos/events/cadence_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "EDS" },
@@ -402,7 +420,7 @@ export const MAGAZINE_EVENTS = [
     wing: "SPS",
     date: "27–29 March 2026",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/ml_workshop.webp",
+    poster: "/photos/events/ml_workshop.jpeg",
     description:
       "A 3-day flagship workshop by the Signal Processing Society covering machine learning fundamentals, modeling in Python, and building local edge-AI inference on ESP32 & MPU6050.",
     recap:
@@ -414,7 +432,7 @@ export const MAGAZINE_EVENTS = [
     ],
     photos: [
       "/photos/standfor/seminars.jpeg",
-      "/photos/gallery/gall2.webp",
+      "/photos/gallery/gall2.jpg",
     ],
     stats: [
       { label: "Wing", value: "SPS" },
@@ -432,7 +450,7 @@ export const MAGAZINE_EVENTS = [
     wing: "WIE",
     date: "14 March 2026",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/tcl.webp",
+    poster: "/photos/events/tcl.jpeg",
     description:
       "Conducted by Women in Engineering, focusing on Tool Command Language (TCL) scripting for automating digital design flows, synthesis constraints, and simulation regression suites.",
     recap:
@@ -443,8 +461,8 @@ export const MAGAZINE_EVENTS = [
       "Simulation regression suites",
     ],
     photos: [
-      "/photos/gallery/gall2.webp",
-      "/photos/gallery/gall8.webp",
+      "/photos/gallery/gall2.jpg",
+      "/photos/gallery/gall8.jpg",
     ],
     stats: [
       { label: "Wing", value: "WIE" },
@@ -462,7 +480,7 @@ export const MAGAZINE_EVENTS = [
     wing: "WIE",
     date: "25 December 2025",
     venue: "Outreach schools, Mysuru",
-    poster: "/photos/events/prayas.webp",
+    poster: "/photos/events/prayas.jpeg",
     description:
       "IEEE WIE's flagship humanitarian outreach initiative, visiting educational institutions to foster curiosity in science and engineering through joyful, hands-on learning sessions.",
     recap:
@@ -473,8 +491,8 @@ export const MAGAZINE_EVENTS = [
       "Curiosity through hands-on learning",
     ],
     photos: [
-      "/photos/standfor/activities.webp",
-      "/photos/gallery/gall11.webp",
+      "/photos/standfor/activities.jpeg",
+      "/photos/gallery/gall11.jpg",
     ],
     stats: [
       { label: "Wing", value: "WIE" },
@@ -492,7 +510,7 @@ export const MAGAZINE_EVENTS = [
     wing: "EDS",
     date: "19–21 December 2025",
     venue: "IS Seminar Hall, First Floor",
-    poster: "/photos/events/soldering.webp",
+    poster: "/photos/events/soldering.jpeg",
     description:
       "A three-day flagship workshop from the Electron Devices Society, giving students hands-on experience of soldering and etching through theoretical and practical sessions.",
     recap:
@@ -504,7 +522,7 @@ export const MAGAZINE_EVENTS = [
     ],
     photos: [
       "/photos/standfor/robotics_workshop.jpeg",
-      "/photos/gallery/gall4.webp",
+      "/photos/gallery/gall4.jpg",
     ],
     stats: [
       { label: "Wing", value: "EDS" },
@@ -522,7 +540,7 @@ export const MAGAZINE_EVENTS = [
     wing: "SPS",
     date: "8 December 2025",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/sps_inauguration_2025.webp",
+    poster: "/photos/events/sps_inauguration_2025.jpg",
     description:
       'Formal inauguration welcoming the newly introduced Signal Processing Society (SPS) wing to IEEE-SJCE. Chief Guest Dr. Jayasudha BSK (Vice Chairperson, IEEE SPS Bangalore Section & Senior DSP Engineer, Harman) delivered an insightful technical talk on "Deep Dive into Audio Signal Processing" and real-world automotive DSP applications.',
     recap:
@@ -533,8 +551,8 @@ export const MAGAZINE_EVENTS = [
       "Automotive DSP applications",
     ],
     photos: [
-      "/photos/gallery/gall8.webp",
-      "/photos/gallery/gall2.webp",
+      "/photos/gallery/gall8.jpg",
+      "/photos/gallery/gall2.jpg",
     ],
     stats: [
       { label: "Wing", value: "SPS" },
@@ -552,7 +570,7 @@ export const MAGAZINE_EVENTS = [
     wing: "SPS",
     date: "6 December 2025",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/wavelab_2025.webp",
+    poster: "/photos/events/wavelab_2025.jpg",
     description:
       "The debut event of the SPS Wing. Students used MATLAB to explore the basics of signal processing with an industry-standard tool, and received a MATLAB license for future work.",
     recap:
@@ -579,7 +597,7 @@ export const MAGAZINE_EVENTS = [
     wing: "RAS",
     date: "21–23 November 2025",
     venue: "IS Seminar Hall, First Floor",
-    poster: "/photos/events/iot_4_0_2025.webp",
+    poster: "/photos/events/iot_4_0_2025.jpg",
     description:
       "The Robotics and Automation Society conducted the IoT 4.0 workshop, giving participants hands-on exposure to building smart, connected systems with embedded platforms.",
     recap:
@@ -606,7 +624,7 @@ export const MAGAZINE_EVENTS = [
     wing: "EDS",
     date: "6–7 November 2025",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/snap_circuits_2025.webp",
+    poster: "/photos/events/snap_circuits_2025.jpg",
     description:
       "The Electron Devices Society conducted Snap Circuits, giving freshers a hands-on experience of electronic components while building curiosity about circuits and how they work.",
     recap:
@@ -633,7 +651,7 @@ export const MAGAZINE_EVENTS = [
     wing: "IEEE-SJCE",
     date: "25 October 2025",
     venue: "IS Seminar Hall, Golden Jubilee Bhavan",
-    poster: "/photos/events/circuitrix_2025.webp",
+    poster: "/photos/events/circuitrix_2025.jpg",
     description:
       "A hands-on session designed to help students explore, create and simulate both analog and digital circuits using powerful circuit simulation tools.",
     recap:
@@ -660,7 +678,7 @@ export const MAGAZINE_EVENTS = [
     wing: "IEEE-SJCE",
     date: "13 October 2025",
     venue: "NPS-001, SJCE",
-    poster: "/photos/events/electroclues_2025.webp",
+    poster: "/photos/events/electroclues_2025.jpg",
     description:
       'Organized under the IEEE Illuminate series for IEEE Day 2025, Electroclues featured "Wire and Win" rapid-fire circuit debugging with a 90-second buzzer round, followed by deductive electronics riddles and technical problem-solving challenges at NPS-001.',
     recap:
@@ -687,7 +705,7 @@ export const MAGAZINE_EVENTS = [
     wing: "IEEE-SJCE",
     date: "9 October 2025",
     venue: "IS Seminar Hall, SJCE",
-    poster: "/photos/events/pre_conference_iceteg_2025.webp",
+    poster: "/photos/events/pre_conference_iceteg_2025.jpg",
     description:
       "Pre-conference workshop for ICETEG 2025 in association with MathWorks and Hub Energy. Explored AI and digital twins in energy systems, battery life prediction, and automated VLSI design with Dr. Puneeth S.B. and Anand Mukhopadhyay at IS Seminar Hall.",
     recap:
@@ -714,26 +732,26 @@ export const MAGAZINE_EVENTS = [
     wing: "RAS · EDS",
     date: "26–29 June 2025",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/robotics_16_2025.webp",
+    poster: "/photos/events/robotics_16_2025.jpg",
     description:
-      'The four-day annual flagship robotics event introducing the innovative "Two-Bot Concept", where participants engineered dual distinct robot architectures and tackled advanced autonomous navigation arenas with hands-on mentoring.',
+      "A four-day flagship robotics event featuring hands-on builds that introduced participants to wireless robot control and autonomous navigation. From Bluetooth-controlled bots to IR-based and PID-controlled line followers, participants explored robotics through practical implementation.",
     recap:
-      "Four days of robotics building around the Two-Bot Concept, with teams designing distinct architectures and testing them in autonomous navigation arenas.",
+      "A four-day flagship robotics event featuring hands-on builds that introduced participants to wireless robot control and autonomous navigation. From Bluetooth-controlled bots to IR-based and PID-controlled line followers, participants explored robotics through practical implementation.",
     highlights: [
-      "Two-Bot Concept",
-      "Dual robot architectures",
-      "Autonomous navigation arenas",
+      "Bluetooth App-Controlled Bot: Built using an HC-05 Bluetooth module and MIT App Inventor for wireless control.",
+      "Dual-IR Line Follower: Uses two IR sensors positioned on either side of the front wheel to detect and follow a line.",
+      "PID Line Follower: Implements PID control for improved accuracy and smoother path tracking.",
     ],
     photos: [
       "/photos/standfor/robotics_workshop.jpeg",
-      "/photos/gallery/gall4.webp",
+      "/photos/gallery/gall4.jpg",
     ],
     stats: [
       { label: "Wings", value: "RAS · EDS" },
       { label: "Format", value: "Flagship event" },
       { label: "Duration", value: "4 days" },
     ],
-    pullQuote: "Two bots, one bold idea.",
+    pullQuote: "From wireless app control to PID precision—building smart bots, step by step.",
   },
   {
     id: 'tech-tour-2025',
@@ -744,7 +762,7 @@ export const MAGAZINE_EVENTS = [
     wing: "IEEE-SJCE",
     date: "20 June 2025",
     venue: "ISRO ISTRAC & CeNSE IISc, Bengaluru",
-    poster: "/photos/events/techtour_2026.webp",
+    poster: "/photos/events/techtour_2026.jpg",
     description:
       "An exclusive technical tour for IEEE-SJCE members visiting ISRO’s Telemetry, Tracking and Command Network (ISTRAC) and the Centre for Nano Science and Engineering (CeNSE) at IISc Bangalore, gaining firsthand exposure to mission control and semiconductor cleanrooms.",
     recap:
@@ -771,7 +789,7 @@ export const MAGAZINE_EVENTS = [
     wing: "WIE",
     date: "10–11 May 2025",
     venue: "Online · Google Meet",
-    poster: "/photos/events/sql_bootcamp_2025.webp",
+    poster: "/photos/events/sql_bootcamp_2025.jpg",
     description:
       "The Women in Engineering wing conducted an intensive two-day online SQL Bootcamp on Google Meet. Students explored relational DBMS concepts, mastered queries from basic SELECT filters to multi-table joins and aggregation, and tackled interactive Slido quizzes and mini-projects.",
     recap:
@@ -798,7 +816,7 @@ export const MAGAZINE_EVENTS = [
     wing: "RAS",
     date: "3 May 2025",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/techkshetra_2025.webp",
+    poster: "/photos/events/techkshetra_2025.jpg",
     description:
       "State-level inter-college technical project exposition organized by RAS in association with IEEE Mysuru Subsection. Showcased hardware and software innovations across Category I (1st/2nd years) and Category II (3rd/4th years) spanning AI, robotics, IoT, and drones.",
     recap:
@@ -825,7 +843,7 @@ export const MAGAZINE_EVENTS = [
     wing: "WIE",
     date: "11 February 2025",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/ai_expert_talk_2025.webp",
+    poster: "/photos/events/ai_expert_talk_2025.png",
     description:
       "STRONG – Scientific Research for NextGen GirlGeeks was organised by the MCAA India Chapter, funded by the European Union, and supported by the MCAA-Mednight Project, IEEE Mysore Subsection and IEEE-SJCE. The event aimed to inspire young women to pursue careers in science and research.",
     recap:
@@ -852,7 +870,7 @@ export const MAGAZINE_EVENTS = [
     wing: "EDS",
     date: "10–12 January 2025",
     venue: "Seminar Hall, 1st Floor CMS Block",
-    poster: "/photos/events/soldering_etching_jan_2025-poster.webp",
+    poster: "/photos/events/soldering_etching_jan_2025.png",
     description:
       "The Electron Devices Society conducted the Soldering and Etching Workshop, a three-day flagship event giving students practical exposure to soldering and etching.",
     recap:
@@ -879,7 +897,7 @@ export const MAGAZINE_EVENTS = [
     wing: "RAS",
     date: "16 December 2024",
     venue: "CMS Seminar Hall, SJCE",
-    poster: "/photos/events/control_guidance_space_2024.webp",
+    poster: "/photos/events/control_guidance_space_2024.png",
     description:
       "Distinguished lecture by Dr. Ravikumar Lagisetty, Group Director of Mission Simulation Group at URSC (ISRO), exploring satellite orbit mechanics, control and guidance architectures, and Chandrayaan-3 and space docking mission case studies at CMS Seminar Hall.",
     recap:
@@ -906,7 +924,7 @@ export const MAGAZINE_EVENTS = [
     wing: "RAS",
     date: "29 November – 1 December 2024",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/iot_3_0_poster_2024.webp",
+    poster: "/photos/events/iot_3_0_poster_2024.png",
     description:
       "A three-day workshop covering IoT protocols and core theory before moving on to hands-on simulations with Raspberry Pi and NodeMCU.",
     recap:
@@ -933,7 +951,7 @@ export const MAGAZINE_EVENTS = [
     wing: "EDS",
     date: "13–14 November 2024",
     venue: "NPS-001 Polymer Science Block",
-    poster: "/photos/events/snap_circuits_2024.webp",
+    poster: "/photos/events/snap_circuits_2024.png",
     description:
       "Hands-on electronics workshop at NPS-001 Polymer Science Block. Participants explored breadboard fundamentals, transistors as switches, logic gates, 7-segment displays, capacitor charging/discharging, and photoelectric circuits using modular Snap Circuits kits.",
     recap:
@@ -960,7 +978,7 @@ export const MAGAZINE_EVENTS = [
     wing: "IEEE-SJCE",
     date: "24 October 2024",
     venue: "IS Seminar Hall, SJCE",
-    poster: "/photos/events/fun_finity_2024.webp",
+    poster: "/photos/events/fun_finity_2024.jpg",
     description:
       "A vibrant freshers welcome social gathering in IS Seminar Hall designed for newcomers to bond with Executive Committee members through icebreakers, team building games, and insights into technical initiatives.",
     recap:
@@ -987,7 +1005,7 @@ export const MAGAZINE_EVENTS = [
     wing: "EDS · RAS · WIE",
     date: "5 October 2024",
     venue: "IS Seminar Hall, SJCE",
-    poster: "/photos/events/spicelab_2024.webp",
+    poster: "/photos/events/spicelab_2024.jpg",
     description:
       "A hands-on circuit simulation workshop under the IEEE Illuminate series for IEEE Day 2024. Covered LTspice circuit design, simulation, and analysis across analog rectifiers and digital logic gates and adders in IS Seminar Hall.",
     recap:
@@ -1014,7 +1032,7 @@ export const MAGAZINE_EVENTS = [
     wing: "EDS · RAS · WIE",
     date: "10 August 2024",
     venue: "NPS-001, SJCE",
-    poster: "/photos/events/quiz_quake_2024.webp",
+    poster: "/photos/events/quiz_quake_2024.jpg",
     description:
       "A four-round technical and aptitude quiz competition for first- and second-year students organized jointly by EDS, RAS, and WIE. Featured aptitude challenges, riddles, logo identification, and engineering puzzles at NPS-001.",
     recap:
@@ -1025,8 +1043,8 @@ export const MAGAZINE_EVENTS = [
       "Engineering puzzles",
     ],
     photos: [
-      "/photos/gallery/gall5.webp",
-      "/photos/gallery/gall9.webp",
+      "/photos/gallery/gall5.jpg",
+      "/photos/gallery/gall9.jpg",
     ],
     stats: [
       { label: "Wings", value: "EDS · RAS · WIE" },
@@ -1044,7 +1062,7 @@ export const MAGAZINE_EVENTS = [
     wing: "IEEE-SJCE",
     date: "28 November – 4 December 2023",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/tuxedo_2023.webp",
+    poster: "/photos/events/tuxedo_2023.jpg",
     description:
       "IEEE-SJCE's odd-semester technical fest brought a week of workshops, contests and events, including Snap Circuits, Web Dev Bootcamp and Scribble.",
     recap:
@@ -1055,8 +1073,8 @@ export const MAGAZINE_EVENTS = [
       "Snap Circuits, Web Dev & more",
     ],
     photos: [
-      "/photos/standfor/magazine_launch.webp",
-      "/photos/gallery/gall3.webp",
+      "/photos/standfor/magazine_launch.jpeg",
+      "/photos/gallery/gall3.jpg",
     ],
     stats: [
       { label: "Wing", value: "IEEE-SJCE" },
@@ -1074,7 +1092,7 @@ export const MAGAZINE_EVENTS = [
     wing: "WIE & RAS",
     date: "30 November & 2–3 December 2023",
     venue: "Online & SJCE, Mysuru",
-    poster: "/photos/events/web_dev_bootcamp_2023.webp",
+    poster: "/photos/events/web_dev_bootcamp_2023.jpg",
     description:
       "The WIE and RAS wings presented a hands-on bootcamp on building and designing interactive websites, with online sessions on 30 November and 2 December and an offline session on 3 December.",
     recap:
@@ -1101,7 +1119,7 @@ export const MAGAZINE_EVENTS = [
     wing: "EDS",
     date: "28–29 November 2023",
     venue: "SJCE, Mysuru",
-    poster: "/photos/events/snap_circuits_2023.webp",
+    poster: "/photos/events/snap_circuits_2023.jpg",
     description:
       "The EDS wing's TUXEDO'23 event gave students a hands-on introduction to electronic components and circuit building, with no prior electronics knowledge required.",
     recap:
@@ -1120,6 +1138,20 @@ export const MAGAZINE_EVENTS = [
     takeaway: "Start with a snap.",
   },
 ]
+
+export const MAGAZINE_SUMMARY = (() => {
+  const years = new Set(MAGAZINE_EVENTS.map((event) => event.date.match(/\d{4}/)?.[0]).filter(Boolean))
+  const wings = new Set(
+    MAGAZINE_EVENTS.flatMap((event) => event.wing.split(/[&·]/).map((wing) => wing.trim()))
+  )
+  return {
+    stories: MAGAZINE_EVENTS.length,
+    features: MAGAZINE_EVENTS.filter((event) => event.template === 'DETAILED').length,
+    standards: MAGAZINE_EVENTS.filter((event) => event.template === 'STANDARD').length,
+    years: years.size,
+    wings: wings.size,
+  }
+})()
 
 export const eventsByYear = (() => {
   /** @type {Record<string, number>} */

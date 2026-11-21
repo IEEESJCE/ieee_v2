@@ -1,9 +1,9 @@
-import { MAGAZINE_LAYOUT } from '../../data/magazineMeta.js'
+import { MAGAZINE_EVENTS } from '../../data/magazineEvents.js'
 
-export const EVENT_START_PAGE = MAGAZINE_LAYOUT.eventStartPage
-export const YEAR_REVIEW_PAGES = MAGAZINE_LAYOUT.yearReviewPages
+export const EVENT_START_PAGE = 5
+export const YEAR_REVIEW_PAGES = 2
 
-export function buildMagazinePlan(events) {
+export function buildMagazinePlan(events = MAGAZINE_EVENTS) {
   const units = []
   let pendingBrief = null
 
@@ -126,3 +126,5 @@ export function validateMagazinePlan(plan) {
 
   return errors
 }
+
+export const MAGAZINE_PLAN = buildMagazinePlan()

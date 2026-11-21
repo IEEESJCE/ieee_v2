@@ -1,0 +1,838 @@
+/* ═══════════════════════════════════════════════
+   EVENTS TIMELINE — HORIZONTAL LAYOUT
+   Neo-Brutalist + Circuit Board Aesthetic
+   ═══════════════════════════════════════════════ */
+
+/* ─── Section ─── */
+.evt-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  border-top: var(--border);
+  padding: 28px 0 24px;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+/* ─── Circuit Board Background ─── */
+.evt-circuit-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.evt-circuit-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.evt-circuit-group {
+  animation: circuit-pulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes circuit-pulse {
+  0% { opacity: 0.08; }
+  50% { opacity: 0.15; }
+  100% { opacity: 0.08; }
+}
+
+/* ─── Inner Container ─── */
+.evt-inner {
+  width: 100%;
+  max-width: 1440px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+/* ─── Header ─── */
+.evt-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.evt-overline {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.evt-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  margin: 0 0 14px;
+  color: var(--primary-strong);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.evt-title-accent {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--blue) 50%, #8B5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.evt-subtitle {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* ─── Timeline Wrapper ─── */
+.evt-timeline-wrapper {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+/* ─── Nav Arrows ─── */
+.evt-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 25;
+  background: var(--bg-card);
+  border: var(--border);
+  color: var(--accent);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.evt-nav:hover {
+  background: var(--accent);
+  color: var(--bg);
+  box-shadow: var(--shadow), 0 0 20px rgba(0, 229, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.evt-nav:hover svg {
+  animation: arrow-bounce 0.5s ease-in-out;
+}
+
+@keyframes arrow-bounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-3px); }
+}
+
+.evt-nav-right:hover svg {
+  animation: arrow-bounce-right 0.5s ease-in-out;
+}
+
+@keyframes arrow-bounce-right {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(3px); }
+}
+
+.evt-nav-left { left: 4px; }
+.evt-nav-right { right: 4px; }
+
+.evt-nav-disabled {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* ─── Timeline Track (scrollable) ─── */
+.evt-timeline-track {
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 60px 24px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.evt-timeline-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Timeline Horizontal Line ─── */
+.evt-timeline-line {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--border-color);
+  z-index: 1;
+  border-radius: 2px;
+}
+
+.evt-timeline-line-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--accent) 50%, var(--blue) 100%);
+  transform-origin: left center;
+  border-radius: 2px;
+  box-shadow: 0 0 12px var(--accent), 0 0 30px rgba(0, 229, 255, 0.15);
+}
+
+/* ─── Cards Row ─── */
+.evt-cards-row {
+  display: flex;
+  gap: 28px;
+  padding: 8px 0 42px;
+  min-width: max-content;
+  position: relative;
+}
+
+/* ─── Card Wrapper ─── */
+.evt-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 240px;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+/* ─── Date Label ─── */
+.evt-date {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.evt-card-active .evt-date {
+  font-size: 13px;
+  text-shadow: 0 0 20px currentColor;
+}
+
+/* ─── Card (Equal Length across all cards) ─── */
+.evt-card {
+  width: 100%;
+  height: 375px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 14px 12px 12px;
+  text-align: center;
+  position: relative;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.evt-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--card-accent), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.evt-card-active .evt-card {
+  transform: translateY(-4px);
+  border-color: var(--card-accent, var(--accent));
+}
+
+.evt-card-active .evt-card::before {
+  opacity: 1;
+}
+
+.evt-card-featured {
+  border-color: var(--card-accent, var(--accent));
+}
+
+.evt-card-featured::before {
+  background: linear-gradient(90deg, transparent, var(--card-accent), transparent);
+}
+
+.evt-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+/* ─── Icon Hexagon (Fixed at Top) ─── */
+.evt-icon-hex {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  transform: rotate(0deg);
+  position: relative;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+}
+
+.evt-card-active .evt-icon-hex {
+  transform: scale(1.08);
+}
+
+.evt-icon-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.evt-card-active .evt-icon-inner {
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* ─── Card Title (Fixed at Top - Never Cut Off, Never Scrolled) ─── */
+.evt-card-title {
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  color: var(--primary-strong);
+  text-transform: none;
+  letter-spacing: 0.2px;
+  margin: 0 0 8px;
+  line-height: 1.3;
+  flex-shrink: 0;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: visible;
+  padding: 0 2px;
+}
+
+/* ─── Card Description (Scrollable on Hover Only, Custom Frameless Scrollbar) ─── */
+.evt-card-desc {
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+  line-height: 1.5;
+  font-weight: 400;
+  flex: 1;
+  min-height: 0;
+  overflow-y: hidden;
+  padding: 0 4px;
+  text-align: center;
+}
+
+.evt-card:hover .evt-card-desc,
+.evt-card-desc:hover {
+  overflow-y: auto;
+}
+
+.evt-card-desc::-webkit-scrollbar {
+  width: 3.5px;
+}
+
+.evt-card-desc::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.evt-card-desc::-webkit-scrollbar-thumb {
+  background: rgba(37, 99, 235, 0.45);
+  border-radius: 4px;
+}
+
+:root.light .evt-card-desc::-webkit-scrollbar-thumb {
+  background: #2563EB;
+}
+
+/* ─── Card Image (Fixed at Bottom) ─── */
+.evt-card-image {
+  width: 100%;
+  height: 105px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border-color);
+  flex-shrink: 0;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.evt-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  filter: brightness(0.85) contrast(1.1);
+}
+
+.evt-card:hover .evt-card-image img {
+  transform: scale(1.08);
+}
+
+.evt-card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(10, 14, 26, 0.6) 100%);
+  pointer-events: none;
+}
+
+/* ─── Poster Placeholder ─── */
+.evt-poster-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  background: #090e17;
+  border: 1.5px dashed color-mix(in srgb, var(--poster-accent, var(--accent)) 45%, var(--border-color));
+  overflow: hidden;
+  user-select: none;
+}
+
+.evt-poster-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 14px 14px;
+  pointer-events: none;
+}
+
+.evt-poster-center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  gap: 5px;
+}
+
+.evt-poster-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono, monospace);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--poster-accent, var(--accent));
+  background: rgba(0, 0, 0, 0.7);
+  padding: 3px 8px;
+  border: 1px solid var(--poster-accent, var(--accent));
+  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.8);
+}
+
+.evt-poster-callout {
+  font-family: var(--font-mono, monospace);
+  font-size: 8.5px;
+  letter-spacing: 0.8px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.evt-poster-footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-mono, monospace);
+  font-size: 8.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  padding-top: 5px;
+}
+
+.evt-poster-wing {
+  color: var(--poster-accent, var(--accent));
+  font-weight: 800;
+}
+
+.evt-poster-code {
+  letter-spacing: 1px;
+}
+
+/* ─── Timeline Node (dot on the line) ─── */
+.evt-node {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.evt-node-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--node-color, var(--accent));
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--node-color, var(--accent));
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.evt-card-active .evt-node-dot {
+  width: 18px;
+  height: 18px;
+  box-shadow: 0 0 0 3px var(--node-color, var(--accent)), 0 0 20px var(--node-color, var(--accent));
+}
+
+.evt-node-glow {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--node-color, var(--accent)) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.evt-card-active .evt-node-glow {
+  opacity: 0.35;
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.35; }
+  50% { transform: scale(1.4); opacity: 0.15; }
+}
+
+/* ─── Footer ─── */
+.evt-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px 32px;
+  background: var(--bg-card);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  max-width: 500px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.evt-footer:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.evt-footer-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elevated);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  color: var(--accent);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.evt-footer-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.evt-footer-heading {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.evt-footer-sub {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+  .evt-section {
+    padding: 36px 0 32px;
+    min-height: auto;
+    overflow: visible;
+    display: block;
+  }
+  .evt-inner {
+    padding: 0 16px;
+  }
+  .evt-header {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .evt-header * {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .evt-title {
+    font-size: 1.85rem;
+    line-height: 1.1;
+  }
+  .evt-overline {
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+  .evt-subtitle {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .evt-nav {
+    display: flex;
+    width: 38px;
+    height: 38px;
+    z-index: 25;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-color);
+  }
+  .evt-nav svg {
+    width: 22px;
+    height: 22px;
+  }
+  .evt-nav-left {
+    left: 2px;
+  }
+  .evt-nav-right {
+    right: 2px;
+  }
+  .evt-timeline-track {
+    padding: 10px 42px 24px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .evt-timeline-line {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+  }
+  .evt-cards-row {
+    gap: 16px;
+    padding: 6px 0 36px;
+  }
+  .evt-card-wrapper {
+    width: 235px;
+    scroll-snap-align: start;
+  }
+  .evt-card {
+    height: 380px;
+    padding: 14px 12px 12px;
+  }
+  .evt-card-image {
+    height: 100px;
+  }
+  .evt-circuit-bg {
+    display: none;
+  }
+  .evt-footer {
+    padding: 16px 20px;
+    gap: 12px;
+    max-width: 100%;
+  }
+  .evt-footer-heading {
+    font-size: 12px;
+  }
+  .evt-footer-sub {
+    font-size: 11px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .evt-inner {
+    padding: 0 32px;
+  }
+  .evt-card-wrapper {
+    width: 220px;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   LIGHT MODE OVERRIDES — Events
+   ═══════════════════════════════════════════════ */
+
+:root.light .evt-section {
+  background-color: #EDF2F7 !important;
+  background-image:
+    radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 70%),
+    linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 40px 40px, 40px 40px !important;
+  border-top: 1.5px solid #CBD5E1 !important;
+}
+
+:root.light .evt-title {
+  color: #0F172A !important;
+}
+
+:root.light .evt-subtitle {
+  color: #475569 !important;
+}
+
+:root.light .evt-card {
+  background: #FFFFFF !important;
+  border: 1.5px solid #0F172A !important;
+  box-shadow: 4px 4px 0 0 rgba(15, 23, 42, 0.12), 0 10px 20px -3px rgba(15, 23, 42, 0.06) !important;
+}
+
+:root.light .evt-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 6px 6px 0 0 var(--card-accent, #2563EB), 0 14px 28px -4px rgba(37, 99, 235, 0.18) !important;
+}
+
+:root.light .evt-card-active .evt-card {
+  transform: translateY(-4px) !important;
+  border-color: #0F172A !important;
+  box-shadow: 6px 6px 0 0 var(--card-accent, #2563EB), 0 14px 28px -4px rgba(37, 99, 235, 0.18) !important;
+}
+
+:root.light .evt-card-title {
+  color: #0F172A !important;
+}
+
+:root.light .evt-card-desc {
+  color: #475569 !important;
+}
+
+:root.light .evt-date {
+  color: #0F172A !important;
+}
+
+:root.light .evt-nav {
+  background: #FFFFFF !important;
+  border: 1.5px solid #0F172A !important;
+  color: #0F172A !important;
+  box-shadow: 3px 3px 0 0 #0F172A !important;
+}
+
+:root.light .evt-nav:hover {
+  background: #2563EB !important;
+  color: #FFFFFF !important;
+  border-color: #0F172A !important;
+  box-shadow: 4px 4px 0 0 #0F172A !important;
+}
+
+:root.light .evt-timeline-track {
+  background: transparent !important;
+}
+
+/* Circuit board — subtler on light */
+:root.light .evt-circuit-group {
+  animation-name: circuit-pulse-light;
+}
+
+@keyframes circuit-pulse-light {
+  0% { opacity: 0.06; }
+  50% { opacity: 0.10; }
+  100% { opacity: 0.06; }
+}
+
+/* Timeline line glow — subtle bright blue */
+:root.light .evt-timeline-line-fill {
+  box-shadow: 0 0 8px var(--accent), 0 0 20px rgba(0, 151, 178, 0.12);
+}
+
+/* Card image — light gradient overlay */
+:root.light .evt-card-image-overlay {
+  background: linear-gradient(180deg, transparent 40%, rgba(244, 247, 251, 0.5) 100%);
+}
+
+/* Card images — brighter in light mode */
+:root.light .evt-card-image img {
+  filter: brightness(1) contrast(1.05);
+}
+
+/* Node glow — toned down */
+:root.light .evt-card-active .evt-node-dot {
+  box-shadow: 0 0 0 3px var(--node-color, var(--accent)), 0 0 12px var(--node-color, var(--accent));
+}
+
+/* Footer card — white surface */
+:root.light .evt-footer {
+  background: #FFFFFF;
+  border: 1.5px solid #0F172A;
+  box-shadow: 4px 4px 0 0 #0F172A;
+}
+
+:root.light .evt-footer-icon {
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+}
+
+/* ─── Scroll Hint ─── */
+.evt-scroll-hint {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 4px 0 16px;
+  opacity: 0.75;
+}
+
+:root.light .evt-scroll-hint {
+  color: #64748B !important;
+}

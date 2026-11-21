@@ -46,10 +46,7 @@ export function PageHeader({ section = 'The Chronicle', className = '' }) {
         <img
           src="/logo.png"
           alt=""
-          width={16}
-          height={16}
           loading="lazy"
-          decoding="async"
           className="h-4 w-4 shrink-0 rounded-full border border-[var(--mag-ink)] bg-white object-contain"
         />
         <span className="mag-mono truncate text-[6.5px] font-bold uppercase tracking-[0.18em]">
@@ -212,14 +209,14 @@ export function PhotoPlate({
   )
 }
 
-export function HighlightList({ items = [], limit = 3, className = '' }) {
+export function HighlightList({ items = [], limit = 3, className = '', itemClassName = 'text-[9px] leading-tight' }) {
   if (!items.length) return null
   return (
     <ul className={cx('space-y-0.5', className)}>
       {items.slice(0, limit).map((item) => (
         <li
           key={item}
-          className="flex items-start gap-1.5 text-[9px] leading-tight text-[var(--mag-ink-soft)]"
+          className={cx('flex items-start gap-1.5 text-[var(--mag-ink-soft)]', itemClassName)}
         >
           <span className="mt-1 h-1 w-1 shrink-0 bg-[var(--mag-blue)]" aria-hidden="true" />
           <span>{item}</span>

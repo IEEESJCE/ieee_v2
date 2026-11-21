@@ -1,4 +1,4 @@
-import { ARCHIVE_PHOTOS, MAGAZINE_META } from '../../data/magazineMeta.js'
+import { ARCHIVE_PHOTOS, MAGAZINE_META } from '../../data/magazineEvents'
 import { MagazineImage } from './MagazinePrimitives'
 
 const coverPhotos = [
@@ -28,10 +28,7 @@ export default function MagazineCover() {
           <img
             src="/logo.png"
             alt="IEEE-SJCE logo"
-            width={40}
-            height={40}
-            loading="lazy"
-            decoding="async"
+            loading="eager"
             className="h-10 w-10 rounded-full border-2 border-[var(--mag-ink)] bg-white object-contain"
           />
           <div className="mag-mono text-[7px] font-bold uppercase leading-tight tracking-[0.16em]">
@@ -111,7 +108,7 @@ function Print({ photo, label }) {
         aria-hidden="true"
       />
       <div className="relative h-full w-full overflow-hidden border-2 border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] shadow-[4px_4px_0_rgba(17,17,17,0.2)]">
-        <MagazineImage src={photo.src} alt={photo.alt} loading="lazy" />
+        <MagazineImage src={photo.src} alt={photo.alt} loading="eager" />
       </div>
       <figcaption className="mag-mono mt-0.5 truncate text-[5.5px] uppercase tracking-[0.1em] text-[var(--mag-ink-soft)]">
         {label}

@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, ArrowRight, Moon, Sun } from "lucide-react";
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
+import gsap from "gsap";
+import RecruitmentModal from "./RecruitmentModal";
 import "../styles/layout.css";
 
 /* ─────────────────────────────────────────────
@@ -42,50 +44,41 @@ function scrollToSection(hash) {
     ?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function Navbar({ isDark, toggleTheme }) {
+export const MEMBERSHIP_DRIVE_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdScMuuAzvbgfTRzSE0j7EjLkqhjnf7Xs4sJnImyoaTbibp7w/viewform";
+
+function Navbar({ isDark, toggleTheme, onOpenRecruitment }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const menuRef = useRef(null);
-  const menuButtonRef = useRef(null);
-  const closeButtonRef = useRef(null);
+  const logoRef = useRef(null);
+  const linksRef = useRef(null);
+  const joinRef = useRef(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    if (!mobileOpen) return undefined;
-
-    const previouslyFocused = document.activeElement;
-    document.body.style.overflow = "hidden";
-    closeButtonRef.current?.focus();
-
-    const onKeyDown = (event) => {
-      if (event.key === "Escape") setMobileOpen(false);
-    };
-
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = "";
-      document.removeEventListener("keydown", onKeyDown);
-      if (previouslyFocused instanceof HTMLElement) previouslyFocused.focus();
-    };
-  }, [mobileOpen]);
-
-  const trapMenuFocus = (event) => {
-    if (event.key !== "Tab") return;
-    const focusable = menuRef.current?.querySelectorAll(
-      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    tl.fromTo(
+      logoRef.current,
+      { x: -40, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.7 },
     );
-    if (!focusable?.length) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
+    if (window.innerWidth >= 768 && linksRef.current) {
+      tl.fromTo(
+        linksRef.current.children,
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, stagger: 0.06 },
+        "-=0.3",
+      );
     }
-  };
+    if (joinRef.current) {
+      tl.fromTo(
+        joinRef.current,
+        { scale: 0.85, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.4 },
+        "-=0.2",
+      );
+    }
+  }, []);
 
   const isActive = (link) => {
     if (link.hash) return false;
@@ -113,19 +106,19 @@ function Navbar({ isDark, toggleTheme }) {
     <>
       <nav className="nb-nav">
         <div className="nb-nav-inner">
-          <a
-            href="/home"
+          <div
+            ref={logoRef}
             className="nb-nav-logo"
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("/home");
-            }}
+            onClick={() => navigate("/home")}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === "Enter" && navigate("/home")}
           >
-            <img src="/logo.png" alt="IEEE SJCE" className="nb-logo-img" width={42} height={42} decoding="async" />
-            <span className="nb-logo-text">IEEE SJCE</span>
-          </a>
+            <img src="/logo.png" alt="IEEE-SJCE" className="nb-logo-img" />
+            <span className="nb-logo-text">IEEE-SJCE</span>
+          </div>
 
-          <div className="nb-nav-links">
+          <div ref={linksRef} className="nb-nav-links">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
@@ -138,7 +131,7 @@ function Navbar({ isDark, toggleTheme }) {
             ))}
           </div>
 
-          <div className="nb-nav-right">
+          <div ref={joinRef} className="nb-nav-right">
             <button
               className="nb-theme-toggle nb-theme-toggle-desktop"
               onClick={toggleTheme}
@@ -148,10 +141,13 @@ function Navbar({ isDark, toggleTheme }) {
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdScMuuAzvbgfTRzSE0j7EjLkqhjnf7Xs4sJnImyoaTbibp7w/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/join_us"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/join_us");
+              }}
               className="nb-btn nb-btn-accent"
+              aria-label="Join IEEE-SJCE (Membership Drive 2027)"
             >
               JOIN US <ArrowRight size={14} />
             </a>
@@ -167,13 +163,9 @@ function Navbar({ isDark, toggleTheme }) {
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <button
-              ref={menuButtonRef}
-              type="button"
               className="nb-hamburger"
               onClick={() => setMobileOpen(true)}
               aria-label="Open navigation menu"
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-navigation"
             >
               <Menu size={26} />
             </button>
@@ -181,22 +173,10 @@ function Navbar({ isDark, toggleTheme }) {
         </div>
       </nav>
 
-      <div
-        ref={menuRef}
-        id="mobile-navigation"
-        className={`nb-mobile-menu ${mobileOpen ? "open" : ""}`}
-        role="dialog"
-        aria-modal={mobileOpen ? "true" : undefined}
-        aria-label="Site navigation"
-        aria-hidden={!mobileOpen}
-        onKeyDown={trapMenuFocus}
-      >
+      <div className={`nb-mobile-menu ${mobileOpen ? "open" : ""}`}>
         <button
-          ref={closeButtonRef}
-          type="button"
           className="nb-mobile-close"
           onClick={() => setMobileOpen(false)}
-          aria-label="Close navigation menu"
         >
           <X size={28} />
         </button>
@@ -211,11 +191,15 @@ function Navbar({ isDark, toggleTheme }) {
           </a>
         ))}
         <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLScyUvp_2L7Mw3ENLSANaXTQiZmqJJFhxETfKFOXWl9o8wn3Uw/viewform"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/join_us"
+          onClick={(e) => {
+            e.preventDefault();
+            setMobileOpen(false);
+            navigate("/join_us");
+          }}
           className="nb-btn nb-btn-accent"
           style={{ marginTop: "8px" }}
+          aria-label="Join IEEE-SJCE (Membership Drive 2027)"
         >
           JOIN US <ArrowRight size={14} />
         </a>
@@ -226,17 +210,27 @@ function Navbar({ isDark, toggleTheme }) {
 
 export default function Layout() {
   const [isDark, setIsDark] = useDarkMode();
+  const [recruitmentOpen, setRecruitmentOpen] = useState(false);
   const toggleTheme = () => setIsDark((prev) => !prev);
+
+  useEffect(() => {
+    const handleOpen = () => setRecruitmentOpen(true);
+    window.addEventListener("open-recruitment-modal", handleOpen);
+    return () => window.removeEventListener("open-recruitment-modal", handleOpen);
+  }, []);
 
   return (
     <div className="nb-layout">
-      <a className="skip-link" href="#main-content">
-        Skip to content
-      </a>
-      <Navbar isDark={isDark} toggleTheme={toggleTheme} />
-      <div id="main-content" tabIndex={-1}>
-        <Outlet />
-      </div>
+      <Navbar
+        isDark={isDark}
+        toggleTheme={toggleTheme}
+        onOpenRecruitment={() => setRecruitmentOpen(true)}
+      />
+      <Outlet />
+      <RecruitmentModal
+        isOpen={recruitmentOpen}
+        onClose={() => setRecruitmentOpen(false)}
+      />
     </div>
   );
 }

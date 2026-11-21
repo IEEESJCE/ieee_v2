@@ -1,12 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { ArrowRight, BookOpen, ChevronLeft, ChevronRight, X } from 'lucide-react'
 
-import {
-  MAGAZINE_META,
-  MAGAZINE_SUMMARY,
-  getMagazinePageCount,
-} from '../../data/magazineMeta.js'
+import { MAGAZINE_META, MAGAZINE_SUMMARY } from '../../data/magazineEvents'
+import MagazineBook from './MagazineBook'
 import MagazineCover from './MagazineCover'
+import { MAGAZINE_PLAN } from './magazinePlan'
 import './magazine.css'
 
 const INSTRUCTIONS = [
@@ -15,7 +13,7 @@ const INSTRUCTIONS = [
   'Use the navigation controls to move through the publication.',
 ]
 
-const totalPages = getMagazinePageCount()
+const totalPages = MAGAZINE_PLAN.totalPages
 
 const pad = (value) => String(value).padStart(2, '0')
 
@@ -23,8 +21,6 @@ export default function MagazineSection() {
   const [isOpen, setIsOpen] = useState(false)
   const [currentPage, setCurrentPage] = useState(0)
   const [orientation, setOrientation] = useState('landscape')
-  const [BookComponent, setBookComponent] = useState(null)
-  const [bookError, setBookError] = useState(false)
 
   const bookRef = useRef(null)
   const autoOpenRef = useRef(false)
@@ -73,17 +69,7 @@ export default function MagazineSection() {
     autoOpenRef.current = true
     setCurrentPage(0)
     setIsOpen(true)
-
-    if (!BookComponent) {
-      import('./MagazineBook')
-        .then((module) => {
-          setBookComponent(() => module.default)
-        })
-        .catch(() => {
-          setBookError(true)
-        })
-    }
-  }, [BookComponent])
+  }, [])
 
   const closeMagazine = useCallback(() => {
     autoOpenRef.current = false
@@ -107,7 +93,7 @@ export default function MagazineSection() {
   const gotoPage = useCallback((pageIndex) => {
     const instance = bookRef.current?.pageFlip()
     if (!instance) return
-    const target = Math.min(Math.max(Number(pageIndex) || 0, 0), totalPages - 1)
+    const target = Math.min(Math.max(Number(pageIndex) || 0, 0), MAGAZINE_PLAN.totalPages - 1)
     if (instance.getState() === 'flipping') {
       pendingGotoRef.current = target
       return
@@ -221,10 +207,6 @@ export default function MagazineSection() {
             <img
               src="/logo.png"
               alt=""
-              width={20}
-              height={20}
-              loading="lazy"
-              decoding="async"
               className="h-5 w-5 rounded-full border border-[var(--border-color)] bg-white object-contain"
             />
             Our Journey · The Chronicle
@@ -252,18 +234,14 @@ export default function MagazineSection() {
             <div className="mag-open-enter flex w-full flex-col items-center overflow-x-hidden">
               <div className="flex w-full min-w-0 items-center justify-center overflow-x-hidden">
                 <div className="mx-auto w-full min-w-0 max-w-[min(340px,calc(100svh_-_300px)*0.714)] md:max-w-[min(860px,calc((100svh_-_315px)*1.43))]">
-                  {BookComponent ? (
-                    <BookComponent
-                      ref={bookRef}
-                      onGoto={gotoPage}
-                      onFlip={handleFlip}
-                      onInit={handleInit}
-                      onChangeOrientation={handleOrientation}
-                      onChangeState={handleChangeState}
-                    />
-                  ) : (
-                    <MagazineBookFallback error={bookError} onClose={closeMagazine} />
-                  )}
+                  <MagazineBook
+                    ref={bookRef}
+                    onGoto={gotoPage}
+                    onFlip={handleFlip}
+                    onInit={handleInit}
+                    onChangeOrientation={handleOrientation}
+                    onChangeState={handleChangeState}
+                  />
                 </div>
               </div>
 
@@ -331,10 +309,6 @@ function IntroPanel({ onOpen }) {
         <img
           src="/logo.png"
           alt=""
-          width={24}
-          height={24}
-          loading="lazy"
-          decoding="async"
           className="h-6 w-6 rounded-full border border-[var(--mag-ink)] bg-white object-contain"
         />
         <span className="mag-mono text-[8px] font-bold uppercase tracking-[0.2em]">
@@ -405,33 +379,6 @@ function Stat({ value, label }) {
       <div className="mag-mono mt-1 text-[7px] font-bold uppercase tracking-[0.16em] text-[var(--text-muted)]">
         {label}
       </div>
-    </div>
-  )
-}
-
-function MagazineBookFallback({ error, onClose }) {
-  return (
-    <div
-      role={error ? 'alert' : 'status'}
-      className="flex aspect-[400/560] w-full flex-col items-center justify-center gap-4 border-[3px] border-[var(--mag-ink)] bg-[var(--mag-paper)] px-8 text-center text-[var(--mag-ink)] shadow-[10px_10px_0_rgba(17,17,17,0.18)]"
-    >
-      <BookOpen size={34} aria-hidden="true" />
-      <p className="mag-mono text-[10px] font-bold uppercase tracking-[0.24em]">
-        {error ? 'The magazine could not be loaded.' : 'Opening the chronicle…'}
-      </p>
-      {error ? (
-        <button
-          type="button"
-          onClick={onClose}
-          className="border-2 border-[var(--mag-ink)] bg-[var(--mag-yellow)] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--mag-blue)]"
-        >
-          Close magazine
-        </button>
-      ) : (
-        <span className="h-1 w-20 overflow-hidden rounded-full bg-[var(--mag-ink)]/15" aria-hidden="true">
-          <span className="block h-full w-1/2 animate-pulse rounded-full bg-[var(--mag-blue)]" />
-        </span>
-      )}
     </div>
   )
 }

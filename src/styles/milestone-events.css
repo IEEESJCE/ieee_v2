@@ -8,7 +8,8 @@
   background: var(--bg);
   border-top: var(--border);
   padding: 80px 0 72px;
-  overflow: visible;
+  overflow-x: clip;
+  max-width: 100vw;
 }
 
 .ms-diagonal-bg {
@@ -239,23 +240,30 @@
   z-index: 2;
 }
 
+/* Tag and number sit on top of bright poster art, so both use a solid dark
+   chip with white text; the event accent shows as border and offset shadow. */
 .ms-poster-tag {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
+  line-height: 1.2;
   text-transform: none;
   padding: 5px 10px;
   border: 2px solid;
   border-radius: var(--radius);
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(4px);
+  background: rgba(2, 6, 23, 0.92);
+  color: #FFFFFF;
+  box-shadow: 2px 2px 0 0 var(--poster-accent, #2563EB);
 }
 
 .ms-poster-num {
   font-family: var(--font-display);
-  font-size: 22px;
-  color: rgba(255, 255, 255, 0.25);
+  font-size: 16px;
+  color: #FFFFFF;
   line-height: 1;
+  padding: 5px 8px;
+  border-radius: var(--radius);
+  background: rgba(2, 6, 23, 0.85);
 }
 
 .ms-poster-content {
@@ -381,6 +389,8 @@
 @media (max-width: 767px) {
   .ms-section {
     padding: 40px 0 32px;
+    overflow-x: clip;
+    max-width: 100vw;
   }
 
   .ms-inner {
@@ -400,26 +410,47 @@
   }
 
   .ms-filmstrip-wrap {
-    padding: 0 16px;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
+    width: 100%;
+    margin-left: 0;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .ms-filmstrip-track {
+    padding: 12px 16px 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .ms-filmstrip-track::-webkit-scrollbar {
+    display: none;
   }
 
   .ms-poster {
-    flex: 0 0 220px;
-    width: 220px;
+    flex: 0 0 250px;
+    width: 250px;
   }
 
   .ms-poster-frame {
-    height: 320px;
+    height: 350px;
   }
 
   .ms-poster-media {
-    min-height: 150px;
+    min-height: 165px;
   }
 
   .ms-poster-content {
     padding: 14px 16px 18px;
+  }
+
+  .ms-poster-content h3 {
+    font-size: 15px;
+    line-height: 1.25;
+    white-space: normal;
   }
 
   .ms-poster-icon {

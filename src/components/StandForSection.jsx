@@ -10,7 +10,6 @@ import {
 } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { prefersReducedMotion } from '../lib/motion'
 import '../styles/standfor.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -40,7 +39,7 @@ const AREAS = [
     id: 'competitions',
     name: 'Competitions',
     icon: <Trophy size={18} />,
-    image: '/photos/standfor/competition.webp',
+    image: '/photos/standfor/competition.jpg',
     alt: 'Participants at an IEEE-SJCE competition',
     accent: '#EC4899',
     description:
@@ -50,7 +49,7 @@ const AREAS = [
     id: 'activities',
     name: 'Activities',
     icon: <Activity size={18} />,
-    image: '/photos/standfor/activities.webp',
+    image: '/photos/standfor/activities.jpeg',
     alt: 'IEEE-SJCE student activity',
     accent: '#00F5D4',
     description:
@@ -60,7 +59,7 @@ const AREAS = [
     id: 'growth',
     name: 'Personal Growth',
     icon: <TrendingUp size={18} />,
-    image: '/photos/standfor/personal_development.webp',
+    image: '/photos/standfor/personal_development.jpg',
     alt: 'IEEE-SJCE personal development session',
     accent: '#F59E0B',
     description:
@@ -70,7 +69,7 @@ const AREAS = [
     id: 'magazine',
     name: 'Magazine',
     icon: <BookOpen size={18} />,
-    image: '/photos/standfor/magazine_launch.webp',
+    image: '/photos/standfor/magazine_launch.jpeg',
     alt: 'IEEE Interface magazine launch',
     accent: '#60A5FA',
     description:
@@ -78,23 +77,12 @@ const AREAS = [
   },
 ]
 
-const AREA_DIMENSIONS = {
-  '/photos/standfor/seminars.jpeg': [1080, 716],
-  '/photos/standfor/robotics_workshop.jpeg': [1080, 715],
-  '/photos/standfor/competition.webp': [1400, 933],
-  '/photos/standfor/activities.webp': [1080, 861],
-  '/photos/standfor/personal_development.webp': [800, 533],
-  '/photos/standfor/magazine_launch.webp': [1080, 717],
-}
-
 export default function StandForSection() {
   const sectionRef = useRef(null)
   const [activeId, setActiveId] = useState(AREAS[0].id)
   const active = AREAS.find((area) => area.id === activeId) ?? AREAS[0]
 
   useEffect(() => {
-    if (prefersReducedMotion()) return undefined
-
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.stf-header > *',
@@ -172,14 +160,7 @@ export default function StandForSection() {
             style={{ '--panel-accent': active.accent }}
           >
             <div className="stf-media">
-              <img
-                src={active.image}
-                alt={active.alt}
-                width={AREA_DIMENSIONS[active.image]?.[0]}
-                height={AREA_DIMENSIONS[active.image]?.[1]}
-                loading="lazy"
-                decoding="async"
-              />
+              <img src={active.image} alt={active.alt} loading="lazy" />
             </div>
             <div className="stf-copy">
               <span className="stf-panel-icon">{active.icon}</span>

@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { Camera, Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { prefersReducedMotion } from '../lib/motion'
 import '../styles/gallery.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -10,89 +9,67 @@ gsap.registerPlugin(ScrollTrigger)
 const GALLERY_IMAGES = [
   {
     id: 1,
-    src: '/photos/gallery/gall11.webp',
-    alt: 'IEEE SJCE Flagship Gathering',
+    src: '/photos/gallery/gall11.jpg',
+    alt: 'IEEE-SJCE Flagship Gathering',
     caption: 'Flagship Assembly & Keynote Session',
     span: 'gal-slot-wide',
-    width: 1600,
-    height: 1200,
   },
   {
     id: 2,
-    src: '/photos/gallery/gall2.webp',
-    alt: 'IEEE SJCE Workshop Moment',
+    src: '/photos/gallery/gall2.jpg',
+    alt: 'IEEE-SJCE Workshop Moment',
     caption: 'Hands-on Technical Workshop',
     span: '',
-    width: 1600,
-    height: 1200,
   },
   {
     id: 3,
-    src: '/photos/gallery/gall3.webp',
-    alt: 'IEEE SJCE Team Celebration',
+    src: '/photos/gallery/gall3.jpg',
+    alt: 'IEEE-SJCE Team Celebration',
     caption: 'Student Community & Event Day',
     span: '',
-    width: 1600,
-    height: 1271,
   },
   {
     id: 4,
-    src: '/photos/gallery/gall4.webp',
-    alt: 'IEEE SJCE Prototyping & Project Building',
+    src: '/photos/gallery/gall4.jpg',
+    alt: 'IEEE-SJCE Prototyping & Project Building',
     caption: 'Prototyping & Hardware Debugging',
     span: '',
-    width: 1600,
-    height: 1200,
   },
   {
     id: 5,
-    src: '/photos/gallery/gall5.webp',
-    alt: 'IEEE SJCE Core Members',
+    src: '/photos/gallery/gall5.jpg',
+    alt: 'IEEE-SJCE Core Members',
     caption: 'Executive Committee & Student Leaders',
     span: '',
-    width: 1600,
-    height: 1064,
   },
   {
     id: 6,
-    src: '/photos/gallery/gall6.webp',
-    alt: 'IEEE SJCE Event Stage Celebration',
+    src: '/photos/gallery/gall6.jpg',
+    alt: 'IEEE-SJCE Event Stage Celebration',
     caption: 'Annual Festivities & Cultural Evening',
     span: 'gal-slot-wide',
-    width: 1500,
-    height: 1000,
   },
   {
     id: 7,
-    src: '/photos/gallery/gall8.webp',
-    alt: 'IEEE SJCE Interactive Mentorship',
+    src: '/photos/gallery/gall8.jpg',
+    alt: 'IEEE-SJCE Interactive Mentorship',
     caption: 'Interactive Discussion & Mentorship',
     span: '',
-    width: 1600,
-    height: 1200,
   },
   {
     id: 8,
-    src: '/photos/gallery/gall9.webp',
-    alt: 'IEEE SJCE Project Showcase',
+    src: '/photos/gallery/gall9.jpg',
+    alt: 'IEEE-SJCE Project Showcase',
     caption: 'Hardware Demonstrations & Project Expo',
     span: '',
-    width: 1600,
-    height: 1200,
   },
 ]
 
 export default function GallerySection() {
   const sectionRef = useRef(null)
-  const lightboxRef = useRef(null)
-  const closeButtonRef = useRef(null)
-  const previousFocusRef = useRef(null)
   const [selectedIdx, setSelectedIdx] = useState(null)
-  const isLightboxOpen = selectedIdx !== null
 
   useEffect(() => {
-    if (prefersReducedMotion()) return undefined
-
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.gal-header > *',
@@ -133,25 +110,9 @@ export default function GallerySection() {
     return () => ctx.revert()
   }, [])
 
-  // Lock the page and move focus into the lightbox while it is open.
+  // Lightbox keyboard controls
   useEffect(() => {
-    if (!isLightboxOpen) return undefined
-
-    previousFocusRef.current = document.activeElement
-    document.body.style.overflow = 'hidden'
-    closeButtonRef.current?.focus()
-
-    return () => {
-      document.body.style.overflow = ''
-      if (previousFocusRef.current instanceof HTMLElement) {
-        previousFocusRef.current.focus()
-      }
-    }
-  }, [isLightboxOpen])
-
-  // Lightbox keyboard controls, including a focus trap.
-  useEffect(() => {
-    if (!isLightboxOpen) return undefined
+    if (selectedIdx === null) return
 
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
@@ -160,27 +121,17 @@ export default function GallerySection() {
         setSelectedIdx((prev) => (prev + 1) % GALLERY_IMAGES.length)
       } else if (e.key === 'ArrowLeft') {
         setSelectedIdx((prev) => (prev - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length)
-      } else if (e.key === 'Tab') {
-        const focusable = lightboxRef.current?.querySelectorAll(
-          'button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])',
-        )
-        if (!focusable?.length) return
-        const first = focusable[0]
-        const last = focusable[focusable.length - 1]
-
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault()
-          last.focus()
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault()
-          first.focus()
-        }
       }
     }
 
+    document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [isLightboxOpen])
+
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [selectedIdx])
 
   const currentImage = selectedIdx !== null ? GALLERY_IMAGES[selectedIdx] : null
 
@@ -193,11 +144,11 @@ export default function GallerySection() {
             <Camera size={14} />
             <span>MOMENTS & MEMORIES</span>
           </div>
-          <h1 className="gal-title">
+          <h2 className="gal-title">
             Our <span className="gal-title-accent">Gallery</span>
-          </h1>
+          </h2>
           <p className="gal-subtitle">
-            Glimpses of innovation, hands-on workshops, celebrations, and life at IEEE SJCE.
+            Glimpses of innovation, hands-on workshops, celebrations, and life at IEEE-SJCE.
           </p>
         </div>
 
@@ -223,8 +174,6 @@ export default function GallerySection() {
                   src={item.src}
                   alt={item.alt}
                   className="gal-img"
-                  width={item.width}
-                  height={item.height}
                   loading="lazy"
                   decoding="async"
                 />
@@ -243,16 +192,13 @@ export default function GallerySection() {
       {/* ─── Lightbox Modal ─── */}
       {currentImage && (
         <div
-          ref={lightboxRef}
           className="gal-modal"
           onClick={() => setSelectedIdx(null)}
           role="dialog"
           aria-modal="true"
-          aria-label={`Image preview: ${currentImage.caption}`}
         >
           {/* Close button */}
           <button
-            ref={closeButtonRef}
             className="gal-modal-close"
             onClick={(e) => {
               e.stopPropagation()
@@ -293,10 +239,6 @@ export default function GallerySection() {
               src={currentImage.src}
               alt={currentImage.alt}
               className="gal-modal-img"
-              width={currentImage.width}
-              height={currentImage.height}
-              loading="eager"
-              decoding="async"
             />
             <div className="gal-modal-bar">
               <span className="gal-modal-caption">{currentImage.caption}</span>

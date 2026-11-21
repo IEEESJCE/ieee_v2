@@ -1,9 +1,10 @@
 import { useEffect, useLayoutEffect, useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 import gsap from 'gsap'
-import { prefersReducedMotion } from '../lib/motion'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+import ColourfulText from '../components/ui/colourful-text'
 
 import MagazineSection from '../components/magazine/MagazineSection'
 import MilestoneEventsSection from '../components/MilestoneEventsSection'
@@ -13,7 +14,6 @@ import BangaloreSection from '../components/BangaloreSection'
 import FlagshipSection from '../components/FlagshipSection'
 import PrayasSection from '../components/PrayasSection'
 import MentorsSection from '../components/MentorsSection'
-import SponsorSection from '../components/SponsorSection'
 import Footer from '../components/Footer'
 
 import '../styles/homepage.css'
@@ -25,7 +25,7 @@ ScrollTrigger.config({ ignoreMobileResize: true })
    Marquee Strip (truly infinite — 4x repeat)
    ───────────────────────────────────────────── */
 function MarqueeStrip() {
-  const items = ['INNOVATE', '◆', 'ENGINEER', '◆', 'INSPIRE', '◆', 'BUILD', '◆', 'IEEE SJCE', '◆']
+  const items = ['INNOVATE', '◆', 'ENGINEER', '◆', 'INSPIRE', '◆', 'BUILD', '◆', 'IEEE-SJCE', '◆']
   const repeated = [...items, ...items, ...items, ...items]
   return (
     <div className="nb-marquee-wrapper">
@@ -54,135 +54,136 @@ export default function HomePage() {
     if (location.hash) {
       const timer = setTimeout(() => {
         const el = document.querySelector(location.hash)
-        if (el) {
-          el.scrollIntoView({
-            behavior: prefersReducedMotion() ? 'auto' : 'smooth',
-            block: 'start',
-          })
-        }
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }, 300)
       return () => clearTimeout(timer)
     }
   }, [location.hash])
 
   useLayoutEffect(() => {
-    if (prefersReducedMotion()) return undefined
+    // 1. Initial hero animations
+    const heroEls = heroRef.current?.querySelectorAll('.gsap-hero')
+    if (heroEls?.length) {
+      gsap.fromTo(heroEls,
+        { y: 60, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.9, stagger: 0.15, ease: 'power3.out', delay: 0.5 }
+      )
+    }
 
-    const ctx = gsap.context(() => {
-      // 1. Initial hero animations
-      const heroEls = heroRef.current?.querySelectorAll('.gsap-hero')
-      if (heroEls?.length) {
-        gsap.fromTo(heroEls,
-          { y: 60, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.9, stagger: 0.15, ease: 'power3.out', delay: 0.5 }
+    const ctaEls = ctaRef.current?.querySelectorAll('.gsap-cta')
+    if (ctaEls?.length) {
+      if (window.innerWidth >= 768) {
+        gsap.fromTo(ctaEls,
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power2.out', delay: 1.8 }
         )
+      } else {
+        gsap.set(ctaEls, { y: 0, opacity: 1 })
       }
+    }
 
-      const ctaEls = ctaRef.current?.querySelectorAll('.gsap-cta')
-      if (ctaEls?.length) {
-        if (window.innerWidth >= 768) {
-          gsap.fromTo(ctaEls,
-            { y: 40, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power2.out', delay: 1.8 }
-          )
-        } else {
-          gsap.set(ctaEls, { y: 0, opacity: 1 })
+    if (floatingRef.current) {
+      gsap.fromTo(floatingRef.current.children,
+        { scale: 0, opacity: 0, rotation: -20 },
+        { scale: 1, opacity: 1, rotation: 0, duration: 0.6, stagger: 0.1, ease: 'back.out(1.7)', delay: 1.2 }
+      )
+    }
+
+    // 2. PINNED PANEL SYSTEM — same pin + scale-shrink for EVERY section
+    let mm = gsap.matchMedia()
+
+    mm.add({
+      isDesktop: "(min-width: 768px)",
+      isMobile: "(max-width: 767px)"
+    }, (context) => {
+      let { isDesktop } = context.conditions;
+
+      const allPanels = [
+        document.querySelector('.nb-section-landing'),
+        document.querySelector('.nb-events-wrapper'),
+        document.querySelector('.nb-milestones-wrapper'),
+        document.querySelector('.nb-achievements-wrapper'),
+        document.querySelector('.nb-standfor-wrapper'),
+        document.querySelector('.nb-bangalore-wrapper'),
+        document.querySelector('.nb-flagship-wrapper'),
+        document.querySelector('.nb-prayas-wrapper'),
+        document.querySelector('.nb-mentors-wrapper'),
+      ].filter(Boolean)
+
+      allPanels.forEach((panel, i) => {
+        // Mentors scroll normally into the footer (no pin/shrink).
+        if (i >= allPanels.length - 1) return
+
+        const isLanding = panel.classList.contains('nb-section-landing')
+        const innerPanel = isLanding ? panel.querySelector('.nb-section-inner') : panel.firstElementChild
+        const fadeDistance = isDesktop ? 600 : 450
+
+        // Calculate if we need a fake scroll for landing page ONLY on desktop
+        let fakeScrollRatio = 0
+        if (isLanding && innerPanel && isDesktop) {
+          const difference = innerPanel.offsetHeight - window.innerHeight
+          fakeScrollRatio = difference > 0 ? (difference / (difference + window.innerHeight)) : 0
         }
-      }
 
-      if (floatingRef.current) {
-        gsap.fromTo(floatingRef.current.children,
-          { scale: 0, opacity: 0, rotation: -20 },
-          { scale: 1, opacity: 1, rotation: 0, duration: 0.6, stagger: 0.1, ease: 'back.out(1.7)', delay: 1.2 }
-        )
-      }
+        if (isLanding && innerPanel) {
+          panel.style.marginBottom = fakeScrollRatio ? (innerPanel.offsetHeight * fakeScrollRatio + 'px') : '0px'
+        }
 
-      // 2. PINNED PANEL SYSTEM — same pin + scale-shrink for EVERY section
-      let mm = gsap.matchMedia()
+        // Sections taller than the viewport (e.g. Hall of Fame on mobile) need
+        // their remaining content revealed before the panel fades away.
+        const overflow = (!isLanding && innerPanel)
+          ? Math.max(0, panel.offsetHeight - window.innerHeight)
+          : 0
 
-      mm.add({
-        isDesktop: "(min-width: 768px)",
-        isMobile: "(max-width: 767px)"
-      }, (context) => {
-        let { isDesktop } = context.conditions;
-
-        const allPanels = [
-          document.querySelector('.nb-section-landing'),
-          document.querySelector('.nb-events-wrapper'),
-          document.querySelector('.nb-milestones-wrapper'),
-          document.querySelector('.nb-achievements-wrapper'),
-          document.querySelector('.nb-standfor-wrapper'),
-          document.querySelector('.nb-bangalore-wrapper'),
-          document.querySelector('.nb-flagship-wrapper'),
-          document.querySelector('.nb-prayas-wrapper'),
-          document.querySelector('.nb-mentors-wrapper'),
-        ].filter(Boolean)
-
-        allPanels.forEach((panel, i) => {
-          if (i >= allPanels.length - 1) return
-
-          const isLanding = panel.classList.contains('nb-section-landing')
-          const innerPanel = isLanding ? panel.querySelector('.nb-section-inner') : panel.firstElementChild
-          const fadeDistance = isDesktop ? 600 : 450
-
-          // Calculate if we need a fake scroll for landing page ONLY on desktop
-          let fakeScrollRatio = 0
-          if (isLanding && innerPanel && isDesktop) {
-            const difference = innerPanel.offsetHeight - window.innerHeight
-            fakeScrollRatio = difference > 0 ? (difference / (difference + window.innerHeight)) : 0
+        // Section-to-section slide deck animation on BOTH laptop & mobile!
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: panel,
+            start: 'top top',
+            end: () => fakeScrollRatio
+              ? `+=${innerPanel.offsetHeight}`
+              : `+=${isDesktop ? overflow + fadeDistance : Math.max(panel.offsetHeight, overflow + fadeDistance)}`,
+            pin: true,
+            pinSpacing: false,
+            scrub: isDesktop ? true : 0.6,
           }
-
-          if (isLanding && innerPanel) {
-            panel.style.marginBottom = fakeScrollRatio ? (innerPanel.offsetHeight * fakeScrollRatio + 'px') : '0px'
-          }
-
-          // Sections taller than the viewport (e.g. Hall of Fame on mobile) need
-          // their remaining content revealed before the panel fades away.
-          const overflow = (!isLanding && innerPanel)
-            ? Math.max(0, panel.offsetHeight - window.innerHeight)
-            : 0
-
-          // Section-to-section slide deck animation on BOTH laptop & mobile!
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: panel,
-              start: 'top top',
-              end: () => fakeScrollRatio ? `+=${innerPanel.offsetHeight}` : `+=${overflow + fadeDistance}`,
-              pin: true,
-              pinSpacing: false,
-              scrub: isDesktop ? true : 0.6,
-            }
-          })
-
-          if (fakeScrollRatio && isDesktop) {
-            tl.to(innerPanel, {
-              yPercent: -100,
-              y: window.innerHeight,
-              duration: 1 / (1 - fakeScrollRatio) - 1,
-              ease: 'none',
-            })
-          }
-
-          if (overflow > 0) {
-            tl.to(innerPanel, {
-              y: -overflow,
-              duration: overflow,
-              ease: 'none',
-            })
-          }
-
-          tl.fromTo(panel,
-            { scale: 1, opacity: 1, y: 0 },
-            { scale: isLanding ? 1 : 0.85, opacity: 0, y: isDesktop ? -40 : -20, duration: isLanding ? 1 : fadeDistance, ease: 'power2.in' }
-          )
         })
 
-        ScrollTrigger.refresh()
+        if (fakeScrollRatio && isDesktop) {
+          tl.to(innerPanel, {
+            yPercent: -100,
+            y: window.innerHeight,
+            duration: 1 / (1 - fakeScrollRatio) - 1,
+            ease: 'none',
+          })
+        }
+
+        if (overflow > 0) {
+          tl.to(innerPanel, {
+            y: -overflow,
+            duration: overflow,
+            ease: 'none',
+          })
+        }
+
+        tl.fromTo(panel,
+          { scale: 1, opacity: 1, y: 0 },
+          {
+            scale: isLanding ? 1 : 0.85,
+            opacity: isLanding ? 0 : (isDesktop ? 0 : 0.35),
+            y: isDesktop ? -40 : -20,
+            duration: isLanding ? 1 : fadeDistance,
+            ease: 'power2.in'
+          }
+        )
       })
-    }, containerRef)
+
+      ScrollTrigger.refresh()
+    })
 
     return () => {
-      ctx.revert()
+      mm.revert()
+      ScrollTrigger.getAll().forEach(t => t.kill())
     }
   }, [])
 
@@ -194,19 +195,7 @@ export default function HomePage() {
           <div className="nb-landing">
             <div className="nb-bg">
               {/* Circuit background image */}
-              <img
-                className="nb-bg-image"
-                src="/ieee-bg.webp"
-                srcSet="/ieee-bg-1000.webp 1000w, /ieee-bg.webp 1672w"
-                sizes="100vw"
-                width="1672"
-                height="940"
-                alt=""
-                aria-hidden="true"
-                fetchpriority="high"
-                loading="eager"
-                decoding="async"
-              />
+              <div className="nb-bg-image" />
 
               {/* Floating neo-brutal geometric shapes */}
               <div ref={floatingRef} className="nb-floating-shapes">
@@ -237,11 +226,13 @@ export default function HomePage() {
                   <p className="gsap-hero nb-hero-subtitle">Advancing Technology for Humanity</p>
                   <p className="gsap-hero nb-hero-tagline">Building tomorrow's engineers, today.</p>
                   <div className="gsap-hero nb-hero-buttons">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScyUvp_2L7Mw3ENLSANaXTQiZmqJJFhxETfKFOXWl9o8wn3Uw/viewform" target='_blank' rel="noopener noreferrer">
-                      <button className="nb-btn nb-btn-accent">
-                        GET STARTED <ArrowRight size={14} />
-                      </button>
-                    </a>
+                    <Link
+                      to="/join_us"
+                      className="nb-btn nb-btn-accent"
+                      aria-label="Join IEEE-SJCE (Membership Drive 2027)"
+                    >
+                      JOIN US <ArrowRight size={14} />
+                    </Link>
                     <button className="nb-btn nb-btn-blue"
                       onClick={() => document.getElementById('events-section')?.scrollIntoView({ behavior: 'smooth' })}>
                       EXPLORE EVENTS
@@ -265,6 +256,8 @@ export default function HomePage() {
       </section>
 
       {/* ════════ PANEL 2: The IEEE Chronicle ════════ */}
+      {/* The previous Events Timeline remains in components/EventsSection.jsx
+          until the magazine experience has been fully verified. */}
       <div className="nb-events-wrapper">
         <MagazineSection />
       </div>
@@ -304,12 +297,7 @@ export default function HomePage() {
         <MentorsSection />
       </div>
 
-      {/* ════════ PANEL 10: Sponsors ════════ */}
-      <div className="nb-sponsors-wrapper">
-        <SponsorSection />
-      </div>
-
-      {/* ════════ PANEL 11: Footer ════════ */}
+      {/* ════════ PANEL 10: Footer ════════ */}
       <Footer />
     </div>
   )
