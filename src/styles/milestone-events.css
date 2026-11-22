@@ -317,8 +317,6 @@
   -webkit-line-clamp: unset;
   overflow-y: auto;
   overscroll-behavior: contain;
-  scrollbar-width: thin;
-  padding-right: 4px;
 }
 
 /* Touch devices have no hover: keep the description scrollable always. */
@@ -329,6 +327,16 @@
     overflow-y: auto;
     overscroll-behavior: contain;
   }
+}
+
+/* Description stays scrollable, but without a visible scrollbar. */
+.ms-poster-content p {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ms-poster-content p::-webkit-scrollbar {
+  display: none;
 }
 
 .ms-poster-perforation {

@@ -17,7 +17,7 @@ const PROGRAMS = [
   },
   {
     id: 'ieeextreme',
-    title: 'IEEEXtreme 16.0',
+    title: 'IEEEXtreme 20.0',
     accent: '#00E5FF',
     description:
       'A global challenge where teams of IEEE Student members compete to solve programming problems in 24 hours. Select school as "A48251 - Sri Jayachamarajendra College of Engineering".',

@@ -2,7 +2,6 @@ import {
   ARCHIVE_PHOTOS,
   MAGAZINE_META,
   MAGAZINE_SUMMARY,
-  eventsByYear,
 } from '../../data/magazineEvents'
 import {
   Kicker,
@@ -12,8 +11,6 @@ import {
   Rule,
   StatBox,
 } from './MagazinePrimitives'
-
-const maxYearCount = Math.max(...eventsByYear.map(([, count]) => count), 1)
 
 export function YearReviewLeft({ pageNumber }) {
   return (
@@ -32,33 +29,6 @@ export function YearReviewLeft({ pageNumber }) {
           <StatBox value={MAGAZINE_SUMMARY.features} label="Feature spreads" />
           <StatBox value={MAGAZINE_SUMMARY.years} label="Years covered" />
           <StatBox value={MAGAZINE_SUMMARY.wings} label="Wings & chapters" />
-        </div>
-
-        <div className="mt-3">
-          <div className="flex items-center justify-between border-b border-[var(--mag-line)] pb-1">
-            <Kicker>By the year</Kicker>
-            <span className="mag-mono text-[5.5px] uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
-              Events documented
-            </span>
-          </div>
-          <div className="mt-1.5 space-y-1.5">
-            {eventsByYear.map(([year, count]) => (
-              <div key={year} className="flex items-center gap-2">
-                <span className="mag-mono w-7 shrink-0 text-[6.5px] font-bold tabular-nums">
-                  {year}
-                </span>
-                <div className="h-2.5 flex-1 border border-[var(--mag-ink)] bg-[var(--mag-paper-deep)]">
-                  <div
-                    className="h-full bg-[var(--mag-blue)]"
-                    style={{ width: `${(count / maxYearCount) * 100}%` }}
-                  />
-                </div>
-                <span className="mag-mono w-4 shrink-0 text-right text-[6.5px] font-bold tabular-nums">
-                  {count}
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className="mt-auto border-t-2 border-[var(--mag-ink)] pt-2">
@@ -97,7 +67,6 @@ export function YearReviewRight({ pageNumber }) {
               key={photo.src}
               src={photo.src}
               alt={photo.alt}
-              caption={index % 2 === 0 ? 'IEEE-SJCE archive' : 'Event photography'}
               className="min-h-0"
               rotate={index % 2 === 0 ? '-rotate-1' : 'rotate-1'}
             />

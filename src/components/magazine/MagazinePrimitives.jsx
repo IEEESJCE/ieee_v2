@@ -1,6 +1,41 @@
-import { forwardRef, useState } from 'react'
+import { forwardRef, useLayoutEffect, useRef, useState } from 'react'
 
 const cx = (...parts) => parts.filter(Boolean).join(' ')
+
+// Event titles must break only between words. When a single word is wider
+// than the column (e.g. "INAUGURATION" in a narrow side column), shrink the
+// heading's type until the longest word fits instead of splitting the word.
+export function FitHeading({ as: Tag = 'h2', className = '', text, children }) {
+  const ref = useRef(null)
+
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (!el) return undefined
+
+    const fit = () => {
+      if (!el.clientWidth) return // page hidden; refit when it is shown
+      el.style.fontSize = ''
+      let size = parseFloat(getComputedStyle(el).fontSize)
+      const min = size * 0.55
+      while (el.scrollWidth > el.clientWidth + 1 && size > min) {
+        size -= 0.25
+        el.style.fontSize = `${size}px`
+      }
+    }
+
+    fit()
+    document.fonts?.ready.then(fit)
+    const observer = new ResizeObserver(fit)
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [text])
+
+  return (
+    <Tag ref={ref} className={cx(className, '[overflow-wrap:normal] [hyphens:none]')}>
+      {children}
+    </Tag>
+  )
+}
 
 export const BookPage = forwardRef(function BookPage(
   { children, side = 'left', padded = true, className = '' },
@@ -85,7 +120,7 @@ export function EventTag({ children, className = '' }) {
   return (
     <span
       className={cx(
-        'mag-mono inline-flex w-fit items-center border border-[var(--mag-ink)] bg-[var(--mag-yellow)] px-1.5 py-0.5 text-[6.5px] font-bold uppercase tracking-[0.16em]',
+        'mag-mono inline-flex w-fit items-center whitespace-nowrap border border-[var(--mag-ink)] bg-[var(--mag-yellow)] px-1.5 py-0.5 text-[6.5px] font-bold uppercase tracking-[0.16em]',
         className
       )}
     >
@@ -127,9 +162,6 @@ export function MagazineImage({
         <div className="flex h-full w-full flex-col items-center justify-center gap-1 border border-dashed border-[var(--mag-line)] px-2 text-center">
           <span className="mag-mono text-[6px] font-bold uppercase tracking-[0.16em] text-[var(--mag-ink-soft)]">
             Image pending
-          </span>
-          <span className="mag-mono text-[5.5px] uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
-            IEEE-SJCE archive
           </span>
         </div>
       ) : (
@@ -252,16 +284,29 @@ export function StatStrip({ stats = [], className = '' }) {
   )
 }
 
-export function StatBox({ value, label, accent = false }) {
+export function StatBox({ value, label, accent = false, compact = false }) {
   return (
     <div
       className={cx(
-        'border-2 border-[var(--mag-ink)] px-2 py-1.5',
+        'border-2 border-[var(--mag-ink)]',
+        compact ? 'px-1.5 py-1' : 'px-2 py-1.5',
         accent ? 'bg-[var(--mag-yellow)]' : 'bg-[var(--mag-paper-deep)]'
       )}
     >
-      <div className="mag-display text-[16px] leading-none sm:text-[24px]">{value}</div>
-      <div className="mag-mono mt-1 text-[6px] font-bold uppercase tracking-[0.14em]">
+      <div
+        className={cx(
+          'mag-display leading-none',
+          compact ? 'text-[12px] sm:text-[15px]' : 'text-[16px] sm:text-[24px]'
+        )}
+      >
+        {value}
+      </div>
+      <div
+        className={cx(
+          'mag-mono font-bold uppercase tracking-[0.14em]',
+          compact ? 'mt-0.5 text-[5px]' : 'mt-1 text-[6px]'
+        )}
+      >
         {label}
       </div>
     </div>

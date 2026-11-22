@@ -43,7 +43,6 @@ export default function MagazineEditorial({ pageNumber }) {
             <PhotoPlate
               src={ARCHIVE_PHOTOS[0].src}
               alt={ARCHIVE_PHOTOS[0].alt}
-              caption="IEEE-SJCE archive"
               className="h-[92px] w-full"
             />
             <div className="border border-[var(--mag-ink)] bg-[var(--mag-yellow)] px-1.5 py-1 text-center">

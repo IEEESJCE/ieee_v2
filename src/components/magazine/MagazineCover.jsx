@@ -47,21 +47,21 @@ export default function MagazineCover() {
       </header>
 
       <div className="relative z-10 mt-5 shrink-0">
-        <p className="mag-mono text-[8px] font-bold uppercase tracking-[0.5em]">The</p>
-        <h1 className="mag-display text-[26px] leading-[0.85] tracking-[-0.04em] sm:text-[36px]">
+        <p className="mag-mono mag-outline mag-outline-on-light text-[8px] font-bold uppercase tracking-[0.5em]">The</p>
+        <h1 className="mag-display mag-outline mag-outline-lg mag-outline-on-light text-[26px] leading-[0.85] tracking-[-0.04em] sm:text-[36px]">
           IEEE
           <br />
           CHRONICLE
         </h1>
         <div className="mt-2 flex items-center gap-2">
           <span className="h-[3px] w-10 bg-[var(--mag-ink)]" aria-hidden="true" />
-          <span className="mag-mono text-[7px] font-bold uppercase tracking-[0.32em]">
+          <span className="mag-mono mag-outline mag-outline-on-light text-[7px] font-bold uppercase tracking-[0.32em]">
             IEEE-SJCE
           </span>
         </div>
       </div>
 
-      <p className="relative z-10 mt-3 max-w-[88%] shrink-0 mag-display text-[11px] uppercase leading-tight tracking-[0.12em]">
+      <p className="relative z-10 mt-3 max-w-[88%] shrink-0 mag-display mag-outline mag-outline-on-light text-[11px] uppercase leading-tight tracking-[0.12em]">
         {MAGAZINE_META.tagline}
       </p>
 
@@ -69,7 +69,7 @@ export default function MagazineCover() {
       <div className="relative z-10 mt-4 min-h-0 flex-1">
         <div className="relative h-full w-full">
           <div className="absolute left-0 top-2 h-[72%] w-[56%] -rotate-3">
-            <Print photo={coverPhotos[0]} label="IEEE-SJCE archive" />
+            <Print photo={coverPhotos[0]} />
           </div>
           <div className="absolute right-0 top-0 h-[55%] w-[46%] rotate-2">
             <Print photo={coverPhotos[1]} label="Workshop floor" />
@@ -110,9 +110,11 @@ function Print({ photo, label }) {
       <div className="relative h-full w-full overflow-hidden border-2 border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] shadow-[4px_4px_0_rgba(17,17,17,0.2)]">
         <MagazineImage src={photo.src} alt={photo.alt} loading="eager" />
       </div>
-      <figcaption className="mag-mono mt-0.5 truncate text-[5.5px] uppercase tracking-[0.1em] text-[var(--mag-ink-soft)]">
-        {label}
-      </figcaption>
+      {label && (
+        <figcaption className="mag-mono mt-0.5 truncate text-[5.5px] uppercase tracking-[0.1em] text-[var(--mag-ink-soft)]">
+          {label}
+        </figcaption>
+      )}
     </figure>
   )
 }

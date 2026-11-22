@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import KeepIoT from '../KeepIoT'
 import {
   BookPage,
   EventTag,
+  FitHeading,
   HighlightList,
   Kicker,
   MagazineImage,
@@ -51,16 +53,16 @@ function BriefPage({ event, pageNumber, companion }) {
       </span>
 
       <div className="mt-2 flex min-h-0 flex-1 flex-col overflow-hidden">
-        <div className="flex shrink-0 items-center justify-between gap-2">
+        <div className="flex shrink-0 flex-wrap items-center justify-between gap-x-2 gap-y-1">
           <EventTag>{event.category}</EventTag>
           <span className="mag-mono border border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] px-1.5 py-0.5 text-[6px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
             No. {pad(event.order)}
           </span>
         </div>
 
-        <h2 className="mag-display mt-1.5 text-[15px] uppercase leading-[0.94] tracking-[-0.03em] sm:text-[18px]">
-          {event.title}
-        </h2>
+        <FitHeading as="h2" text={event.title} className="mag-display mt-1.5 text-[15px] uppercase leading-[0.94] tracking-[-0.03em] sm:text-[18px]">
+          <KeepIoT text={event.title} />
+        </FitHeading>
 
         <p className="mag-mono mt-1 shrink-0 text-[6.5px] font-bold uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
           {event.date} · {event.venue}
@@ -92,24 +94,13 @@ function BriefPage({ event, pageNumber, companion }) {
           )}
 
           <div className="mt-auto shrink-0 space-y-1.5">
-            {event.takeaway && (
-              <div className="border border-[var(--mag-ink)] bg-[var(--mag-yellow)] px-2 py-1.5">
-                <div className="mag-mono text-[5.5px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink)]">
-                  Takeaway
-                </div>
-                <p className="mag-display mt-0.5 text-[10.5px] uppercase leading-tight text-[var(--mag-ink)]">
-                  {event.takeaway}
-                </p>
-              </div>
-            )}
-
             {companion && (
               <div className="flex items-center justify-between gap-2 border-t border-[var(--mag-line)] pt-1 text-[5.5px]">
                 <span className="mag-mono font-bold uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
                   Facing Event
                 </span>
                 <span className="mag-display min-w-0 truncate text-right text-[7.5px] uppercase">
-                  {companion.title}
+                  <KeepIoT text={companion.title} />
                 </span>
               </div>
             )}

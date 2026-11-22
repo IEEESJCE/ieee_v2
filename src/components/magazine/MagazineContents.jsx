@@ -1,4 +1,5 @@
 import { ARCHIVE_PHOTOS, MAGAZINE_SUMMARY } from '../../data/magazineEvents'
+import KeepIoT from '../KeepIoT'
 import {
   Kicker,
   PageFooter,
@@ -25,18 +26,17 @@ export function MagazineContentsIntro({ pageNumber }) {
           one issue and arranged to be read spread by spread.
         </p>
 
-        <div className="mt-2 grid grid-cols-2 gap-1.5">
-          <StatBox value={MAGAZINE_SUMMARY.stories} label="Stories" accent />
-          <StatBox value={MAGAZINE_SUMMARY.features} label="Feature spreads" />
-          <StatBox value={MAGAZINE_SUMMARY.years} label="Years covered" />
-          <StatBox value={MAGAZINE_SUMMARY.wings} label="Wings & chapters" />
+        <div className="mt-2 grid grid-cols-2 gap-1">
+          <StatBox value={MAGAZINE_SUMMARY.stories} label="Stories" accent compact />
+          <StatBox value={MAGAZINE_SUMMARY.features} label="Feature spreads" compact />
+          <StatBox value={MAGAZINE_SUMMARY.years} label="Years covered" compact />
+          <StatBox value={MAGAZINE_SUMMARY.wings} label="Wings & chapters" compact />
         </div>
 
-        <div className="mt-2 min-h-0 flex-1">
+        <div className="mt-2.5 min-h-0 flex-1">
           <PhotoPlate
             src={ARCHIVE_PHOTOS[2].src}
             alt={ARCHIVE_PHOTOS[2].alt}
-            caption="IEEE-SJCE archive"
             className="h-full w-full"
           />
         </div>
@@ -103,7 +103,7 @@ export default function MagazineContents({
                 {String(startIndex + index + 1).padStart(2, '0')}
               </span>
               <span className="mag-display min-w-0 flex-1 truncate text-[8.5px] uppercase leading-tight group-hover:text-[var(--mag-blue)]">
-                {entry.title}
+                <KeepIoT text={entry.title} />
               </span>
               <span className="mag-mono shrink-0 text-[6.5px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
                 {String(entry.pageIndex + 1).padStart(2, '0')}

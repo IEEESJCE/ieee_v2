@@ -33,7 +33,7 @@ const AREAS = [
     alt: 'Students attending a robotics workshop',
     accent: '#8B5CF6',
     description:
-      'Attend seminars and workshops on the most trending and interesting topics led by leading scientists and industry personnel. The major workshops conducted are: VPM, Soldering and Etching, and Robotics.',
+      'Attend seminars and workshops on the most trending and interesting topics led by leading scientists and industry personnel. The major workshops conducted are: Soldering and Etching, and Robotics.',
   },
   {
     id: 'competitions',

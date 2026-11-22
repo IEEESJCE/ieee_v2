@@ -2,7 +2,7 @@ import { MAGAZINE_META } from '../../data/magazineEvents'
 
 export default function MagazineBackCover() {
   return (
-    <article className="relative flex h-full w-full flex-col overflow-hidden bg-[#0B0B0B] px-6 py-6 text-[var(--mag-paper)]">
+    <article className="relative flex h-full w-full flex-col overflow-hidden [container-type:inline-size] bg-[#0B0B0B] px-6 py-6 text-[var(--mag-paper)]">
       <div
         className="pointer-events-none absolute -right-16 top-20 h-48 w-48 rounded-full border-[14px] border-[var(--mag-blue)]"
         aria-hidden="true"
@@ -30,10 +30,10 @@ export default function MagazineBackCover() {
       </header>
 
       <div className="relative z-10 mt-auto">
-        <p className="mag-mono text-[7px] font-bold uppercase tracking-[0.3em] text-[var(--mag-paper)]">
+        <p className="mag-mono mag-outline mag-outline-on-dark text-[7px] font-bold uppercase tracking-[0.3em] text-[var(--mag-paper)]">
           IEEE-SJCE
         </p>
-        <h2 className="mag-display mt-2 text-[28px] uppercase leading-[0.84] tracking-[-0.04em] sm:text-[38px]">
+        <h2 className="mag-display mag-outline mag-outline-lg mag-outline-on-dark mt-2 [font-size:clamp(22px,calc(10cqw_-_2px),38px)] uppercase leading-[0.84] tracking-[-0.04em]">
           The
           <br />
           IEEE
@@ -41,7 +41,7 @@ export default function MagazineBackCover() {
           Chronicle
         </h2>
         <div className="mt-3 h-[3px] w-16 bg-[var(--mag-yellow)]" aria-hidden="true" />
-        <p className="mag-display mt-3 max-w-[80%] text-[11px] uppercase leading-tight tracking-[0.12em]">
+        <p className="mag-display mag-outline mag-outline-on-dark mt-3 max-w-[80%] text-[11px] uppercase leading-tight tracking-[0.12em]">
           {MAGAZINE_META.tagline}
         </p>
       </div>
