@@ -39,7 +39,7 @@ export default function Footer() {
             <p><MapPin size={14} /> IEEE-SJCE Student Branch</p>
             <p>Sri Jayachamarajendra College of Engineering</p>
             <p>Mysuru, 570006</p>
-            <p><Phone size={14} /> <a href="tel:09972373829">09972373829</a></p>
+            <p><Phone size={14} /> <a href="tel:+917795317819">+91 7795317819</a></p>
             <p>
               <Mail size={14} />
               <a href="mailto:ieeesjce2019@gmail.com">ieeesjce2019@gmail.com</a>

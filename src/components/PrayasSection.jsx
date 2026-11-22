@@ -42,10 +42,10 @@ const TABS = [
     accent: '#00F5D4',
     content: (
       <ul>
-        <li>Work satisfaction.</li>
-        <li>Adds value to your profile.</li>
-        <li>Best platform to develop communication with society.</li>
-        <li>A good start or continuity of your interest to serve the society.</li>
+        <li>Building real social impact.</li>
+        <li>Bridging the education gap.</li>
+        <li>Sparking early STEM curiosity.</li>
+        <li>Practical communication skills.</li>
       </ul>
     ),
   },
@@ -108,8 +108,7 @@ export default function PrayasSection() {
           </span>
           <h2 className="pry-title">Prayas</h2>
           <p className="pry-lead">
-            PRAYAS is an outreach program by IEEE-SJCE WIE that provides equitable education
-            outcomes to underprivileged children. Volunteers visit educational institutions and
+            PRAYAS is a STEM based outreach program organised by IEEE-SJCE WIE. Volunteers visit educational institutions and
             teach students from the underprivileged sections of society frequently, in support of
             their academic activities.
           </p>

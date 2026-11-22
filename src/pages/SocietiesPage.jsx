@@ -40,7 +40,7 @@ const SOCIETIES = [
       },
       {
         title: "RADIOVERSE",
-        desc: "A two-day immersive technical exploration into radio frequency engineering, wireless telemetry, antenna design, and radar applications with live simulation sessions and demonstrations.",
+        desc: "A hands-on workshop with GNU Radio Companion and Software Defined Radio, where participants explored radio signal processing and saw how theoretical concepts translate into real-world applications.",
       },
       {
         title: "TECH DETECTIVE",
@@ -111,11 +111,11 @@ const SOCIETIES = [
       "https://lottie.host/?file=2f28a704-d29d-4531-975b-c3e7e6d9bf20/WVBLEk0GNv.json",
     tagline: "Empowering women in STEM globally.",
     about:
-      "IEEE Women in Engineering (WIE) is a global network of IEEE members and volunteers dedicated to promoting women engineers and scientists and inspiring girls around the world to follow their academic interests in a career in engineering and science. It is the world’s largest technical professional organization dedicated to advancing technology for the benefit of humanity. Its goal is to facilitate the recruitment and retention of women in technical disciplines globally. IEEE WIE envisions a vibrant community of IEEE women and men collectively using their diverse talents to innovate the benefit of humanity.",
+      "IEEE Women in Engineering (WIE) is a global network of IEEE members and volunteers dedicated to promoting women engineers and scientists and inspiring girls around the world to follow their academic interests in a career in engineering and science. It is the world’s largest technical professional organization dedicated to advancing technology for the benefit of humanity. Its goal is to facilitate the recruitment and retention of women in technical disciplines globally. IEEE WIE aims to build an active community of women and men who combine their diverse talents to drive meaningful change.",
     events: [
       {
         title: "KALPANA CHAWLA MEMORIAL LECTURE",
-        desc: "A prestigious flagship memorial lecture organized by IEEE WIE exploring the evolution, achievements, and future horizons of the Indian Space Programme and honoring women leaders in STEM.",
+        desc: "A prestigious flagship memorial lecture organized by IEEE-SJCE WIE exploring the evolution, achievements, and future horizons of the Indian Space Programme and honoring women leaders in STEM.",
       },
       {
         title: "TCL WORKSHOP",

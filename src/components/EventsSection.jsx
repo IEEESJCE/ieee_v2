@@ -25,6 +25,7 @@ import {
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '../styles/events.css'
+import KeepIoT from './KeepIoT'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -69,7 +70,7 @@ const EVENTS = [
     date: '8–9 OCT 2026',
     wing: 'IEEE-SJCE',
     description:
-      'A two-day immersive exploration into radio frequency engineering, wireless telemetry, antenna design, and radar applications with live demonstrations and simulation sessions.',
+      'A hands-on workshop with GNU Radio Companion and Software Defined Radio, where participants explored radio signal processing and saw how theoretical concepts translate into real-world applications.',
     icon: <Radio size={22} />,
     accent: '#3B82F6',
     image: '/photos/events/radio.jpeg',
@@ -130,7 +131,7 @@ const EVENTS = [
       'An educational industrial visit to the Centre for Nanoscience and Engineering (CeNSE), IISc Bengaluru. Students explored cutting-edge semiconductor fabrication facilities, advanced molecular laboratories, and networked with leading nanotechnology researchers.',
     icon: <Microscope size={22} />,
     accent: '#06B6D4',
-    image: '/photos/events/techtour_2026.jpg',
+    image: '/photos/events/techtour_2026_team.jpg',
     imageAlt: 'IEEE-SJCE Techtour industrial visit to CeNSE, IISc Bengaluru',
     imagePosition: 'center 56%',
   },
@@ -139,7 +140,7 @@ const EVENTS = [
     date: '15 JUN 2026',
     wing: 'WIE',
     description:
-      'A prestigious memorial lecture organized by IEEE WIE exploring the evolution, achievements, and future horizons of the Indian Space Programme and its transformative role in national progress.',
+      'A prestigious memorial lecture organized by IEEE-SJCE WIE exploring the evolution, achievements, and future horizons of the Indian Space Programme and its transformative role in national progress.',
     icon: <Rocket size={22} />,
     accent: '#EC4899',
     image: '/photos/events/kalpana_chawla_2026.jpeg',
@@ -275,7 +276,7 @@ const EVENTS = [
     date: '13 OCT 2025',
     wing: 'IEEE-SJCE',
     description:
-      'Organized under the IEEE Illuminate series for IEEE Day 2025, Electroclues featured "Wire and Win" rapid-fire circuit debugging with a 90-second buzzer round, followed by deductive electronics riddles and technical problem-solving challenges at NPS-001.',
+      'Organized under the IEEE Illuminate series for IEEE Day 2025, Electroclues featured "Wire and Win" rapid-fire circuit debugging with a 90-second buzzer round, followed by deductive electronics riddles and technical problem-solving challenges.',
     icon: <Zap size={22} />,
     accent: '#EC4899',
     image: '/photos/events/electroclues_2025.jpg',
@@ -387,7 +388,7 @@ const EVENTS = [
     date: '13–14 NOV 2024',
     wing: 'EDS',
     description:
-      'Hands-on electronics workshop at NPS-001 Polymer Science Block. Participants explored breadboard fundamentals, transistors as switches, logic gates, 7-segment displays, capacitor charging/discharging, and photoelectric circuits using modular Snap Circuits kits.',
+      'Hands-on electronics workshop. Participants explored breadboard fundamentals, transistors as switches, logic gates, 7-segment displays, capacitor charging/discharging, and photoelectric circuits using modular Snap Circuits kits.',
     icon: <Zap size={22} />,
     accent: '#EC4899',
     image: '/photos/events/snap_circuits_2024.png',
@@ -420,7 +421,7 @@ const EVENTS = [
     date: '10 AUG 2024',
     wing: 'EDS · RAS · WIE',
     description:
-      'A four-round technical and aptitude quiz competition for first- and second-year students organized jointly by EDS, RAS, and WIE. Featured aptitude challenges, riddles, logo identification, and engineering puzzles at NPS-001.',
+      'A four-round technical and aptitude quiz competition for first- and second-year students organized jointly by EDS, RAS, and WIE. Featured aptitude challenges, riddles, logo identification, and engineering puzzles.',
     icon: <Trophy size={22} />,
     accent: '#F97316',
     image: '/photos/events/quiz_quake_2024.jpg',
@@ -651,7 +652,7 @@ export default function EventsSection() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="evt-card-title">{evt.title}</h3>
+                    <h3 className="evt-card-title"><KeepIoT text={evt.title} /></h3>
 
                     {/* Description */}
                     <p className="evt-card-desc">{evt.description}</p>

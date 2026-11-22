@@ -3,6 +3,7 @@ import { FileText, Bug, Brain, Bot, Wifi, Cpu, Wrench, Database, Sparkles, Globe
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '../styles/milestone-events.css'
+import KeepIoT from './KeepIoT'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -197,7 +198,7 @@ export default function MilestoneEventsSection() {
 
                       <div className="ms-poster-meta">
                         <span className="ms-poster-tag" style={{ borderColor: event.accent }}>
-                          {event.tag}
+                          <KeepIoT text={event.tag} />
                         </span>
                         <span className="ms-poster-num">{String(index + 1).padStart(2, '0')}</span>
                       </div>
@@ -206,7 +207,7 @@ export default function MilestoneEventsSection() {
                         <div className="ms-poster-icon" style={{ color: event.accent }}>
                           {event.icon}
                         </div>
-                        <h3>{event.title}</h3>
+                        <h3><KeepIoT text={event.title} /></h3>
                         <p>{event.content}</p>
                       </div>
 

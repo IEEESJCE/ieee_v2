@@ -28,6 +28,37 @@
   font-family: var(--font-mono);
 }
 
+/* Letter outline for cover headings that sit over the coloured shapes.
+   Built from text-shadow so it renders the same in every browser and
+   draws outside the glyph instead of eating into it.
+   Set --mag-outline-color and --mag-outline-w on the element. */
+.mag-outline {
+  --mag-outline-w: 1px;
+  text-shadow:
+    calc(var(--mag-outline-w) * -1) calc(var(--mag-outline-w) * -1) 0 var(--mag-outline-color),
+    0 calc(var(--mag-outline-w) * -1) 0 var(--mag-outline-color),
+    var(--mag-outline-w) calc(var(--mag-outline-w) * -1) 0 var(--mag-outline-color),
+    var(--mag-outline-w) 0 0 var(--mag-outline-color),
+    var(--mag-outline-w) var(--mag-outline-w) 0 var(--mag-outline-color),
+    0 var(--mag-outline-w) 0 var(--mag-outline-color),
+    calc(var(--mag-outline-w) * -1) var(--mag-outline-w) 0 var(--mag-outline-color),
+    calc(var(--mag-outline-w) * -1) 0 0 var(--mag-outline-color);
+}
+
+.mag-outline-lg {
+  --mag-outline-w: 1.5px;
+}
+
+/* Dark ink letters on the cream front cover: cream outline. */
+.mag-outline-on-light {
+  --mag-outline-color: var(--mag-paper);
+}
+
+/* Cream letters on the black back cover: ink outline. */
+.mag-outline-on-dark {
+  --mag-outline-color: var(--mag-ink);
+}
+
 /* Warm paper with a barely-there print grain */
 .mag-paper {
   background-color: var(--mag-paper);

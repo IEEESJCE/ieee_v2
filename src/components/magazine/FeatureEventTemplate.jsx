@@ -1,8 +1,10 @@
 import { useLayoutEffect, useRef } from 'react'
+import KeepIoT from '../KeepIoT'
 import { ARCHIVE_PHOTOS } from '../../data/magazineEvents'
 import {
   BookPage,
   EventTag,
+  FitHeading,
   HighlightList,
   Kicker,
   MagazineImage,
@@ -65,9 +67,6 @@ function FeatureLeftPage({ event, pageNumber }) {
               alt={`${event.title} event poster`}
               imgClassName="h-full w-full object-contain p-1"
             />
-            <span className="mag-mono absolute bottom-1 left-1 z-20 border border-[var(--mag-ink)] bg-[var(--mag-paper)] px-1 py-0.5 text-[5px] font-bold uppercase tracking-[0.14em]">
-              Official poster
-            </span>
           </div>
 
           {event.pullQuote && (
@@ -80,23 +79,26 @@ function FeatureLeftPage({ event, pageNumber }) {
           )}
 
           <div className="mt-2 shrink-0 border border-[var(--mag-line)] bg-[var(--mag-paper-deep)] px-1.5 py-1 text-center w-full">
+            {/* Wing and category each stay on one line; if both don't fit,
+                the line breaks between them, never inside "Industrial Visit". */}
             <span className="mag-mono text-[5px] font-bold uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
-              {event.wing} · {event.category}
+              <span className="whitespace-nowrap">{event.wing} ·</span>{' '}
+              <span className="whitespace-nowrap">{event.category}</span>
             </span>
           </div>
         </div>
 
         <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-          <div className="flex shrink-0 items-center justify-between gap-1.5">
+          <div className="flex shrink-0 flex-wrap items-center justify-between gap-x-1.5 gap-y-1">
             <EventTag>{event.category}</EventTag>
             <span className="mag-mono shrink-0 border border-[var(--mag-ink)] px-1.5 py-0.5 text-[6px] font-bold uppercase tracking-[0.12em]">
               No. {pad(event.order)}
             </span>
           </div>
 
-          <h2 className="mag-display mt-1.5 text-[13.5px] uppercase leading-[0.95] tracking-[-0.03em] [overflow-wrap:anywhere]">
-            {event.title}
-          </h2>
+          <FitHeading as="h2" text={event.title} className="mag-display mt-1.5 text-[13.5px] uppercase leading-[0.95] tracking-[-0.03em]">
+            <KeepIoT text={event.title} />
+          </FitHeading>
 
           <p className="mag-mono mt-1 shrink-0 text-[6.5px] font-bold uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
             {event.date} · {event.venue}
@@ -131,30 +133,51 @@ function FeatureLeftPage({ event, pageNumber }) {
 
 function FeatureRightPage({ event, pageNumber }) {
   const photos = (event.photos ?? []).filter((photo) => photo && photo !== event.poster)
+  // One supplied photo is shown alone as a single large print.
+  const singlePhoto = photos.length === 1
   const [photo1, photo2] =
     photos.length >= 2
       ? photos.slice(0, 2)
-      : photos.length === 1
-        ? [photos[0], ARCHIVE_PHOTOS[1].src]
+      : singlePhoto
+        ? [photos[0], null]
         : [ARCHIVE_PHOTOS[0].src, ARCHIVE_PHOTOS[1].src]
+  // `recapPhotos: false` drops the prints so the recap text sits right under
+  // the title.
+  const showPhotos = event.recapPhotos !== false
 
   return (
     <>
       <PageHeader section={`${event.category} · Recap`} />
 
       <div className="mt-2.5 flex min-h-0 flex-1 flex-col">
-        <div className="flex shrink-0 items-end justify-between gap-2 border-b border-[var(--mag-line)] pb-1.5">
-          <div className="min-w-0">
-            <Kicker>The recap</Kicker>
-            <h3 className="mag-display mt-0.5 truncate text-[14px] uppercase leading-none tracking-[-0.02em] sm:text-[17px]">
-              {event.title}
-            </h3>
-          </div>
-          <span className="mag-mono shrink-0 text-[6px] font-bold uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
+        {/* Date sits under the title so the title gets the full width and is
+            never cut short. */}
+        <div className="shrink-0 border-b border-[var(--mag-line)] pb-1.5">
+          <Kicker>The recap</Kicker>
+          <FitHeading as="h3" text={event.title} className="mag-display mt-0.5 text-[14px] uppercase leading-[0.95] tracking-[-0.02em] sm:text-[17px]">
+            <KeepIoT text={event.title} />
+          </FitHeading>
+          <span className="mag-mono mt-1 block text-[6px] font-bold uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
             {event.date}
           </span>
         </div>
 
+        {!showPhotos ? null : singlePhoto ? (
+          <div className="relative my-2 flex min-h-0 flex-1 w-full items-center justify-center">
+            <div className="relative w-[94%] max-h-full aspect-[16/11] -rotate-1">
+              <PhotoPlate
+                src={photo1}
+                alt={`${event.title} moment`}
+                className="h-full w-full"
+                tape
+              />
+            </div>
+
+            <span className="mag-mono absolute right-1 top-0 z-30 border border-[var(--mag-ink)] bg-[var(--mag-paper)] px-1.5 py-0.5 text-[5.5px] font-bold uppercase tracking-[0.14em]">
+              Archive print
+            </span>
+          </div>
+        ) : (
         <div className="relative my-2 min-h-0 flex-1 w-full">
           <div className="absolute left-0 top-0.5 z-10 w-[72%] aspect-[16/10] -rotate-2">
             <PhotoPlate
@@ -170,7 +193,6 @@ function FeatureRightPage({ event, pageNumber }) {
             <PhotoPlate
               src={photo2}
               alt={`${event.title} moment 2`}
-              caption="IEEE-SJCE archive"
               className="h-full w-full"
               tape
             />
@@ -184,14 +206,25 @@ function FeatureRightPage({ event, pageNumber }) {
             Recap moments
           </span>
         </div>
+        )}
 
-        <p className="mt-1 line-clamp-3 shrink-0 text-[9px] leading-[1.45] text-[var(--mag-ink-soft)]">
+        <p
+          className={
+            showPhotos
+              ? 'mt-1 line-clamp-3 shrink-0 text-[9px] leading-[1.45] text-[var(--mag-ink-soft)]'
+              : 'mt-2.5 shrink-0 text-[9px] leading-[1.45] text-[var(--mag-ink-soft)]'
+          }
+        >
           {event.recap}
         </p>
 
+        {!showPhotos && <div className="min-h-0 flex-1" aria-hidden="true" />}
+
         <div className="mt-1.5 flex shrink-0 items-center justify-between gap-2 border-t border-[var(--mag-line)] pt-1.5 w-full">
+          {/* "IEEE-SJCE" here just repeats the page footer, so only a specific
+              wing or society is shown on the left. */}
           <span className="mag-mono w-[45%] shrink-0 truncate text-[5px] font-bold uppercase tracking-[0.06em] leading-none text-[var(--mag-ink-soft)]">
-            {event.wing}
+            {event.wing === 'IEEE-SJCE' ? null : event.wing}
           </span>
           <span className="mag-mono w-[45%] shrink-0 truncate text-[5px] font-bold uppercase tracking-[0.06em] leading-none text-[var(--mag-ink-soft)] text-right">
             {event.venue}

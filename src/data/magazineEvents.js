@@ -32,7 +32,7 @@ export const MAGAZINE_META = {
   issue: 'ISSUE 01',
   year: 'ACADEMIC YEAR 2025–26',
   span: 'A COLLECTION OF IEEE-SJCE EVENTS · 2023–2026',
-  website: 'ieeesjce.com',
+  website: 'ieeesjce.org',
 }
 
 export const ARCHIVE_PHOTOS = [
@@ -85,7 +85,7 @@ export const MAGAZINE_EVENTS = [
       { label: "Format", value: "Workshop" },
       { label: "Duration", value: "2 days" },
     ],
-    pullQuote: "Where curiosity meets a breadboard.",
+    pullQuote: "Where Curiosity Snaps into Existence.",
   },
   {
     id: 'matlab-2026',
@@ -122,7 +122,7 @@ export const MAGAZINE_EVENTS = [
     order: 3,
     template: 'DETAILED',
     title: "Tech Detective",
-    category: "Competition",
+    category: "Quiz",
     wing: "IEEE Day",
     date: "16 October 2026",
     venue: "SJCE, Mysuru",
@@ -137,12 +137,11 @@ export const MAGAZINE_EVENTS = [
       "Engineering mystery-solving",
     ],
     photos: [
-      "/photos/gallery/gall8.jpg",
-      "/photos/gallery/gall2.jpg",
+      "/photos/events/tech_detective_recap.jpg",
     ],
     stats: [
       { label: "Wing", value: "IEEE Day" },
-      { label: "Format", value: "Competition" },
+      { label: "Format", value: "Quiz" },
       { label: "Duration", value: "1 day" },
     ],
     pullQuote: "Every clue is a circuit waiting to close.",
@@ -152,19 +151,19 @@ export const MAGAZINE_EVENTS = [
     order: 4,
     template: 'DETAILED',
     title: "Radioverse",
-    category: "Technical Series",
+    category: "Workshop",
     wing: "IEEE-SJCE",
     date: "8–9 October 2026",
     venue: "SJCE, Mysuru",
     poster: "/photos/events/radio.jpeg",
     description:
-      "A two-day immersive exploration into radio frequency engineering, wireless telemetry, antenna design, and radar applications with live demonstrations and simulation sessions.",
+      "The workshop offered participants a hands-on experience with the GNU Radio Companion and Software Defined Radio, helping them explore radio signal processing and understand how theoretical concepts translate into real-world applications. The sessions brimmed with curiosity, collaboration, and learning as participants set up the software, experimented with SDR, and worked with signals.",
     recap:
-      "Radioverse opened a window into the invisible spectrum — from antenna theory and telemetry to live demonstrations that made radio frequency engineering tangible.",
+      "Radioverse put GNU Radio Companion and Software Defined Radio in participants' hands, turning radio signal processing theory into hands-on experiments with real signals.",
     highlights: [
-      "RF engineering fundamentals",
-      "Antenna design & radar applications",
-      "Live demonstrations & simulations",
+      "GNU Radio Companion",
+      "Software Defined Radio",
+      "Hands-on signal processing",
     ],
     photos: [
       "/photos/events/radioverse_recap_1.jpg",
@@ -172,7 +171,7 @@ export const MAGAZINE_EVENTS = [
     ],
     stats: [
       { label: "Wing", value: "IEEE-SJCE" },
-      { label: "Format", value: "Technical series" },
+      { label: "Format", value: "Workshop" },
       { label: "Duration", value: "2 days" },
     ],
     pullQuote: "A two-day trip through the radio spectrum.",
@@ -198,7 +197,7 @@ export const MAGAZINE_EVENTS = [
     ],
     photos: [
       "/photos/events/orientation_day_recap_1.jpg",
-      "/photos/gallery/gall3.jpg",
+      "/photos/events/orientation_day_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "IEEE-SJCE" },
@@ -212,7 +211,7 @@ export const MAGAZINE_EVENTS = [
     order: 6,
     template: 'DETAILED',
     title: "FUNsane",
-    category: "Community",
+    category: "Fun Day",
     wing: "IEEE-SJCE",
     date: "25 September 2026",
     venue: "SJCE, Mysuru",
@@ -232,7 +231,7 @@ export const MAGAZINE_EVENTS = [
     ],
     stats: [
       { label: "Wing", value: "IEEE-SJCE" },
-      { label: "Format", value: "Community" },
+      { label: "Format", value: "Fun Day" },
       { label: "Duration", value: "1 day" },
     ],
     pullQuote: "The best circuits are the people around you.",
@@ -256,10 +255,8 @@ export const MAGAZINE_EVENTS = [
       "Guests from IEEE AESS & ISRO",
       "Radar & satellite technology talk",
     ],
-    photos: [
-      "/photos/gallery/gall3.jpg",
-      "/photos/gallery/gall5.jpg",
-    ],
+    photos: [],
+    recapPhotos: false,
     stats: [
       { label: "Wing", value: "AESS" },
       { label: "Format", value: "Inauguration" },
@@ -306,7 +303,7 @@ export const MAGAZINE_EVENTS = [
     wing: "IEEE-SJCE",
     date: "3 July 2026",
     venue: "CeNSE, IISc Bengaluru",
-    poster: "/photos/events/techtour_2026.jpg",
+    poster: "/photos/events/techtour_2026_team.jpg",
     description:
       "An educational industrial visit to the Centre for Nanoscience and Engineering (CeNSE), IISc Bengaluru. Students explored cutting-edge semiconductor fabrication facilities, advanced molecular laboratories, and networked with leading nanotechnology researchers.",
     recap:
@@ -317,8 +314,8 @@ export const MAGAZINE_EVENTS = [
       "Nanotechnology research",
     ],
     photos: [
-      "/photos/gallery/gall9.jpg",
-      "/photos/standfor/seminars.jpeg",
+      "/photos/events/techtour_recap_1.jpg",
+      "/photos/events/techtour_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "IEEE-SJCE" },
@@ -338,13 +335,13 @@ export const MAGAZINE_EVENTS = [
     venue: "SJCE, Mysuru",
     poster: "/photos/events/kalpana_chawla_2026.jpeg",
     description:
-      "A prestigious memorial lecture organized by IEEE WIE exploring the evolution, achievements, and future horizons of the Indian Space Programme and its transformative role in national progress.",
+      "A prestigious memorial lecture organized by IEEE-SJCE WIE exploring the evolution, achievements, and future horizons of the Indian Space Programme and its transformative role in national progress.",
     recap:
-      "IEEE WIE hosted a memorial lecture that traced the Indian Space Programme from its early years to its current ambitions, with a focus on the people and ideas behind the milestones.",
+      "IEEE-SJCE WIE hosted a memorial lecture that traced the Indian Space Programme from its early years to its current ambitions, with a focus on the people and ideas behind the milestones.",
     highlights: [
       "Indian Space Programme",
       "Achievements & future horizons",
-      "Organised by IEEE WIE",
+      "Instill motivation",
     ],
     photos: [],
     stats: [
@@ -424,15 +421,15 @@ export const MAGAZINE_EVENTS = [
     description:
       "A 3-day flagship workshop by the Signal Processing Society covering machine learning fundamentals, modeling in Python, and building local edge-AI inference on ESP32 & MPU6050.",
     recap:
-      "Across three days, participants built a working understanding of machine learning in Python, then carried their models to the edge with ESP32 and MPU6050 hardware.",
+      "Participants took machine learning off the laptop and onto the edge, using an ESP32 and an MPU6050 motion sensor to build an air calculator.",
     highlights: [
       "Machine-learning fundamentals",
       "Modeling in Python",
       "Edge AI on ESP32 & MPU6050",
     ],
     photos: [
-      "/photos/standfor/seminars.jpeg",
-      "/photos/gallery/gall2.jpg",
+      "/photos/events/ml_workshop_recap_1.jpg",
+      "/photos/events/ml_workshop_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "SPS" },
@@ -492,7 +489,7 @@ export const MAGAZINE_EVENTS = [
     ],
     photos: [
       "/photos/standfor/activities.jpeg",
-      "/photos/gallery/gall11.jpg",
+      "/photos/events/prayas_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "WIE" },
@@ -677,10 +674,10 @@ export const MAGAZINE_EVENTS = [
     category: "Competition",
     wing: "IEEE-SJCE",
     date: "13 October 2025",
-    venue: "NPS-001, SJCE",
+    venue: "SJCE, Mysuru",
     poster: "/photos/events/electroclues_2025.jpg",
     description:
-      'Organized under the IEEE Illuminate series for IEEE Day 2025, Electroclues featured "Wire and Win" rapid-fire circuit debugging with a 90-second buzzer round, followed by deductive electronics riddles and technical problem-solving challenges at NPS-001.',
+      'Organized under the IEEE Illuminate series for IEEE Day 2025, Electroclues featured "Wire and Win" rapid-fire circuit debugging with a 90-second buzzer round, followed by deductive electronics riddles and technical problem-solving challenges.',
     recap:
       "Part of the IEEE Illuminate series, Electroclues mixed rapid-fire circuit debugging with deductive electronics riddles and technical problem-solving.",
     highlights: [
@@ -762,7 +759,7 @@ export const MAGAZINE_EVENTS = [
     wing: "IEEE-SJCE",
     date: "20 June 2025",
     venue: "ISRO ISTRAC & CeNSE IISc, Bengaluru",
-    poster: "/photos/events/techtour_2026.jpg",
+    poster: "/photos/events/techtour_2025.jpg",
     description:
       "An exclusive technical tour for IEEE-SJCE members visiting ISRO’s Telemetry, Tracking and Command Network (ISTRAC) and the Centre for Nano Science and Engineering (CeNSE) at IISc Bangalore, gaining firsthand exposure to mission control and semiconductor cleanrooms.",
     recap:
@@ -950,12 +947,12 @@ export const MAGAZINE_EVENTS = [
     category: "Workshop",
     wing: "EDS",
     date: "13–14 November 2024",
-    venue: "NPS-001 Polymer Science Block",
+    venue: "SJCE, Mysuru",
     poster: "/photos/events/snap_circuits_2024.png",
     description:
-      "Hands-on electronics workshop at NPS-001 Polymer Science Block. Participants explored breadboard fundamentals, transistors as switches, logic gates, 7-segment displays, capacitor charging/discharging, and photoelectric circuits using modular Snap Circuits kits.",
+      "Hands-on electronics workshop. Participants explored breadboard fundamentals, transistors as switches, logic gates, 7-segment displays, capacitor charging/discharging, and photoelectric circuits using modular Snap Circuits kits.",
     recap:
-      "Hands-on sessions at NPS-001 introduced breadboards, transistors, logic gates, displays and photoelectric circuits through modular Snap Circuits kits.",
+      "Hands-on sessions introduced breadboards, transistors, logic gates, displays and photoelectric circuits through modular Snap Circuits kits.",
     highlights: [
       "Breadboard fundamentals",
       "Transistors & logic gates",
@@ -974,7 +971,7 @@ export const MAGAZINE_EVENTS = [
     order: 33,
     template: 'BRIEF',
     title: "Fun-Finity",
-    category: "Community",
+    category: "Fun Day",
     wing: "IEEE-SJCE",
     date: "24 October 2024",
     venue: "IS Seminar Hall, SJCE",
@@ -991,7 +988,7 @@ export const MAGAZINE_EVENTS = [
     photos: [],
     stats: [
       { label: "Wing", value: "IEEE-SJCE" },
-      { label: "Format", value: "Community" },
+      { label: "Format", value: "Fun Day" },
       { label: "Duration", value: "1 day" },
     ],
     takeaway: "Community starts with hello.",
@@ -1031,10 +1028,10 @@ export const MAGAZINE_EVENTS = [
     category: "Competition",
     wing: "EDS · RAS · WIE",
     date: "10 August 2024",
-    venue: "NPS-001, SJCE",
+    venue: "SJCE, Mysuru",
     poster: "/photos/events/quiz_quake_2024.jpg",
     description:
-      "A four-round technical and aptitude quiz competition for first- and second-year students organized jointly by EDS, RAS, and WIE. Featured aptitude challenges, riddles, logo identification, and engineering puzzles at NPS-001.",
+      "A four-round technical and aptitude quiz competition for first- and second-year students organized jointly by EDS, RAS, and WIE. Featured aptitude challenges, riddles, logo identification, and engineering puzzles.",
     recap:
       "A four-round technical and aptitude quiz that tested riddles, logo identification and engineering puzzles across the first and second years.",
     highlights: [
