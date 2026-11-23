@@ -565,7 +565,11 @@
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding-bottom: 8px;
+  /* Room for the hover lift (translate -3px) so tile borders aren't clipped;
+     negative margins keep the visual alignment unchanged. */
+  padding: 6px 0 8px 6px;
+  margin: -6px 0 0 -6px;
+  scroll-padding-left: 6px;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
@@ -607,7 +611,7 @@
 .soc-event-tile h4 {
   font-family: var(--font-display, var(--font-body));
   font-size: 16px;
-  font-weight: 900;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--primary-strong);

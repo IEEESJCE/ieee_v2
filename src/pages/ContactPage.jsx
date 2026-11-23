@@ -71,7 +71,7 @@ export default function ContactPage() {
           <div className="cnt-map-card">
             <div className="cnt-map-header">
               <MapPin size={18} className="cnt-map-pin" />
-              <span>Sri Jayachamarajendra College of Engineering (SJCE), JSS STU, Mysuru 570006</span>
+              <span>JSS Science and Technology University(Formerly SJCE)</span>
             </div>
             <iframe
               title="JSS STU Mysuru"

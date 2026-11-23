@@ -24,7 +24,7 @@ const SOCIETIES = [
       "https://lottie.host/?file=89a9d017-c9c2-4e7c-a02e-c33653a6972a/3dpYgASICZ.json",
     tagline: "Advancing technology and professional development.",
     about:
-      "IEEE-SJCE Student Branch, established in the year 1991, celebrates 35 years of excellence. Having started as an elite group, today it has sprawled throughout the campus of SJCE, making students technically more competitive, more professional, and capable of enhancing their abilities as engineers. Since then, IEEE-SJCE Student Branch, a division under Region 10 of IEEE, has been known for the immensity with which its members were bestowed. The very success story of its students as professionals speaks to its standards. IEEE-SJCE Student Branch has grown to represent 330+ members across six engineering disciplines. With a focus on technical excellence and professional growth, we conduct two major technical fests annually and organize workshops to keep students industry-ready.",
+      "IEEE-SJCE Student Branch, established in the year 1991, celebrates 35 years of excellence. Having started as an elite group, today it has sprawled throughout the campus of SJCE, making students technically more competitive, more professional, and capable of enhancing their abilities as engineers. Since then, IEEE-SJCE Student Branch, a division under Region 10 of IEEE, has been known for the immensity with which its members were bestowed. The very success story of its students as professionals speaks to its standards. IEEE-SJCE Student Branch has grown to represent 330+ members across six engineering disciplines. With a focus on technical excellence and professional growth, we organize hands-on workshops, technical events, and learning sessions throughout the year to keep students industry-ready.",
     events: [
       {
         title: "ORIENTATION DAY",
@@ -40,11 +40,11 @@ const SOCIETIES = [
       },
       {
         title: "RADIOVERSE",
-        desc: "A hands-on workshop with GNU Radio Companion and Software Defined Radio, where participants explored radio signal processing and saw how theoretical concepts translate into real-world applications.",
+        desc: "A hands-on workshop with GNU Radio Companion and Software Defined Radio, where participants traced how an audio signal is modulated, transmitted over the air, and demodulated back into sound. Building live signal-flow graphs, they explored core communication concepts like sampling, filtering, and frequency modulation in action.",
       },
       {
         title: "TECH DETECTIVE",
-        desc: "Celebrated on the occasion of IEEE Day, an exhilarating technical deduction and clue-hunting contest where participants decipher encrypted signals, solve cryptic hardware puzzles, and crack complex engineering mysteries.",
+        desc: "Held on the occasion of IEEE Day, an online quiz that put participants' knowledge of electronics and their mental ability to the test. With brains running at full speed through tricky technical and logical questions, the top scorer walked away with the winner's prize.",
       },
       {
         title: "CIRCUITRIX",
@@ -77,11 +77,11 @@ const SOCIETIES = [
     events: [
       {
         title: "SNAP CIRCUITS",
-        desc: "EDS's flagship hands-on electronics workshop, conducted every year from 2023 to 2026. Freshers gain practical experience with breadboard connections, transistors as switches, logic gates, 7-segment displays, and capacitor circuits using Snap Circuits modular kits without requiring prior electronics knowledge.",
+        desc: "EDS's flagship hands-on electronics workshop, conducted every year from 2023 to 2026. Using Snap Circuits modular kits, freshers get hands-on with breadboard connections, switching circuits built with transistors and relays, logic gates, 7-segment displays, and capacitor circuits, with no prior electronics knowledge required.",
       },
       {
         title: "SOLDERING & ETCHING WORKSHOP",
-        desc: "Flagship multi-day hardware fabrication workshop moving students from schematics to physical printed circuit boards through 3 structured phases: breadboarding & LED blinking, 555 timer circuits & perfboard soldering, and KiCad PCB design with chemical etching, ironing, and drilling.",
+        desc: "Flagship multi-day hardware fabrication workshop moving students from schematics to physical printed circuit boards through 3 structured phases: LED blinking, 555 timer circuits & perfboard soldering, and KiCad PCB design with chemical etching, ironing, and drilling, finally ending with a fully functional PCB.",
       },
       {
         title: "CADENCE WORKSHOP",
@@ -89,7 +89,7 @@ const SOCIETIES = [
       },
       {
         title: "ROBOTICS WORKSHOP",
-        desc: "Organized in collaboration with the Robotics & Automation Society (RAS), including flagship editions like Robotics'16 with the innovative 'Two-Bot Concept' and Robotics'17, covering microcontroller architectures, sensor integration, and firmware programming to engineer functional autonomous robots.",
+        desc: "Organized in collaboration with the Robotics & Automation Society (RAS), covering microcontroller architectures, sensor integration, and firmware programming to engineer functional autonomous robots.",
       },
       {
         title: "SPICELAB (CIRCUIT SIMULATION)",
@@ -206,19 +206,19 @@ const SOCIETIES = [
     animation: "",
     tagline: "Signals, analysis & real-world models.",
     about:
-      "IEEE-SJCE SPS aims to keep students up to date with the latest developments in signal processing technology. Signal processing focuses on the generation, transformation, analysis, and interpretation of information carried by signals such as audio, speech, images, and other forms of data. Signal processing research emphasises the development of mathematical models, computational algorithms, and machine learning techniques to extract meaningful information from signals and apply them across diverse real-world applications. The IEEE Signal Processing Society's objectives are scientific, literary, and educational in character. The Society strives for the advancement and dissemination of knowledge in signal processing engineering, along with allied arts and sciences, and for the education of students and professionals through the exchange of technical knowledge and ideas.",
+      "IEEE-SJCE SPS aims to keep students up to date with the latest developments in signal processing technology. Signal processing focuses on the generation, transformation, analysis, and interpretation of information carried by signals such as audio, speech, images, and other forms of data. Signal processing research emphasises the development of mathematical models, computational algorithms, and machine learning techniques to extract meaningful information from signals and apply them across diverse real-world applications. The IEEE Signal Processing Society's objectives are scientific, literary, and educational in character. Since modern AI and ML models are themselves built on signal processing principles, the Society also conducts events on machine learning algorithms and Edge AI, helping students carry these foundations from classroom theory into intelligent, real-world systems.",
     events: [
-      {
-        title: "THE WAVE: SPEECH AS A WINDOW TO THE BRAIN",
-        desc: "Distinguished lecture series organized in association with IEEE SPS Bangalore Section, IEEE Bangalore Section, and IEEE Mysore Subsection, featuring Dr. Radha Kodali (Univ. of Tennessee & Le Bonheur Children's Hospital, USA) exploring speech biomarkers and healthcare AI in neuroscience.",
-      },
       {
         title: "SPS WING INAUGURATION & AUDIO DSP TECH TALK",
         desc: 'Formal wing launch in association with IEEE SPS Bangalore Section, featuring a technical keynote by Dr. Jayasudha BSK (Harman International / Vice Chair, IEEE SPS Bangalore Section) on "Deep Dive into Audio Signal Processing" and automotive audio DSP.',
       },
       {
+        title: "THE WAVE: SPEECH AS A WINDOW TO THE BRAIN",
+        desc: "Distinguished lecture series organized in association with IEEE SPS Bangalore Section, IEEE Bangalore Section, and IEEE Mysore Subsection, featuring Dr. Radha Kodali (Univ. of Tennessee & Le Bonheur Children's Hospital, USA) exploring speech biomarkers and healthcare AI in neuroscience.",
+      },
+      {
         title: "ML WORKSHOP",
-        desc: "A 3-day flagship workshop covering Machine Learning fundamentals, algorithmic modeling in Python, and building local edge-AI inference systems using ESP32, MPU6050, and motion inputs.",
+        desc: "A 3-day flagship workshop that took participants from Machine Learning fundamentals to algorithmic modeling in Python, training models on real data. It culminated in building local edge-AI inference systems on the ESP32, where motion data from an MPU6050 sensor was classified right on the device to create an air calculator.",
       },
       {
         title: "MOTION PLANNING IN ROBOTICS",
@@ -226,7 +226,7 @@ const SOCIETIES = [
       },
       {
         title: "WAVE LAB",
-        desc: "The debut hands-on workshop of the SPS Wing utilizing MATLAB to explore fundamental digital signal processing concepts, audio transformations, and practical filter design.",
+        desc: "The debut hands-on workshop of the SPS Wing, where participants used MATLAB, an industry-standard tool, to explore fundamental digital signal processing concepts. They worked through audio transformations and practical filter design, seeing how signals change in real time, and each received a MATLAB license to keep exploring beyond the workshop.",
       },
       {
         title: "HANDS-ON MATLAB WORKSHOP: SIGNAL PROCESSING AND CONTROL SYSTEMS",

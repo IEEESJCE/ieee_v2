@@ -34,7 +34,7 @@ const NAV_LINKS = [
   { label: "Societies", route: "/societies" },
   { label: "Boards", route: "/boards" },
   { label: "Team", route: "/team" },
-  { label: "Contact", route: "/contact" },
+  { label: "Contact Us", route: "/contact" },
 ];
 
 function scrollToSection(hash) {
