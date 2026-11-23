@@ -24,7 +24,7 @@ const SOCIETIES = [
       "https://lottie.host/?file=89a9d017-c9c2-4e7c-a02e-c33653a6972a/3dpYgASICZ.json",
     tagline: "Advancing technology and professional development.",
     about:
-      "IEEE-SJCE Student Branch, established in the year 1991, celebrates 35 years of excellence. Having started as an elite group, today it has sprawled throughout the campus of SJCE, making students technically more competitive, more professional, and capable of enhancing their abilities as engineers. Since then, IEEE-SJCE Student Branch, a division under Region 10 of IEEE, has been known for the immensity with which its members were bestowed. The very success story of its students as professionals speaks to its standards. IEEE-SJCE Student Branch has grown to represent 330+ members across six engineering disciplines. With a focus on technical excellence and professional growth, we conduct two major technical fests annually and organize workshops to keep students industry-ready.",
+      "IEEE-SJCE Student Branch, established in the year 1991, celebrates 35 years of excellence. Having started as an elite group, today it has sprawled throughout the campus of SJCE, making students technically more competitive, more professional, and capable of enhancing their abilities as engineers. Since then, IEEE-SJCE Student Branch, a division under Region 10 of IEEE, has been known for the immensity with which its members were bestowed. The very success story of its students as professionals speaks to its standards. IEEE-SJCE Student Branch has grown to represent 330+ members across six engineering disciplines. With a focus on technical excellence and professional growth, we organize hands-on workshops, technical events, and learning sessions throughout the year to keep students industry-ready.",
     events: [
       {
         title: "ORIENTATION DAY",
@@ -77,11 +77,11 @@ const SOCIETIES = [
     events: [
       {
         title: "SNAP CIRCUITS",
-        desc: "EDS's flagship hands-on electronics workshop, conducted every year from 2023 to 2026. Freshers gain practical experience with breadboard connections, transistors as switches, logic gates, 7-segment displays, and capacitor circuits using Snap Circuits modular kits without requiring prior electronics knowledge.",
+        desc: "EDS's flagship hands-on electronics workshop, conducted every year from 2023 to 2026. Using Snap Circuits modular kits, freshers get hands-on with breadboard connections, switching circuits built with transistors and relays, logic gates, 7-segment displays, and capacitor circuits, with no prior electronics knowledge required.",
       },
       {
         title: "SOLDERING & ETCHING WORKSHOP",
-        desc: "Flagship multi-day hardware fabrication workshop moving students from schematics to physical printed circuit boards through 3 structured phases: breadboarding & LED blinking, 555 timer circuits & perfboard soldering, and KiCad PCB design with chemical etching, ironing, and drilling.",
+        desc: "Flagship multi-day hardware fabrication workshop moving students from schematics to physical printed circuit boards through 3 structured phases: LED blinking, 555 timer circuits & perfboard soldering, and KiCad PCB design with chemical etching, ironing, and drilling, finally ending with a fully functional PCB.",
       },
       {
         title: "CADENCE WORKSHOP",
@@ -89,7 +89,7 @@ const SOCIETIES = [
       },
       {
         title: "ROBOTICS WORKSHOP",
-        desc: "Organized in collaboration with the Robotics & Automation Society (RAS), including flagship editions like Robotics'16 with the innovative 'Two-Bot Concept' and Robotics'17, covering microcontroller architectures, sensor integration, and firmware programming to engineer functional autonomous robots.",
+        desc: "Organized in collaboration with the Robotics & Automation Society (RAS), covering microcontroller architectures, sensor integration, and firmware programming to engineer functional autonomous robots.",
       },
       {
         title: "SPICELAB (CIRCUIT SIMULATION)",

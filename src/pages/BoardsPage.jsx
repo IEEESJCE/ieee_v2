@@ -14,7 +14,6 @@ const BOARDS = [
     initiatives: [
       { name: 'Portal Architecture & Deployment', description: 'Designing, deploying, and maintaining the official IEEE-SJCE platform on secure, modern cloud infrastructure.' },
       { name: 'UI/UX & Interactive Design Systems', description: 'Crafting responsive, accessible, and high-performance neo-brutalist interfaces for students and members.' },
-      { name: 'Technical Sessions & Bootcamps', description: 'Mentoring students in full-stack web development, modern frontend frameworks, and Git collaboration workflows.' },
       { name: 'Digital Operations & Infrastructure', description: 'Managing domain routing, event registration pipelines, and continuous deployment systems across branch activities.' },
     ],
   },
@@ -35,7 +34,6 @@ const BOARDS = [
         },
       },
       { name: 'Technical Article Curation', description: 'In-depth articles covering emerging technologies, artificial intelligence developments, and engineering breakthroughs.' },
-      { name: 'Student & Member Spotlights', description: 'Celebrating student achievements, project milestones, and leadership journeys across IEEE-SJCE.' },
       { name: 'Content & Narrative Strategy', description: 'Crafting narratives, editorial coverage, and documentation for IEEE-SJCE flagship events and community initiatives.' },
     ],
   },

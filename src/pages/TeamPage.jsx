@@ -348,8 +348,8 @@ const SIGNAL_PROCESSING_SOCIETY = [
     linkedin: "https://www.linkedin.com/in/deekshith-s-kumar-a9062a245/",
     gmail: "deekshithskumar2005@gmail.com",
     imageStyle: {
-      transform: "scale(1.7) translateZ(0)",
-      transformOrigin: "center 38%",
+      transform: "scale(1.05) translateZ(0)",
+      transformOrigin: "center 0%",
     },
   },
 ];
@@ -801,8 +801,8 @@ const WEB_DEVELOPMENT_BOARD = [
     linkedin: "https://www.linkedin.com/in/deekshith-s-kumar-a9062a245/",
     gmail: "deekshithskumar2005@gmail.com",
     imageStyle: {
-      transform: "scale(1.7) translateZ(0)",
-      transformOrigin: "center 38%",
+      transform: "scale(1.05) translateZ(0)",
+      transformOrigin: "center 0%",
     },
   },
   {
@@ -1061,6 +1061,23 @@ function TeamSection({ categoryKey, members, color }) {
 export default function TeamPage() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [isExecomExpanded, setIsExecomExpanded] = useState(false);
+  const execomBarRef = useRef(null);
+
+  // When the archived roster opens, scroll so the bar sits just below the
+  // sticky navbar and the revealed members are visible.
+  useEffect(() => {
+    if (!isExecomExpanded || !execomBarRef.current) return;
+    const frame = requestAnimationFrame(() => {
+      const navHeight = document.querySelector(".nb-nav")?.offsetHeight ?? 0;
+      const top =
+        execomBarRef.current.getBoundingClientRect().top +
+        window.scrollY -
+        navHeight -
+        16;
+      window.scrollTo({ top, behavior: "smooth" });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [isExecomExpanded]);
 
   // Group current updated team (Executive Committee + SPS, etc.)
   const currentGrouped = {};
@@ -1146,6 +1163,7 @@ export default function TeamPage() {
       <section className="execom-accordion-section">
         <div className="execom-accordion-wrapper">
           <button
+            ref={execomBarRef}
             type="button"
             className={`execom-accordion-bar ${isExecomExpanded ? "is-open" : ""}`}
             onClick={() => setIsExecomExpanded((prev) => !prev)}

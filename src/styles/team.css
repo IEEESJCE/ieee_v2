@@ -732,14 +732,14 @@
 /* Deekshith S Kumar */
 .tmc-photo-img[src*="Deekshith_S_Kumar"],
 .tmc-photo-img[src*="deekshith"] {
-  transform: scale(1.7) translateZ(0) !important;
-  transform-origin: center 38% !important;
+  transform: scale(1.05) translateZ(0) !important;
+  transform-origin: center 0% !important;
 }
 
 .tmc-wrap:hover .tmc-photo-img[src*="Deekshith_S_Kumar"].loaded,
 .tmc-wrap:hover .tmc-photo-img[src*="deekshith"].loaded {
-  transform: scale(1.76) translateZ(0) !important;
-  transform-origin: center 38% !important;
+  transform: scale(1.1) translateZ(0) !important;
+  transform-origin: center 0% !important;
 }
 
 /* Chinmay G C (2026-27) */
