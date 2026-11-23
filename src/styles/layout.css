@@ -362,11 +362,53 @@
   .nb-mobile-menu .nb-btn { display: inline-flex; opacity: 1; }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-  .nb-nav-inner { padding: 14px 28px; }
-  .nb-nav-links { gap: 4px; }
-  .nb-nav-links a { font-size: 11px; padding: 6px 10px; }
+/* Set briefly from JS while measuring the navbar, so sizes are final. */
+.nb-nav.nb-measuring,
+.nb-nav.nb-measuring * { transition: none !important; }
+
+/* Step 1 of squeezing the desktop row (set from JS in Layout.jsx). */
+.nb-nav.nb-tight .nb-nav-inner { padding-left: 28px; padding-right: 28px; }
+.nb-nav.nb-tight .nb-logo-text { font-size: 18px; letter-spacing: 1.5px; }
+.nb-nav.nb-tight .nb-nav-links { gap: 4px; }
+.nb-nav.nb-tight .nb-nav-links a { font-size: 12px; padding: 6px 10px; }
+.nb-nav.nb-tight .nb-nav-right .nb-btn { font-size: 12px; padding: 10px 18px; }
+
+/* Step 2: smallest desktop size before switching to the hamburger. */
+.nb-nav.nb-tighter .nb-nav-inner { padding-left: 16px; padding-right: 16px; }
+.nb-nav.nb-tighter .nb-nav-logo { gap: 8px; }
+.nb-nav.nb-tighter .nb-logo-img { width: 36px; height: 36px; }
+.nb-nav.nb-tighter .nb-logo-text { font-size: 16px; letter-spacing: 1px; }
+.nb-nav.nb-tighter .nb-nav-links { gap: 2px; }
+.nb-nav.nb-tighter .nb-nav-links a { font-size: 11px; padding: 5px 6px; letter-spacing: 0.2px; }
+.nb-nav.nb-tighter .nb-nav-right { gap: 8px; }
+.nb-nav.nb-tighter .nb-theme-toggle { width: 34px; height: 34px; }
+.nb-nav.nb-tighter .nb-nav-right .nb-btn { font-size: 11px; padding: 8px 10px; letter-spacing: 0.8px; gap: 4px; }
+
+/* Desktop widths where the full link row no longer fits (set from JS in
+   Layout.jsx): hide the links and show the theme toggle + hamburger. */
+.nb-nav.nb-compact .nb-nav-links,
+.nb-nav.nb-compact .nb-nav-right { display: none; }
+.nb-nav.nb-compact .nb-mobile-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
+.nb-nav.nb-compact .nb-hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 2px solid #000;
+  border-radius: 0;
+  background: var(--bg-card);
+  color: var(--primary);
+  box-shadow: 2.5px 2.5px 0 0 var(--accent);
+}
+
+/* The old 768–1024px shrink rule is replaced by the measured
+   nb-tight / nb-tighter steps above. */
 
 /* ═══════════════════════════════════════════════
    LIGHT MODE OVERRIDES — Layout

@@ -65,7 +65,7 @@ function BriefPage({ event, pageNumber, companion }) {
         </FitHeading>
 
         <p className="mag-mono mt-1 shrink-0 text-[6.5px] font-bold uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
-          {event.date} · {event.venue}
+          {event.date}{event.venue && <><br />{event.venue}</>}
         </p>
 
         <Rule className="mt-1.5 w-12" />

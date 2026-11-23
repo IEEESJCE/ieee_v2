@@ -30,7 +30,7 @@ export const MAGAZINE_META = {
   tagline: 'WHERE IDEAS BECOME STORIES.',
   volume: 'VOL. 01',
   issue: 'ISSUE 01',
-  year: 'ACADEMIC YEAR 2025–26',
+  year: 'ACADEMIC YEAR 2026–27',
   span: 'A COLLECTION OF IEEE-SJCE EVENTS · 2023–2026',
   website: 'ieeesjce.org',
 }
@@ -166,15 +166,15 @@ export const MAGAZINE_EVENTS = [
       "Hands-on signal processing",
     ],
     photos: [
-      "/photos/events/radioverse_recap_1.jpg",
       "/photos/events/radioverse_recap_2.jpg",
+      "/photos/events/radioverse_recap_1.jpg",
     ],
     stats: [
       { label: "Wing", value: "IEEE-SJCE" },
       { label: "Format", value: "Workshop" },
       { label: "Duration", value: "2 days" },
     ],
-    pullQuote: "A two-day trip through the radio spectrum.",
+    pullQuote: "Discover a different way to tune in.",
   },
   {
     id: 'orientation-day-2026',
@@ -506,7 +506,7 @@ export const MAGAZINE_EVENTS = [
     category: "Flagship Workshop",
     wing: "EDS",
     date: "19–21 December 2025",
-    venue: "IS Seminar Hall, First Floor",
+    venue: "",
     poster: "/photos/events/soldering.jpeg",
     description:
       "A three-day flagship workshop from the Electron Devices Society, giving students hands-on experience of soldering and etching through theoretical and practical sessions.",
@@ -647,7 +647,7 @@ export const MAGAZINE_EVENTS = [
     category: "Workshop",
     wing: "IEEE-SJCE",
     date: "25 October 2025",
-    venue: "IS Seminar Hall, Golden Jubilee Bhavan",
+    venue: "",
     poster: "/photos/events/circuitrix_2025.jpg",
     description:
       "A hands-on session designed to help students explore, create and simulate both analog and digital circuits using powerful circuit simulation tools.",
@@ -701,7 +701,7 @@ export const MAGAZINE_EVENTS = [
     category: "Workshop",
     wing: "IEEE-SJCE",
     date: "9 October 2025",
-    venue: "IS Seminar Hall, SJCE",
+    venue: "",
     poster: "/photos/events/pre_conference_iceteg_2025.jpg",
     description:
       "Pre-conference workshop for ICETEG 2025 in association with MathWorks and Hub Energy. Explored AI and digital twins in energy systems, battery life prediction, and automated VLSI design with Dr. Puneeth S.B. and Anand Mukhopadhyay at IS Seminar Hall.",

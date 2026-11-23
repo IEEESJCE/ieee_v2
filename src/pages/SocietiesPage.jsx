@@ -48,7 +48,7 @@ const SOCIETIES = [
       },
       {
         title: "CIRCUITRIX",
-        desc: "Hands-on circuit simulation competition challenging participants to create, analyze, and troubleshoot analog and digital circuits using modern SPICE tools.",
+        desc: "A hands-on circuit simulation workshop where students learned to design, simulate, and analyze both analog and digital circuits using modern SPICE tools. Working through guided exercises, they built circuits virtually, observed how they behave, and troubleshot their designs before ever touching real hardware.",
       },
       {
         title: "ELECTROCLUES",

@@ -56,16 +56,19 @@ function FeatureLeftPage({ event, pageNumber }) {
       <PageHeader section={event.category} />
 
       <div className="mt-2.5 flex min-h-0 flex-1 flex-row gap-3 overflow-hidden">
-        <div className="flex w-[46%] shrink-0 flex-col min-h-0 justify-center items-center h-full">
-          <div className="relative aspect-[3/4] w-full overflow-hidden border-2 border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] shadow-[4px_4px_0_rgba(17,17,17,0.18)]">
+        <div className="flex w-[46%] shrink-0 flex-col min-h-0 justify-center items-center h-full [container-type:inline-size]">
+          {/* Frame hugs the poster's own aspect ratio (no letterbox gaps).
+              Width is capped at the column, height at the old 3:4 box. */}
+          <div className="relative mt-2 shrink-0 border-2 border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] shadow-[4px_4px_0_rgba(17,17,17,0.18)]">
             <span
-              className="mag-tape absolute -top-1.5 left-1/2 z-20 h-3.5 w-12 -translate-x-1/2 -rotate-2"
+              className="mag-tape absolute -top-3 left-1/2 z-20 h-3 w-12 -translate-x-1/2 -rotate-2"
               aria-hidden="true"
             />
             <MagazineImage
               src={event.poster}
               alt={`${event.title} event poster`}
-              imgClassName="h-full w-full object-contain p-1"
+              className="!h-auto !w-auto min-h-[40px] min-w-[60px]"
+              imgClassName="block !h-auto !w-auto max-w-[calc(100cqw-4px)] max-h-[calc(100cqw*4/3)] object-contain p-1"
             />
           </div>
 
@@ -101,7 +104,7 @@ function FeatureLeftPage({ event, pageNumber }) {
           </FitHeading>
 
           <p className="mag-mono mt-1 shrink-0 text-[6.5px] font-bold uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
-            {event.date} · {event.venue}
+            {event.date}{event.venue && <><br />{event.venue}</>}
           </p>
 
           <Rule className="mt-1.5 w-12" />
@@ -225,9 +228,6 @@ function FeatureRightPage({ event, pageNumber }) {
               wing or society is shown on the left. */}
           <span className="mag-mono w-[45%] shrink-0 truncate text-[5px] font-bold uppercase tracking-[0.06em] leading-none text-[var(--mag-ink-soft)]">
             {event.wing === 'IEEE-SJCE' ? null : event.wing}
-          </span>
-          <span className="mag-mono w-[45%] shrink-0 truncate text-[5px] font-bold uppercase tracking-[0.06em] leading-none text-[var(--mag-ink-soft)] text-right">
-            {event.venue}
           </span>
         </div>
       </div>
