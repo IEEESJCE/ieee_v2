@@ -128,13 +128,13 @@ export const MAGAZINE_EVENTS = [
     venue: "SJCE, Mysuru",
     poster: "/photos/events/tech_detective.jpeg",
     description:
-      "Celebrated as part of IEEE Day, an exhilarating technical deduction contest challenging participants to crack cryptic hardware puzzles, decipher signals, and solve engineering mysteries.",
+      "Held on the occasion of IEEE Day, an online quiz that put participants' knowledge of electronics and their mental ability to the test. With brains running at full speed through tricky technical and logical questions, the top scorer walked away with the winner's prize.",
     recap:
-      "An IEEE Day contest built around deduction: teams inspected clues, reasoned through hardware puzzles, and raced to identify the fault before the clock ran out.",
+      "An IEEE Day online quiz that kept participants' brains running: rounds of electronics and mental ability questions, a race against the clock, and a prize for the top scorer.",
     highlights: [
-      "Cryptic hardware puzzles",
-      "Signal deciphering",
-      "Engineering mystery-solving",
+      "Online electronics quiz",
+      "Mental ability challenges",
+      "Prize for the winner",
     ],
     photos: [
       "/photos/events/tech_detective_recap.jpg",
@@ -144,7 +144,7 @@ export const MAGAZINE_EVENTS = [
       { label: "Format", value: "Quiz" },
       { label: "Duration", value: "1 day" },
     ],
-    pullQuote: "Every clue is a circuit waiting to close.",
+    pullQuote: "Every question is a circuit waiting to close.",
   },
   {
     id: 'radioverse-2026',

@@ -59,7 +59,7 @@ const EVENTS = [
     date: '16 OCT 2026',
     wing: 'IEEE DAY',
     description:
-      'Celebrated as part of IEEE Day, an exhilarating technical deduction contest challenging participants to crack cryptic hardware puzzles, decipher signals, and solve engineering mysteries.',
+      "Held on the occasion of IEEE Day, an online quiz that put participants' knowledge of electronics and their mental ability to the test. With brains running at full speed through tricky technical and logical questions, the top scorer walked away with the winner's prize.",
     icon: <Search size={22} />,
     accent: '#00E5FF',
     image: '/photos/events/tech_detective.jpeg',
@@ -70,7 +70,7 @@ const EVENTS = [
     date: '8–9 OCT 2026',
     wing: 'IEEE-SJCE',
     description:
-      'A hands-on workshop with GNU Radio Companion and Software Defined Radio, where participants explored radio signal processing and saw how theoretical concepts translate into real-world applications.',
+      'A hands-on workshop with GNU Radio Companion and Software Defined Radio, where participants traced how an audio signal is modulated, transmitted over the air, and demodulated back into sound. Building live signal-flow graphs, they explored core communication concepts like sampling, filtering, and frequency modulation in action.',
     icon: <Radio size={22} />,
     accent: '#3B82F6',
     image: '/photos/events/radio.jpeg',

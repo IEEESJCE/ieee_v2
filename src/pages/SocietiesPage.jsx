@@ -40,11 +40,11 @@ const SOCIETIES = [
       },
       {
         title: "RADIOVERSE",
-        desc: "A hands-on workshop with GNU Radio Companion and Software Defined Radio, where participants explored radio signal processing and saw how theoretical concepts translate into real-world applications.",
+        desc: "A hands-on workshop with GNU Radio Companion and Software Defined Radio, where participants traced how an audio signal is modulated, transmitted over the air, and demodulated back into sound. Building live signal-flow graphs, they explored core communication concepts like sampling, filtering, and frequency modulation in action.",
       },
       {
         title: "TECH DETECTIVE",
-        desc: "Celebrated on the occasion of IEEE Day, an exhilarating technical deduction and clue-hunting contest where participants decipher encrypted signals, solve cryptic hardware puzzles, and crack complex engineering mysteries.",
+        desc: "Held on the occasion of IEEE Day, an online quiz that put participants' knowledge of electronics and their mental ability to the test. With brains running at full speed through tricky technical and logical questions, the top scorer walked away with the winner's prize.",
       },
       {
         title: "CIRCUITRIX",
@@ -206,19 +206,19 @@ const SOCIETIES = [
     animation: "",
     tagline: "Signals, analysis & real-world models.",
     about:
-      "IEEE-SJCE SPS aims to keep students up to date with the latest developments in signal processing technology. Signal processing focuses on the generation, transformation, analysis, and interpretation of information carried by signals such as audio, speech, images, and other forms of data. Signal processing research emphasises the development of mathematical models, computational algorithms, and machine learning techniques to extract meaningful information from signals and apply them across diverse real-world applications. The IEEE Signal Processing Society's objectives are scientific, literary, and educational in character. The Society strives for the advancement and dissemination of knowledge in signal processing engineering, along with allied arts and sciences, and for the education of students and professionals through the exchange of technical knowledge and ideas.",
+      "IEEE-SJCE SPS aims to keep students up to date with the latest developments in signal processing technology. Signal processing focuses on the generation, transformation, analysis, and interpretation of information carried by signals such as audio, speech, images, and other forms of data. Signal processing research emphasises the development of mathematical models, computational algorithms, and machine learning techniques to extract meaningful information from signals and apply them across diverse real-world applications. The IEEE Signal Processing Society's objectives are scientific, literary, and educational in character. Since modern AI and ML models are themselves built on signal processing principles, the Society also conducts events on machine learning algorithms and Edge AI, helping students carry these foundations from classroom theory into intelligent, real-world systems.",
     events: [
-      {
-        title: "THE WAVE: SPEECH AS A WINDOW TO THE BRAIN",
-        desc: "Distinguished lecture series organized in association with IEEE SPS Bangalore Section, IEEE Bangalore Section, and IEEE Mysore Subsection, featuring Dr. Radha Kodali (Univ. of Tennessee & Le Bonheur Children's Hospital, USA) exploring speech biomarkers and healthcare AI in neuroscience.",
-      },
       {
         title: "SPS WING INAUGURATION & AUDIO DSP TECH TALK",
         desc: 'Formal wing launch in association with IEEE SPS Bangalore Section, featuring a technical keynote by Dr. Jayasudha BSK (Harman International / Vice Chair, IEEE SPS Bangalore Section) on "Deep Dive into Audio Signal Processing" and automotive audio DSP.',
       },
       {
+        title: "THE WAVE: SPEECH AS A WINDOW TO THE BRAIN",
+        desc: "Distinguished lecture series organized in association with IEEE SPS Bangalore Section, IEEE Bangalore Section, and IEEE Mysore Subsection, featuring Dr. Radha Kodali (Univ. of Tennessee & Le Bonheur Children's Hospital, USA) exploring speech biomarkers and healthcare AI in neuroscience.",
+      },
+      {
         title: "ML WORKSHOP",
-        desc: "A 3-day flagship workshop covering Machine Learning fundamentals, algorithmic modeling in Python, and building local edge-AI inference systems using ESP32, MPU6050, and motion inputs.",
+        desc: "A 3-day flagship workshop that took participants from Machine Learning fundamentals to algorithmic modeling in Python, training models on real data. It culminated in building local edge-AI inference systems on the ESP32, where motion data from an MPU6050 sensor was classified right on the device to create an air calculator.",
       },
       {
         title: "MOTION PLANNING IN ROBOTICS",
@@ -226,7 +226,7 @@ const SOCIETIES = [
       },
       {
         title: "WAVE LAB",
-        desc: "The debut hands-on workshop of the SPS Wing utilizing MATLAB to explore fundamental digital signal processing concepts, audio transformations, and practical filter design.",
+        desc: "The debut hands-on workshop of the SPS Wing, where participants used MATLAB, an industry-standard tool, to explore fundamental digital signal processing concepts. They worked through audio transformations and practical filter design, seeing how signals change in real time, and each received a MATLAB license to keep exploring beyond the workshop.",
       },
       {
         title: "HANDS-ON MATLAB WORKSHOP: SIGNAL PROCESSING AND CONTROL SYSTEMS",
