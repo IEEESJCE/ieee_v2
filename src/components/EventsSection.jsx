@@ -124,7 +124,7 @@ const EVENTS = [
     imagePosition: 'center 24%',
   },
   {
-    title: 'Techtour',
+    title: 'Tech Tour',
     date: '3 JUL 2026',
     wing: 'IEEE-SJCE',
     description:
@@ -132,7 +132,7 @@ const EVENTS = [
     icon: <Microscope size={22} />,
     accent: '#06B6D4',
     image: '/photos/events/techtour_2026_team.jpg',
-    imageAlt: 'IEEE-SJCE Techtour industrial visit to CeNSE, IISc Bengaluru',
+    imageAlt: 'IEEE-SJCE Tech Tour industrial visit to CeNSE, IISc Bengaluru',
     imagePosition: 'center 56%',
   },
   {

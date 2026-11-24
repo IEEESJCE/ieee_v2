@@ -298,7 +298,7 @@ export const MAGAZINE_EVENTS = [
     id: 'techtour-2026',
     order: 9,
     template: 'DETAILED',
-    title: "Techtour",
+    title: "Tech Tour",
     category: "Industrial Visit",
     wing: "IEEE-SJCE",
     date: "3 July 2026",
