@@ -57,6 +57,29 @@ export function MagazineContentsIntro({ pageNumber }) {
   )
 }
 
+/* ─────────────────────────────────────────────────────────────
+   Contents page – CSS-container-query approach
+   ─────────────────────────────────────────────────────────────
+   The magazine page inside react-pageflip can range from
+   230×392 px (small mobile portrait) to 430×600 px (desktop).
+   Viewport units (vw/vh) don't help because the page is
+   *inside* a scaled container, not the viewport.
+
+   Strategy:
+   1.  The outer wrapper becomes a CSS container (@container-type: size).
+   2.  Font sizes use container-query height units (cqh) so text
+       scales proportionally with the actual rendered page height.
+   3.  Rows use `auto` sizing (each entry takes only the space it
+       needs) with a uniform constant gap, so short titles don't
+       get extra space and long titles aren't squeezed.
+   4.  The grid + overflow-hidden ensures nothing bleeds past the
+       page boundary.
+   ───────────────────────────────────────────────────────────── */
+
+const CONTAINER_STYLES = {
+  containerType: 'size',
+}
+
 export default function MagazineContents({
   entries = [],
   onGoto,
@@ -69,36 +92,19 @@ export default function MagazineContents({
 }) {
   const columnCount = entries.length > 10 ? 2 : 1
   const rowCount = Math.max(1, Math.ceil(entries.length / columnCount))
-  const col1 = entries.slice(0, rowCount)
-  const col2 = entries.slice(rowCount)
-
-  const renderEntry = (entry, index, actualOffset) => (
-    <button
-      key={entry.id}
-      type="button"
-      onClick={() => onGoto(entry.pageIndex)}
-      className="group flex w-full min-w-0 items-start gap-1 sm:gap-1.5 border-b border-[var(--mag-line)] py-[1.5px] sm:py-[2px] text-left transition-colors hover:bg-[var(--mag-blue-soft)]"
-      aria-label={`Go to ${entry.title} on page ${entry.pageIndex + 1}`}
-    >
-      <span className="mag-mono w-3.5 sm:w-4 shrink-0 pt-[1px] text-[6px] sm:text-[7px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
-        {String(startIndex + actualOffset + 1).padStart(2, '0')}
-      </span>
-      <span className="mag-display min-w-0 flex-1 whitespace-normal break-words text-[7.5px] sm:text-[8.5px] uppercase leading-[1.18] tracking-tight group-hover:text-[var(--mag-blue)]">
-        <KeepIoT text={entry.title} />
-      </span>
-      <span className="mag-mono shrink-0 pl-0.5 pt-[1px] text-[6px] sm:text-[7px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
-        {String(entry.pageIndex + 1).padStart(2, '0')}
-      </span>
-    </button>
-  )
 
   return (
     <>
       <PageHeader section="Contents" />
 
-      <div className="mt-1.5 sm:mt-2 flex min-h-0 flex-1 flex-col">
-        <div className="flex items-end justify-between gap-2 border-b-2 border-[var(--mag-ink)] pb-1">
-          <h2 className="mag-display text-[20px] sm:text-[23px] uppercase leading-none tracking-[-0.03em]">
+      {/* Container-query wrapper – takes all space between header and footer */}
+      <div
+        className="mt-1 flex min-h-0 flex-1 flex-col overflow-hidden"
+        style={CONTAINER_STYLES}
+      >
+        {/* ── Section heading ── */}
+        <div className="shrink-0 flex items-end justify-between gap-2 border-b-2 border-[var(--mag-ink)] pb-0.5">
+          <h2 className="mag-display text-[18px] sm:text-[24px] uppercase leading-none tracking-[-0.03em]">
             {part === 1 ? 'Contents' : 'Contents II'}
           </h2>
           <Kicker className="text-right">
@@ -106,55 +112,73 @@ export default function MagazineContents({
           </Kicker>
         </div>
 
+        {/* ── Entries grid ── */}
         <div
-          className={`mt-1.5 sm:mt-2 grid min-h-0 gap-x-2.5 sm:gap-x-3.5 ${
-            columnCount === 2 ? 'grid-cols-2' : 'grid-cols-1'
-          }`}
+          className="mt-0.5 grid min-h-0 flex-1 overflow-hidden [grid-auto-flow:column]"
+          style={{
+            gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
+            gridTemplateRows: `repeat(${rowCount}, minmax(0, 1fr))`,
+            columnGap: '0.5rem',
+          }}
         >
-          <div className="flex min-w-0 flex-col">
-            {col1.map((entry, index) => renderEntry(entry, index, index))}
-          </div>
-          {columnCount === 2 && (
-            <div className="flex min-w-0 flex-col">
-              {col2.map((entry, index) => renderEntry(entry, index, rowCount + index))}
-            </div>
-          )}
+          {entries.map((entry, index) => (
+            <button
+              key={entry.id}
+              type="button"
+              onClick={() => onGoto(entry.pageIndex)}
+              className="contents-entry group flex min-h-0 min-w-0 items-center border-b border-[var(--mag-line)] text-left transition-colors hover:bg-[var(--mag-blue-soft)]"
+              style={{ gap: '2px', padding: '0 1px' }}
+              aria-label={`Go to ${entry.title} on page ${entry.pageIndex + 1}`}
+            >
+              <span className="contents-num mag-mono shrink-0 font-bold tabular-nums text-[var(--mag-ink-soft)]">
+                {String(startIndex + index + 1).padStart(2, '0')}
+              </span>
+              <span className="contents-title mag-display min-w-0 flex-1 whitespace-normal break-words uppercase leading-[1.15] tracking-tight group-hover:text-[var(--mag-blue)]">
+                <KeepIoT text={entry.title} />
+              </span>
+              <span className="contents-num mag-mono shrink-0 font-bold tabular-nums text-[var(--mag-ink-soft)]">
+                {String(entry.pageIndex + 1).padStart(2, '0')}
+              </span>
+            </button>
+          ))}
         </div>
 
-        <div className="mt-auto pt-1.5">
+        {/* ── Bottom bar: pinned at bottom ── */}
+        <div className="shrink-0 mt-auto pt-0.5">
           {showYearReview ? (
             <button
               type="button"
               onClick={() => onGoto(yearReviewPage)}
-              className="group flex w-full min-w-0 shrink-0 items-center gap-1 sm:gap-1.5 border-y border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] px-1.5 py-0.5 sm:py-1 text-left transition-colors hover:bg-[var(--mag-yellow)]"
+              className="contents-entry group flex w-full min-w-0 items-center border-y border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] text-left transition-colors hover:bg-[var(--mag-yellow)]"
+              style={{ gap: '2px', padding: '1px 4px' }}
               aria-label={`Go to the Year in Review on page ${yearReviewPage + 1}`}
             >
-              <span className="mag-mono w-3.5 sm:w-4 shrink-0 text-[6.5px] sm:text-[7.5px] font-bold tabular-nums">
+              <span className="contents-num mag-mono shrink-0 font-bold tabular-nums">
                 ★
               </span>
-              <span className="mag-display min-w-0 flex-1 whitespace-normal break-words text-[7.5px] sm:text-[8.5px] uppercase leading-[1.18] tracking-tight group-hover:text-[var(--mag-ink)]">
+              <span className="contents-title mag-display min-w-0 flex-1 whitespace-normal break-words uppercase leading-[1.15] tracking-tight group-hover:text-[var(--mag-ink)]">
                 The Year in Review
               </span>
-              <span className="mag-mono shrink-0 pl-0.5 text-[6.5px] sm:text-[7.5px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
+              <span className="contents-num mag-mono shrink-0 font-bold tabular-nums text-[var(--mag-ink-soft)]">
                 {String(yearReviewPage + 1).padStart(2, '0')}
               </span>
             </button>
           ) : (
-            <div className="flex shrink-0 items-center justify-between gap-2 border-y border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] px-1.5 py-0.5 sm:py-1">
-              <span className="mag-mono text-[6px] sm:text-[7px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
+            <div className="contents-footer flex items-center justify-between gap-2 border-y border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] px-1 py-0.5">
+              <span className="mag-mono font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
                 Continued on the next page
               </span>
-              <span className="mag-mono text-[6px] sm:text-[7px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
+              <span className="mag-mono font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
                 Part {part} / 2
               </span>
             </div>
           )}
 
-          <div className="mt-0.5 flex items-center justify-between gap-2 border-t border-[var(--mag-line)] pt-0.5">
-            <p className="mag-mono text-[5.5px] sm:text-[6px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
+          <div className="contents-footer mt-0.5 flex items-center justify-between gap-2 border-t border-[var(--mag-line)] pt-0.5">
+            <p className="mag-mono font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
               Tap any entry to open that spread
             </p>
-            <p className="mag-mono text-[5.5px] sm:text-[6px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
+            <p className="mag-mono font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
               {totalStories} stories
             </p>
           </div>
