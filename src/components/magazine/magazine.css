@@ -137,27 +137,32 @@
 }
 
 /* ─────────────────────────────────────────────
-   Contents page – container-query font scaling
-   The page container has `container-type: size`.
-   Font sizes use cqh (% of container height) so
-   text scales proportionally with the actual
-   rendered page, not the viewport.
+   Contents page – proportional scaling & layout
+   Container-type: size on the wrapper lets cqh
+   scale text proportionally with actual page height.
    ───────────────────────────────────────────── */
 
-/* Entry title text – scales from ~6px at 392px page height to ~9px at 600px */
+/* Entry title text – uniform readable size: ~8px on mobile up to ~10.5px on desktop */
 .contents-title {
-  font-size: clamp(5.5px, 1.5cqh, 9px);
+  font-size: clamp(8px, 2.3cqh, 10.5px);
+  line-height: 1.2;
 }
 
 /* Entry index / page numbers */
 .contents-num {
-  font-size: clamp(4.5px, 1.1cqh, 7px);
-  width: clamp(10px, 2.8cqh, 16px);
+  font-size: clamp(6.5px, 1.8cqh, 9px);
+  width: clamp(12px, 2.8cqh, 16px);
 }
 
 /* Footer labels (continued, tap any entry, etc.) */
 .contents-footer {
-  font-size: clamp(4px, 1cqh, 6.5px);
+  font-size: clamp(5.5px, 1.5cqh, 7.5px);
+}
+
+/* Constant vertical spacing per entry */
+.contents-entry {
+  padding-top: clamp(2px, 0.7cqh, 4.5px);
+  padding-bottom: clamp(2px, 0.7cqh, 4.5px);
 }
 
 @media (prefers-reduced-motion: reduce) {

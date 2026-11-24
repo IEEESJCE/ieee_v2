@@ -91,7 +91,30 @@ export default function MagazineContents({
   showYearReview = false,
 }) {
   const columnCount = entries.length > 10 ? 2 : 1
-  const rowCount = Math.max(1, Math.ceil(entries.length / columnCount))
+  const mid = columnCount === 2 ? Math.ceil(entries.length / 2) : entries.length
+  const col1 = entries.slice(0, mid)
+  const col2 = entries.slice(mid)
+
+  const renderEntry = (entry, index) => (
+    <button
+      key={entry.id}
+      type="button"
+      onClick={() => onGoto(entry.pageIndex)}
+      className="contents-entry group flex min-w-0 items-center border-b border-[var(--mag-line)] text-left transition-colors hover:bg-[var(--mag-blue-soft)]"
+      style={{ gap: '2px', paddingLeft: '1px', paddingRight: '1px' }}
+      aria-label={`Go to ${entry.title} on page ${entry.pageIndex + 1}`}
+    >
+      <span className="contents-num mag-mono shrink-0 font-bold tabular-nums text-[var(--mag-ink-soft)]">
+        {String(startIndex + index + 1).padStart(2, '0')}
+      </span>
+      <span className="contents-title mag-display min-w-0 flex-1 whitespace-normal break-words uppercase leading-[1.2] tracking-tight group-hover:text-[var(--mag-blue)]">
+        <KeepIoT text={entry.title} />
+      </span>
+      <span className="contents-num mag-mono shrink-0 font-bold tabular-nums text-[var(--mag-ink-soft)] text-right">
+        {String(entry.pageIndex + 1).padStart(2, '0')}
+      </span>
+    </button>
+  )
 
   return (
     <>
@@ -112,54 +135,41 @@ export default function MagazineContents({
           </Kicker>
         </div>
 
-        {/* ── Entries grid ── */}
+        {/* ── Entries: natural content-dependent height with constant spacing ── */}
         <div
-          className="mt-0.5 grid min-h-0 flex-1 overflow-hidden [grid-auto-flow:column]"
-          style={{
-            gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
-            gridTemplateRows: `repeat(${rowCount}, minmax(0, 1fr))`,
-            columnGap: '0.5rem',
-          }}
+          className={
+            columnCount === 2
+              ? 'mt-1 grid grid-cols-2 gap-x-2 sm:gap-x-3.5 min-h-0'
+              : 'mt-1 flex flex-col min-h-0'
+          }
         >
-          {entries.map((entry, index) => (
-            <button
-              key={entry.id}
-              type="button"
-              onClick={() => onGoto(entry.pageIndex)}
-              className="contents-entry group flex min-h-0 min-w-0 items-center border-b border-[var(--mag-line)] text-left transition-colors hover:bg-[var(--mag-blue-soft)]"
-              style={{ gap: '2px', padding: '0 1px' }}
-              aria-label={`Go to ${entry.title} on page ${entry.pageIndex + 1}`}
-            >
-              <span className="contents-num mag-mono shrink-0 font-bold tabular-nums text-[var(--mag-ink-soft)]">
-                {String(startIndex + index + 1).padStart(2, '0')}
-              </span>
-              <span className="contents-title mag-display min-w-0 flex-1 whitespace-normal break-words uppercase leading-[1.15] tracking-tight group-hover:text-[var(--mag-blue)]">
-                <KeepIoT text={entry.title} />
-              </span>
-              <span className="contents-num mag-mono shrink-0 font-bold tabular-nums text-[var(--mag-ink-soft)]">
-                {String(entry.pageIndex + 1).padStart(2, '0')}
-              </span>
-            </button>
-          ))}
+          <div className="flex flex-col min-w-0">
+            {col1.map((entry, idx) => renderEntry(entry, idx))}
+          </div>
+          {columnCount === 2 && (
+            <div className="flex flex-col min-w-0">
+              {col2.map((entry, idx) => renderEntry(entry, mid + idx))}
+            </div>
+          )}
         </div>
 
         {/* ── Bottom bar: pinned at bottom ── */}
-        <div className="shrink-0 mt-auto pt-0.5">
+        <div className="shrink-0 mt-auto pt-1">
           {showYearReview ? (
             <button
               type="button"
               onClick={() => onGoto(yearReviewPage)}
-              className="contents-entry group flex w-full min-w-0 items-center border-y border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] text-left transition-colors hover:bg-[var(--mag-yellow)]"
-              style={{ gap: '2px', padding: '1px 4px' }}
+              className="group flex w-full min-w-0 items-center border-y border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] text-left transition-colors hover:bg-[var(--mag-yellow)] px-1 py-0.5"
+              style={{ gap: '2px' }}
               aria-label={`Go to the Year in Review on page ${yearReviewPage + 1}`}
             >
               <span className="contents-num mag-mono shrink-0 font-bold tabular-nums">
                 ★
               </span>
-              <span className="contents-title mag-display min-w-0 flex-1 whitespace-normal break-words uppercase leading-[1.15] tracking-tight group-hover:text-[var(--mag-ink)]">
+              <span className="contents-title mag-display min-w-0 flex-1 whitespace-normal break-words uppercase leading-[1.2] tracking-tight group-hover:text-[var(--mag-ink)]">
                 The Year in Review
               </span>
-              <span className="contents-num mag-mono shrink-0 font-bold tabular-nums text-[var(--mag-ink-soft)]">
+              <span className="contents-num mag-mono shrink-0 font-bold tabular-nums text-[var(--mag-ink-soft)] text-right">
                 {String(yearReviewPage + 1).padStart(2, '0')}
               </span>
             </button>
