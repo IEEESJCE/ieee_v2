@@ -2,5 +2,22 @@
 package-lock.json
 dist
 
-# Playwright MCP screenshots and logs
+# Playwright & test artifacts
 .playwright-mcp/
+test-results/
+playwright-report/
+playwright/.cache/
+.playwright/
+blob-report/
+*-snapshots/
+
+# Environment and local files
+.env.local
+.env.*.local
+*.local
+
+# System & OS junk
+.DS_Store
+Thumbs.db
+*.log
+

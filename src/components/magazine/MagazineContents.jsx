@@ -69,14 +69,36 @@ export default function MagazineContents({
 }) {
   const columnCount = entries.length > 10 ? 2 : 1
   const rowCount = Math.max(1, Math.ceil(entries.length / columnCount))
+  const col1 = entries.slice(0, rowCount)
+  const col2 = entries.slice(rowCount)
+
+  const renderEntry = (entry, index, actualOffset) => (
+    <button
+      key={entry.id}
+      type="button"
+      onClick={() => onGoto(entry.pageIndex)}
+      className="group flex min-w-0 items-start gap-1 sm:gap-1.5 border-b border-[var(--mag-line)] py-[2px] sm:py-0.5 text-left transition-colors hover:bg-[var(--mag-blue-soft)]"
+      aria-label={`Go to ${entry.title} on page ${entry.pageIndex + 1}`}
+    >
+      <span className="mag-mono w-3.5 sm:w-4 shrink-0 pt-[1px] text-[6px] sm:text-[6.5px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
+        {String(startIndex + actualOffset + 1).padStart(2, '0')}
+      </span>
+      <span className="mag-display min-w-0 flex-1 whitespace-normal break-words text-[clamp(6.8px,1.5vw,8.5px)] uppercase leading-[1.12] tracking-tight group-hover:text-[var(--mag-blue)]">
+        <KeepIoT text={entry.title} />
+      </span>
+      <span className="mag-mono shrink-0 pl-0.5 pt-[1px] text-[6px] sm:text-[6.5px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
+        {String(entry.pageIndex + 1).padStart(2, '0')}
+      </span>
+    </button>
+  )
 
   return (
     <>
       <PageHeader section="Contents" />
 
-      <div className="mt-3 flex min-h-0 flex-1 flex-col">
+      <div className="mt-2.5 sm:mt-3 flex min-h-0 flex-1 flex-col">
         <div className="flex items-end justify-between gap-2 border-b-2 border-[var(--mag-ink)] pb-1">
-          <h2 className="mag-display text-[27px] uppercase leading-none tracking-[-0.03em]">
+          <h2 className="mag-display text-[24px] sm:text-[27px] uppercase leading-none tracking-[-0.03em]">
             {part === 1 ? 'Contents' : 'Contents II'}
           </h2>
           <Kicker className="text-right">
@@ -85,52 +107,39 @@ export default function MagazineContents({
         </div>
 
         <div
-          className="mt-2 grid min-h-0 flex-1 gap-x-3 overflow-hidden [grid-auto-flow:column]"
-          style={{
-            gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
-            gridTemplateRows: `repeat(${rowCount}, minmax(0, 1fr))`,
-          }}
+          className={`mt-1.5 sm:mt-2 grid min-h-0 flex-1 gap-x-2 sm:gap-x-3 overflow-hidden ${
+            columnCount === 2 ? 'grid-cols-2' : 'grid-cols-1'
+          }`}
         >
-          {entries.map((entry, index) => (
-            <button
-              key={entry.id}
-              type="button"
-              onClick={() => onGoto(entry.pageIndex)}
-              className="group flex min-w-0 items-baseline gap-1.5 border-b border-[var(--mag-line)] py-0.5 text-left transition-colors hover:bg-[var(--mag-blue-soft)]"
-              aria-label={`Go to ${entry.title} on page ${entry.pageIndex + 1}`}
-            >
-              <span className="mag-mono w-4 shrink-0 text-[6.5px] font-bold tabular-nums">
-                {String(startIndex + index + 1).padStart(2, '0')}
-              </span>
-              <span className="mag-display min-w-0 flex-1 truncate text-[8.5px] uppercase leading-tight group-hover:text-[var(--mag-blue)]">
-                <KeepIoT text={entry.title} />
-              </span>
-              <span className="mag-mono shrink-0 text-[6.5px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
-                {String(entry.pageIndex + 1).padStart(2, '0')}
-              </span>
-            </button>
-          ))}
+          <div className="flex min-w-0 flex-col">
+            {col1.map((entry, index) => renderEntry(entry, index, index))}
+          </div>
+          {columnCount === 2 && (
+            <div className="flex min-w-0 flex-col">
+              {col2.map((entry, index) => renderEntry(entry, index, rowCount + index))}
+            </div>
+          )}
         </div>
 
         {showYearReview ? (
           <button
             type="button"
             onClick={() => onGoto(yearReviewPage)}
-            className="group mt-1.5 flex min-w-0 shrink-0 items-baseline gap-1.5 border-y border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] px-1 py-1 text-left transition-colors hover:bg-[var(--mag-yellow)]"
+            className="group mt-1 flex min-w-0 shrink-0 items-start gap-1 sm:gap-1.5 border-y border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] px-1 py-1 text-left transition-colors hover:bg-[var(--mag-yellow)]"
             aria-label={`Go to the Year in Review on page ${yearReviewPage + 1}`}
           >
-            <span className="mag-mono w-4 shrink-0 text-[6.5px] font-bold tabular-nums">
+            <span className="mag-mono w-3.5 sm:w-4 shrink-0 pt-[1px] text-[6px] sm:text-[6.5px] font-bold tabular-nums">
               ★
             </span>
-            <span className="mag-display min-w-0 flex-1 truncate text-[8.5px] uppercase leading-tight group-hover:text-[var(--mag-ink)]">
+            <span className="mag-display min-w-0 flex-1 whitespace-normal break-words text-[clamp(6.8px,1.5vw,8.5px)] uppercase leading-[1.12] tracking-tight group-hover:text-[var(--mag-ink)]">
               The Year in Review
             </span>
-            <span className="mag-mono shrink-0 text-[6.5px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
+            <span className="mag-mono shrink-0 pl-0.5 pt-[1px] text-[6px] sm:text-[6.5px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
               {String(yearReviewPage + 1).padStart(2, '0')}
             </span>
           </button>
         ) : (
-          <div className="mt-1.5 flex shrink-0 items-center justify-between gap-2 border-y border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] px-1 py-1">
+          <div className="mt-1 flex shrink-0 items-center justify-between gap-2 border-y border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] px-1 py-1">
             <span className="mag-mono text-[6px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
               Continued on the next page
             </span>
@@ -140,11 +149,11 @@ export default function MagazineContents({
           </div>
         )}
 
-        <div className="mt-2 flex items-center justify-between gap-2 border-t border-[var(--mag-line)] pt-1.5">
-          <p className="mag-mono text-[6px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
+        <div className="mt-1.5 sm:mt-2 flex items-center justify-between gap-2 border-t border-[var(--mag-line)] pt-1 sm:pt-1.5">
+          <p className="mag-mono text-[5.5px] sm:text-[6px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
             Tap any entry to open that spread
           </p>
-          <p className="mag-mono text-[6px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
+          <p className="mag-mono text-[5.5px] sm:text-[6px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
             {totalStories} stories
           </p>
         </div>
