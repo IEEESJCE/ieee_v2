@@ -91,7 +91,13 @@ export default function MagazineCover() {
             {MAGAZINE_META.year}
           </div>
           <div className="mag-mono mt-0.5 text-[6px] uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
-            {MAGAZINE_META.span}
+            {/* Year range sits on its own line below, never split mid-range. */}
+            {MAGAZINE_META.span.split(' · ')[0]}
+            {MAGAZINE_META.span.includes(' · ') && (
+              <span className="block whitespace-nowrap">
+                {MAGAZINE_META.span.split(' · ')[1]}
+              </span>
+            )}
           </div>
         </div>
         <div className="mag-display shrink-0 text-[16px] leading-none sm:text-[22px]">2026</div>

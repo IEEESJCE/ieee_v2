@@ -522,3 +522,53 @@
   border-color: #0F172A !important;
   box-shadow: 2px 2px 0 0 var(--poster-accent, #2563EB) !important;
 }
+
+/* Scroll cue: small bouncing triangle at the bottom center of the card,
+   shown on hover while the description has hidden text, hidden once scrolled. */
+.ms-poster-desc {
+  position: static;
+}
+
+.ms-scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--poster-accent, var(--accent));
+  opacity: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.ms-poster:hover .ms-scroll-cue {
+  opacity: 0.9;
+  animation: ms-cue-bounce 1s ease-in-out infinite;
+}
+
+@media (hover: none) {
+  .ms-scroll-cue {
+    opacity: 0.9;
+    animation: ms-cue-bounce 1s ease-in-out infinite;
+  }
+}
+
+.ms-poster .ms-scroll-cue.is-hidden {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes ms-cue-bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ms-scroll-cue,
+  .ms-poster:hover .ms-scroll-cue {
+    animation: none;
+  }
+}

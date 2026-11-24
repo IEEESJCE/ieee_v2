@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { Menu, X, ArrowRight, Moon, Sun } from "lucide-react";
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import gsap from "gsap";
@@ -54,6 +54,79 @@ function Navbar({ isDark, toggleTheme, onOpenRecruitment }) {
   const linksRef = useRef(null);
   const joinRef = useRef(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navRef = useRef(null);
+  const innerRef = useRef(null);
+  const logoTextRef = useRef(null);
+
+  // Fit the desktop row (logo, links, theme toggle, Join Us) as the window
+  // narrows: first shrink everything in two steps ("nb-tight", then
+  // "nb-tighter"), and only when even the smallest size doesn't fit switch
+  // to the hamburger layout ("nb-compact"). Each step is measured with the
+  // classes applied and the final one is kept in the same frame, so
+  // nothing flickers.
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    const inner = innerRef.current;
+    if (!nav || !inner) return;
+
+    const TIERS = ["", "nb-tight", "nb-tighter"];
+    const ALL = ["nb-tight", "nb-tighter", "nb-compact"];
+
+    const fits = () => {
+      const style = getComputedStyle(inner);
+      const available =
+        inner.clientWidth -
+        parseFloat(style.paddingLeft) -
+        parseFloat(style.paddingRight);
+      const needed =
+        (logoRef.current?.offsetWidth ?? 0) +
+        (linksRef.current?.scrollWidth ?? 0) +
+        (joinRef.current?.offsetWidth ?? 0) +
+        32; // minimum breathing room between the three groups
+      return needed <= available;
+    };
+
+    const pickTier = () => {
+      nav.classList.remove(...ALL);
+      if (window.innerWidth < 768) return;
+      for (const tier of TIERS) {
+        if (tier) nav.classList.add(tier);
+        if (fits()) return;
+        if (tier) nav.classList.remove(tier);
+      }
+      nav.classList.add("nb-compact");
+    };
+
+    // Links and buttons animate font-size/padding ("transition: all"), so
+    // measure with transitions off or the old sizes would be read.
+    const check = () => {
+      nav.classList.add("nb-measuring");
+      pickTier();
+      void nav.offsetWidth; // commit final sizes before transitions return
+      nav.classList.remove("nb-measuring");
+    };
+
+    // Re-check on the next frame too: some browsers fire resize before the
+    // new layout width is final.
+    let raf = 0;
+    const schedule = () => {
+      check();
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(check);
+    };
+
+    check();
+    window.addEventListener("resize", schedule);
+    const ro = new ResizeObserver(schedule);
+    ro.observe(inner);
+    if (logoTextRef.current) ro.observe(logoTextRef.current);
+    document.fonts?.ready.then(check);
+    return () => {
+      window.removeEventListener("resize", schedule);
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -104,8 +177,8 @@ function Navbar({ isDark, toggleTheme, onOpenRecruitment }) {
 
   return (
     <>
-      <nav className="nb-nav">
-        <div className="nb-nav-inner">
+      <nav ref={navRef} className="nb-nav">
+        <div ref={innerRef} className="nb-nav-inner">
           <div
             ref={logoRef}
             className="nb-nav-logo"
@@ -115,7 +188,7 @@ function Navbar({ isDark, toggleTheme, onOpenRecruitment }) {
             onKeyDown={(e) => e.key === "Enter" && navigate("/home")}
           >
             <img src="/logo.png" alt="IEEE-SJCE" className="nb-logo-img" />
-            <span className="nb-logo-text">IEEE-SJCE</span>
+            <span ref={logoTextRef} className="nb-logo-text">IEEE-SJCE</span>
           </div>
 
           <div ref={linksRef} className="nb-nav-links">

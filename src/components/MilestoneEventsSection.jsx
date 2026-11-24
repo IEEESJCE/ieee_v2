@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FileText, Bug, Brain, Bot, Wifi, Cpu, Wrench, Database, Sparkles, Globe } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -102,6 +102,46 @@ const EVENTS = [
     tag: 'Bootcamp',
   },
 ]
+
+// Description that scrolls inside its 3-line box on hover. Shows a bouncing
+// triangle cue while there is hidden text, and hides it once the user scrolls.
+function PosterDescription({ text }) {
+  const ref = useRef(null)
+  const [overflows, setOverflows] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const check = () => setOverflows(el.scrollHeight - el.clientHeight > 2)
+    check()
+    const ro = new ResizeObserver(check)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [text])
+
+  const handleScroll = (e) => {
+    if (e.currentTarget.scrollTop > 4) setScrolled(true)
+  }
+
+  // Reset when the pointer leaves so the cue returns on the next hover.
+  const handleLeave = () => {
+    if (ref.current) ref.current.scrollTop = 0
+    setScrolled(false)
+  }
+
+  return (
+    <div className="ms-poster-desc" onMouseLeave={handleLeave}>
+      <p ref={ref} onScroll={handleScroll}>{text}</p>
+      {overflows && (
+        <span
+          className={`ms-scroll-cue${scrolled ? ' is-hidden' : ''}`}
+          aria-hidden="true"
+        />
+      )}
+    </div>
+  )
+}
 
 export default function MilestoneEventsSection() {
   const sectionRef = useRef(null)
@@ -208,7 +248,7 @@ export default function MilestoneEventsSection() {
                           {event.icon}
                         </div>
                         <h3><KeepIoT text={event.title} /></h3>
-                        <p>{event.content}</p>
+                        <PosterDescription text={event.content} />
                       </div>
 
                       <div className="ms-poster-perforation" aria-hidden="true">

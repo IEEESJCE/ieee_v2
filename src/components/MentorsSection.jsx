@@ -57,7 +57,7 @@ const MENTORS = [
     type: "SBMDC Advisor",
     src: "/photos/advisors/anitha_prasad.jpg",
     name: "Dr. Anitha Prasad",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/dr-anitha-shivaprasad-2b12a7426",
     gmail: "anith.sp@sjce.ac.in",
     accent: "#F59E0B",
   },
