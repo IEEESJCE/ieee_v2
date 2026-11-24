@@ -40,7 +40,7 @@ function BriefPoster({ src, title }) {
   )
 }
 
-function BriefPage({ event, pageNumber, companion }) {
+function BriefPage({ event, pageNumber }) {
   return (
     <div className="relative flex h-full flex-col overflow-hidden">
       <PageHeader section={event.category} />
@@ -92,19 +92,6 @@ function BriefPage({ event, pageNumber, companion }) {
               <HighlightList items={event.highlights} limit={3} className="mt-1" />
             </div>
           )}
-
-          <div className="mt-auto shrink-0 space-y-1.5">
-            {companion && (
-              <div className="flex items-center justify-between gap-2 border-t border-[var(--mag-line)] pt-1 text-[5.5px]">
-                <span className="mag-mono font-bold uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
-                  Facing Event
-                </span>
-                <span className="mag-display min-w-0 truncate text-right text-[7.5px] uppercase">
-                  <KeepIoT text={companion.title} />
-                </span>
-              </div>
-            )}
-          </div>
         </div>
       </div>
 
@@ -113,15 +100,15 @@ function BriefPage({ event, pageNumber, companion }) {
   )
 }
 
-export function briefEventPage(event, pageIndex, companion) {
+export function briefEventPage(event, pageIndex) {
   const side = pageIndex % 2 === 0 ? 'right' : 'left'
   return (
     <BookPage key={`${event.id}-brief`} side={side}>
-      <BriefPage event={event} pageNumber={pageIndex + 1} companion={companion} />
+      <BriefPage event={event} pageNumber={pageIndex + 1} />
     </BookPage>
   )
 }
 
-export default function StandardEventTemplate({ event, pageIndex, companion }) {
-  return briefEventPage(event, pageIndex, companion)
+export default function StandardEventTemplate({ event, pageIndex }) {
+  return briefEventPage(event, pageIndex)
 }
