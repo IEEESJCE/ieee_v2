@@ -159,10 +159,12 @@
   font-size: clamp(5.5px, 1.5cqh, 7.5px);
 }
 
-/* Constant vertical spacing per entry */
+/* Dynamic vertical sizing: flex-auto absorbs available height without gaps */
 .contents-entry {
-  padding-top: clamp(2px, 0.7cqh, 4.5px);
-  padding-bottom: clamp(2px, 0.7cqh, 4.5px);
+  flex: 1 1 auto;
+  min-height: 0;
+  padding-top: clamp(1px, 0.35cqh, 3px);
+  padding-bottom: clamp(1px, 0.35cqh, 3px);
 }
 
 @media (prefers-reduced-motion: reduce) {

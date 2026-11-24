@@ -100,7 +100,7 @@ export default function MagazineContents({
       key={entry.id}
       type="button"
       onClick={() => onGoto(entry.pageIndex)}
-      className="contents-entry group flex min-w-0 items-center border-b border-[var(--mag-line)] text-left transition-colors hover:bg-[var(--mag-blue-soft)]"
+      className="contents-entry group flex flex-auto min-h-0 min-w-0 items-center border-b border-[var(--mag-line)] text-left transition-colors hover:bg-[var(--mag-blue-soft)]"
       style={{ gap: '2px', paddingLeft: '1px', paddingRight: '1px' }}
       aria-label={`Go to ${entry.title} on page ${entry.pageIndex + 1}`}
     >
@@ -135,26 +135,26 @@ export default function MagazineContents({
           </Kicker>
         </div>
 
-        {/* ── Entries: natural content-dependent height with constant spacing ── */}
+        {/* ── Entries: 2 columns expanding to fill exact available height with zero gaps ── */}
         <div
           className={
             columnCount === 2
-              ? 'mt-1 grid grid-cols-2 gap-x-2 sm:gap-x-3.5 min-h-0'
-              : 'mt-1 flex flex-col min-h-0'
+              ? 'mt-0.5 sm:mt-1 grid grid-cols-2 gap-x-2 sm:gap-x-3.5 flex-1 min-h-0 overflow-hidden'
+              : 'mt-0.5 sm:mt-1 flex flex-col flex-1 min-h-0 overflow-hidden'
           }
         >
-          <div className="flex flex-col min-w-0">
+          <div className="flex flex-col min-w-0 h-full">
             {col1.map((entry, idx) => renderEntry(entry, idx))}
           </div>
           {columnCount === 2 && (
-            <div className="flex flex-col min-w-0">
+            <div className="flex flex-col min-w-0 h-full">
               {col2.map((entry, idx) => renderEntry(entry, mid + idx))}
             </div>
           )}
         </div>
 
         {/* ── Bottom bar: pinned at bottom ── */}
-        <div className="shrink-0 mt-auto pt-1">
+        <div className="shrink-0 mt-auto pt-0.5 sm:pt-1">
           {showYearReview ? (
             <button
               type="button"
