@@ -740,8 +740,8 @@ export const MAGAZINE_EVENTS = [
       "PID Line Follower: Implements PID control for improved accuracy and smoother path tracking.",
     ],
     photos: [
-      "/photos/standfor/robotics_workshop.jpeg",
-      "/photos/gallery/gall4.jpg",
+      "/photos/events/robotics_16_recap_1.jpg",
+      "/photos/events/robotics_16_recap_2.jpg",
     ],
     stats: [
       { label: "Wings", value: "RAS · EDS" },
