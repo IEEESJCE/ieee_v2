@@ -31,7 +31,7 @@ const EVENTS = [
   {
     id: 3,
     title: 'IoT Workshop',
-    content: 'Annual connected devices bootcamp exploring ESP32 microcontrollers, sensor telemetry streams, MQTT cloud brokers, and smart edge automation.',
+    content: 'Annual connected devices bootcamp exploring Raspberry Pi Pico 2W microcontrollers, MQTT cloud brokers, and smart edge automation.',
     img: '/photos/events/iot_4_0_2025.jpg',
     icon: <Wifi size={18} />,
     accent: '#00F5D4',
