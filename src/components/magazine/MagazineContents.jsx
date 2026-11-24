@@ -42,10 +42,10 @@ export function MagazineContentsIntro({ pageNumber }) {
         </div>
 
         <div className="mt-2 shrink-0 border border-[var(--mag-line)] bg-[var(--mag-paper-deep)] px-2 py-1.5">
-          <p className="mag-mono text-[5.5px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
+          <p className="mag-mono text-[7px] sm:text-[8px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
             About this issue
           </p>
-          <p className="mt-0.5 text-[8.5px] leading-[1.4] text-[var(--mag-ink-soft)]">
+          <p className="mt-0.5 text-[9.5px] sm:text-[10.5px] leading-[1.4] text-[var(--mag-ink-soft)]">
             Every entry keeps its poster, date, wing and story. Use the contents
             spread to jump to any page.
           </p>
@@ -99,13 +99,13 @@ export default function MagazineContents({
               className="group flex h-full min-w-0 items-center gap-1 sm:gap-1.5 border-b border-[var(--mag-line)] py-0.5 text-left transition-colors hover:bg-[var(--mag-blue-soft)]"
               aria-label={`Go to ${entry.title} on page ${entry.pageIndex + 1}`}
             >
-              <span className="mag-mono w-3.5 sm:w-4 shrink-0 text-[6px] sm:text-[6.5px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
+              <span className="mag-mono w-4 sm:w-4.5 shrink-0 text-[7.5px] sm:text-[9px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
                 {String(startIndex + index + 1).padStart(2, '0')}
               </span>
-              <span className="mag-display min-w-0 flex-1 whitespace-normal break-words text-[clamp(6.8px,1.5vw,8.5px)] uppercase leading-[1.15] tracking-tight group-hover:text-[var(--mag-blue)]">
+              <span className="mag-display min-w-0 flex-1 whitespace-normal break-words text-[clamp(8.5px,2vw,11px)] uppercase leading-[1.18] tracking-tight group-hover:text-[var(--mag-blue)]">
                 <KeepIoT text={entry.title} />
               </span>
-              <span className="mag-mono shrink-0 pl-0.5 text-[6px] sm:text-[6.5px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
+              <span className="mag-mono shrink-0 pl-0.5 text-[7.5px] sm:text-[9px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
                 {String(entry.pageIndex + 1).padStart(2, '0')}
               </span>
             </button>
@@ -119,32 +119,32 @@ export default function MagazineContents({
             className="group flex min-w-0 shrink-0 items-center gap-1 sm:gap-1.5 border-y border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] px-1.5 py-1 text-left transition-colors hover:bg-[var(--mag-yellow)]"
             aria-label={`Go to the Year in Review on page ${yearReviewPage + 1}`}
           >
-            <span className="mag-mono w-3.5 sm:w-4 shrink-0 text-[6px] sm:text-[6.5px] font-bold tabular-nums">
+            <span className="mag-mono w-4 sm:w-4.5 shrink-0 text-[7.5px] sm:text-[9px] font-bold tabular-nums">
               ★
             </span>
-            <span className="mag-display min-w-0 flex-1 whitespace-normal break-words text-[clamp(6.8px,1.5vw,8.5px)] uppercase leading-[1.15] tracking-tight group-hover:text-[var(--mag-ink)]">
+            <span className="mag-display min-w-0 flex-1 whitespace-normal break-words text-[clamp(8.5px,2vw,11px)] uppercase leading-[1.18] tracking-tight group-hover:text-[var(--mag-ink)]">
               The Year in Review
             </span>
-            <span className="mag-mono shrink-0 pl-0.5 text-[6px] sm:text-[6.5px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
+            <span className="mag-mono shrink-0 pl-0.5 text-[7.5px] sm:text-[9px] font-bold tabular-nums text-[var(--mag-ink-soft)]">
               {String(yearReviewPage + 1).padStart(2, '0')}
             </span>
           </button>
         ) : (
           <div className="flex shrink-0 items-center justify-between gap-2 border-y border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] px-1.5 py-1">
-            <span className="mag-mono text-[6px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
+            <span className="mag-mono text-[7px] sm:text-[8px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
               Continued on the next page
             </span>
-            <span className="mag-mono text-[6px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
+            <span className="mag-mono text-[7px] sm:text-[8px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
               Part {part} / 2
             </span>
           </div>
         )}
 
         <div className="mt-1 flex items-center justify-between gap-2 border-t border-[var(--mag-line)] pt-1">
-          <p className="mag-mono text-[5.5px] sm:text-[6px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
+          <p className="mag-mono text-[6.5px] sm:text-[7.5px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
             Tap any entry to open that spread
           </p>
-          <p className="mag-mono text-[5.5px] sm:text-[6px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
+          <p className="mag-mono text-[6.5px] sm:text-[7.5px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
             {totalStories} stories
           </p>
         </div>
