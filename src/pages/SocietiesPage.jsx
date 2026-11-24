@@ -161,7 +161,7 @@ const SOCIETIES = [
     events: [
       {
         title: "IoT WORKSHOP SERIES",
-        desc: "Flagship multi-day workshop series (covering editions like IoT 3.0 and IoT 4.0) giving participants practical exposure to smart connected devices, MicroPython, sensor interfacing, MQTT/cloud protocols, and NodeMCU/Raspberry Pi microcontrollers.",
+        desc: "Multi-day workshop series (covering editions like IoT 3.0 and IoT 4.0) giving participants practical exposure to smart connected devices, MicroPython, sensor interfacing, MQTT/cloud protocols, and NodeMCU/Raspberry Pi microcontrollers.",
       },
       {
         title: "TECHKSHETRA",
