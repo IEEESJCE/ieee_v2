@@ -7,7 +7,7 @@ export function eventPages(entry) {
   }
 
   if (entry.type === 'brief') {
-    return [briefEventPage(entry.event, entry.pageIndex)]
+    return [briefEventPage(entry.event, entry.pageIndex, entry.companion)]
   }
 
   return []

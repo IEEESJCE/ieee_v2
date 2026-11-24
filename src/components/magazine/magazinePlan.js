@@ -51,6 +51,7 @@ export function buildMagazinePlan(events = MAGAZINE_EVENTS) {
       type: 'brief',
       event: first,
       pageIndex,
+      companion: second ? first : null,
     })
     plannedEvents.push({ ...first, pageIndex })
     pageIndex += 1
@@ -60,6 +61,7 @@ export function buildMagazinePlan(events = MAGAZINE_EVENTS) {
         type: 'brief',
         event: second,
         pageIndex,
+        companion: second,
       })
       plannedEvents.push({ ...second, pageIndex })
       pageIndex += 1
