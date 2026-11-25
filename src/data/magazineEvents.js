@@ -255,8 +255,10 @@ export const MAGAZINE_EVENTS = [
       "Guests from IEEE AESS & ISRO",
       "Radar & satellite technology talk",
     ],
-    photos: [],
-    recapPhotos: false,
+    photos: [
+      "/photos/events/aess_recap_1.jpg",
+      "/photos/events/aess_recap_2.jpg",
+    ],
     stats: [
       { label: "Wing", value: "AESS" },
       { label: "Format", value: "Inauguration" },
