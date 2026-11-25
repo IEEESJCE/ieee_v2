@@ -224,13 +224,9 @@ const CURRENT_EXECUTIVE_COMMITTEE = [
   {
     name: "Ruchitha S",
     post: "Reporter",
-    src: "/photos/members26-27/Ruchitha_S.jpg",
+    src: "",
     linkedin: "https://www.linkedin.com/in/ruchitha-s-bb33203a0",
     gmail: "ruchisrini13@gmail.com",
-    imageStyle: {
-      transform: "scale(1.6) translateZ(0)",
-      transformOrigin: "center 98%",
-    },
   },
 ];
 
@@ -794,12 +790,12 @@ const COMPUTER_SOCIETY = [
     },
   },
   {
-    name: "Ruchitha S",
+    name: "Ruchitha",
     post: "CREATIVE LEAD",
     type: "computer_society",
     src: "/photos/members26-27/Ruchitha_S.jpg",
-    linkedin: "https://www.linkedin.com/in/ruchitha-s-bb33203a0",
-    gmail: "ruchisrini13@gmail.com",
+    linkedin: "",
+    gmail: "",
     imageStyle: {
       transform: "scale(1.6) translateZ(0)",
       transformOrigin: "center 98%",
