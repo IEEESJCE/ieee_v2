@@ -520,8 +520,8 @@ export const MAGAZINE_EVENTS = [
       "Three days of theory & practice",
     ],
     photos: [
-      "/photos/standfor/robotics_workshop.jpeg",
-      "/photos/gallery/gall4.jpg",
+      "/photos/events/soldering_recap_1.jpg",
+      "/photos/events/soldering_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "EDS" },
