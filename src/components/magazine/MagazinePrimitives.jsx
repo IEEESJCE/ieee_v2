@@ -73,22 +73,22 @@ export function PageHeader({ section = 'The Chronicle', className = '' }) {
   return (
     <header
       className={cx(
-        'flex shrink-0 items-center justify-between gap-2 border-b-2 border-[var(--mag-ink)] pb-1.5',
+        'flex shrink-0 items-center justify-between gap-1.5 border-b-2 border-[var(--mag-ink)] pb-1.5 [container-type:inline-size] sm:gap-2',
         className
       )}
     >
-      <span className="flex min-w-0 items-center gap-1.5">
+      <span className="flex min-w-0 items-center gap-1 sm:gap-1.5">
         <img
           src="/logo.png"
           alt=""
           loading="lazy"
-          className="h-4 w-4 shrink-0 rounded-full border border-[var(--mag-ink)] bg-white object-contain"
+          className="h-3.5 w-3.5 shrink-0 rounded-full border border-[var(--mag-ink)] bg-white object-contain sm:h-4 sm:w-4"
         />
-        <span className="mag-mono truncate text-[6.5px] font-bold uppercase tracking-[0.18em]">
+        <span className="mag-mono whitespace-nowrap [font-size:clamp(4.75px,2.2cqw,6.5px)] font-bold uppercase tracking-[0.08em] sm:tracking-[0.18em]">
           The IEEE Chronicle
         </span>
       </span>
-      <span className="mag-mono shrink-0 text-[6.5px] font-bold uppercase tracking-[0.18em]">
+      <span className="mag-mono min-w-0 whitespace-normal break-words text-right [font-size:clamp(4.75px,2.2cqw,6.5px)] font-bold uppercase leading-tight tracking-[0.08em] sm:tracking-[0.18em]">
         {section}
       </span>
     </header>
@@ -233,7 +233,7 @@ export function PhotoPlate({
         <MagazineImage src={src} alt={alt} loading={loading} />
       </div>
       {caption && (
-        <figcaption className="mag-mono mt-0.5 shrink-0 truncate text-[5.5px] uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
+        <figcaption className="mag-mono mt-0.5 shrink-0 whitespace-normal break-words text-[5.5px] uppercase leading-tight tracking-[0.12em] text-[var(--mag-ink-soft)]">
           {caption}
         </figcaption>
       )}

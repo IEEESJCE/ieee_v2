@@ -18,7 +18,7 @@ import {
 const pad = (value) => String(value).padStart(2, '0')
 
 const FIT_MAX_PX = 9
-const FIT_MIN_PX = 5
+const FIT_MIN_PX = 4.25
 const FIT_STEP_PX = 0.25
 
 // The book scales with the viewport but the type is set in fixed px, so long
@@ -152,12 +152,12 @@ function FeatureRightPage({ event, pageNumber }) {
     <>
       <PageHeader section={`${event.category} · Recap`} />
 
-      <div className="mt-2.5 flex min-h-0 flex-1 flex-col">
+      <div className="mt-2.5 flex min-h-0 flex-1 flex-col [container-type:size]">
         {/* Date sits under the title so the title gets the full width and is
             never cut short. */}
         <div className="shrink-0 border-b border-[var(--mag-line)] pb-1.5">
           <Kicker>The recap</Kicker>
-          <FitHeading as="h3" text={event.title} className="mag-display mt-0.5 text-[14px] uppercase leading-[0.95] tracking-[-0.02em] sm:text-[17px]">
+          <FitHeading as="h3" text={event.title} className="mag-display mt-0.5 [font-size:clamp(12px,3.4cqh,17px)] uppercase leading-[0.95] tracking-[-0.02em]">
             <KeepIoT text={event.title} />
           </FitHeading>
           <span className="mag-mono mt-1 block text-[6px] font-bold uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
@@ -166,7 +166,7 @@ function FeatureRightPage({ event, pageNumber }) {
         </div>
 
         {!showPhotos ? null : singlePhoto ? (
-          <div className="relative my-2 flex min-h-0 flex-1 w-full items-center justify-center">
+          <div className="relative my-2 flex min-h-[95px] flex-1 w-full items-center justify-center">
             <div className="relative w-[94%] max-h-full aspect-[16/11] -rotate-1">
               <PhotoPlate
                 src={photo1}
@@ -181,7 +181,7 @@ function FeatureRightPage({ event, pageNumber }) {
             </span>
           </div>
         ) : (
-        <div className="relative my-2 min-h-0 flex-1 w-full">
+        <div className="relative my-2 min-h-[95px] flex-1 w-full">
           <div className="absolute left-0 top-0.5 z-10 w-[72%] aspect-[16/10] -rotate-2">
             <PhotoPlate
               src={photo1}
@@ -214,8 +214,8 @@ function FeatureRightPage({ event, pageNumber }) {
         <p
           className={
             showPhotos
-              ? 'mt-1 line-clamp-3 shrink-0 text-[9px] leading-[1.45] text-[var(--mag-ink-soft)]'
-              : 'mt-2.5 shrink-0 text-[9px] leading-[1.45] text-[var(--mag-ink-soft)]'
+              ? 'mt-1 shrink-0 [font-size:clamp(6.5px,1.85cqh,9px)] leading-[1.4] text-[var(--mag-ink-soft)]'
+              : 'mt-2.5 shrink-0 [font-size:clamp(6.8px,2cqh,9px)] leading-[1.45] text-[var(--mag-ink-soft)]'
           }
         >
           {event.recap}
@@ -226,7 +226,7 @@ function FeatureRightPage({ event, pageNumber }) {
         <div className="mt-1.5 flex shrink-0 items-center justify-between gap-2 border-t border-[var(--mag-line)] pt-1.5 w-full">
           {/* "IEEE-SJCE" here just repeats the page footer, so only a specific
               wing or society is shown on the left. */}
-          <span className="mag-mono w-[45%] shrink-0 truncate text-[5px] font-bold uppercase tracking-[0.06em] leading-none text-[var(--mag-ink-soft)]">
+          <span className="mag-mono w-full whitespace-normal break-words text-[5px] font-bold uppercase tracking-[0.06em] leading-tight text-[var(--mag-ink-soft)]">
             {event.wing === 'IEEE-SJCE' ? null : event.wing}
           </span>
         </div>

@@ -117,7 +117,7 @@ function Print({ photo, label }) {
         <MagazineImage src={photo.src} alt={photo.alt} loading="eager" />
       </div>
       {label && (
-        <figcaption className="mag-mono mt-0.5 truncate text-[5.5px] uppercase tracking-[0.1em] text-[var(--mag-ink-soft)]">
+        <figcaption className="mag-mono mt-0.5 whitespace-normal break-words text-[5.5px] uppercase leading-tight tracking-[0.1em] text-[var(--mag-ink-soft)]">
           {label}
         </figcaption>
       )}

@@ -12,29 +12,29 @@ export default function MagazineEditorial({ pageNumber }) {
     <>
       <PageHeader section="Editorial" />
 
-      <div className="mt-2.5 flex min-h-0 flex-1 flex-col">
+      <div className="mt-2.5 flex min-h-0 flex-1 flex-col [container-type:size]">
         <Kicker>From the editors</Kicker>
-        <h2 className="mag-display mt-1 text-[18px] uppercase leading-[0.92] tracking-[-0.03em] sm:text-[23px]">
+        <h2 className="mag-display mt-1 [font-size:clamp(15px,4.2cqh,23px)] uppercase leading-[0.92] tracking-[-0.03em]">
           A year in circuits, code &amp; community.
         </h2>
-        <Rule className="mt-1.5 w-14" />
+        <Rule className="mt-1.5 w-14 shrink-0" />
 
         <div className="mt-2.5 flex min-h-0 flex-1 gap-3">
           <div className="min-w-0 flex-1 space-y-1.5">
-            <p className="text-[9px] leading-[1.45] text-[var(--mag-ink-soft)]">
-              <span className="mag-display float-left mr-1.5 text-[18px] leading-none text-[var(--mag-ink)] sm:text-[24px]">
+            <p className="[font-size:clamp(6.5px,1.9cqh,9px)] leading-[1.45] text-[var(--mag-ink-soft)]">
+              <span className="mag-display float-left mr-1.5 text-[2em] leading-none text-[var(--mag-ink)]">
                 B
               </span>
               etween the first breadboard and the final keynote, IEEE-SJCE spent the
               year turning curiosity into capability. This publication gathers the
               workshops, talks and outreach moments that shaped our chapter.
             </p>
-            <p className="text-[9px] leading-[1.45] text-[var(--mag-ink-soft)]">
+            <p className="[font-size:clamp(6.5px,1.9cqh,9px)] leading-[1.45] text-[var(--mag-ink-soft)]">
               Built from the posters, photographs and notes in our archive, these pages
               are a record of people learning by doing. Read them in order, or turn to
               the story that catches your eye.
             </p>
-            <p className="text-[9px] font-bold text-[var(--mag-ink)]">
+            <p className="[font-size:clamp(6.5px,1.9cqh,9px)] font-bold text-[var(--mag-ink)]">
               Thank you for turning the pages.
             </p>
           </div>

@@ -256,8 +256,8 @@ export const MAGAZINE_EVENTS = [
       "Radar & satellite technology talk",
     ],
     photos: [
-      "/photos/events/aess_recap_1.jpg",
       "/photos/events/aess_recap_2.jpg",
+      "/photos/events/aess_recap_1.jpg",
     ],
     stats: [
       { label: "Wing", value: "AESS" },
@@ -343,7 +343,7 @@ export const MAGAZINE_EVENTS = [
     highlights: [
       "Indian Space Programme",
       "Achievements & future horizons",
-      "Instill motivation",
+      "Inspiration for future explorers",
     ],
     photos: [],
     stats: [
@@ -735,7 +735,7 @@ export const MAGAZINE_EVENTS = [
     description:
       "A four-day flagship robotics event featuring hands-on builds that introduced participants to wireless robot control and autonomous navigation. From Bluetooth-controlled bots to IR-based and PID-controlled line followers, participants explored robotics through practical implementation.",
     recap:
-      "A four-day flagship robotics event featuring hands-on builds that introduced participants to wireless robot control and autonomous navigation. From Bluetooth-controlled bots to IR-based and PID-controlled line followers, participants explored robotics through practical implementation.",
+      "Across four days of hands-on builds, participants progressed from Bluetooth app control to dual-IR and PID line-following bots, turning theory into autonomous motion.",
     highlights: [
       "Bluetooth App-Controlled Bot: Built using an HC-05 Bluetooth module and MIT App Inventor for wireless control.",
       "Dual-IR Line Follower: Uses two IR sensors positioned on either side of the front wheel to detect and follow a line.",

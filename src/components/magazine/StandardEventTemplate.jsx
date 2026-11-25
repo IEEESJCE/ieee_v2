@@ -19,7 +19,7 @@ function BriefPoster({ src, title }) {
   const [failed, setFailed] = useState(false)
 
   return (
-    <div className="relative min-h-[90px] flex-1">
+    <div className="relative min-h-[60px] flex-1">
       <div className="absolute inset-0 flex items-center justify-center py-1">
         {failed ? (
           <div className="h-full w-[60%]">
@@ -52,7 +52,7 @@ function BriefPage({ event, pageNumber, companion }) {
         {pad(event.order)}
       </span>
 
-      <div className="mt-2 flex min-h-0 flex-1 flex-col overflow-hidden">
+      <div className="mt-2 flex min-h-0 flex-1 flex-col overflow-hidden [container-type:size]">
         <div className="flex shrink-0 flex-wrap items-center justify-between gap-x-2 gap-y-1">
           <EventTag>{event.category}</EventTag>
           <span className="mag-mono border border-[var(--mag-ink)] bg-[var(--mag-paper-deep)] px-1.5 py-0.5 text-[6px] font-bold uppercase tracking-[0.14em] text-[var(--mag-ink-soft)]">
@@ -60,27 +60,27 @@ function BriefPage({ event, pageNumber, companion }) {
           </span>
         </div>
 
-        <FitHeading as="h2" text={event.title} className="mag-display mt-1.5 text-[15px] uppercase leading-[0.94] tracking-[-0.03em] sm:text-[18px]">
+        <FitHeading as="h2" text={event.title} className="mag-display mt-1.5 [font-size:clamp(12px,3.6cqh,18px)] uppercase leading-[0.94] tracking-[-0.03em]">
           <KeepIoT text={event.title} />
         </FitHeading>
 
-        <p className="mag-mono mt-1 shrink-0 text-[6.5px] font-bold uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
+        <p className="mag-mono mt-1 shrink-0 [font-size:clamp(5.5px,1.4cqh,6.5px)] font-bold uppercase tracking-[0.12em] text-[var(--mag-ink-soft)]">
           {event.date}{event.venue && <><br />{event.venue}</>}
         </p>
 
-        <Rule className="mt-1.5 w-12" />
+        <Rule className="mt-1.5 w-12 shrink-0" />
 
-        <div className="mt-2 flex min-h-0 flex-1 flex-col gap-2 overflow-hidden">
+        <div className="mt-1.5 flex min-h-0 flex-1 flex-col gap-1.5 overflow-hidden sm:mt-2 sm:gap-2">
           {event.poster && <BriefPoster src={event.poster} title={event.title} />}
 
           <p
             className={
               event.poster
-                ? 'shrink-0 line-clamp-4 text-[9px] leading-[1.45] text-[var(--mag-ink-soft)]'
-                : 'line-clamp-6 text-[9.5px] leading-[1.5] text-[var(--mag-ink-soft)]'
+                ? 'shrink-0 [font-size:clamp(6.2px,1.8cqh,9px)] leading-[1.4] text-[var(--mag-ink-soft)]'
+                : 'shrink-0 [font-size:clamp(6.8px,2cqh,9.5px)] leading-[1.45] text-[var(--mag-ink-soft)]'
             }
           >
-            <span className="mag-display float-left mr-1.5 text-[16px] leading-none text-[var(--mag-ink)] sm:text-[24px]">
+            <span className="mag-display float-left mr-1.5 text-[1.9em] leading-none text-[var(--mag-ink)]">
               {event.description.charAt(0)}
             </span>
             {event.description.slice(1)}
@@ -89,14 +89,19 @@ function BriefPage({ event, pageNumber, companion }) {
           {event.highlights && event.highlights.length > 0 && (
             <div className="shrink-0">
               <Kicker>Highlights</Kicker>
-              <HighlightList items={event.highlights} limit={3} className="mt-1" />
+              <HighlightList
+                items={event.highlights}
+                limit={3}
+                className="mt-1"
+                itemClassName="[font-size:clamp(6px,1.75cqh,9px)] leading-tight"
+              />
             </div>
           )}
 
           <div className="mt-auto shrink-0 space-y-1.5">
             {companion && (
               <div className="flex items-center justify-end border-t border-[var(--mag-line)] pt-1 text-[5.5px]">
-                <span className="mag-display w-full whitespace-normal break-words text-right text-[6.5px] uppercase leading-[1.15] sm:text-[7.5px]">
+                <span className="mag-display w-full whitespace-normal break-words text-right [font-size:clamp(6px,1.5cqh,7.5px)] uppercase leading-[1.15]">
                   <KeepIoT text={companion.title} />
                 </span>
               </div>
