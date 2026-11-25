@@ -63,6 +63,48 @@ const GALLERY_IMAGES = [
     caption: 'Hardware Demonstrations & Project Expo',
     span: '',
   },
+  {
+    id: 9,
+    src: '/photos/gallery/cadence_workshop.jpg',
+    alt: 'IEEE-SJCE Cadence Workshop',
+    caption: 'Cadence Workshop',
+    span: '',
+  },
+  {
+    id: 10,
+    src: '/photos/gallery/snap_circuits.jpg',
+    alt: 'IEEE-SJCE Snap Circuits',
+    caption: 'Snap Circuits',
+    span: '',
+  },
+  {
+    id: 11,
+    src: '/photos/gallery/soldering_etching.jpg',
+    alt: 'IEEE-SJCE Soldering and Etching Workshop',
+    caption: 'Soldering and Etching Workshop',
+    span: '',
+  },
+  {
+    id: 12,
+    src: '/photos/gallery/tcl_workshop.jpg',
+    alt: 'IEEE-SJCE TCL Workshop',
+    caption: 'TCL Workshop',
+    span: '',
+  },
+  {
+    id: 13,
+    src: '/photos/gallery/sps_inauguration_main.jpg',
+    alt: 'IEEE-SJCE SPS Wing Inauguration & Tech Talk',
+    caption: 'SPS Wing Inauguration & Tech Talk',
+    span: '',
+  },
+  {
+    id: 14,
+    src: '/photos/gallery/orientation_day.jpg',
+    alt: 'IEEE-SJCE Orientation Day',
+    caption: 'Orientation Day',
+    span: '',
+  },
 ]
 
 export default function GallerySection() {

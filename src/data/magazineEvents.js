@@ -286,8 +286,7 @@ export const MAGAZINE_EVENTS = [
       "Clinical brain data analysis",
     ],
     photos: [
-      "/photos/gallery/gall8.jpg",
-      "/photos/gallery/gall11.jpg",
+      "/photos/events/the_wave_recap_1.jpg",
     ],
     stats: [
       { label: "Wing", value: "SPS" },
@@ -550,8 +549,8 @@ export const MAGAZINE_EVENTS = [
       "Automotive DSP applications",
     ],
     photos: [
-      "/photos/gallery/gall8.jpg",
-      "/photos/gallery/gall2.jpg",
+      "/photos/events/sps_inauguration_recap_1.jpg",
+      "/photos/events/sps_inauguration_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "SPS" },
@@ -1042,8 +1041,7 @@ export const MAGAZINE_EVENTS = [
       "Engineering puzzles",
     ],
     photos: [
-      "/photos/gallery/gall5.jpg",
-      "/photos/gallery/gall9.jpg",
+      "/photos/events/quiz_quake_recap_1.jpg",
     ],
     stats: [
       { label: "Wings", value: "EDS · RAS · WIE" },
