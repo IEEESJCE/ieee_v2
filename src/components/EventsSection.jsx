@@ -36,7 +36,7 @@ const EVENTS = [
     date: '5–6 NOV 2026',
     wing: 'EDS',
     description:
-      'The Electron Devices Society conducted Snap Circuits, giving freshers a hands-on experience with electronic components, circuit prototyping, and basic hardware debugging.',
+      'The Electron Devices Society conducted Snap Circuits, giving freshers a hands-on experience with electronic components, circuit prototyping, and bringing simple circuits to life.',
     icon: <Zap size={22} />,
     accent: '#00F5D4',
     image: '/photos/events/anap_circuits_2026.jpeg',

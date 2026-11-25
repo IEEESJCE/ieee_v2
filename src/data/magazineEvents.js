@@ -68,13 +68,13 @@ export const MAGAZINE_EVENTS = [
     venue: "SJCE, Mysuru",
     poster: "/photos/events/anap_circuits_2026.jpeg",
     description:
-      "The Electron Devices Society conducted Snap Circuits, giving freshers a hands-on experience with electronic components, circuit prototyping, and basic hardware debugging.",
+      "The Electron Devices Society conducted Snap Circuits, giving freshers a hands-on experience with electronic components, circuit prototyping, and bringing simple circuits to life.",
     recap:
       "Over two days, freshers moved from identifying components to assembling working circuits and learning how to trace a fault when a build refused to behave.",
     highlights: [
       "Hands-on electronic components",
       "Circuit prototyping",
-      "Hardware debugging basics",
+      "Simple circuits brought to life",
     ],
     photos: [
       "/photos/events/snap_circuits_2025_recap_1.jpg",
