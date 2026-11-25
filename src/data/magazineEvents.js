@@ -460,8 +460,8 @@ export const MAGAZINE_EVENTS = [
       "Simulation regression suites",
     ],
     photos: [
-      "/photos/gallery/gall2.jpg",
-      "/photos/gallery/gall8.jpg",
+      "/photos/events/tcl_workshop_recap_1.jpg",
+      "/photos/events/tcl_workshop_recap_2.jpg",
     ],
     stats: [
       { label: "Wing", value: "WIE" },
