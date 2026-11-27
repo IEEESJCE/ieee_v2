@@ -38,8 +38,8 @@ const GALLERY_IMAGES = [
   {
     id: 5,
     src: '/photos/gallery/gall5.jpg',
-    alt: 'IEEE-SJCE Core Members',
-    caption: 'Executive Committee & Student Leaders',
+    alt: 'IEEE-SJCE Core Members 2025',
+    caption: 'Executive Committee & Student Leaders 2025',
     span: '',
   },
   {
@@ -101,8 +101,8 @@ const GALLERY_IMAGES = [
   {
     id: 14,
     src: '/photos/gallery/orientation_day.jpg',
-    alt: 'IEEE-SJCE Orientation Day',
-    caption: 'Orientation Day',
+    alt: 'IEEE-SJCE Orientation Day 2026',
+    caption: 'Orientation Day 2026',
     span: '',
   },
   {
@@ -143,8 +143,8 @@ const GALLERY_IMAGES = [
   {
     id: 20,
     src: '/photos/gallery/radioverse_2026.jpg',
-    alt: 'IEEE-SJCE Radioverse 2026',
-    caption: 'Radioverse 2026',
+    alt: 'IEEE-SJCE Radioverse',
+    caption: 'Radioverse',
     span: 'gal-slot-wide',
   },
 ]
