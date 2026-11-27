@@ -73,8 +73,8 @@ const GALLERY_IMAGES = [
   {
     id: 10,
     src: '/photos/gallery/snap_circuits.jpg',
-    alt: 'IEEE-SJCE Snap Circuits',
-    caption: 'Snap Circuits',
+    alt: 'IEEE-SJCE Snap Circuits 2025',
+    caption: 'Snap Circuits 2025',
     span: '',
   },
   {
@@ -104,6 +104,48 @@ const GALLERY_IMAGES = [
     alt: 'IEEE-SJCE Orientation Day',
     caption: 'Orientation Day',
     span: '',
+  },
+  {
+    id: 15,
+    src: '/photos/gallery/prayas_2025.jpg',
+    alt: 'IEEE-WIE Prayas 2025',
+    caption: 'Prayas 2025',
+    span: 'gal-slot-wide',
+  },
+  {
+    id: 16,
+    src: '/photos/gallery/matlab_workshop_2026.jpg',
+    alt: 'IEEE-SJCE MATLAB Workshop 2026',
+    caption: 'MATLAB Workshop 2026',
+    span: '',
+  },
+  {
+    id: 17,
+    src: '/photos/gallery/snap_circuits_2026.jpg',
+    alt: 'IEEE-SJCE Snap Circuits 2026',
+    caption: 'Snap Circuits 2026',
+    span: '',
+  },
+  {
+    id: 18,
+    src: '/photos/gallery/ieee_day_2026.jpg',
+    alt: 'IEEE-SJCE IEEE Day 2026',
+    caption: 'IEEE Day 2026',
+    span: '',
+  },
+  {
+    id: 19,
+    src: '/photos/gallery/robotics_16.jpg',
+    alt: "IEEE-SJCE Robotics'16 Bluetooth Bot",
+    caption: "Robotics'16",
+    span: '',
+  },
+  {
+    id: 20,
+    src: '/photos/gallery/radioverse_2026.jpg',
+    alt: 'IEEE-SJCE Radioverse 2026',
+    caption: 'Radioverse 2026',
+    span: 'gal-slot-wide',
   },
 ]
 
