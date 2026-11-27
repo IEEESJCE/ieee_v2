@@ -147,6 +147,27 @@ const GALLERY_IMAGES = [
     caption: 'Radioverse',
     span: 'gal-slot-wide',
   },
+  {
+    id: 21,
+    src: '/photos/gallery/ml_workshop.jpg',
+    alt: 'IEEE-SJCE ML Workshop',
+    caption: 'ML Workshop',
+    span: '',
+  },
+  {
+    id: 22,
+    src: '/photos/gallery/iot_4_0.jpg',
+    alt: 'IEEE-SJCE IoT 4.0 Workshop',
+    caption: 'IoT 4.0',
+    span: '',
+  },
+  {
+    id: 23,
+    src: '/photos/gallery/kalpana_chawla_lecture.jpg',
+    alt: 'IEEE-WIE Kalpana Chawla Memorial Lecture',
+    caption: 'Kalpana Chawla Memorial Lecture',
+    span: 'gal-slot-wide',
+  },
 ]
 
 export default function GallerySection() {
